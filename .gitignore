@@ -1,0 +1,7 @@
+# ignore all lua config file by default
+lua/*
+
+# only track the configuration module
+# this allows freedom to try or use other config modules and keeps them
+# separate from the git repository
+!lua/config-183/
