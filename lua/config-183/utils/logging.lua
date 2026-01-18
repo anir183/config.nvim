@@ -126,34 +126,41 @@ LOG.error = function(message)
 	LOG.print(vim.log.levels.ERROR, message)
 end
 
---[[ perform log file action ]]
-if LOG.opts.file_action ~= "keep" then
-	if LOG.opts.out_stream == "notify" then
-		goto skip
-	end
+---@return nil
+--- ---
+--- perform file action on config execution
+LOG.perform_file_action = function()
+	--[[ perform log file action ]]
+	if LOG.opts.file_action ~= "keep" then
+		if LOG.opts.out_stream == "notify" then
+			goto skip
+		end
 
-	local success, err
-	if LOG.opts.file_action == "delete" then
-		success, err = os.remove(LOG.opts.file_path)
-	elseif LOG.opts.file_action == "rename" then
-		success, err = os.rename(
-			LOG.opts.file_path,
-			FUNCS.join_paths(
-				VARS.path.state,
-				"config-183-" .. os.date("%Y-%m-%d-%H-%M-%S") .. ".log"
+		local success, err
+		if LOG.opts.file_action == "delete" then
+			success, err = os.remove(LOG.opts.file_path)
+		elseif LOG.opts.file_action == "rename" then
+			success, err = os.rename(
+				LOG.opts.file_path,
+				FUNCS.join_paths(
+					VARS.path.state,
+					"config-183-" .. os.date("%Y-%m-%d-%H-%M-%S") .. ".log"
+				)
 			)
-		)
-	end
+		end
 
-	if success then
-		LOG.info("empty log file initiated")
-	else
-		LOG.warn("could not initiate empty log file")
-		LOG.debug(err)
-	end
+		if success then
+			LOG.info("empty log file initiated")
+		else
+			LOG.warn("could not initiate empty log file")
+			LOG.debug(err)
+		end
 
-	::skip::
+		::skip::
+	end
 end
+
+LOG.perform_file_action()
 
 LOG.info("logging library loaded")
 
