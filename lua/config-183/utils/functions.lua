@@ -66,11 +66,18 @@ FUNCS.mmap = function(mode, lhs, actions, desc, opts)
 			local type = type(exec)
 
 			if (not exec) then
-				vim.notify("no executable entry for given choice")
+				if LOG and LOG.warn and LOG.debug then
+					LOG.warn("no executable entry for given choice")
+					LOG.debug("faulty entry:", type(exec), exec)
+					LOG.debug("complete menu:", actions)
+				end
 				return
 			end
 			if type ~= "function" or type ~= "string" then
-				vim.notify("invalid type for executable entry")
+				if LOG and LOG.warn and LOG.debug then
+					LOG.warn("invalid type for executable entry")
+					LOG.debug("faulty entry:", type(exec), exec)
+				end
 			end
 
 			if type == "function" then
@@ -126,16 +133,22 @@ FUNCS.write_to_file = function(file_path, data, overwrite)
 	end
 
 	if file == nil or err then
-		vim.notify("could not open file to write", vim.log.levels.ERROR)
-		vim.notify(vim.inspect(err), vim.log.levels.DEBUG)
+		if LOG and LOG.warn and LOG.debug then
+			LOG.warn("could not open file to write")
+			LOG.debug("file in question: " .. file_path)
+			LOG.debug(err)
+		end
 		return
 	end
 
 	_, err = file:write(data)
 
 	if err then
-		vim.notify("error while writing to file", vim.log.levels.ERROR)
-		vim.notify(vim.inspect(err), vim.log.levels.DEBUG)
+		if LOG and LOG.warn and LOG.debug then
+			LOG.warn("error while writing to file")
+			LOG.debug("file in question: " .. file_path)
+			LOG.debug(err)
+		end
 	end
 
 	file:close()
