@@ -8,3 +8,4 @@
 --]]
 
 require("config-183.utils.variables")
+require("config-183.utils.functions")
