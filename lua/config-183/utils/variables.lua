@@ -11,6 +11,11 @@
 --- handly or commonly used variables made to be globally available
 VARS = {}
 
+--@class WindowVars
+VARS.win = {}
+---@type integer size of the netrw sidebar window
+VARS.win.netrw_size = 17
+
 ---@class AugrpVars
 --- variables related to auto-command groups
 VARS.augrp = {}
