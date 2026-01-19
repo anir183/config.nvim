@@ -8,3 +8,4 @@
 --]]
 
 require("config-183.base.options")
+require("config-183.base.keymaps")
