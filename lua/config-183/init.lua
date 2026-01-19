@@ -9,6 +9,8 @@
 require("config-183.utils")
 require("config-183.options")
 
+OPTS.before()
+
 if OPTS.mode == "minimal" or OPTS.mode == "min-plugins" then
 	require("config-183.minimal")
 	return

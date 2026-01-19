@@ -24,6 +24,12 @@ FUNCS.map = function(mode, lhs, rhs, desc, opts)
 	opts.desc = desc
 
 	vim.keymap.set(mode, lhs, rhs, opts)
+	LOG.debug("set a keymap", {
+		mode = mode,
+		lhs = lhs,
+		rhs = rhs,
+		opts = opts,
+	})
 end
 
 ---@param lhs string actual keystokes to map

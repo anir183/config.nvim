@@ -13,11 +13,13 @@ local defaults = {}
 ---@type "normal" | "minimal" | "min-plugins" | "no-plugins" mode in which to run the configuration
 defaults.mode = "normal"
 
----@type UtilVars common variables mades to be globally available
+---@type function? execute before config is started but after utilities and logging lib is loaded
+defaults.before = function() end
+---@type UtilVars? common variables mades to be globally available
 defaults.util_vars = nil
----@type LogOpts options for the logging library
+---@type LogOpts? options for the logging library
 defaults.log_opts = nil
----@type LazyOpts options for bootstrapping lazy.nvim plugin manager
+---@type LazyOpts? options for bootstrapping lazy.nvim plugin manager
 defaults.lazy_opts = nil
 
 return defaults

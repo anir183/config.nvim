@@ -39,3 +39,6 @@ VARS.strings = {}
 VARS.strings.format = "%%#%s#%s%%*"
 ---@type string can be used to match with string to identify numbers
 VARS.strings.num_match = "^%-?%d+$"
+
+---@type "unix" | "windows" os style in which the config is running
+VARS.os = VARS.path.separator == "/" and "unix" or "windows"
