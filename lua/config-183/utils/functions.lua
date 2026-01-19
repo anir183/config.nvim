@@ -104,6 +104,14 @@ FUNCS.join_paths = function(...)
 	return joined_path
 end
 
+---@param s string | number hl group name or id (maybe idk)
+---@param ... any to format
+--- ---
+--- format a string to a given highlight group
+FUNCS.hl_fmt_str = function(s, ...)
+	return VARS.strings.format:format(s, ...)
+end
+
 ---@param str string string to split
 ---@param sep string separator to split the string at
 --- ---

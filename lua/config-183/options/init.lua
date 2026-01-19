@@ -43,6 +43,14 @@ if OPTS.log_opts and (OPTS.log_opts.file_path or OPTS.log_opts.file_action) then
 	LOG.info("regenerated log file after updating log options")
 end
 
+STLINE = vim.tbl_deep_extend(
+	"force",
+	STLINE or {},
+	OPTS.stline_otps or {}
+)
+LOG.info("merged editable options into statusline options")
+LOG.debug(OPTS.stline_otps or {})
+
 LAZY = vim.tbl_deep_extend(
 	"force",
 	LAZY or {},

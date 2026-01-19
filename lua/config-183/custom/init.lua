@@ -9,3 +9,4 @@
 --]]
 
 require("config-183.custom.netrw")
+require("config-183.custom.statusline")

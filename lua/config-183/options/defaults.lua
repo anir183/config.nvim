@@ -24,6 +24,8 @@ defaults.after = function() end
 defaults.util_vars = nil
 ---@type LogOpts? options for the logging library
 defaults.log_opts = nil
+---@type StatuslineOpts? options for the statusline
+defaults.stline_otps = nil
 ---@type LazyOpts? options for bootstrapping lazy.nvim plugin manager
 defaults.lazy_opts = nil
 
