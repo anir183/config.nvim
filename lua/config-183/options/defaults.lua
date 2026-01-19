@@ -12,6 +12,8 @@ local defaults = {}
 
 ---@type "normal" | "minimal" | "min-plugins" | "no-plugins" mode in which to run the configuration
 defaults.mode = "normal"
+---@type string command execution shell for running host commands
+defaults.shell = nil
 
 ---@type function? execute before config is started but after utilities and logging lib is loaded
 defaults.before = function() end
