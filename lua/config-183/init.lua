@@ -17,7 +17,7 @@ end
 require("config-183.base")
 require("config-183.custom")
 
-if OPTS.mode == "no-plugin" then
+if OPTS.mode == "no-plugins" then
 	return
 end
 require("config-183.plugin")

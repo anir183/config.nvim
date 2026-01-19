@@ -10,7 +10,7 @@
 --- default set of editable options
 local defaults = {}
 
----@type "normal" | "minimal" | "min-plugins" | "no-plugin" mode in which to run the configuration
+---@type "normal" | "minimal" | "min-plugins" | "no-plugins" mode in which to run the configuration
 defaults.mode = "normal"
 
 ---@type UtilVars common variables mades to be globally available

@@ -51,4 +51,9 @@ LAZY = vim.tbl_deep_extend(
 LOG.info("merged editable options into lazy.nvim bootstrapping options")
 LOG.debug(OPTS.lazy_opts or {})
 
+if vim.g.MODE then
+	OPTS.mode = vim.g.MODE
+	LOG.info("found vim.g.MODE variable, will use this as mode")
+end
+
 LOG.info("editable options loaded")
