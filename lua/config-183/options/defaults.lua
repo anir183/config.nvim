@@ -17,5 +17,7 @@ defaults.mode = "normal"
 defaults.util_vars = nil
 ---@type LogOpts options for the logging library
 defaults.log_opts = nil
+---@type LazyOpts options for bootstrapping lazy.nvim plugin manager
+defaults.lazy_opts = nil
 
 return defaults

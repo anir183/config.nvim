@@ -43,4 +43,12 @@ if OPTS.log_opts and (OPTS.log_opts.file_path or OPTS.log_opts.file_action) then
 	LOG.info("regenerated log file after updating log options")
 end
 
+LAZY = vim.tbl_deep_extend(
+	"force",
+	LAZY or {},
+	OPTS.lazy_opts or {}
+)
+LOG.info("merged editable options into lazy.nvim bootstrapping options")
+LOG.debug(OPTS.lazy_opts or {})
+
 LOG.info("editable options loaded")
