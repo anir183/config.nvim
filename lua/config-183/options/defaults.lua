@@ -17,6 +17,9 @@ defaults.shell = nil
 
 ---@type function? execute before config is started but after utilities and logging lib is loaded
 defaults.before = function() end
+---@type function? execute after the config is completely loaded
+defaults.after = function() end
+
 ---@type UtilVars? common variables mades to be globally available
 defaults.util_vars = nil
 ---@type LogOpts? options for the logging library
