@@ -20,7 +20,7 @@ defaults.before = function() end
 ---@type function? execute after the config is completely loaded
 defaults.after = function() end
 
----@type table<string, LazySpec> extra plugins to install alongside or overriding configured ones
+---@type table<string, LazySpec> | ConfigSpec extra plugins to install alongside or overriding configured ones
 defaults.plugins = {}
 
 ---@type table<string, vim.lsp.Config> setup for lsps and their configuration options

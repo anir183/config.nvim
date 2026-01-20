@@ -4,7 +4,7 @@
 --
 --]]
 
----@type table<string, LazySpec>
+---@class ConfigSpec
 local spec = {}
 
 LOG.info("generating lazy.nvim plugin spec")

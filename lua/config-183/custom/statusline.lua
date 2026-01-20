@@ -45,12 +45,12 @@ STLINE.components.filename = STLINE.components.filename or function()
 	local filename = vim.fn.expand("%:p:t")
 	filename = filename == "" and vim.fn.expand("%") or filename
 	filename = filename == "" and "unnamed" or filename
-	return FUNCS.hl_fmt_str("Dictionary", " " .. filename .. " ")
+	return FUNCS.hl_fmt_str("DiffFile", " " .. filename .. " ")
 end
 ---@return nil
 --- get the position of the cursor in the current buffer
 STLINE.components.position = STLINE.components.position or function()
-	return FUNCS.hl_fmt_str("Dictionary", " %02l:%02c ~ %2p%% ")
+	return FUNCS.hl_fmt_str("DiffIndexLine", " %02l:%02c ~ %2p%% ")
 end
 ---@return nil
 --- get the current mode in the buffer
@@ -67,7 +67,7 @@ STLINE.components.indent = STLINE.components.indent or function()
 	local len = vim.opt_local.tabstop._value
 
 	return FUNCS.hl_fmt_str(
-		"Dictionary",
+		"Label",
 		" " .. type .. " : " .. len .. " "
 	)
 end
