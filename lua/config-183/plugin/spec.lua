@@ -17,6 +17,7 @@ spec = {
 
 	--[[ aesthetics ]]
 	theme = require("config-183.plugin.config.aesthetic.theme"),
+	fidget = require("config-183.plugin.config.aesthetic.fidget"),
 }
 LOG.info("lazy.nvim plugin specs generated and loaded")
 
