@@ -71,27 +71,27 @@ FUNCS.mmap = function(mode, lhs, actions, desc, opts)
 				return
 			end
 
-			local exec = actions[choices]
-			local type = type(exec)
+			local exec = actions[choice]
+			local exec_type = type(exec)
 
 			if (not exec) then
 				if LOG and LOG.warn and LOG.debug then
 					LOG.warn("no executable entry for given choice")
-					LOG.debug("faulty entry:", type(exec), exec)
+					LOG.debug("faulty entry:", exec_type, exec)
 					LOG.debug("complete menu:", actions)
 				end
 				return
 			end
-			if type ~= "function" or type ~= "string" then
+			if exec_type ~= "function" or type ~= "string" then
 				if LOG and LOG.warn and LOG.debug then
 					LOG.warn("invalid type for executable entry")
-					LOG.debug("faulty entry:", type(exec), exec)
+					LOG.debug("faulty entry:", exec_type, exec)
 				end
 			end
 
-			if type == "function" then
+			if exec_type == "function" then
 				exec()
-			elseif type == "string" then
+			elseif exec_type == "string" then
 				vim.cmd(exec)
 			end
 		end)
