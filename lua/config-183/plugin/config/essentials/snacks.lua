@@ -173,6 +173,21 @@ plugin.keys = {
 		},
 		{
 			mode = "n",
+			"<leader>fF",
+			function()
+				if vim.bo.filetype == "oil" then
+					Snacks.picker.files({
+						cwd = vim.fn.expand("%:p:h"):sub(6, -1),
+					})
+				end
+				Snacks.picker.files({
+					cwd = vim.fn.expand("%:p:h"),
+				})
+			end,
+			desc = "[plugin/snacks]: [F]ind [F]iles in current directory",
+		},
+		{
+			mode = "n",
 			"<leader>FF",
 			function()
 				Snacks.picker.files({
