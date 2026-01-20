@@ -42,3 +42,14 @@ map({ "n", "v" }, "<leader>d", "\"_d", "[base]: [D]elete without copying")
 nmap("<leader>D", "\"_D", "[base]: [D]elete till end of line without copying")
 map({ "n", "v" }, "<leader>c", "\"_c", "[base]: delete and edit without copying")
 nmap("<leader>C", "\"_C", "[base]: delete till eol and edit without copying")
+
+--[[ netrw ]]
+local opened_netrw_once = false
+nmap("<leader>E", function()
+	if not opened_netrw_once then
+		vim.cmd.Ex()
+		opened_netrw_once = true
+	end
+
+	vim.cmd.Rex()
+end, "[base]: open netrw window")
