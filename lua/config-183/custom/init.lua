@@ -11,3 +11,4 @@
 require("config-183.custom.netrw")
 require("config-183.custom.statusline")
 require("config-183.custom.commands")
+require("config-183.custom.keymaps")
