@@ -65,8 +65,16 @@ LOG.info("lazy.nvim added to rtp")
 LOG.debug(vim.opt.rtp)
 
 --[[ setup and initate lazy ]]
+local spec = {}
+for name, plugin in pairs(vim.tbl_deep_extend("force", require("config-183.plugin.spec"), OPTS.plugins)) do
+	name = plugin.name or name
+	plugin.name = name
+	table.insert(spec, plugin)
+	LOG.info("added plugin to spec: " .. name)
+	LOG.debug(plugin)
+end
 require("lazy").setup({
-	spec = require("config-183.plugin.spec"),
+	spec = spec,
 	lockfile = LAZY.lock_path,
 	defaults = {
 		lazy = false,
