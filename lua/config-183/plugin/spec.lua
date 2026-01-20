@@ -14,6 +14,9 @@ spec = {
 	nio = require("config-183.plugin.config.dependencies.nio"),
 	nui = require("config-183.plugin.config.dependencies.nui"),
 	devicons = require("config-183.plugin.config.dependencies.devicons"),
+
+	--[[ aesthetics ]]
+	theme = require("config-183.plugin.config.aesthetic.theme"),
 }
 LOG.info("lazy.nvim plugin specs generated and loaded")
 
