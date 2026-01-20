@@ -8,4 +8,5 @@
 --
 --]]
 
-print("minimal")
+require("config-183.minimal.options")
+require("config-183.minimal.keymaps")
