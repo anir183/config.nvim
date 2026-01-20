@@ -54,9 +54,12 @@ end
 FUNCS.mmap = function(mode, lhs, actions, desc, opts)
 	desc = desc or "open action menu"
 
+	LOG.info("creating action menu map")
+	LOG.debug(actions)
+
 	--[[ create a actions menu to choose from ]]
 	local choices = {}
-	for choice, _ in ipairs(actions) do
+	for choice, _ in pairs(actions) do
 		table.insert(choices, choice)
 	end
 
