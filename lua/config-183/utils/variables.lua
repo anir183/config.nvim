@@ -40,6 +40,8 @@ VARS.path.config = vim.fn.stdpath("config")
 ---@class StringVars
 --- string or patterns that are useful
 VARS.strings = {}
+---@type string prefix to be used in front of custom commands
+VARS.strings.cmd_prefix = "CMD"
 ---@type string can be used to format other strings
 VARS.strings.format = "%%#%s#%s%%*"
 ---@type string can be used to match with string to identify numbers

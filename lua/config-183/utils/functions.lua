@@ -95,6 +95,24 @@ FUNCS.mmap = function(mode, lhs, actions, desc, opts)
 	end, desc, opts)
 end
 
+---@param keystrokes string keystroke to emulate
+---@param mode? string mode in which to run the keystroke (default "n")
+---@return nil
+--- ---
+--- emulate keystrokes to trigger keymaps or as fallbacks
+FUNCS.feedkeys = function(keystrokes, mode)
+	vim.api.nvim_feedkeys(
+		vim.api.nvim_replace_termcodes(
+			keystrokes,
+			true,
+			true,
+			true
+		),
+		mode or "n",
+		false
+	)
+end
+
 ---@param ... any components of the path
 ---@return string joined_path final joined path using os based separator
 --- ---
@@ -128,6 +146,14 @@ FUNCS.split_str = function(str, sep)
 	end
 
 	return chunks
+end
+
+---@param str string string to perform number check on
+---@return boolean isnumber whether the string is a number or not
+--- ---
+--- check if a given string is a number or not
+FUNCS.str_isnum = function(str)
+	return str:match(VARS.strings.num_match)
 end
 
 ---@param file_path string path to the file to write into
@@ -167,3 +193,6 @@ FUNCS.write_to_file = function(file_path, data, overwrite)
 
 	file:close()
 end
+
+---@type function? automatically set buffer indentation style based on file content
+FUNCS.auto_set_indents = nil
