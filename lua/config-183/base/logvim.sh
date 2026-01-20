@@ -95,9 +95,11 @@ else
 		four|4)
 			print_logs | __rev_grep " \[trace\] " | __rev_grep " \[debug\] " | __rev_grep " \[info\] " | __rev_grep " \[error\] "
 			;;
+		help|h|--help)
+			echo -e "valid options:\n(no)trace\n(no)debug\n(no)info\n(no)warn\n(no)error\nzero\none\ntwo\nthree\nfour"
+			;;
 		* )
-			echo "invalid option"
-			echo "valid options: (no)trace / (no)debug / (no)info / (no)warn / (no)error"
+			print_logs | __grep "$__opt"
 			;;
 	esac
 fi
