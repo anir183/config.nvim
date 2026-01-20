@@ -93,4 +93,6 @@ require("lazy").setup({
 	},
 })
 
+FUNCS.nmap("<leader>lz", "<CMD>Lazy<CR>", "[plugin/lazy]: open lazy")
+
 LOG.info("lazy.nvim setup and loaded")
