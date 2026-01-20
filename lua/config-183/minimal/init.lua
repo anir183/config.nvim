@@ -10,3 +10,8 @@
 
 require("config-183.minimal.options")
 require("config-183.minimal.keymaps")
+
+if OPTS.mode ~= "min-plugins" then
+	return
+end
+require("config-183.minimal.plugins")

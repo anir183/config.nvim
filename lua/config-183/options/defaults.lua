@@ -20,6 +20,14 @@ defaults.before = function() end
 ---@type function? execute after the config is completely loaded
 defaults.after = function() end
 
+---@type table<string, LazySpec> extra plugins to install alongside or overriding configured ones
+defaults.plugins = {}
+
+---@type table<string, vim.lsp.Config> setup for lsps and their configuration options
+defaults.lsps = {
+	lua_ls = {},
+}
+
 ---@type UtilVars? common variables mades to be globally available
 defaults.util_vars = nil
 ---@type LogOpts? options for the logging library
