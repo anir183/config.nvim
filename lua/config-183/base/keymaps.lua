@@ -68,14 +68,14 @@ map({ "n", "v" }, "<leader>c", "\"_c", "[base]: delete and edit without copying"
 nmap("<leader>C", "\"_C", "[base]: delete till eol and edit without copying")
 
 --[[ split resizing ]]
-nmap("[", function()
+nmap("(", function()
 	vim.cmd.wincmd("<")
 end, "[base]: increase window width")
-nmap("]", function()
+nmap(")", function()
 	vim.cmd.wincmd(">")
 end, "[base]: decrease window width")
 nmap("+", function()
-	vim.cmd.wincmd("-")
+	vim.cmd.wincmd("+")
 end, "[base]: increase window height")
 nmap("-", function()
 	vim.cmd.wincmd("-")
