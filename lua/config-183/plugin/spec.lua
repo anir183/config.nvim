@@ -35,6 +35,7 @@ spec = {
 	oil = require("config-183.plugin.config.quality_of_life.oil"),
 	oil_sidebar = require("config-183.plugin.config.quality_of_life.oil_sidebar"),
 	todo_comments = require("config-183.plugin.config.quality_of_life.todo_comments"),
+	undotree = require("config-183.plugin.config.quality_of_life.undotree"),
 }
 LOG.info("lazy.nvim plugin specs generated and loaded")
 
