@@ -11,6 +11,7 @@ local plugin = {}
 
 plugin[1] = "j-hui/fidget.nvim"
 plugin.name = "fidget"
+plugin.lazy = false
 plugin.opts = {
 	notification = {
 		override_vim_notify = true,
@@ -24,7 +25,6 @@ plugin.opts = {
 		},
 	},
 }
-plugin.lazy = false
 plugin.keys = {
 	{
 		mode = "n",

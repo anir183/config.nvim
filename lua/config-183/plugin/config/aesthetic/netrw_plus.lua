@@ -12,6 +12,7 @@ local plugin = {}
 plugin[1] = "prichrd/netrw.nvim"
 plugin.name = "netrw-plus"
 plugin.dependencies = "devicons"
+---@type Config
 plugin.opts = {
 	use_devicons = true,
 }

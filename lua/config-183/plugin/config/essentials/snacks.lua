@@ -17,6 +17,7 @@ plugin.lazy = false
 plugin.init = function()
 	vim.g.snacks_animate = false
 end
+---@type snacks.Config
 plugin.opts = {
 	bigfile = { enabled = true },
 	dashboard = { enabled = false },

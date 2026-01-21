@@ -12,11 +12,13 @@ local plugin = {}
 plugin[1] = "catppuccin/nvim"
 plugin.name = "catppuccin"
 plugin.priority = LAZY.priorities.highest
+---@type CatppuccinOptions
 plugin.opts = {
 	flavour = "frappe",
 	transparent_background = true,
 	float = {
 		transparent = true,
+		solid = false,
 	},
 	show_end_of_buffer = true,
 }

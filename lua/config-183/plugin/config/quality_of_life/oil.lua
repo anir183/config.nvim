@@ -13,6 +13,7 @@ plugin[1] = "stevearc/oil.nvim"
 plugin.name = "oil"
 plugin.dependencies = "devicons"
 plugin.lazy = false
+---@type oil.SetupOpts
 plugin.opts = {
 	default_file_explorer = true,
 	skip_confirm_for_simple_edits = true,
