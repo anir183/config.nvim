@@ -30,6 +30,7 @@ spec = {
 	cloak = require("config-183.plugin.config.quality_of_life.cloak"),
 	comment = require("config-183.plugin.config.quality_of_life.comment"),
 	git_signs = require("config-183.plugin.config.quality_of_life.git_signs"),
+	guess_indent = require("config-183.plugin.config.quality_of_life.guess_indent"),
 	oil = require("config-183.plugin.config.quality_of_life.oil"),
 	oil_sidebar = require("config-183.plugin.config.quality_of_life.oil_sidebar"),
 }
