@@ -301,11 +301,14 @@ for name, plugin in pairs(spec) do
 	LOG.debug(plugin)
 end
 require("lazy").setup({
-	spec = vim.tbl_deep_extend(
-		"force",
-		_spec,
-		OPTS.plugins or {}
-	),
+	spec = {
+		vim.tbl_deep_extend(
+			"force",
+			_spec,
+			OPTS.plugin_overrides or {}
+		),
+		OPTS.extra_plugins,
+	},
 	lockfile = LAZY.lock_path,
 	defaults = {
 		lazy = false,

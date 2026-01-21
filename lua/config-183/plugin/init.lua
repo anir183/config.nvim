@@ -66,7 +66,7 @@ LOG.debug(vim.opt.rtp)
 
 --[[ setup and initate lazy ]]
 local spec = {}
-for name, plugin in pairs(vim.tbl_deep_extend("force", require("config-183.plugin.spec"), OPTS.plugins)) do
+for name, plugin in pairs(vim.tbl_deep_extend("force", require("config-183.plugin.spec"), OPTS.plugin_overrides)) do
 	name = plugin.name or name
 	plugin.name = name
 	table.insert(spec, plugin)
@@ -74,7 +74,10 @@ for name, plugin in pairs(vim.tbl_deep_extend("force", require("config-183.plugi
 	LOG.debug(plugin)
 end
 require("lazy").setup({
-	spec = spec,
+	spec = {
+		spec,
+		OPTS.extra_plugins,
+	},
 	lockfile = LAZY.lock_path,
 	defaults = {
 		lazy = false,
