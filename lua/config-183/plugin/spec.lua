@@ -26,6 +26,7 @@ spec = {
 	harpoon = require("config-183.plugin.config.essentials.harpoon"),
 
 	--[[ quality of life ]]
+	ccc = require("config-183.plugin.config.quality_of_life.ccc"),
 	oil = require("config-183.plugin.config.quality_of_life.oil"),
 	oil_sidebar = require("config-183.plugin.config.quality_of_life.oil_sidebar"),
 }
