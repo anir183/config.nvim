@@ -161,7 +161,7 @@ plugin.keys = {
 		},
 		{
 			mode = "n",
-			"<leader>q:",
+			"<leader>::",
 			function()
 				Snacks.picker.command_history()
 			end,
