@@ -20,7 +20,7 @@ defaults.before = function() end
 ---@type function? execute after the config is completely loaded
 defaults.after = function() end
 
----@type table<string, LazySpec> extra plugins to install alongside or overriding configured ones
+---@type LazySpec extra plugins to install alongside configured ones
 defaults.extra_plugins = {}
 
 ---@type ConfigSpec override plugins and config defined in the confiuration
