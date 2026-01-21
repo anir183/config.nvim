@@ -37,6 +37,20 @@ defaults.lsps = {
 	},
 }
 
+---@type { file_pattern: string | string[], cloak_pattern: string | string[], replace?: string | string[] }[] cloak.nvim filetype and hiding patterns
+defaults.cloak_patterns = {
+	{
+		file_pattern = { ".env", ".env.*" },
+		cloak_pattern = { "=.+" },
+		replace = nil,
+	},
+	{
+		file_pattern = { "*secret.json", "secret*.json" },
+		cloak_pattern = { ":.+" },
+		replace = nil,
+	},
+}
+
 ---@type vim.filetype.add.filetypes[] make neovim recognize more custom or additional filetypes
 defaults.additional_fts = {
 	{
