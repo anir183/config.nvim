@@ -28,6 +28,7 @@ spec = {
 	--[[ quality of life ]]
 	ccc = require("config-183.plugin.config.quality_of_life.ccc"),
 	cloak = require("config-183.plugin.config.quality_of_life.cloak"),
+	git_signs = require("config-183.plugin.config.quality_of_life.git_signs"),
 	oil = require("config-183.plugin.config.quality_of_life.oil"),
 	oil_sidebar = require("config-183.plugin.config.quality_of_life.oil_sidebar"),
 }
