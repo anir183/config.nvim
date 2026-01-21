@@ -82,7 +82,7 @@ FUNCS.mmap = function(mode, lhs, actions, desc, opts)
 				end
 				return
 			end
-			if exec_type ~= "function" or type ~= "string" then
+			if exec_type ~= "function" and exec_type ~= "string" then
 				if LOG and LOG.warn and LOG.debug then
 					LOG.warn("invalid type for executable entry")
 					LOG.debug("faulty entry:", exec_type, exec)
