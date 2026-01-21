@@ -178,7 +178,7 @@ plugin.keys = {
 			function()
 				if vim.bo.filetype == "oil" then
 					Snacks.picker.files({
-						cwd = vim.fn.expand("%:p:h"):sub(6, -1),
+						cwd = vim.fn.expand("%:h"):sub(7, -1),
 					})
 				end
 				Snacks.picker.files({
@@ -258,6 +258,13 @@ plugin.keys = {
 			mode = "n",
 			"<leader>GG",
 			function()
+				if vim.bo.filetype == "oil" then
+					-- WARN : idk why but directly using Snacks.picker.grep or
+					--        vim.cmd to open grep picker fails to run
+					local cwd = vim.fn.expand("%:p:h"):sub(7, -1)
+					FUNCS.feedkeys(":lua Snacks.picker.grep({ cwd = \"" .. cwd .. "\" })<CR><C-l>")
+				end
+
 				Snacks.picker.grep({
 					cwd = vim.fn.expand("%:h"),
 				})
