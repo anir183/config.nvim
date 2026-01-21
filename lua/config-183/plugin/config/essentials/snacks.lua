@@ -43,6 +43,9 @@ plugin.opts = {
 				},
 			},
 		},
+		main = {
+			current = true,
+		},
 	},
 	quickfile = { enabled = true },
 	scope = { enabled = false },
