@@ -57,3 +57,8 @@ nmap(
 	"<CMD>" .. VARS.strings.cmd_prefix .. "SubstituteWord<CR>",
 	"[custom]: [S]u[B]stitute a string as standalone or substring"
 )
+
+--[[ print current path ]]
+nmap("<leader>cd", function()
+	vim.notify(vim.fn.expand("%:p:h"), vim.log.levels.INFO)
+end, "[custom]: print [C]urrent [D]irectory or file path")
