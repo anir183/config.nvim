@@ -11,6 +11,12 @@ require("config-183.options")
 
 OPTS.before()
 
+for _, ft in ipairs(OPTS.additional_fts) do
+	LOG.info("adding new filetype: " .. (ft.extension.env or "---"))
+	vim.filetype.add(ft)
+	LOG.debug(ft)
+end
+
 if OPTS.mode == "minimal" or OPTS.mode == "min-plugins" then
 	require("config-183.minimal")
 	return

@@ -248,7 +248,19 @@ plugin.keys = {
 			mode = "n",
 			"<leader>gg",
 			function()
-				Snacks.picker.grep()
+				Snacks.picker.grep({
+					cwd = vim.fn.getcwd(),
+				})
+			end,
+			desc = "[plugin/snacks]: [G]lobal [G]rep",
+		},
+		{
+			mode = "n",
+			"<leader>GG",
+			function()
+				Snacks.picker.grep({
+					cwd = vim.fn.expand("%:h"),
+				})
 			end,
 			desc = "[plugin/snacks]: [G]lobal [G]rep",
 		},

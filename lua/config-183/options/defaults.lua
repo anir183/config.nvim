@@ -20,15 +20,40 @@ defaults.before = function() end
 ---@type function? execute after the config is completely loaded
 defaults.after = function() end
 
----@type LazySpec extra plugins to install alongside configured ones
+---@type LazySpec? extra plugins to install alongside configured ones
 defaults.extra_plugins = {}
 
----@type ConfigSpec override plugins and config defined in the confiuration
+---@type ConfigSpec? override plugins and config defined in the confiuration
 defaults.plugin_overrides = {}
 
----@type table<string, vim.lsp.Config> setup for lsps and their configuration options
+---@type table<string, vim.lsp.Config>? setup for lsps and their configuration options
 defaults.lsps = {
-	lua_ls = {},
+	lua_ls = {
+		settings = {
+			Lua = {
+				callSnippet = "Replace",
+			},
+		},
+	},
+}
+
+---@type vim.filetype.add.filetypes[] make neovim recognize more custom or additional filetypes
+defaults.additional_fts = {
+	{
+		extension = {
+			env = "dotenv",
+		},
+		filename = {
+			[".env"] = "dotenv",
+		},
+		pattern = {
+			["%.env%.[%w_.-]+"] = "dotenv",
+			['%.env'] = 'dotenv',
+			['%.env%..+'] = 'dotenv',
+		},
+	},
+}
+
 }
 
 ---@type UtilVars? common variables mades to be globally available
