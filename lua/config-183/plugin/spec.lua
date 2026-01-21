@@ -34,6 +34,7 @@ spec = {
 	lazy_git = require("config-183.plugin.config.quality_of_life.lazy_git"),
 	oil = require("config-183.plugin.config.quality_of_life.oil"),
 	oil_sidebar = require("config-183.plugin.config.quality_of_life.oil_sidebar"),
+	tiny_inline_diagnostics = require("config-183.plugin.config.quality_of_life.tiny_inline_diagnostics"),
 	todo_comments = require("config-183.plugin.config.quality_of_life.todo_comments"),
 	undotree = require("config-183.plugin.config.quality_of_life.undotree"),
 }
