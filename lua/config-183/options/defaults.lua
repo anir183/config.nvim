@@ -54,6 +54,68 @@ defaults.additional_fts = {
 	},
 }
 
+---@class ParserOpts list of treesitter parsers to install or ignore or setup
+defaults.parsers = {
+	---@type string[] ensure these parsers are installed
+	install = {},
+	---@class ParserIgnore
+	--- filtypes or languages to ignore automatic parser installation for
+	ignore = {
+		-- NOTE : dictionary format to avoid override by options injection
+		---@type string[]
+		fts = {
+			oil1 = "oil",
+			oil2 = "oil_preview",
+			harpoon = "harpoon",
+			fidget = "fidget",
+			netrw = "netrw",
+			help = "help",
+			undotree = "undotree",
+			blink = "blink-cmp-menu",
+			snacks1 = "snacks_layout_box",
+			snacks2 = "snacks_picker_input",
+			snacks3 = "snacks_picker_list",
+			snacks4 = "snacks_picker_preview",
+			snacks5 = "snacks_input",
+			conf = "conf",
+			rc = "rc",
+			text = "text",
+		},
+		-- NOTE : dictionary format to avoid override by options injection
+		---@type string[]
+		langs = {
+			oil1 = "oil",
+			oil2 = "oil_preview",
+			harpoon = "harpoon",
+			fidget = "fidget",
+			netrw = "netrw",
+			help = "help",
+			undotree = "undotree",
+			blink = "blink-cmp-menu",
+			snacks1 = "snacks_layout_box",
+			snacks2 = "snacks_picker_input",
+			snacks3 = "snacks_picker_list",
+			snacks4 = "snacks_picker_preview",
+			snacks5 = "snacks_input",
+			conf = "conf",
+			rc = "rc",
+			text = "text",
+		},
+	},
+	---@type table<string, ParserInfo> parser name and configuration dictionary for custom parsers
+	custom = {
+		---@diagnostic disable-next-line: missing-fields
+		dotenv = {
+			---@diagnostic disable-next-line: missing-fields
+			install_info = {
+				url = "https://github.com/pnx/tree-sitter-dotenv",
+				branch = "main",
+				files = { "src/parser.c", "src/scanner.c" },
+				queries = "queries/dotenv",
+			},
+			filetype = "dotenv",
+		}
+	}
 }
 
 ---@type UtilVars? common variables mades to be globally available

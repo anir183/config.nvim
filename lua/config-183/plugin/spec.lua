@@ -22,6 +22,7 @@ spec = {
 
 	--[[ essentials ]]
 	snacks = require("config-183.plugin.config.essentials.snacks"),
+	treesitter = require("config-183.plugin.config.essentials.treesitter"),
 	harpoon = require("config-183.plugin.config.essentials.harpoon"),
 
 	--[[ quality of life ]]
