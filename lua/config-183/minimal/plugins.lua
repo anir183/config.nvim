@@ -301,7 +301,7 @@ for name, plugin in pairs(spec) do
 	LOG.debug(plugin)
 end
 require("lazy").setup({
-	spec = {
+	spec = OPTS.test_plugins and OPTS.test_plugins or {
 		vim.tbl_deep_extend(
 			"force",
 			_spec,

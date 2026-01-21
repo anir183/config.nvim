@@ -26,6 +26,9 @@ defaults.extra_plugins = {}
 ---@type ConfigSpec? override plugins and config defined in the confiuration
 defaults.plugin_overrides = {}
 
+---@type LazySpec? plugins to test for by pausing all other plugins
+defaults.test_plugins = nil
+
 ---@type table<string, vim.lsp.Config>? setup for lsps and their configuration options
 defaults.lsps = {
 	lua_ls = {

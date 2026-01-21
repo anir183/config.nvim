@@ -74,7 +74,7 @@ for name, plugin in pairs(vim.tbl_deep_extend("force", require("config-183.plugi
 	LOG.debug(plugin)
 end
 require("lazy").setup({
-	spec = {
+	spec = OPTS.test_plugins and OPTS.test_plugins or {
 		spec,
 		OPTS.extra_plugins,
 	},
