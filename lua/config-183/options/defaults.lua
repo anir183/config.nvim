@@ -40,6 +40,15 @@ defaults.lsps = {
 	},
 }
 
+---@class FormatterOpts
+--- map built-in formatters to filetypes or setup custom formatters and override defaults
+defaults.conform = {
+	---@type table<string, conform.FiletypeFormatterInternal|fun(bufnr: integer):conform.FiletypeFormatterInternal>? map of filetype to formatters
+	ft_formatters = {},
+	---@type table<string, conform.FormatterConfigOverride|fun(bufnr: integer):conform.FormatterConfigOverride|nil>? custom formatters and overrides for built-in formatters
+	custom_formatters = {},
+}
+
 ---@type blink.cmp.SourceConfigPartial
 defaults.cmp_sources = {
 	default = {
