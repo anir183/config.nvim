@@ -40,6 +40,16 @@ defaults.lsps = {
 	},
 }
 
+---@type blink.cmp.SourceConfigPartial
+defaults.cmp_sources = {
+	default = {
+		"lsp",
+		"path",
+		"snippets",
+		"buffer",
+	},
+}
+
 ---@type { file_pattern: string | string[], cloak_pattern: string | string[], replace?: string | string[] }[] cloak.nvim filetype and hiding patterns
 defaults.cloak_patterns = {
 	{
