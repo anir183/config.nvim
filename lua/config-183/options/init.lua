@@ -19,6 +19,12 @@ if pcall(require, "config-183.options.custom") then
 		OPTS,
 		require("config-183.options.custom") or {}
 	)
+	vim.api.nvim_create_autocmd("VimEnter", {
+		group = VARS.augrp.id,
+		callback = function()
+			vim.notify("using custom options", vim.log.levels.INFO)
+		end,
+	})
 	LOG.info("found and using custom options")
 	LOG.debug(require("config-183.options.custom"))
 else
