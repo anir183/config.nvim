@@ -103,6 +103,9 @@ defaults.parsers = {
 			terminal = "terminal",
 			prompt = "prompt",
 			trouble = "trouble",
+			lspsaga1 = "sagafinder",
+			lspsaga2 = "sagaoutline",
+			lspsaga3 = "beacon",
 		},
 		-- NOTE : dictionary format to avoid override by options injection
 		---@type string[]
@@ -129,6 +132,9 @@ defaults.parsers = {
 			terminal = "terminal",
 			prompt = "prompt",
 			trouble = "trouble",
+			lspsaga1 = "sagafinder",
+			lspsaga2 = "sagaoutline",
+			lspsaga3 = "beacon",
 		},
 	},
 	---@type table<string, ParserInfo> parser name and configuration dictionary for custom parsers

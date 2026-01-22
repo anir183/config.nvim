@@ -32,6 +32,7 @@ spec = {
 	git_signs = require("config-183.plugin.config.quality_of_life.git_signs"),
 	guess_indent = require("config-183.plugin.config.quality_of_life.guess_indent"),
 	lazy_git = require("config-183.plugin.config.quality_of_life.lazy_git"),
+	lsp_saga = require("config-183.plugin.config.quality_of_life.lsp_saga"),
 	oil = require("config-183.plugin.config.quality_of_life.oil"),
 	oil_sidebar = require("config-183.plugin.config.quality_of_life.oil_sidebar"),
 	tiny_inline_diagnostics = require("config-183.plugin.config.quality_of_life.tiny_inline_diagnostics"),
