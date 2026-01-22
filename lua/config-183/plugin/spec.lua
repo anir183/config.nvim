@@ -43,6 +43,7 @@ spec = {
 	--[[ development tools ]]
 	lspconfig = require("config-183.plugin.config.dev_tools.lspconfig"),
 	blink = require("config-183.plugin.config.dev_tools.completion.blink"),
+	signature = require("config-183.plugin.config.dev_tools.completion.signature"),
 	mason = require("config-183.plugin.config.dev_tools.mason.mason"),
 	mason_lspconfig = require("config-183.plugin.config.dev_tools.mason.lspconfig"),
 }

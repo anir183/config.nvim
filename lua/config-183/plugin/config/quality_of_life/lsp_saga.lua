@@ -39,6 +39,7 @@ plugin.config = function(_, opts)
 		FUNCS.nmap("[d", "<CMD>Lspsaga diagnostic_jump_prev<CR>", "[plugin/lspsaga]: prev [D]iagnostic", { buffer = 0 })
 		FUNCS.nmap("K", "<CMD>Lspsaga hover_doc<CR>", "[plugin/lspsaga]: hover doc", { buffer = 0 })
 		FUNCS.nmap("<leader>K", "<CMD>Lspsaga hover_doc ++keep<CR>", "[plugin/lspsaga]: persistent hover doc", { buffer = 0 })
+		FUNCS.nmap("<C-s>", vim.lsp.buf.signature_help, "[base]: toggle lsp signature window", { buffer = 0 })
 
 		LOG.info("lspsaga keymaps setup and loaded")
 	end

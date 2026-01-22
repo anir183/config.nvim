@@ -289,6 +289,7 @@ local spec = {
 					FUNCS.nmap("gd", vim.lsp.buf.definition, "[base/lsp]: [G]oto [D]efinition", { buffer = 0 })
 					FUNCS.nmap("gr", vim.lsp.buf.references, "[base/lsp]: [G]et [R]eferences", { buffer = 0 })
 					FUNCS.nmap("gi", vim.lsp.buf.implementation, "[base/lsp]: [G]et [I]mplementation", { buffer = 0 })
+					FUNCS.nmap("<C-s>", vim.lsp.buf.signature_help, "[base]: toggle lsp signature window", { buffer = 0 })
 
 					LOG.info("lsp keymaps setup and loaded")
 				end,
