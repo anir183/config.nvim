@@ -110,7 +110,8 @@ defaults.parsers = {
 			netrw = "netrw",
 			help = "help",
 			undotree = "undotree",
-			blink = "blink-cmp-menu",
+			blink1 = "blink-cmp-menu",
+			blink2 = "blink-cmp-documentation",
 			snacks1 = "snacks_layout_box",
 			snacks2 = "snacks_picker_input",
 			snacks3 = "snacks_picker_list",
@@ -132,6 +133,7 @@ defaults.parsers = {
 			lazy = "lazy",
 			lazygit = "lazygit",
 			diff = "diff",
+			man = "man",
 		},
 		-- NOTE : dictionary format to avoid override by options injection
 		--        unless explicitly wanted
@@ -146,7 +148,8 @@ defaults.parsers = {
 			netrw = "netrw",
 			help = "help",
 			undotree = "undotree",
-			blink = "blink-cmp-menu",
+			blink1 = "blink-cmp-menu",
+			blink2 = "blink-cmp-documentation",
 			snacks1 = "snacks_layout_box",
 			snacks2 = "snacks_picker_input",
 			snacks3 = "snacks_picker_list",
@@ -168,6 +171,7 @@ defaults.parsers = {
 			lazy = "lazy",
 			lazygit = "lazygit",
 			diff = "diff",
+			man = "man",
 		},
 	},
 	---@type table<string, ParserInfo> parser name and configuration dictionary for custom parsers
