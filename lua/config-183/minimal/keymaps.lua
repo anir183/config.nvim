@@ -35,12 +35,22 @@ nmap("N", "Nzzzv", "[base]: centered cursor when going to prev search result")
 map({ "n", "v" }, "x", "\"_x", "[base]: remove without copying")
 map("x", "<leader>p", "\"_dP", "[base]: [P]aste over selection without copying")
 nmap("<leader>P", "\"+p", "[base]: [P]aste from system clipboard")
-map("x", "<leader>P", "\"_d\"+P", "[base]: [P]aste from system clipboard over selection without copying")
+map(
+	"x",
+	"<leader>P",
+	"\"_d\"+P",
+	"[base]: [P]aste from system clipboard over selection without copying"
+)
 map({ "n", "v" }, "<leader>y", "\"+y", "[base]: [Y]ank to system clipboard")
 nmap("<leader>Y", "\"+Y", "[base]: [Y]ank till end of line to system clipboard")
 map({ "n", "v" }, "<leader>d", "\"_d", "[base]: [D]elete without copying")
 nmap("<leader>D", "\"_D", "[base]: [D]elete till end of line without copying")
-map({ "n", "v" }, "<leader>c", "\"_c", "[base]: delete and edit without copying")
+map(
+	{ "n", "v" },
+	"<leader>c",
+	"\"_c",
+	"[base]: delete and edit without copying"
+)
 nmap("<leader>C", "\"_C", "[base]: delete till eol and edit without copying")
 
 --[[ netrw ]]

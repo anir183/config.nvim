@@ -15,27 +15,22 @@ LOG.info("loading lazy.nvim plugin manager in minimal config")
 LAZY = LAZY or {}
 
 ---@type string path to the directory to install lazy at
-LAZY.path =LAZY.path or FUNCS.join_paths(
-	VARS.path.data,
-	"lazy",
-	"lazy.nvim"
-)
+LAZY.path = LAZY.path or FUNCS.join_paths(VARS.path.data, "lazy", "lazy.nvim")
 ---@type string path where the lock file for installed plugins is stored
-LAZY.lock_path = LAZY.lock_path or FUNCS.join_paths(
-	VARS.path.state,
-	"lazy-lock.json"
-)
+LAZY.lock_path = LAZY.lock_path
+	or FUNCS.join_paths(VARS.path.state, "lazy-lock.json")
 ---@type string repository where the lazy.nvim pacakge is hosted
 LAZY.repo = LAZY.repo or "https://github.com/folke/lazy.nvim.git"
 ---@type string[] installation command to pull down the remote repo
-LAZY.install_cmd = LAZY.install_cmd or {
-	"git",
-	"clone",
-	"--filter=blob:none",
-	"--branch=stable",
-	LAZY.repo,
-	LAZY.path
-}
+LAZY.install_cmd = LAZY.install_cmd
+	or {
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"--branch=stable",
+		LAZY.repo,
+		LAZY.path,
+	}
 
 ---@class LazyPriorities
 --- priority levels for controlling plugin load order
@@ -280,22 +275,73 @@ local spec = {
 
 					LOG.info("setting lsp keymaps current lsp-attached buffer")
 
-					FUNCS.nmap("<leader>rn", vim.lsp.buf.rename, "[base/lsp]: [R]e[N]ame symbol", { buffer = 0 })
-					FUNCS.nmap("<leader>ic", vim.lsp.buf.incoming_calls, "[base/lsp]: [I]ncoming [C]alls", { buffer = 0 })
-					FUNCS.nmap("<leader>oc", vim.lsp.buf.outgoing_calls, "[base/lsp]: [O]outgoing [C]alls", { buffer = 0 })
-					FUNCS.nmap("<leader>ds", vim.lsp.buf.document_symbol, "[base/lsp]: [D]ocument [S]ymbol", { buffer = 0 })
-					FUNCS.map({ "n", "x" }, "<leader>ca", vim.lsp.buf.code_action, "[base/lsp]: open [C]ode [A]ctions", { buffer = 0 })
-					FUNCS.nmap("gD", vim.lsp.buf.declaration, "[base/lsp]: [G]oto [D]eclaration", { buffer = 0 })
-					FUNCS.nmap("gd", vim.lsp.buf.definition, "[base/lsp]: [G]oto [D]efinition", { buffer = 0 })
-					FUNCS.nmap("gr", vim.lsp.buf.references, "[base/lsp]: [G]et [R]eferences", { buffer = 0 })
-					FUNCS.nmap("gi", vim.lsp.buf.implementation, "[base/lsp]: [G]et [I]mplementation", { buffer = 0 })
-					FUNCS.nmap("<C-s>", vim.lsp.buf.signature_help, "[base]: toggle lsp signature window", { buffer = 0 })
+					FUNCS.nmap(
+						"<leader>rn",
+						vim.lsp.buf.rename,
+						"[base/lsp]: [R]e[N]ame symbol",
+						{ buffer = 0 }
+					)
+					FUNCS.nmap(
+						"<leader>ic",
+						vim.lsp.buf.incoming_calls,
+						"[base/lsp]: [I]ncoming [C]alls",
+						{ buffer = 0 }
+					)
+					FUNCS.nmap(
+						"<leader>oc",
+						vim.lsp.buf.outgoing_calls,
+						"[base/lsp]: [O]outgoing [C]alls",
+						{ buffer = 0 }
+					)
+					FUNCS.nmap(
+						"<leader>ds",
+						vim.lsp.buf.document_symbol,
+						"[base/lsp]: [D]ocument [S]ymbol",
+						{ buffer = 0 }
+					)
+					FUNCS.map(
+						{ "n", "x" },
+						"<leader>ca",
+						vim.lsp.buf.code_action,
+						"[base/lsp]: open [C]ode [A]ctions",
+						{ buffer = 0 }
+					)
+					FUNCS.nmap(
+						"gD",
+						vim.lsp.buf.declaration,
+						"[base/lsp]: [G]oto [D]eclaration",
+						{ buffer = 0 }
+					)
+					FUNCS.nmap(
+						"gd",
+						vim.lsp.buf.definition,
+						"[base/lsp]: [G]oto [D]efinition",
+						{ buffer = 0 }
+					)
+					FUNCS.nmap(
+						"gr",
+						vim.lsp.buf.references,
+						"[base/lsp]: [G]et [R]eferences",
+						{ buffer = 0 }
+					)
+					FUNCS.nmap(
+						"gi",
+						vim.lsp.buf.implementation,
+						"[base/lsp]: [G]et [I]mplementation",
+						{ buffer = 0 }
+					)
+					FUNCS.nmap(
+						"<C-s>",
+						vim.lsp.buf.signature_help,
+						"[base]: toggle lsp signature window",
+						{ buffer = 0 }
+					)
 
 					LOG.info("lsp keymaps setup and loaded")
 				end,
 			})
 		end,
-	}
+	},
 }
 
 --[[ setup and initate lazy ]]
@@ -309,11 +355,7 @@ for name, plugin in pairs(spec) do
 end
 require("lazy").setup({
 	spec = OPTS.test_plugins and OPTS.test_plugins or {
-		vim.tbl_deep_extend(
-			"force",
-			_spec,
-			OPTS.plugin_overrides or {}
-		),
+		vim.tbl_deep_extend("force", _spec, OPTS.plugin_overrides or {}),
 		OPTS.extra_plugins,
 	},
 	lockfile = LAZY.lock_path,

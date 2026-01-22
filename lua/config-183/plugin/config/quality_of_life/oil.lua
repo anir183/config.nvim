@@ -27,7 +27,7 @@ plugin.keys = {
 		mode = "n",
 		"<leader>E",
 		vim.cmd.Oil,
-		desc = "[plugin/oil]: open the oil file [E]xplorer"
+		desc = "[plugin/oil]: open the oil file [E]xplorer",
 	},
 }
 

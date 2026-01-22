@@ -47,7 +47,8 @@ local install_parser = function(arg)
 		LOG.debug(err)
 	end
 	if not loaded_parser then
-		local available = vim.g.ts_available or require("nvim-treesitter").get_available()
+		local available = vim.g.ts_available
+			or require("nvim-treesitter").get_available()
 		if not vim.g.ts_available then
 			vim.g.ts_available = available
 		end
@@ -119,7 +120,7 @@ plugin.config = function(_, opts)
 					vim.treesitter.language.register(name, { conf[0] })
 				end
 			end
-		end
+		end,
 	})
 
 	--[[ auto install parsers ]]
@@ -128,38 +129,28 @@ plugin.config = function(_, opts)
 		callback = function()
 			install_parser()
 
-
 			LOG.info("tried activating treesitter parser once")
 			local success = start_treesitter()
 
 			if not success then
-				vim.defer_fn(
-					function()
-						LOG.info("tried activating treesitter parser twice")
-						success = start_treesitter()
-					end,
-					5000
-				)
+				vim.defer_fn(function()
+					LOG.info("tried activating treesitter parser twice")
+					success = start_treesitter()
+				end, 5000)
 			end
 
 			if not success then
-				vim.defer_fn(
-					function()
-						LOG.info("tried activating treesitter parser thrice")
-						success = start_treesitter()
-					end,
-					15000
-				)
+				vim.defer_fn(function()
+					LOG.info("tried activating treesitter parser thrice")
+					success = start_treesitter()
+				end, 15000)
 			end
 
 			if not success then
-				vim.defer_fn(
-					function()
-						LOG.info("tried activating treesitter parser four time")
-						success = start_treesitter()
-					end,
-					30000
-				)
+				vim.defer_fn(function()
+					LOG.info("tried activating treesitter parser four time")
+					success = start_treesitter()
+				end, 30000)
 			end
 		end,
 	})
@@ -182,7 +173,8 @@ plugin.keys = {
 					return
 				end
 				if not loaded_parser then
-					local available = vim.g.ts_available or require("nvim-treesitter").get_available()
+					local available = vim.g.ts_available
+						or require("nvim-treesitter").get_available()
 					if not vim.g.ts_available then
 						vim.g.ts_available = available
 					end
@@ -200,13 +192,17 @@ plugin.keys = {
 	{
 		mode = "n",
 		"<leader>tS",
-		function() install_parser() end,
+		function()
+			install_parser()
+		end,
 		desc = "[plugin/treesitter]: install parser for current buffer",
 	},
 	{
 		mode = "n",
 		"<leader>TS",
-		function() start_treesitter() end,
+		function()
+			start_treesitter()
+		end,
 		desc = "[plugin/treesitter]: start treesitter for current buffer",
 	},
 }

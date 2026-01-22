@@ -45,7 +45,7 @@ opt.completeopt = table.concat({ -- completion menu behaviour
 	"menu",
 	"menuone",
 	"noselect",
-	"preview"
+	"preview",
 }, ",")
 
 --[[ backup, recovery and history]]

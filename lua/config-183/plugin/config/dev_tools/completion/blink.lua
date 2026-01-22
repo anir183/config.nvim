@@ -27,7 +27,7 @@ plugin.opts = {
 		},
 		menu = {
 			border = "rounded",
-		}
+		},
 	},
 	sources = OPTS.cmp_sources,
 }

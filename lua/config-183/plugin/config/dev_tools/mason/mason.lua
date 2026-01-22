@@ -20,7 +20,7 @@ plugin.keys = {
 		"<leader>mn",
 		vim.cmd.Mason,
 		desc = "[plugin/mason]: open [M]aso[N] window",
-	}
+	},
 }
 
 return plugin

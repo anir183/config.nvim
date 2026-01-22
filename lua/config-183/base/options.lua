@@ -65,20 +65,22 @@ opt.completeopt = table.concat({ -- completion menu behaviour
 	"menu",
 	"menuone",
 	"noselect",
-	"preview"
+	"preview",
 }, ",")
 opt.inccommand = "split" -- preview off screen search or substitution matches in a split window
 opt.wrapscan = true -- wrap scan back to file top
 ---@source https://www.reddit.com/r/neovim/comments/1cytkbq/comment/l7cqdmq
 opt.jumpoptions = table.concat({ -- makes jumping more consistent
 	"stack",
-	"view"
+	"view",
 }, ",")
-opt.shell = OPTS.shell or vim.env.SHELL or (
-	VARS.os == "windows" and
-	(vim.fn.executable("pwsh") and "pwsh" or "powershell") or
-	opt.shell
-)
+opt.shell = OPTS.shell
+	or vim.env.SHELL
+	or (
+		VARS.os == "windows"
+			and (vim.fn.executable("pwsh") and "pwsh" or "powershell")
+		or opt.shell
+	)
 
 --[[ backup, recovery and history]]
 opt.swapfile = false

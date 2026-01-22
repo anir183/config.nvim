@@ -65,7 +65,7 @@ FUNCS.mmap = function(mode, lhs, actions, desc, opts)
 
 	FUNCS.map(mode, lhs, function()
 		vim.ui.select(choices, {
-			prompt = "choose action: "
+			prompt = "choose action: ",
 		}, function(choice)
 			if not choice then
 				return
@@ -74,7 +74,7 @@ FUNCS.mmap = function(mode, lhs, actions, desc, opts)
 			local exec = actions[choice]
 			local exec_type = type(exec)
 
-			if (not exec) then
+			if not exec then
 				if LOG and LOG.warn and LOG.debug then
 					LOG.warn("no executable entry for given choice")
 					LOG.debug("faulty entry:", exec_type, exec)
@@ -105,12 +105,7 @@ end
 --- emulate keystrokes to trigger keymaps or as fallbacks
 FUNCS.feedkeys = function(keystrokes, mode)
 	vim.api.nvim_feedkeys(
-		vim.api.nvim_replace_termcodes(
-			keystrokes,
-			true,
-			true,
-			true
-		),
+		vim.api.nvim_replace_termcodes(keystrokes, true, true, true),
 		mode or "n",
 		false
 	)
@@ -121,7 +116,7 @@ end
 --- ---
 --- join paths using os particular separators
 FUNCS.join_paths = function(...)
-	local joined_path = table.concat({...}, VARS.path.separator)
+	local joined_path = table.concat({ ... }, VARS.path.separator)
 	return joined_path
 end
 
@@ -141,7 +136,7 @@ FUNCS.split_str = function(str, sep)
 	sep = sep or " "
 
 	local chunks = {}
-	for field, s in string.gmatch(str, "([^"..sep.."]*)("..sep.."?)") do
+	for field, s in string.gmatch(str, "([^" .. sep .. "]*)(" .. sep .. "?)") do
 		table.insert(chunks, field)
 		if s == "" then
 			return chunks

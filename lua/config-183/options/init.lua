@@ -21,21 +21,15 @@ if pcall(require, "config-183.options.custom") then
 	)
 	LOG.info("found and using custom options")
 	LOG.debug(require("config-183.options.custom"))
+else
+	LOG.info("using default options as no custom options found")
 end
 
-VARS = vim.tbl_deep_extend(
-	"force",
-	VARS or {},
-	OPTS.util_vars or {}
-)
+VARS = vim.tbl_deep_extend("force", VARS or {}, OPTS.util_vars or {})
 LOG.info("merged editable options into global variables")
 LOG.debug(OPTS.util_vars or {})
 
-LOG.opts = vim.tbl_deep_extend(
-	"force",
-	LOG.opts or {},
-	OPTS.log_opts or {}
-)
+LOG.opts = vim.tbl_deep_extend("force", LOG.opts or {}, OPTS.log_opts or {})
 LOG.info("merged editable options into logging library options")
 LOG.debug(OPTS.log_opts or {})
 if OPTS.log_opts and (OPTS.log_opts.file_path or OPTS.log_opts.file_action) then
@@ -43,19 +37,11 @@ if OPTS.log_opts and (OPTS.log_opts.file_path or OPTS.log_opts.file_action) then
 	LOG.info("regenerated log file after updating log options")
 end
 
-STLINE = vim.tbl_deep_extend(
-	"force",
-	STLINE or {},
-	OPTS.stline_otps or {}
-)
+STLINE = vim.tbl_deep_extend("force", STLINE or {}, OPTS.stline_otps or {})
 LOG.info("merged editable options into statusline options")
 LOG.debug(OPTS.stline_otps or {})
 
-LAZY = vim.tbl_deep_extend(
-	"force",
-	LAZY or {},
-	OPTS.lazy_opts or {}
-)
+LAZY = vim.tbl_deep_extend("force", LAZY or {}, OPTS.lazy_opts or {})
 LOG.info("merged editable options into lazy.nvim bootstrapping options")
 LOG.debug(OPTS.lazy_opts or {})
 

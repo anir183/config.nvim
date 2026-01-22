@@ -65,9 +65,8 @@ plugin.config = function()
 		)
 
 		--[[ set blink.cmp capabilities ]]
-		conf.capabilities = require("blink.cmp").get_lsp_capabilities(
-			capabilities
-		)
+		conf.capabilities =
+			require("blink.cmp").get_lsp_capabilities(capabilities)
 
 		vim.lsp.config(name, conf)
 	end

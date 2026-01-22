@@ -20,13 +20,13 @@ defaults.before = function() end
 ---@type function? execute after the config is completely loaded
 defaults.after = function() end
 
----@type LazySpec? extra plugins to install alongside configured ones
+---@type LazySpec[]? extra plugins to install alongside configured ones
 defaults.extra_plugins = {}
 
 ---@type ConfigSpec? override plugins and config defined in the confiuration
 defaults.plugin_overrides = {}
 
----@type LazySpec? plugins to test for by pausing all other plugins
+---@type LazySpec[]? plugins to test for by pausing all other plugins
 defaults.test_plugins = nil
 
 ---@type table<string, vim.lsp.Config>? setup for lsps and their configuration options
@@ -84,8 +84,8 @@ defaults.additional_fts = {
 		},
 		pattern = {
 			["%.env%.[%w_.-]+"] = "dotenv",
-			['%.env'] = 'dotenv',
-			['%.env%..+'] = 'dotenv',
+			["%.env"] = "dotenv",
+			["%.env%..+"] = "dotenv",
 		},
 	},
 }
@@ -178,8 +178,8 @@ defaults.parsers = {
 				queries = "queries/dotenv",
 			},
 			filetype = "dotenv",
-		}
-	}
+		},
+	},
 }
 ---@type ParserIgnoreFts | string[]
 defaults.parsers.ignore.fts = defaults.parsers.ignore.fts

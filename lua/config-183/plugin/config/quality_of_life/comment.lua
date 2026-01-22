@@ -19,7 +19,7 @@ plugin.opts = {
 	mappings = {
 		basic = false,
 		extra = false,
-	}
+	},
 }
 plugin.keys = {
 	-- comment leaders

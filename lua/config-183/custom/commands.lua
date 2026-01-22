@@ -77,15 +77,23 @@ cmd("EditOptions", function()
 	})
 
 	vim.cmd("e " .. opts_path)
-	FUNCS.nmap("q", vim.cmd.wq, "[custom]: close editable options popup", { buffer = true })
+	FUNCS.nmap(
+		"q",
+		vim.cmd.wq,
+		"[custom]: close editable options popup",
+		{ buffer = true }
+	)
 end, { desc = "[custom]: open editable options in floating window" })
 
 --[[ change indentation style ]]
 cmd("ChangeIndent", function()
 	vim.ui.select(FUNCS.auto_set_indents and {
-		"auto", "tabs", "spaces",
+		"auto",
+		"tabs",
+		"spaces",
 	} or {
-		"tabs", "spaces",
+		"tabs",
+		"spaces",
 	}, {
 		prompt = "indentation type: ",
 	}, function(indent_type)
@@ -129,7 +137,8 @@ cmd("ChangeIndent", function()
 
 		--[[ reindent ]]
 		vim.ui.select({
-			"yes", "no",
+			"yes",
+			"no",
 		}, {
 			prompt = "reindent: ",
 		}, function(reindent)
@@ -143,13 +152,21 @@ cmd("ChangeIndent", function()
 			--- handle
 			---  NOTE : retab command also replaces inline spaces, so we use a
 			---         substitution command instead
-			vim.cmd("silent! %s/\\(^\\s*\\)\\@<=" .. (" "):rep(old_tab_len) .. "/	/g")
+			vim.cmd(
+				"silent! %s/\\(^\\s*\\)\\@<="
+					.. (" "):rep(old_tab_len)
+					.. "/	/g"
+			)
 			LOG.info("converted indentation to tabs")
 
 			-- if redinentation to spaces is required then perform necessary
 			-- action... otherwise indentations are already tabs by now
 			if indent_type == "spaces" then
-				vim.cmd("silent! %s/\\(^\\s*\\)\\@<=	/" .. (" "):rep(vim.opt_local.tabstop._value) .. "/g")
+				vim.cmd(
+					"silent! %s/\\(^\\s*\\)\\@<=	/"
+						.. (" "):rep(vim.opt_local.tabstop._value)
+						.. "/g"
+				)
 				LOG.info("reconverted indentation to spaces")
 			end
 
@@ -193,15 +210,17 @@ cmd("SubstituteStr", function()
 			end
 
 			FUNCS.feedkeys(
-				":%s/" ..
-				(type == "substring" and "" or "\\<") ..
-				target ..
-				(type == "substring" and "/" or "\\>/") ..
-				substitute ..
-				"/gI"
+				":%s/"
+					.. (type == "substring" and "" or "\\<")
+					.. target
+					.. (type == "substring" and "/" or "\\>/")
+					.. substitute
+					.. "/gI"
 			)
 		end)
 	end)
-end, { desc = "[custom]: substitute standalone or substring occurences of a string" })
+end, {
+	desc = "[custom]: substitute standalone or substring occurences of a string",
+})
 
 LOG.info("custom commands created and loaded")

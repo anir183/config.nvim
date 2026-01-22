@@ -22,10 +22,7 @@ LOG.opts.out_stream = "both"
 ---@type "delete" | "rename" | "keep" what to do with the log file when opening neovim
 LOG.opts.file_action = "delete"
 ---@type string path where the log file should be stored
-LOG.opts.file_path = FUNCS.join_paths(
-	VARS.path.state,
-	"config-183.log"
-)
+LOG.opts.file_path = FUNCS.join_paths(VARS.path.state, "config-183.log")
 ---@param level vim.log.levels log level to get the label for
 ---@return string? label the label for the log level
 LOG.opts.label = function(level)
@@ -50,7 +47,7 @@ LOG.print = function(level, ...)
 	local label = "[" .. LOG.opts.label(level) .. "] "
 
 	local out = ""
-	for index, item in ipairs({...}) do
+	for index, item in ipairs({ ... }) do
 		out = out .. (index == 1 and "" or "\n") .. vim.inspect(item)
 	end
 

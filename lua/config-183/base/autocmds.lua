@@ -17,7 +17,7 @@ aucmd("FileType", {
 		vim.opt_local.colorcolumn = "0"
 		vim.opt_local.statuscolumn = "%s"
 		vim.opt_local.statusline = nil
-	end
+	end,
 })
 
 --[[ momentarily highlight yanked text ]]
@@ -28,7 +28,7 @@ aucmd("TextYankPost", {
 			higroup = "IncSearch",
 			timeout = 50,
 		})
-	end
+	end,
 })
 
 --[[ disable number column when in netrw ]]
@@ -43,7 +43,7 @@ aucmd({
 	callback = function()
 		vim.opt_local.number = false
 		vim.opt_local.relativenumber = false
-	end
+	end,
 })
 
 --[[ make and load views to retain folds ]]
@@ -63,5 +63,5 @@ aucmd("BufWinEnter", {
 --[ execute when config is loaded ]]
 aucmd("VimEnter", {
 	group = augrp,
-	callback = OPTS.after
+	callback = OPTS.after,
 })

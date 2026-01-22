@@ -54,9 +54,19 @@ plugin.config = function(_, opts)
 					.. ("∙"):rep(vim.opt_local.tabstop._value - 1),
 			})
 			---@diagnostic disable-next-line: undefined-field
-			LOG.info("set indentation: " .. (vim.opt_local.expandtab._value and "spaces" or "tabs") .. ":" .. vim.opt_local.tabstop._value)
+			LOG.info(
+				"set indentation: "
+					.. (vim.opt_local.expandtab._value and "spaces" or "tabs")
+					.. ":"
+					.. vim.opt_local.tabstop._value
+			)
 			---@diagnostic disable-next-line: undefined-field
-			LOG.debug((vim.opt_local.expandtab._value and "spaces" or "tabs") .. ":" .. vim.opt_local.tabstop._value, vim.fn.expand("%:p"))
+			LOG.debug(
+				(vim.opt_local.expandtab._value and "spaces" or "tabs")
+					.. ":"
+					.. vim.opt_local.tabstop._value,
+				vim.fn.expand("%:p")
+			)
 		end,
 		{ desc = "[plugin/guess-indent]: auto set indent" }
 	)
