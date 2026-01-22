@@ -38,6 +38,7 @@ plugin.dependencies = {
 --        they do, but if it works it works
 --
 --        https://github.com/neovim/nvim-lspconfig/blob/master/README.md
+local popup_once = false
 plugin.config = function()
 	for name, conf in pairs(OPTS.lsps) do
 		vim.lsp.enable(name)
@@ -71,6 +72,28 @@ plugin.config = function()
 		vim.lsp.config(name, conf)
 		LOG.info("set up lsp: " .. name)
 		LOG.debug(conf)
+
+		if VARS.lsp_indexing_hack then
+			vim.api.nvim_create_autocmd("LspAttach", {
+				group = VARS.augrp.id,
+				callback = function()
+					if popup_once then
+						return
+					end
+
+					vim.print(
+						"LSP Attached\n\n"
+							.. "Sometimes Workspace Indexing does not seem to start!\n"
+							.. "This causes variable and definitions to not be recognised.\n"
+							.. "However, a if a popup happens during LspAttach, the Indexing"
+							.. " seems to work consistently.\n\n"
+							.. "This is that popup. Why does this happen? IDK"
+					)
+
+					popup_once = true
+				end,
+			})
+		end
 	end
 end
 

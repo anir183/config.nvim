@@ -49,3 +49,5 @@ VARS.strings.num_match = "^%-?%d+$"
 
 ---@type "unix" | "windows" os style in which the config is running
 VARS.os = VARS.path.separator == "/" and "unix" or "windows"
+
+VARS.lsp_indexing_hack = false
