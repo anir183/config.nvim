@@ -60,5 +60,5 @@ nmap(
 
 --[[ print current path ]]
 nmap("<leader>cd", function()
-	vim.notify(vim.fn.expand("%:p:h"), vim.log.levels.INFO)
+	vim.notify(vim.fn.expand("%:p"), vim.log.levels.INFO)
 end, "[custom]: print [C]urrent [D]irectory or file path")
