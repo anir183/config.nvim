@@ -49,6 +49,15 @@ defaults.conform = {
 	custom_formatters = {},
 }
 
+---@class LinterOpts
+--- map built-in formatters to filetypes or setup available linters
+defaults.lint = {
+	---@type table<string, string[]> map of filetype to linters to try using try_lint
+	ft_linters = {},
+	---@type table<string, fun():lint.Linter|lint.Linter> table with available linters
+	available_linters = {},
+}
+
 ---@type blink.cmp.SourceConfigPartial
 defaults.cmp_sources = {
 	default = {
