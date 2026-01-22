@@ -106,6 +106,8 @@ defaults.parsers = {
 			lspsaga1 = "sagafinder",
 			lspsaga2 = "sagaoutline",
 			lspsaga3 = "beacon",
+			mason = "mason",
+			lazy = "lazy",
 		},
 		-- NOTE : dictionary format to avoid override by options injection
 		---@type string[]
@@ -135,6 +137,8 @@ defaults.parsers = {
 			lspsaga1 = "sagafinder",
 			lspsaga2 = "sagaoutline",
 			lspsaga3 = "beacon",
+			mason = "mason",
+			lazy = "lazy",
 		},
 	},
 	---@type table<string, ParserInfo> parser name and configuration dictionary for custom parsers
