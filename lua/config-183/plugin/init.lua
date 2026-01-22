@@ -15,27 +15,22 @@ LOG.info("loading lazy.nvim plugin manager")
 LAZY = LAZY or {}
 
 ---@type string path to the directory to install lazy at
-LAZY.path =LAZY.path or FUNCS.join_paths(
-	VARS.path.data,
-	"lazy",
-	"lazy.nvim"
-)
+LAZY.path = LAZY.path or FUNCS.join_paths(VARS.path.data, "lazy", "lazy.nvim")
 ---@type string path where the lock file for installed plugins is stored
-LAZY.lock_path = LAZY.lock_path or FUNCS.join_paths(
-	VARS.path.state,
-	"lazy-lock.json"
-)
+LAZY.lock_path = LAZY.lock_path
+	or FUNCS.join_paths(VARS.path.state, "lazy-lock.json")
 ---@type string repository where the lazy.nvim pacakge is hosted
 LAZY.repo = LAZY.repo or "https://github.com/folke/lazy.nvim.git"
 ---@type string[] installation command to pull down the remote repo
-LAZY.install_cmd = LAZY.install_cmd or {
-	"git",
-	"clone",
-	"--filter=blob:none",
-	"--branch=stable",
-	LAZY.repo,
-	LAZY.path
-}
+LAZY.install_cmd = LAZY.install_cmd
+	or {
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"--branch=stable",
+		LAZY.repo,
+		LAZY.path,
+	}
 
 ---@class LazyPriorities
 --- priority levels for controlling plugin load order
@@ -65,19 +60,8 @@ LOG.info("lazy.nvim added to rtp")
 LOG.debug(vim.opt.rtp)
 
 --[[ setup and initate lazy ]]
-local spec = {}
-for name, plugin in pairs(vim.tbl_deep_extend("force", require("config-183.plugin.spec"), OPTS.plugin_overrides)) do
-	name = plugin.name or name
-	plugin.name = name
-	table.insert(spec, plugin)
-	LOG.info("added plugin to spec: " .. name)
-	LOG.debug(plugin)
-end
 require("lazy").setup({
-	spec = OPTS.test_plugins and OPTS.test_plugins or {
-		spec,
-		OPTS.extra_plugins,
-	},
+	spec = require("config-183.plugin.spec"),
 	lockfile = LAZY.lock_path,
 	defaults = {
 		lazy = false,
