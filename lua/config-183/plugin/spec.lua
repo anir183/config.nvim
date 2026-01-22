@@ -41,8 +41,10 @@ spec = {
 	undotree = require("config-183.plugin.config.quality_of_life.undotree"),
 
 	--[[ development tools ]]
+	lspconfig = require("config-183.plugin.config.dev_tools.lspconfig"),
 	blink = require("config-183.plugin.config.dev_tools.completion.blink"),
 	mason = require("config-183.plugin.config.dev_tools.mason.mason"),
+	mason_lspconfig = require("config-183.plugin.config.dev_tools.mason.lspconfig"),
 }
 LOG.info("lazy.nvim plugin specs generated and loaded")
 
