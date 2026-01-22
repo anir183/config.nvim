@@ -47,21 +47,21 @@ plugin.config = function(_, opts)
 				return
 			end
 
-			vim.cmd.GuessIndent()
+			require("guess-indent").set_from_buffer(nil, true, true)
 			vim.opt_local.listchars:remove("leadmultispace")
 			vim.opt_local.listchars:append({
 				leadmultispace = "▎"
 					.. ("∙"):rep(vim.opt_local.tabstop._value - 1),
 			})
-			---@diagnostic disable-next-line: undefined-field
 			LOG.info(
 				"set indentation: "
+					---@diagnostic disable-next-line: undefined-field
 					.. (vim.opt_local.expandtab._value and "spaces" or "tabs")
 					.. ":"
 					.. vim.opt_local.tabstop._value
 			)
-			---@diagnostic disable-next-line: undefined-field
 			LOG.debug(
+				---@diagnostic disable-next-line: undefined-field
 				(vim.opt_local.expandtab._value and "spaces" or "tabs")
 					.. ":"
 					.. vim.opt_local.tabstop._value,
