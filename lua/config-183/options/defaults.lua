@@ -130,6 +130,8 @@ defaults.parsers = {
 			lspsaga3 = "beacon",
 			mason = "mason",
 			lazy = "lazy",
+			lazygit = "lazygit",
+			diff = "diff",
 		},
 		-- NOTE : dictionary format to avoid override by options injection
 		--        unless explicitly wanted
@@ -164,6 +166,8 @@ defaults.parsers = {
 			lspsaga3 = "beacon",
 			mason = "mason",
 			lazy = "lazy",
+			lazygit = "lazygit",
+			diff = "diff",
 		},
 	},
 	---@type table<string, ParserInfo> parser name and configuration dictionary for custom parsers

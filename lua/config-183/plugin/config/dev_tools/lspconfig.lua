@@ -69,6 +69,7 @@ plugin.config = function()
 			require("blink.cmp").get_lsp_capabilities(capabilities)
 
 		vim.lsp.config(name, conf)
+		vim.lsp.enable(name)
 	end
 end
 
