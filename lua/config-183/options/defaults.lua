@@ -102,6 +102,7 @@ defaults.parsers = {
 			tutor = "tutor",
 			terminal = "terminal",
 			prompt = "prompt",
+			trouble = "trouble",
 		},
 		-- NOTE : dictionary format to avoid override by options injection
 		---@type string[]
@@ -127,6 +128,7 @@ defaults.parsers = {
 			tutor = "tutor",
 			terminal = "terminal",
 			prompt = "prompt",
+			trouble = "trouble",
 		},
 	},
 	---@type table<string, ParserInfo> parser name and configuration dictionary for custom parsers
