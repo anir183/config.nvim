@@ -58,7 +58,7 @@ local install_parser = function(arg)
 			LOG.warn("no treesitter parser for language: " .. lang)
 		end
 	else
-		LOG.warn("parser with name already available: " .. lang)
+		LOG.info("parser with name already available: " .. lang)
 	end
 end
 
