@@ -79,7 +79,10 @@ defaults.parsers = {
 	--- filtypes or languages to ignore automatic parser installation for
 	ignore = {
 		-- NOTE : dictionary format to avoid override by options injection
-		---@type string[]
+		--        unless explicitly wanted
+		--        otherwise uses a string array
+		--
+		---@class ParserIgnoreFts
 		fts = {
 			oil1 = "oil",
 			oil2 = "oil_preview",
@@ -110,7 +113,10 @@ defaults.parsers = {
 			lazy = "lazy",
 		},
 		-- NOTE : dictionary format to avoid override by options injection
-		---@type string[]
+		--        unless explicitly wanted
+		--        otherwise uses a string array
+		--
+		---@class ParserIgnoreLang
 		langs = {
 			oil1 = "oil",
 			oil2 = "oil_preview",
@@ -156,6 +162,10 @@ defaults.parsers = {
 		}
 	}
 }
+---@type ParserIgnoreFts | string[]
+defaults.parsers.ignore.fts = defaults.parsers.ignore.fts
+---@type ParserIgnoreLang | string[]
+defaults.parsers.ignore.langs = defaults.parsers.ignore.langs
 
 ---@type UtilVars? common variables mades to be globally available
 defaults.util_vars = nil
