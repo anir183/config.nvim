@@ -54,7 +54,7 @@ end, "[custom]: togg[L]e between moving text or moving [C]ursor")
 --[[ substitute a string either as standalone or substring ]]
 nmap(
 	"<leader>sb",
-	"<CMD>" .. VARS.strings.cmd_prefix .. "SubstituteWord<CR>",
+	"<CMD>" .. VARS.strings.cmd_prefix .. "SubstituteStr<CR>",
 	"[custom]: [S]u[B]stitute a string as standalone or substring"
 )
 
