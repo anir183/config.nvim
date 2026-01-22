@@ -39,6 +39,9 @@ spec = {
 	todo_comments = require("config-183.plugin.config.quality_of_life.todo_comments"),
 	trouble = require("config-183.plugin.config.quality_of_life.trouble"),
 	undotree = require("config-183.plugin.config.quality_of_life.undotree"),
+
+	--[[ development tools ]]
+	mason = require("config-183.plugin.config.dev_tools.mason.mason"),
 }
 LOG.info("lazy.nvim plugin specs generated and loaded")
 
