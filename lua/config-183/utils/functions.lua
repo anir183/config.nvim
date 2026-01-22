@@ -199,3 +199,6 @@ end
 
 ---@type function? automatically set buffer indentation style based on file content
 FUNCS.auto_set_indents = nil
+
+---@type function? handle lsp keymaps, useful when using plugins to take care of stuff
+FUNCS.set_lsp_keymaps = nil

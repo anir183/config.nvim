@@ -97,6 +97,12 @@ nmap("[l", vim.cmd.lprev, "[base]: walk backward in [L]ocation fix list")
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = VARS.augrp.id,
 	callback = function()
+		if FUNCS.set_lsp_keymaps then
+			LOG.info("using custom lsp keymap handler")
+			FUNCS.set_lsp_keymaps()
+			return
+		end
+
 		LOG.info("setting lsp keymaps current lsp-attached buffer")
 
 		nmap("<leader>rn", vim.lsp.buf.rename, "[base/lsp]: [R]e[N]ame symbol", { buffer = 0 })
