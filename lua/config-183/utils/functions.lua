@@ -7,6 +7,15 @@
 --
 --]]
 
+---@module "io"
+---@module "string"
+---@module "table"
+---@module "vim"
+---@module "vim.ui"
+---@module "vim.keymap"
+---@module "config-183.utils"
+---@module "config-183.utils.logging"
+
 ---@class UtilFuncs
 --- handy utility functions made to be globally available
 FUNCS = {}

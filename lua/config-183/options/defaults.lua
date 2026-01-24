@@ -6,6 +6,23 @@
 --
 --]]
 
+---@module "vim"
+---@module "vim.lsp"
+---@module "vim.filetype"
+---@module "config-183.utils"
+---@module "config-183.utils.variables"
+---@module "config-183.custom"
+---@module "config-183.custom.statusline"
+---@module "config-183.plugin"
+---@module "config-183.plugin.init"
+---@module "lazy"
+---@module "conform"
+---@module "lint"
+---@module "dap"
+---@module "nvim-treesitter"
+---@module "blink"
+---@module "blink-cmp"
+
 ---@class DefaultOpts
 --- default set of editable options
 local defaults = {}

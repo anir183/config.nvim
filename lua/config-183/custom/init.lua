@@ -8,6 +8,11 @@
 --
 --]]
 
+---@module "config-183.custom.netrw"
+---@module "config-183.custom.statusline"
+---@module "config-183.custom.commands"
+---@module "config-183.custom.keymaps"
+
 require("config-183.custom.netrw")
 require("config-183.custom.statusline")
 require("config-183.custom.commands")

@@ -6,6 +6,10 @@
 --
 --]]
 
+---@module "vim"
+---@module "lazy"
+---@module "oil"
+
 ---@type LazySpec
 local plugin = {}
 

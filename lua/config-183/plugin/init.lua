@@ -8,21 +8,31 @@
 --
 --]]
 
+---@module "vim"
+---@module "config-183.utils"
+---@module "config-183.utils.logging"
+---@module "config-183.utils.functions"
+---@module "config-183.utils.variables"
+---@module "config-183.plugin"
+---@module "config-183.plugin.spec"
+---@module "lazy"
+
 LOG.info("loading lazy.nvim plugin manager")
 
 ---@class LazyOpts
 --- options used when bootstrapping lazy.nvim plugin manager
-LAZY = LAZY or {}
+_G.LAZY = LAZY or {}
 
 ---@type string path to the directory to install lazy at
-LAZY.path = LAZY.path or FUNCS.join_paths(VARS.path.data, "lazy", "lazy.nvim")
+_G.LAZY.path = LAZY.path
+	or FUNCS.join_paths(VARS.path.data, "lazy", "lazy.nvim")
 ---@type string path where the lock file for installed plugins is stored
-LAZY.lock_path = LAZY.lock_path
+_G.LAZY.lock_path = LAZY.lock_path
 	or FUNCS.join_paths(VARS.path.state, "lazy-lock.json")
 ---@type string repository where the lazy.nvim pacakge is hosted
-LAZY.repo = LAZY.repo or "https://github.com/folke/lazy.nvim.git"
+_G.LAZY.repo = LAZY.repo or "https://github.com/folke/lazy.nvim.git"
 ---@type string[] installation command to pull down the remote repo
-LAZY.install_cmd = LAZY.install_cmd
+_G.LAZY.install_cmd = LAZY.install_cmd
 	or {
 		"git",
 		"clone",
@@ -34,11 +44,11 @@ LAZY.install_cmd = LAZY.install_cmd
 
 ---@class LazyPriorities
 --- priority levels for controlling plugin load order
-LAZY.priorities = {}
-LAZY.priorities.highest = 200
-LAZY.priorities.high = 100
-LAZY.priorities.default = 50
-LAZY.priorities.low = 25
+_G.LAZY.priorities = {}
+_G.LAZY.priorities.highest = 200
+_G.LAZY.priorities.high = 100
+_G.LAZY.priorities.default = 50
+_G.LAZY.priorities.low = 25
 
 LOG.info("setup lazy.nvim parameters")
 LOG.debug(LAZY)

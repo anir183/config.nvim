@@ -6,6 +6,12 @@
 --
 --]]
 
+---@module "vim"
+---@module "lazy"
+---@module "config-183.utils"
+---@module "config-183.utils.functions"
+---@module "config-183.utils.logging"
+
 ---@type LazySpec
 local plugin = {}
 

@@ -6,6 +6,8 @@
 --
 --]]
 
+---@module "lazy"
+
 -- BUG : commands like TodoQuickFix or Trouble todo only show NOTE comments
 
 ---@type LazySpec

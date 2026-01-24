@@ -10,9 +10,21 @@
 --
 --]]
 
+---@module "vim"
+---@module "vim"
+---@module "config-183.utils"
+---@module "config-183.utils.logging"
+---@module "config-183.options"
+---@module "config-183.options.defaults"
+---@module "config-183.options.custom"
+---@module "config-183.custom"
+---@module "config-183.custom.statusline"
+---@module "config-183.plugin"
+---@module "config-183.plugin.init"
+
 LOG.info("loading editable options")
 
-OPTS = require("config-183.options.defaults")
+_G.OPTS = require("config-183.options.defaults")
 if pcall(require, "config-183.options.custom") then
 	OPTS = vim.tbl_deep_extend(
 		"force",
@@ -43,11 +55,11 @@ if OPTS.log_opts and (OPTS.log_opts.file_path or OPTS.log_opts.file_action) then
 	LOG.info("regenerated log file after updating log options")
 end
 
-STLINE = vim.tbl_deep_extend("force", STLINE or {}, OPTS.stline_otps or {})
+_G.STLINE = vim.tbl_deep_extend("force", STLINE or {}, OPTS.stline_otps or {})
 LOG.info("merged editable options into statusline options")
 LOG.debug(OPTS.stline_otps or {})
 
-LAZY = vim.tbl_deep_extend("force", LAZY or {}, OPTS.lazy_opts or {})
+_G.LAZY = vim.tbl_deep_extend("force", LAZY or {}, OPTS.lazy_opts or {})
 LOG.info("merged editable options into lazy.nvim bootstrapping options")
 LOG.debug(OPTS.lazy_opts or {})
 

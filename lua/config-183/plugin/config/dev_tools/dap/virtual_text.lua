@@ -6,6 +6,10 @@
 --
 --]]
 
+---@module "string"
+---@module "lazy"
+---@module "nvim-dap-virtual-text"
+
 ---@type LazySpec
 local plugin = {}
 

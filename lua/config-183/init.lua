@@ -6,6 +6,16 @@
 --
 --]]
 
+---@module "vim"
+---@module "vim.filetype"
+---@module "config-183.utils"
+---@module "config-183.utils.logging"
+---@module "config-183.options"
+---@module "config-183.minimal"
+---@module "config-183.base"
+---@module "config-183.custom"
+---@module "config-183.plugin"
+
 require("config-183.utils")
 require("config-183.options")
 

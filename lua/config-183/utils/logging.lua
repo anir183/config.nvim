@@ -6,26 +6,34 @@
 --
 --]]
 
+---@module "os"
+---@module "table"
+---@module "debug"
+---@module "vim"
+---@module "config-183.utils"
+---@module "config-183.utils.functions"
+---@module "config-183.utils.variables"
+
 ---@class LogLib
 --- logging library used throughout the configuration
-LOG = {}
+_G.LOG = {}
 
 ---@class LogOpts
 --- options used in the logging library
-LOG.opts = {}
+_G.LOG.opts = {}
 ---@type vim.log.levels minimum level of log statements to notify
-LOG.opts.notify_level = vim.log.levels.WARN
+_G.LOG.opts.notify_level = vim.log.levels.WARN
 ---@type vim.log.levels minimum level of log statements to write to file
-LOG.opts.file_level = vim.log.levels.TRACE
+_G.LOG.opts.file_level = vim.log.levels.TRACE
 ---@type "notify" | "file" | "both" output stream of the log statements
-LOG.opts.out_stream = "both"
+_G.LOG.opts.out_stream = "both"
 ---@type "delete" | "rename" | "keep" what to do with the log file when opening neovim
-LOG.opts.file_action = "delete"
+_G.LOG.opts.file_action = "delete"
 ---@type string path where the log file should be stored
-LOG.opts.file_path = FUNCS.join_paths(VARS.path.state, "config-183.log")
+_G.LOG.opts.file_path = FUNCS.join_paths(VARS.path.state, "config-183.log")
 ---@param level vim.log.levels log level to get the label for
 ---@return string? label the label for the log level
-LOG.opts.label = function(level)
+_G.LOG.opts.label = function(level)
 	local labels = {
 		"trace",
 		"debug",
@@ -37,7 +45,7 @@ LOG.opts.label = function(level)
 	return labels[level + 1]
 end
 ---@type boolean logs generated during vim config loading will be notified after config completion to prevent intereference with config
-LOG.opts.notify_after_vim_enter = true
+_G.LOG.opts.notify_after_vim_enter = true
 
 ---[[ dont interfere with vim loading with notifications ]]
 local is_vim_entered = not LOG.opts.notify_after_vim_enter
@@ -60,7 +68,7 @@ end
 ---@return nil
 --- ---
 --- log a statement to some outut stream and handle formatting (all based on options)
-LOG.print = function(level, ...)
+_G.LOG.print = function(level, ...)
 	local timestamp = os.date("[%Y-%m-%d %H-%M-%S] ")
 	local label = "[" .. LOG.opts.label(level) .. "] "
 
@@ -107,7 +115,7 @@ end
 ---@param order integer? order of the function in the stack to trace
 --- ---
 --- print the file and line number where a function is called
-LOG.trace = function(order)
+_G.LOG.trace = function(order)
 	order = order or 2
 	local debug_info = debug.getinfo(order)
 
@@ -120,7 +128,7 @@ end
 ---@param ... any debug data
 --- ---
 --- print some data or information for debugging
-LOG.debug = function(...)
+_G.LOG.debug = function(...)
 	LOG.trace(3)
 	LOG.print(vim.log.levels.DEBUG, ...)
 end
@@ -128,7 +136,7 @@ end
 ---@param message string statement or event information
 --- ---
 --- print some kind of informational statement
-LOG.info = function(message)
+_G.LOG.info = function(message)
 	LOG.trace(3)
 	LOG.print(vim.log.levels.INFO, message)
 end
@@ -136,7 +144,7 @@ end
 ---@param message string warning message
 --- ---
 --- print a warning message
-LOG.warn = function(message)
+_G.LOG.warn = function(message)
 	LOG.trace(3)
 	LOG.print(vim.log.levels.WARN, message)
 end
@@ -144,7 +152,7 @@ end
 ---@param message string error message
 --- ---
 --- print a error message
-LOG.error = function(message)
+_G.LOG.error = function(message)
 	LOG.trace(3)
 	LOG.print(vim.log.levels.ERROR, message)
 end
@@ -152,7 +160,7 @@ end
 ---@return nil
 --- ---
 --- perform file action on config execution
-LOG.perform_file_action = function()
+_G.LOG.perform_file_action = function()
 	--[[ perform log file action ]]
 	if LOG.opts.file_action ~= "keep" then
 		if LOG.opts.out_stream == "notify" then
@@ -183,12 +191,12 @@ LOG.perform_file_action = function()
 	end
 end
 
-LOG.perform_file_action()
+_G.LOG.perform_file_action()
 
-LOG.info("logging library loaded")
+_G.LOG.info("logging library loaded")
 
-LOG.info("global variables should already be loaded")
-LOG.debug(VARS)
+_G.LOG.info("global variables should already be loaded")
+_G.LOG.debug(VARS)
 
-LOG.info("global functions should already be loaded")
-LOG.debug(FUNCS)
+_G.LOG.info("global functions should already be loaded")
+_G.LOG.debug(FUNCS)

@@ -4,6 +4,15 @@
 --
 --]]
 
+---@module "table"
+---@module "vim"
+---@module "config-183.utils"
+---@module "config-183.utils.logging"
+---@module "config-183.options"
+---@module "config-183.options.defaults"
+---@module "config-183.plugin"
+---@module "config-183.plugin.init"
+
 ---@class ConfigSpec
 LAZY.spec = {}
 

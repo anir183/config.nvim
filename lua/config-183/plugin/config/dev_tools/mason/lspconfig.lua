@@ -1,10 +1,15 @@
 --[[
 --
--- nvim/lua/config-183/plugin/config/xxxxxxxx/xxxxxxxx.lua
+-- nvim/lua/config-183/plugin/config/dev_tools/mason/lspconfig.lua
 --
--- xxxxxxxx
+-- bridge between nvim lspconfig and mason
 --
 --]]
+
+---@module "table"
+---@module "lazy"
+---@module "config-183.options"
+---@module "config-183.options.defaults"
 
 ---@type LazySpec
 local plugin = {}

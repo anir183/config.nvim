@@ -6,6 +6,8 @@
 --
 --]]
 
+---@module "lazy"
+
 -- WARN : archived
 -- TODO : find replacement or remove
 

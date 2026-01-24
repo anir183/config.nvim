@@ -6,6 +6,15 @@
 --
 --]]
 
+---@module "io"
+---@module "math"
+---@module "vim"
+---@module "vim.ui"
+---@module "config-183.utils"
+---@module "config-183.utils.logging"
+---@module "config-183.utils.functions"
+---@module "config-183.utils.variables"
+
 LOG.info("creating custom commands")
 
 local cmd = function(cmd_name, ...)

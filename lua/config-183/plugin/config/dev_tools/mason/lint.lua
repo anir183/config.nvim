@@ -6,6 +6,9 @@
 --
 --]]
 
+---@module "lazy"
+---@module "mason-nvim-lint"
+
 ---@type LazySpec
 local plugin = {}
 

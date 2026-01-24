@@ -8,6 +8,12 @@
 --
 --]]
 
+---@module "config-183.minimal.options"
+---@module "config-183.minimal.keymaps"
+---@module "config-183.minimal.plugins"
+---@module "config-183.utils"
+---@module "config-183.utils.logging"
+
 require("config-183.minimal.options")
 require("config-183.minimal.keymaps")
 

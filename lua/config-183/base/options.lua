@@ -7,6 +7,12 @@
 --
 --]]
 
+---@module "table"
+---@module "vim"
+---@module "config-183.utils"
+---@module "config-183.utils.functions"
+---@module "config-183.utils.variables"
+
 LOG.info("setting base options")
 
 local opt = vim.o

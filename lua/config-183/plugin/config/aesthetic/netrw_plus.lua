@@ -6,6 +6,9 @@
 --
 --]]
 
+---@module "lazy"
+---@module "netrw"
+
 ---@type LazySpec
 local plugin = {}
 

@@ -6,6 +6,14 @@
 --
 --]]
 
+---@module "table"
+---@module "lazy"
+---@module "config-183.custom"
+---@module "config-183.custom.statusline"
+---@module "config-183.utils"
+---@module "config-183.utils.functions"
+---@module "config-183.utils.logging"
+
 ---@type LazySpec
 local plugin = {}
 
@@ -16,7 +24,8 @@ plugin.opts = {
 	signcolumn = false,
 }
 plugin.config = function(_, opts)
-	require("gitsigns").setup(opts)
+	local gitsigns = require("gitsigns")
+	gitsigns.setup(opts)
 
 	--[[ add git information to statusline ]]
 	LOG.info("adding git information to statusline")
@@ -74,36 +83,36 @@ plugin.config = function(_, opts)
 	STLINE.set_arrangment()
 
 	FUNCS.mmap("n", "<leader>ga", {
-		["toggle-signs"] = require("gitsigns").toggle_signs,
-		["toggle-number-hl"] = require("gitsigns").toggle_numhl,
-		["toggle-line-hl"] = require("gitsigns").toggle_linehl,
-		["toggle-word-diff"] = require("gitsigns").toggle_word_diff,
-		["toggle-blame-vtext"] = require("gitsigns").toggle_current_line_blame,
-		["toggle-stage-hunk"] = require("gitsigns").stage_hunk,
-		["stage-buffer"] = require("gitsigns").stage_buffer,
-		["reset-buffer"] = require("gitsigns").reset_buffer,
-		["reset-buffer-index"] = require("gitsigns").reset_buffer_index,
-		["blame-file"] = require("gitsigns").blame,
-		["blame-line"] = require("gitsigns").blame_line,
-		["diff-file"] = require("gitsigns").diffthis,
+		["toggle-signs"] = gitsigns.toggle_signs,
+		["toggle-number-hl"] = gitsigns.toggle_numhl,
+		["toggle-line-hl"] = gitsigns.toggle_linehl,
+		["toggle-word-diff"] = gitsigns.toggle_word_diff,
+		["toggle-blame-vtext"] = gitsigns.toggle_current_line_blame,
+		["toggle-stage-hunk"] = gitsigns.stage_hunk,
+		["stage-buffer"] = gitsigns.stage_buffer,
+		["reset-buffer"] = gitsigns.reset_buffer,
+		["reset-buffer-index"] = gitsigns.reset_buffer_index,
+		["blame-file"] = gitsigns.blame,
+		["blame-line"] = gitsigns.blame_line,
+		["diff-file"] = gitsigns.diffthis,
 		["change-base"] = function()
 			vim.ui.input({
 				prompt = "new base: ",
 			}, function(input)
 				if not input then
-					require("gitsigns").change_base()
+					gitsigns.change_base()
 					return
 				end
 
-				require("gitsigns").change_base(input)
+				gitsigns.change_base(input)
 			end)
 		end,
-		["preview-hunk"] = require("gitsigns").preview_hunk,
-		["preview-hunk-inline"] = require("gitsigns").preview_hunk_inline,
-		["set-quickfix-list"] = require("gitsigns").setqflist,
-		["show-commit"] = require("gitsigns").show_commit,
-		["show-revision"] = require("gitsigns").show,
-		["refresh"] = require("gitsigns").refresh,
+		["preview-hunk"] = gitsigns.preview_hunk,
+		["preview-hunk-inline"] = gitsigns.preview_hunk_inline,
+		["set-quickfix-list"] = gitsigns.setqflist,
+		["show-commit"] = gitsigns.show_commit,
+		["show-revision"] = gitsigns.show,
+		["refresh"] = gitsigns.refresh,
 	}, "[plugin/git-signs]: choose from [G]it-sign [A]ctions")
 end
 

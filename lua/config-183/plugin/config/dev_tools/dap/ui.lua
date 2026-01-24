@@ -6,6 +6,11 @@
 --
 --]]
 
+---@module "vim"
+---@module "vim.ui"
+---@module "lazy"
+---@module "dapui"
+
 ---@type LazySpec
 local plugin = {}
 

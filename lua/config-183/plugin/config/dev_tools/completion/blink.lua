@@ -6,6 +6,12 @@
 --
 --]]
 
+---@module "lazy"
+---@module "blink"
+---@module "blink-cmp"
+---@module "config-183.utils"
+---@module "config-183.utils.functions"
+
 ---@type LazySpec
 local plugin = {}
 

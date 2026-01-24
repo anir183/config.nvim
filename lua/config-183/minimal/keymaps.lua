@@ -6,6 +6,11 @@
 --
 --]]
 
+---@module "vim"
+---@module "config-183.utils"
+---@module "config-183.utils.functions"
+---@module "config-183.utils.logging"
+
 local map = FUNCS.map
 local nmap = FUNCS.nmap
 

@@ -6,6 +6,14 @@
 --
 --]]
 
+---@module "vim"
+---@module "config-183.utils"
+---@module "config-183.utils.logging"
+---@module "config-183.options"
+---@module "config-183.options.defaults"
+
+LOG.info("setting up base autocommands")
+
 local aucmd = vim.api.nvim_create_autocmd
 local augrp = VARS.augrp.id
 
@@ -65,3 +73,5 @@ aucmd("VimEnter", {
 	group = augrp,
 	callback = OPTS.after,
 })
+
+LOG.info("base commands setup and loaded")

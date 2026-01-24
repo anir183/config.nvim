@@ -6,6 +6,13 @@
 --
 --]]
 
+---@module "vim"
+---@module "lazy"
+---@module "config-183.utils"
+---@module "config-183.utils.logging"
+---@module "config-183.utils.variables"
+---@module "config-183.utils.functions"
+
 ---@type LazySpec
 local plugin = {}
 
@@ -35,12 +42,26 @@ plugin.config = function(_, opts)
 				fidget = false,
 				undotree = false,
 				["blink-cmp-menu"] = false,
+				["blink-cmp-documentation"] = false,
 				snacks_layout_box = false,
 				snacks_picker_input = false,
 				snacks_terminal = false,
 				snacks_picker_list = false,
 				snacks_picker_preview = false,
 				snacks_input = false,
+				oil_preview = false,
+				conf = false,
+				rc = false,
+				text = false,
+				trouble = false,
+				sagafinder = false,
+				sagaoutline = false,
+				beacon = false,
+				mason = false,
+				lazy = false,
+				lazygit = false,
+				diff = false,
+				man = false,
 			}
 
 			if ft == "" or ftstates[ft] == false then

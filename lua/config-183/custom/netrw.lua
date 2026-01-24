@@ -6,6 +6,12 @@
 --
 --]]
 
+---@module "vim"
+---@module "config-183.utils"
+---@module "config-183.utils.variables"
+---@module "config-183.utils.functions"
+---@module "config-183.utils.logging"
+
 LOG.info("setting up netrw sidebar and toggling functionality")
 
 vim.g.netrw_winsize = VARS.win.netrw_size -- netrw sidebar width

@@ -5,6 +5,8 @@
 --
 --]]
 
+---@module "lazy"
+
 ---@type LazySpec
 local plugin = {}
 

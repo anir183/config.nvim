@@ -6,6 +6,12 @@
 --
 --]]
 
+---@module "vim"
+---@module "lazy"
+---@module "snacks"
+---@module "config-183.utils"
+---@module "config-183.utils.functions"
+
 ---@type LazySpec
 local plugin = {}
 
@@ -86,52 +92,52 @@ plugin.config = function(_, opts)
 
 	-- snacks actions menu
 	FUNCS.mmap("n", "<leader>sa", {
-		["dim-enable"] = Snacks.dim.enable,
-		["dim-disable"] = Snacks.dim.disable,
-		["git-blame"] = Snacks.git.blame_line,
-		["git-browse"] = Snacks.gitbrowse.open,
-		["lazy-git"] = Snacks.lazygit.open,
-		["rename-file"] = Snacks.rename.rename_file,
+		["dim-enable"] = snacks.dim.enable,
+		["dim-disable"] = snacks.dim.disable,
+		["git-blame"] = snacks.git.blame_line,
+		["git-browse"] = snacks.gitbrowse.open,
+		["lazy-git"] = snacks.lazygit.open,
+		["rename-file"] = snacks.rename.rename_file,
 		["scratch-toggle"] = function()
-			Snacks.scratch()
+			snacks.scratch()
 		end,
-		["scratch-select"] = Snacks.scratch.select,
-		["word-enable"] = Snacks.words.enable,
-		["word-disable"] = Snacks.words.disable,
-		["word-clear"] = Snacks.words.clear,
-		["word-jump"] = Snacks.words.jump,
+		["scratch-select"] = snacks.scratch.select,
+		["word-enable"] = snacks.words.enable,
+		["word-disable"] = snacks.words.disable,
+		["word-clear"] = snacks.words.clear,
+		["word-jump"] = snacks.words.jump,
 		["zen"] = function()
-			Snacks.zen()
+			snacks.zen()
 		end,
-		["zen-zoom"] = Snacks.zen.zoom,
+		["zen-zoom"] = snacks.zen.zoom,
 		["explorer"] = function()
-			Snacks.explorer()
+			snacks.explorer()
 		end,
-		["smart"] = Snacks.picker.smart,
-		["find-buffers"] = Snacks.picker.buffers,
+		["smart"] = snacks.picker.smart,
+		["find-buffers"] = snacks.picker.buffers,
 		["find-config"] = function()
-			Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+			snacks.picker.files({ cwd = vim.fn.stdpath("config") })
 		end,
-		["find-projects"] = Snacks.picker.projects,
-		["grep-buffers"] = Snacks.picker.grep_buffers,
-		["git-files"] = Snacks.picker.git_files,
-		["git-branches"] = Snacks.picker.git_branches,
-		["git-log"] = Snacks.picker.git_log,
-		["git-logline"] = Snacks.picker.git_log_line,
-		["git-status"] = Snacks.picker.git_status,
-		["git-stash"] = Snacks.picker.git_stash,
-		["git-diff"] = Snacks.picker.git_diff,
-		["git-logfile"] = Snacks.picker.git_log_file,
-		["search-registers"] = Snacks.picker.registers,
-		["search-autocmds"] = Snacks.picker.autocmds,
-		["search-commands"] = Snacks.picker.commands,
-		["search-diagnostics"] = Snacks.picker.diagnostics,
-		["search-diag-buff"] = Snacks.picker.diagnostics_buffer,
-		["search-highlights"] = Snacks.picker.highlights,
-		["search-keymaps"] = Snacks.picker.keymaps,
-		["search-undo"] = Snacks.picker.undo,
-		["search-man"] = Snacks.picker.man,
-		["search-lazy"] = Snacks.picker.lazy,
+		["find-projects"] = snacks.picker.projects,
+		["grep-buffers"] = snacks.picker.grep_buffers,
+		["git-files"] = snacks.picker.git_files,
+		["git-branches"] = snacks.picker.git_branches,
+		["git-log"] = snacks.picker.git_log,
+		["git-logline"] = snacks.picker.git_log_line,
+		["git-status"] = snacks.picker.git_status,
+		["git-stash"] = snacks.picker.git_stash,
+		["git-diff"] = snacks.picker.git_diff,
+		["git-logfile"] = snacks.picker.git_log_file,
+		["search-registers"] = snacks.picker.registers,
+		["search-autocmds"] = snacks.picker.autocmds,
+		["search-commands"] = snacks.picker.commands,
+		["search-diagnostics"] = snacks.picker.diagnostics,
+		["search-diag-buff"] = snacks.picker.diagnostics_buffer,
+		["search-highlights"] = snacks.picker.highlights,
+		["search-keymaps"] = snacks.picker.keymaps,
+		["search-undo"] = snacks.picker.undo,
+		["search-man"] = snacks.picker.man,
+		["search-lazy"] = snacks.picker.lazy,
 	}, "[plugin/snacks]: choose from [S]nacks [A]ctions")
 end
 plugin.keys = {
@@ -140,7 +146,7 @@ plugin.keys = {
 		mode = "n",
 		"<leader>/",
 		function()
-			Snacks.picker.lines()
+			require("snacks").picker.lines()
 		end,
 		desc = "[plugin/snacks]: search in buffer",
 	},
@@ -148,7 +154,7 @@ plugin.keys = {
 		mode = "n",
 		"<leader>?",
 		function()
-			Snacks.picker.search_history()
+			require("snacks").picker.search_history()
 		end,
 		desc = "[plugin/snacks]: search history",
 	},
@@ -156,7 +162,7 @@ plugin.keys = {
 		mode = { "n", "x" },
 		"<leader>*",
 		function()
-			Snacks.picker.grep_word()
+			require("snacks").picker.grep_word()
 		end,
 		desc = "[plugin/snacks]: grep word under cursor",
 	},
@@ -164,7 +170,7 @@ plugin.keys = {
 		mode = "n",
 		"<leader>::",
 		function()
-			Snacks.picker.command_history()
+			require("snacks").picker.command_history()
 		end,
 		desc = "[plugin/snacks]: command history",
 	},
@@ -172,7 +178,7 @@ plugin.keys = {
 		mode = "n",
 		"<leader>ff",
 		function()
-			Snacks.picker.files()
+			require("snacks").picker.files()
 		end,
 		desc = "[plugin/snacks]: [F]ind [F]iles",
 	},
@@ -181,11 +187,11 @@ plugin.keys = {
 		"<leader>fF",
 		function()
 			if vim.bo.filetype == "oil" then
-				Snacks.picker.files({
+				require("snacks").picker.files({
 					cwd = vim.fn.expand("%:h"):sub(7, -1),
 				})
 			end
-			Snacks.picker.files({
+			require("snacks").picker.files({
 				cwd = vim.fn.expand("%:p:h"),
 			})
 		end,
@@ -195,7 +201,7 @@ plugin.keys = {
 		mode = "n",
 		"<leader>FF",
 		function()
-			Snacks.picker.files({
+			require("snacks").picker.files({
 				hidden = true,
 				ignored = true,
 			})
@@ -206,7 +212,7 @@ plugin.keys = {
 		mode = "n",
 		"<leader>FI",
 		function()
-			Snacks.picker.files({
+			require("snacks").picker.files({
 				ignored = true,
 			})
 		end,
@@ -216,7 +222,7 @@ plugin.keys = {
 		mode = "n",
 		"<leader>FH",
 		function()
-			Snacks.picker.files({
+			require("snacks").picker.files({
 				hidden = true,
 			})
 		end,
@@ -226,7 +232,7 @@ plugin.keys = {
 		mode = "n",
 		"<leader>fc",
 		function()
-			Snacks.picker.files({
+			require("snacks").picker.files({
 				cwd = vim.fn.stdpath("config"),
 			})
 		end,
@@ -236,7 +242,7 @@ plugin.keys = {
 		mode = "n",
 		"<leader>fr",
 		function()
-			Snacks.picker.recent()
+			require("snacks").picker.recent()
 		end,
 		desc = "[plugin/snacks]: [F]ind [R]ecently visited files",
 	},
@@ -244,7 +250,7 @@ plugin.keys = {
 		mode = "n",
 		"<leader>fk",
 		function()
-			Snacks.picker.keymaps()
+			require("snacks").picker.keymaps()
 		end,
 		desc = "[plugin/snacks]: [F]ind [K]eymaps",
 	},
@@ -252,7 +258,7 @@ plugin.keys = {
 		mode = "n",
 		"<leader>gg",
 		function()
-			Snacks.picker.grep({
+			require("snacks").picker.grep({
 				cwd = vim.fn.getcwd(),
 			})
 		end,
@@ -263,17 +269,17 @@ plugin.keys = {
 		"<leader>GG",
 		function()
 			if vim.bo.filetype == "oil" then
-				-- WARN : idk why but directly using Snacks.picker.grep or
+				-- WARN : idk why but directly using require("snacks").picker.grep or
 				--        vim.cmd to open grep picker fails to run
 				local cwd = vim.fn.expand("%:p:h"):sub(7, -1)
 				FUNCS.feedkeys(
-					":lua Snacks.picker.grep({ cwd = \""
+					":lua require(\"snacks\").picker.grep({ cwd = \""
 						.. cwd
 						.. "\" })<CR><C-l>"
 				)
 			end
 
-			Snacks.picker.grep({
+			require("snacks").picker.grep({
 				cwd = vim.fn.expand("%:h"),
 			})
 		end,
@@ -283,7 +289,7 @@ plugin.keys = {
 		mode = "n",
 		"<leader>fh",
 		function()
-			Snacks.picker.help()
+			require("snacks").picker.help()
 		end,
 		desc = "[plugin/snacks]: [F]ind in [H]elp pages",
 	},
@@ -291,7 +297,7 @@ plugin.keys = {
 		mode = "n",
 		"<leader>fq",
 		function()
-			Snacks.picker.qflist()
+			require("snacks").picker.qflist()
 		end,
 		desc = "[plugin/snacks]: [F]ind in [Q]uick fix list",
 	},
@@ -299,7 +305,7 @@ plugin.keys = {
 		mode = "n",
 		"<leader>fl",
 		function()
-			Snacks.picker.loclist()
+			require("snacks").picker.loclist()
 		end,
 		desc = "[plugin/snacks]: [F]ind in [L]ocation list",
 	},
@@ -310,7 +316,7 @@ plugin.keys = {
 		"<leader>wo",
 
 		function()
-			Snacks.words.enable()
+			require("snacks").words.enable()
 		end,
 		desc = "[plugin/snacks]: enable [WO]rds",
 	},
@@ -318,7 +324,7 @@ plugin.keys = {
 		mode = "n",
 		"<leader>WO",
 		function()
-			Snacks.words.disable()
+			require("snacks").words.disable()
 		end,
 		desc = "[plugin/snacks]: disable [WO]rds",
 	},
@@ -329,7 +335,7 @@ plugin.keys = {
 			vim.cmd("mode")
 			vim.cmd("redraw!")
 			vim.cmd("nohlsearch")
-			Snacks.words.clear()
+			require("snacks").words.clear()
 		end,
 		desc = "[plugin/snacks]: clear words and also clear screen",
 	},
@@ -337,7 +343,7 @@ plugin.keys = {
 		mode = "n",
 		"]w",
 		function()
-			Snacks.words.jump(vim.v.count1, true)
+			require("snacks").words.jump(vim.v.count1, true)
 		end,
 		desc = "[plugin/snacks]: jump to next word reference",
 	},
@@ -345,7 +351,7 @@ plugin.keys = {
 		mode = "n",
 		"[w",
 		function()
-			Snacks.words.jump(-vim.v.count1, true)
+			require("snacks").words.jump(-vim.v.count1, true)
 		end,
 		desc = "[plugin/snacks]: jump to previous word references",
 	},
@@ -355,7 +361,7 @@ plugin.keys = {
 		mode = "n",
 		"<leader>tt",
 		function()
-			Snacks.terminal.toggle()
+			require("snacks").terminal.toggle()
 		end,
 		desc = "[plugin/snacks]: [T]oggle [T]erminal window",
 	},
@@ -363,7 +369,7 @@ plugin.keys = {
 		mode = "n",
 		"<leader>to",
 		function()
-			Snacks.terminal.open()
+			require("snacks").terminal.open()
 		end,
 		desc = "[plugin/snacks]: [O]pen a [T]erminal window",
 	},
@@ -373,7 +379,7 @@ plugin.keys = {
 		mode = "n",
 		"<leader>zt",
 		function()
-			Snacks.zen.zen()
+			require("snacks").zen.zen()
 		end,
 		desc = "[plugin/snacks]: [Z]en mode [T]oggle",
 	},
@@ -381,7 +387,7 @@ plugin.keys = {
 		mode = "n",
 		"<leader>zz",
 		function()
-			Snacks.zen.zoom()
+			require("snacks").zen.zoom()
 		end,
 		desc = "[plugin/snacks]: toggle [Z]en in [Z]oom mode",
 	},

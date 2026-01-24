@@ -7,6 +7,10 @@
 --
 --]]
 
+---@module "config-183.base.options"
+---@module "config-183.base.keymaps"
+---@module "config-183.base.autocmds"
+
 require("config-183.base.options")
 require("config-183.base.keymaps")
 require("config-183.base.autocmds")

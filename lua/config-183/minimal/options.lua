@@ -7,6 +7,11 @@
 --
 --]]
 
+---@module "table"
+---@module "vim"
+---@module "config-183.utils"
+---@module "config-183.utils.logging"
+
 LOG.info("setting minimal options")
 
 local opt = vim.o

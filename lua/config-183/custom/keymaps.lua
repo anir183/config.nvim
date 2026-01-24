@@ -6,6 +6,14 @@
 --
 --]]
 
+---@module "vim"
+---@module "config-183.utils"
+---@module "config-183.utils.logging"
+---@module "config-183.utils.variables"
+---@module "config-183.utils.functions"
+
+LOG.info("settings up custom keymaps")
+
 local nmap = FUNCS.nmap
 
 --[[ toggle relative line number ]]
@@ -62,3 +70,5 @@ nmap(
 nmap("<leader>cd", function()
 	vim.notify(vim.fn.expand("%:p"), vim.log.levels.INFO)
 end, "[custom]: print [C]urrent [D]irectory or file path")
+
+LOG.info("custom keymaps setup and loaded")
