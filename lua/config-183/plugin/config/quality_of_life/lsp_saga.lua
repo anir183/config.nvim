@@ -49,9 +49,9 @@ plugin.config = function(_, opts)
 			{ buffer = 0 }
 		)
 		FUNCS.nmap(
-			"<leader>ds",
+			"<leader>sy",
 			"<CMD>Lspsaga outline<CR>",
-			"[plugin/lspsaga]: [D]ocument [S]ymbol",
+			"[plugin/lspsaga]: document [S][Y]mbol",
 			{ buffer = 0 }
 		)
 		FUNCS.nmap(

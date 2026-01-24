@@ -195,9 +195,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			{ buffer = 0 }
 		)
 		nmap(
-			"<leader>ds",
+			"<leader>sy",
 			vim.lsp.buf.document_symbol,
-			"[base/lsp]: [D]ocument [S]ymbol",
+			"[base/lsp]: document [S][Y]mbol",
 			{ buffer = 0 }
 		)
 		map(

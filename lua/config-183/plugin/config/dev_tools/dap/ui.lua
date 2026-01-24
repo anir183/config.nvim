@@ -43,29 +43,29 @@ end
 plugin.keys = {
 	{
 		mode = "n",
-		"<leader>du",
+		"<leader>tu",
 		function()
 			require("dapui").toggle()
 		end,
-		desc = "[plugin/dapui]: [D]ap [U]i toggle",
+		desc = "[plugin/dapui]: [T]oggle dap [U]i",
 	},
 	{
 		mode = "n",
-		"<leader>dr",
+		"<leader>ru",
 		function()
 			require("dapui").open({ reset = true })
 		end,
-		desc = "[plugin/dapui]: [D]ap ui [R]eset",
+		desc = "[plugin/dapui]: [R]oggle dap ui",
 	},
 	{
 		mode = "n",
-		"<leader>dv",
+		"<leader>va",
 		"<CMD>lua require(\"dapui\").eval()<CR>",
-		desc = "[plugin/dapui]: [D]apui e[V]al expression under cursor",
+		desc = "[plugin/dapui]: dapui e[V][A]l expression under cursor",
 	},
 	{
 		mode = "n",
-		"<leader>DV",
+		"<leader>VA",
 		function()
 			vim.ui.input({
 				prompt = "expression: ",
@@ -77,11 +77,11 @@ plugin.keys = {
 				require("dapui").eval(expression)
 			end)
 		end,
-		desc = "[plugin/dapui]: [D]apui e[V]al expression under cursor",
+		desc = "[plugin/dapui]: dapui e[V][A]l expression under cursor",
 	},
 	{
 		mode = "v",
-		"<leader>dv",
+		"<leader>va",
 		"<CMD>lua require(\"dapui\").eval()<CR>",
 		desc = "[plugin/dapui]: [D]apui e[V]al selected expression",
 	},

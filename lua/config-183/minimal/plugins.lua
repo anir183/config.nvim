@@ -294,9 +294,9 @@ local spec = {
 						{ buffer = 0 }
 					)
 					FUNCS.nmap(
-						"<leader>ds",
+						"<leader>sy",
 						vim.lsp.buf.document_symbol,
-						"[base/lsp]: [D]ocument [S]ymbol",
+						"[base/lsp]: document [S][Y]mbol",
 						{ buffer = 0 }
 					)
 					FUNCS.map(

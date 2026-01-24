@@ -14,7 +14,7 @@ plugin.name = "dap"
 plugin.dependencies = "mason"
 plugin.lazy = false
 plugin.config = function()
-	FUNCS.mmap("n", "<leader>DP", {
+	FUNCS.mmap("n", "<leader>AP", {
 		["set-breakpoints"] = function()
 			require("dap").set_breakpoint()
 		end,
