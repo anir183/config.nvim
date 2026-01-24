@@ -58,6 +58,17 @@ defaults.lint = {
 	available_linters = {},
 }
 
+---@class DapOpts
+--- dap adapters setup
+defaults.dap = {
+	---@type table<string, function> setup dap adapters in mason dap
+	handlers = {},
+	---@type table<string, dap.Adapter|fun(callback: fun(adapter: dap.Adapter), config: dap.Configuration, parent?: dap.Session)> adapter definitions
+	adapters = {},
+	---@type table<string, dap.Configuration[]> configurations per adapter
+	configuration = {},
+}
+
 ---@type blink.cmp.SourceConfigPartial
 defaults.cmp_sources = {
 	default = {

@@ -1,0 +1,90 @@
+--[[
+--
+-- nvim/lua/config-183/plugin/config/dev_tools/dap/ui.lua
+--
+-- ui window for dap
+--
+--]]
+
+---@type LazySpec
+local plugin = {}
+
+plugin[1] = "rcarriga/nvim-dap-ui"
+plugin.name = "dap-ui"
+plugin.dependencies = {
+	"dap",
+	"nio",
+	"dap-virtual-text",
+	"dap-repl-highlights",
+}
+plugin.lazy = false
+---@type dapui.Config
+---@diagnostic disable-next-line: missing-fields
+plugin.opts = {}
+plugin.config = function(_, opts)
+	local dap = require("dap")
+	local dapui = require("dapui")
+
+	dapui.setup(opts)
+
+	dap.listeners.before.attach.dapui_config = function()
+		dapui.open()
+	end
+	dap.listeners.before.launch.dapui_config = function()
+		dapui.open()
+	end
+	dap.listeners.before.event_terminated.dapui_config = function()
+		dapui.close()
+	end
+	dap.listeners.before.event_exited.dapui_config = function()
+		dapui.close()
+	end
+end
+plugin.keys = {
+	{
+		mode = "n",
+		"<leader>du",
+		function()
+			require("dapui").toggle()
+		end,
+		desc = "[plugin/dapui]: [D]ap [U]i toggle",
+	},
+	{
+		mode = "n",
+		"<leader>dr",
+		function()
+			require("dapui").open({ reset = true })
+		end,
+		desc = "[plugin/dapui]: [D]ap ui [R]eset",
+	},
+	{
+		mode = "n",
+		"<leader>dv",
+		"<CMD>lua require(\"dapui\").eval()<CR>",
+		desc = "[plugin/dapui]: [D]apui e[V]al expression under cursor",
+	},
+	{
+		mode = "n",
+		"<leader>DV",
+		function()
+			vim.ui.input({
+				prompt = "expression: ",
+			}, function(expression)
+				if not expression then
+					return
+				end
+
+				require("dapui").eval(expression)
+			end)
+		end,
+		desc = "[plugin/dapui]: [D]apui e[V]al expression under cursor",
+	},
+	{
+		mode = "v",
+		"<leader>dv",
+		"<CMD>lua require(\"dapui\").eval()<CR>",
+		desc = "[plugin/dapui]: [D]apui e[V]al selected expression",
+	},
+}
+
+return plugin
