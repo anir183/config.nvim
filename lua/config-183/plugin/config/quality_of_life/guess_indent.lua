@@ -48,9 +48,12 @@ plugin.config = function(_, opts)
 			end
 
 			require("guess-indent").set_from_buffer(nil, true, true)
+			vim.opt_local.shiftwidth = 0 -- size of each level of indentation (0 -> tabstop)
+			vim.opt_local.softtabstop = -1 -- size of tab character in insert mode (-1 -> shiftwidth)
 			vim.opt_local.listchars:remove("leadmultispace")
 			vim.opt_local.listchars:append({
 				leadmultispace = "▎"
+					---@diagnostic disable-next-line: undefined-field
 					.. ("∙"):rep(vim.opt_local.tabstop._value - 1),
 			})
 			LOG.info(
@@ -58,12 +61,14 @@ plugin.config = function(_, opts)
 					---@diagnostic disable-next-line: undefined-field
 					.. (vim.opt_local.expandtab._value and "spaces" or "tabs")
 					.. ":"
+					---@diagnostic disable-next-line: undefined-field
 					.. vim.opt_local.tabstop._value
 			)
 			LOG.debug(
 				---@diagnostic disable-next-line: undefined-field
 				(vim.opt_local.expandtab._value and "spaces" or "tabs")
 					.. ":"
+					---@diagnostic disable-next-line: undefined-field
 					.. vim.opt_local.tabstop._value,
 				vim.fn.expand("%:p")
 			)

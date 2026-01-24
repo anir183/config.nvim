@@ -101,79 +101,65 @@ cmd("ChangeIndent", function()
 			return
 		end
 
-		--[[ auto indent ]]
 		if indent_type == "auto" then
-			LOG.info("auto indentation started")
 			FUNCS.auto_set_indents()
-			return
 		end
 
-		--[[ set buffer indentation ]]
+		--[[ setup buffer indentation setup and reindent ]]
 		local old_tab_len = vim.opt_local.tabstop._value
-		LOG.info("changing buffer indentation values")
 		vim.ui.input({
 			prompt = "tab length: ",
-		}, function(tl)
-			local new_tab_len = old_tab_len
-			if tl and tl:match(VARS.strings.num_match) then
-				new_tab_len = tonumber(tl)
-			end
-
-			vim.opt_local.expandtab = (indent_type == "spaces")
-			vim.opt_local.tabstop = new_tab_len
-			vim.opt_local.listchars:remove("leadmultispace")
-			vim.opt_local.listchars:append({
-				leadmultispace = "▎" .. ("∙"):rep(new_tab_len - 1),
-			})
-			LOG.debug({
+		}, function(new_tab_len)
+			if not new_tab_len or not FUNCS.str_isnum(new_tab_len) then
 				---@diagnostic disable-next-line: undefined-field
-				expandtab = vim.opt_local.expandtab._value,
-				tabstop = vim.opt_local.tabstop._value,
-				listchars = vim.opt_local.listchars._value,
-				oldtabstop = old_tab_len,
-				inputtabstop = tl,
-			})
-		end)
-
-		--[[ reindent ]]
-		vim.ui.select({
-			"yes",
-			"no",
-		}, {
-			prompt = "reindent: ",
-		}, function(reindent)
-			if (not reindent) or reindent == "no" then
-				return
+				new_tab_len = vim.opt_local.tabstop._value
 			end
+			new_tab_len = tonumber(new_tab_len) or old_tab_len
 
-			LOG.info("reindenting file")
+			--[[ reindent ]]
+			vim.ui.select({
+				"yes",
+				"no",
+			}, {
+				prompt = "reindent: ",
+			}, function(reindent)
+				if not reindent then
+					reindent = "no"
+				end
 
-			--- first we convert all indentation to tabs as they are easier to
-			--- handle
-			---  NOTE : retab command also replaces inline spaces, so we use a
-			---         substitution command instead
-			vim.cmd(
-				"silent! %s/\\(^\\s*\\)\\@<="
-					.. (" "):rep(old_tab_len)
-					.. "/	/g"
-			)
-			LOG.info("converted indentation to tabs")
+				--[[ convert indentation to tabs ]]
+				-- if reindentation is requested, then convert all indentation
+				-- to tabs which are easier to manipulate than individual spaces
+				if reindent == "yes" then
+					vim.opt_local.expandtab = false
 
-			-- if redinentation to spaces is required then perform necessary
-			-- action... otherwise indentations are already tabs by now
-			if indent_type == "spaces" then
-				vim.cmd(
-					"silent! %s/\\(^\\s*\\)\\@<=	/"
-						.. (" "):rep(vim.opt_local.tabstop._value)
-						.. "/g"
-				)
-				LOG.info("reconverted indentation to spaces")
-			end
+					-- NOTE : retab command also replaces inline spaces, so we
+					--        use a substitution command instead
+					vim.cmd(
+						"silent! %s/\\(^\\s*\\)\\@<="
+							.. (" "):rep(old_tab_len)
+							.. "/	/g"
+					)
 
-			LOG.debug({
-				indent_type = indent_type,
-				reindent = reindent,
-			})
+					if indent_type == "spaces" then
+						vim.cmd(
+							"silent! %s/\\(^\\s*\\)\\@<=	/"
+								.. (" "):rep(new_tab_len)
+								.. "/g"
+						)
+					end
+				end
+
+				--[[ set buffer options ]]
+				vim.opt_local.expandtab = (indent_type == "spaces")
+				vim.opt_local.tabstop = new_tab_len
+				vim.opt_local.shiftwidth = 0 -- size of each level of indentation (0 -> tabstop)
+				vim.opt_local.softtabstop = -1 -- size of tab character in insert mode (-1 -> shiftwidth)
+				vim.opt_local.listchars:remove("leadmultispace")
+				vim.opt_local.listchars:append({
+					leadmultispace = "▎" .. ("∙"):rep(new_tab_len - 1),
+				})
+			end)
 		end)
 	end)
 end, { desc = "[custom]: change indentation style in current buffer" })

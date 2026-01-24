@@ -106,8 +106,8 @@ end
 -- WARN : using "<CMD>" instead of ":" breaks these commands
 nmap("<C-j>", "v:m '>+1<CR>gv=<ESC>", "[base]: move the current line up")
 nmap("<C-k>", "v:m '<-2<CR>gv=<ESC>", "[base]: move the current line down")
-map("v", "<C-j>", "m: '>+1<CR>gv=<ESC>gv", "[base]: move selection up")
-map("v", "<C-k>", "m: '<-2<CR>gv=<ESC>gv", "[base]: move selection down")
+map("v", "<C-j>", ":m '>+1<CR>gv=<ESC>gv", "[base]: move selection up")
+map("v", "<C-k>", ":m '<-2<CR>gv=<ESC>gv", "[base]: move selection down")
 
 --[[ stationary or centered cursor while jumping, etc ]]
 nmap("J", "mzJ`z", "[base]: dont move the cursor when joining next line")
