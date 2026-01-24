@@ -6,10 +6,10 @@ i generally try to keep my config simple and minimal, but i had some time on my
 hands and wanted to see how much i could over-engineer the config. and this was
 the result.
 <br>
-![neovim-startup-page](./assets/home.jpeg)
-<br>
 
-### features
+![neovim-startup-page](./assets/home.jpeg)
+
+## features
 this config has some pretty handy features -
 * handy keymaps, good options and the whole 100 yards
 * custom editable options file which can be opened in a floating buffer and
@@ -21,80 +21,69 @@ different situations that may arise
 * diagnostics, lsp, formatting, linting and debugging via plugins
 * fuzzy file search, grep, terminals and other handy utility
 * dev tools installation via mason and related tools
-<br>
 
-### screenshots
+## screenshots
 * startup page
-<details>
-    <summary>image</summary>
-    ![neovim-startup-page](./assets/home.jpeg)
-</details>
-<br>
-* custom editable options
-<br>
-<details>
-    <summary>image</summary>
-    ![custom-editable-options](./assets/options.jpeg)
-</details>
-<br>
-* configuration logging
-<br>
-<details>
-    <summary>image</summary>
-    ![configuration-logging](./assets/logging.jpeg)
-</details>
-<br>
-* fuzzy file search
-<br>
-<details>
-    <summary>image</summary>
-    ![fuzzy-file-search](./assets/fuzzy_files.jpeg)
-</details>
-<br>
-* harpoon file switcher
-<br>
-<details>
-    <summary>image</summary>
-    ![harpoon-file-switcher](./assets/harpoon.jpeg)
-</details>
-<br>
-* lsp completion
-<br>
-<details>
-    <summary>image</summary>
-    ![lsp-completion](./assets/completion.jpeg)
-</details>
-<br>
-* lsp references
-<br>
-<details>
-    <summary>image</summary>
-    ![lsp-references](./assets/references.jpeg)
-</details>
-<br>
-* mason dev tools installer
-<br>
-<details>
-    <summary>image</summary>
-    ![mason-dev-tools-installer](./assets/mason.jpeg)
-</details>
-<br>
-* dap ui
-<br>
-<details>
-    <summary>image</summary>
-    ![dap-ui](./assets/dapui.jpeg)
-</details>
-<br>
-* diagnostics and symbols
-<br>
-<details>
-    <summary>image</summary>
-    ![diagnostics-and-symbols](./assets/diagnostics_and_symbols.jpeg)
-</details>
-<br>
+        <details>
+            <summary>image</summary>
+            ![neovim-startup-page](./assets/home.jpeg)
+        </details>
 
-### config structure
+* custom editable options
+        <details>
+            <summary>image</summary>
+            ![custom-editable-options](./assets/options.jpeg)
+        </details>
+
+* configuration logging
+        <details>
+            <summary>image</summary>
+            ![configuration-logging](./assets/logging.jpeg)
+        </details>
+
+* fuzzy file search
+        <details>
+            <summary>image</summary>
+            ![fuzzy-file-search](./assets/fuzzy_files.jpeg)
+        </details>
+
+* harpoon file switcher
+        <details>
+            <summary>image</summary>
+            ![harpoon-file-switcher](./assets/harpoon.jpeg)
+        </details>
+
+* lsp completion
+        <details>
+            <summary>image</summary>
+            ![lsp-completion](./assets/completion.jpeg)
+        </details>
+
+* lsp references
+        <details>
+            <summary>image</summary>
+            ![lsp-references](./assets/references.jpeg)
+        </details>
+
+* mason dev tools installer
+        <details>
+            <summary>image</summary>
+            ![mason-dev-tools-installer](./assets/mason.jpeg)
+        </details>
+
+* dap ui
+        <details>
+            <summary>image</summary>
+            ![dap-ui](./assets/dapui.jpeg)
+        </details>
+
+* diagnostics and symbols
+        <details>
+            <summary>image</summary>
+            ![diagnostics-and-symbols](./assets/diagnostics_and_symbols.jpeg)
+        </details>
+
+## config structure
 ```
 .
 ├── after
