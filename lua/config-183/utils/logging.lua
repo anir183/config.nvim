@@ -36,6 +36,24 @@ LOG.opts.label = function(level)
 	}
 	return labels[level + 1]
 end
+---@type boolean logs generated during vim config loading will be notified after config completion to prevent intereference with config
+LOG.opts.notify_after_vim_enter = true
+
+---[[ dont interfere with vim loading with notifications ]]
+local is_vim_entered = not LOG.opts.notify_after_vim_enter
+---@type { msg: string, lvl: vim.log.levels }[]
+local notify_backlog = {}
+if LOG.opts.notify_after_vim_enter then
+	vim.api.nvim_create_autocmd("VimEnter", {
+		group = VARS.augrp.id,
+		callback = function()
+			for _, entry in ipairs(notify_backlog) do
+				vim.notify(entry.msg, entry.lvl)
+			end
+			is_vim_entered = true
+		end,
+	})
+end
 
 ---@param level vim.log.levels log level of the provided data or message
 ---@param ... any data or information to log
@@ -58,8 +76,16 @@ LOG.print = function(level, ...)
 			return
 		end
 
-		vim.notify(timestamp .. label, level)
-		vim.notify(out, level)
+		if is_vim_entered then
+			vim.notify(timestamp .. label, level)
+			vim.notify(out, level)
+		else
+			table.insert(
+				notify_backlog,
+				{ msg = timestamp .. label, lvl = level }
+			)
+			table.insert(notify_backlog, { msg = out, lvl = level })
+		end
 	end
 
 	--[[ handle file logging ]]
