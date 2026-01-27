@@ -222,7 +222,7 @@ FUNCS.in_distrobox = function(name)
 		return true
 	end
 
-	return name == vim.env.DISTROBOX_ENTER_PATH
+	return name == vim.env.CONTAINER_ID
 end
 
 ---@type function? automatically set buffer indentation style based on file content
