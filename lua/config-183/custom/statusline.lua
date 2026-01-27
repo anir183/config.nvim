@@ -47,6 +47,10 @@ _G.STLINE.mode_labels = STLINE.mode_labels
 ---@type table<string, function> components that can be used in the statusline arrangement
 _G.STLINE.components = STLINE.components or {}
 ---@return nil
+--- vim logo
+_G.STLINE.components.logo = function()
+	return FUNCS.hl_fmt_str("@parameter", "   ")
+end
 --- get the name of the file open in the current buffer
 _G.STLINE.components.filename = STLINE.components.filename
 	or function()
@@ -102,6 +106,7 @@ _G.STLINE.components.diagnostics = STLINE.components.diagnostics
 _G.STLINE.arrangement = STLINE.arrangement
 	or {
 		-- left
+		"$logo",
 		"$mode",
 		"$diagnostics",
 		" ",

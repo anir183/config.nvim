@@ -61,6 +61,7 @@ plugin.config = function(_, opts)
 	end
 	STLINE.arrangement = {
 		-- left
+		"$logo",
 		"$mode",
 		"$diagnostics",
 		" ",
