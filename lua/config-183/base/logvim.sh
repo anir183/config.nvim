@@ -1,6 +1,6 @@
 #!/bin/bash
 
-__nvim_logfile="/home/anir183/.local/state/nvim/config-183.log"
+__nvim_logfile="$XDG_STATE_HOME/nvim/config-183.log"
 __opt=$1
 
 function __grep {
