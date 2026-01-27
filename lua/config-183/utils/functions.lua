@@ -201,6 +201,30 @@ FUNCS.write_to_file = function(file_path, data, overwrite)
 	file:close()
 end
 
+---@param name? string check if inside a distrobox with given name
+---@return nil
+--- ---
+--- checks if neovim is opened inside a distrobox container and optionally with a given name
+FUNCS.in_distrobox = function(name)
+	if not vim.env.container then
+		return false
+	end
+
+	if not vim.env.CONTAINER_ID then
+		return false
+	end
+
+	if not vim.env.DISTROBOX_ENTER_PATH then
+		return false
+	end
+
+	if not name then
+		return true
+	end
+
+	return name == vim.env.DISTROBOX_ENTER_PATH
+end
+
 ---@type function? automatically set buffer indentation style based on file content
 FUNCS.auto_set_indents = nil
 
