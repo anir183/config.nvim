@@ -45,7 +45,9 @@ plugin.dependencies = {
 --        they do, but if it works it works
 --
 --        https://github.com/neovim/nvim-lspconfig/blob/master/README.md
-local popup_once = false
+
+---@type table<string, boolean> store filetypes for which lsp has been attached
+local lsp_attached_fts = {}
 plugin.config = function()
 	for name, conf in pairs(OPTS.lsps) do
 		vim.lsp.enable(name)
@@ -84,7 +86,7 @@ plugin.config = function()
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = VARS.augrp.id,
 				callback = function()
-					if popup_once then
+					if lsp_attached_fts[vim.bo.filetype] then
 						return
 					end
 
@@ -97,7 +99,7 @@ plugin.config = function()
 							.. "This is that popup. Why does this happen? IDK"
 					)
 
-					popup_once = true
+					lsp_attached_fts[vim.bo.filetype] = true
 				end,
 			})
 		end
