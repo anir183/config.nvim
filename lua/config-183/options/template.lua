@@ -9,14 +9,46 @@
 --
 --]]
 
+---@module "config-183.options.defaults"
+
 ---@type DefaultOpts
 local options = {}
 
--- options.<name> = <value>
--- options.<name> = <value>
--- options.<name> = <value>
--- options.<name> = <value>
--- options.<name> = <value>
--- options.<name> = <value>
+--[[ instance settings ]]
+
+options.mode = "normal"
+options.shell = nil
+
+--[[ run functions ]]
+
+options.before = function() end
+options.after = function() end
+
+--[[ plugins ]]
+
+options.extra_plugins = {}
+options.plugin_overrides = {}
+options.test_plugins = nil
+
+--[[ devtools ]]
+
+options.lsps = {}
+options.conform = {}
+options.lint = {}
+options.dap = {}
+options.cmp_sources = {}
+
+--[[ quality of life settings ]]
+
+options.cloak_patterns = {}
+options.additional_fts = {}
+options.parsers = {}
+
+--[[ configuration options ]]
+
+options.util_vars = {}
+options.log_opts = {}
+options.stline_otps = {}
+options.lazy_opts = {}
 
 return options
