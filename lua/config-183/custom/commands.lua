@@ -34,10 +34,10 @@ cmd("EditOptions", function()
 		"options",
 		"custom.lua"
 	)
-	local opts_file, err = io.open(opts_path, "r")
+	local opts_file, opts_err = io.open(opts_path, "r")
 
-	if err then
-		LOG.debug(err)
+	if opts_err then
+		LOG.debug(opts_err)
 	end
 
 	if opts_file == nil then
@@ -50,24 +50,32 @@ cmd("EditOptions", function()
 			"options",
 			"template.lua"
 		)
-		local template_file
-		template_file, err = io.open(template_path, "r")
-
-		if err then
-			LOG.warn("error while opening template options file")
-			LOG.debug(err)
-		end
+		local template_file, template_err = io.open(template_path, "r")
 
 		local template_data = "return {}"
-		if not template_file then
+		if template_err or not template_file then
 			LOG.warn("could not find or open template options file")
+			LOG.debug(template_err)
 		else
 			template_data = template_file:read("*a")
 			template_file:close()
 		end
 
-		FUNCS.write_to_file(opts_path, template_data)
-		LOG.info("generated custom options file from template data")
+		opts_file, opts_err = io.open(opts_path, "w")
+		if opts_err or not opts_file then
+			LOG.warn("could not open options file to write")
+			LOG.debug(opts_err)
+		else
+			local _, write_err = opts_file:write(template_data)
+			opts_file:close()
+
+			if write_err then
+				LOG.warn("could not write template data to options file")
+				LOG.debug(write_err)
+			else
+				LOG.info("generated custom options file from template data")
+			end
+		end
 	end
 
 	LOG.info("creating ui buffer to edit options file")
