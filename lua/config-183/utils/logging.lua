@@ -26,7 +26,7 @@ _G.LOG.opts.notify_level = vim.log.levels.WARN
 ---@type vim.log.levels minimum level of log statements to write to file
 _G.LOG.opts.file_level = vim.log.levels.TRACE
 ---@type "notify" | "file" | "both" output stream of the log statements
-_G.LOG.opts.out_stream = "both"
+_G.LOG.opts.out_stream = "notify"
 ---@type string dir where the log file should be stored
 _G.LOG.opts.file_dir = FUNCS.join_paths(VARS.path.state, "config-183")
 ---@param level vim.log.levels log level to get the label for
@@ -63,13 +63,19 @@ end
 
 --[[ variables for log file ]]
 local file = nil
-local file_path = nil
+local file_path =
+	FUNCS.join_paths(LOG.opts.file_dir, os.date("%Y-%m-%d-%H-%M-%S") .. ".log")
 local file_write_tries = 0
 
 ---@return nil
 --- ---
 --- initialize stuff for logging
 _G.LOG.init = function()
+	--[[ if out_stream is "notify" indicates its neither "file" nor "both" ]]
+	if LOG.opts.out_stream == "notify" then
+		return
+	end
+
 	file_path = FUNCS.join_paths(
 		LOG.opts.file_dir,
 		os.date("%Y-%m-%d-%H-%M-%S") .. ".log"
