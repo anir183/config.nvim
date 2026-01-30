@@ -1,6 +1,27 @@
 #!/bin/bash
 
-__nvim_logfile="$XDG_STATE_HOME/nvim/config-183.log"
+__state_dir="$HOME/.local/state/nvim"
+if [[ ! -z $XDG_STATE_HOME ]]; then
+	__state_dir="$XDG_STATE_HOME/nvim"
+fi
+
+if [[ ! -d $__state_dir ]]; then
+	echo "no neovim state directory"
+	return
+fi
+
+if [[ ! -d $__state_dir/config-183 ]]; then
+	echo "no config-183 log directory"
+	return
+fi
+
+__latest_file=$(ls -Art "$__state_dir/config-183" | tail -n 1)
+if [[ -z $__latest_file ]] || [[ "${__latest_file// }" == "" ]]; then
+	echo "no latest used log file"
+	return
+fi
+
+__nvim_logfile="$__state_dir/config-183/$__latest_file"
 __opt=$1
 
 function __grep {
