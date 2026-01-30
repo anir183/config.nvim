@@ -50,9 +50,9 @@ LOG.debug(OPTS.util_vars or {})
 LOG.opts = vim.tbl_deep_extend("force", LOG.opts or {}, OPTS.log_opts or {})
 LOG.info("merged editable options into logging library options")
 LOG.debug(OPTS.log_opts or {})
-if OPTS.log_opts and (OPTS.log_opts.file_path or OPTS.log_opts.file_action) then
-	LOG.perform_file_action()
-	LOG.info("regenerated log file after updating log options")
+if OPTS.log_opts and OPTS.log_opts.file_dir then
+	LOG.init()
+	LOG.info("reinitialised logging files")
 end
 
 _G.STLINE = vim.tbl_deep_extend("force", STLINE or {}, OPTS.stline_otps or {})

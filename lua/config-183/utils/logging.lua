@@ -27,10 +27,8 @@ _G.LOG.opts.notify_level = vim.log.levels.WARN
 _G.LOG.opts.file_level = vim.log.levels.TRACE
 ---@type "notify" | "file" | "both" output stream of the log statements
 _G.LOG.opts.out_stream = "both"
----@type "delete" | "rename" | "keep" what to do with the log file when opening neovim
-_G.LOG.opts.file_action = "delete"
----@type string path where the log file should be stored
-_G.LOG.opts.file_path = FUNCS.join_paths(VARS.path.state, "config-183.log")
+---@type string dir where the log file should be stored
+_G.LOG.opts.file_dir = FUNCS.join_paths(VARS.path.state, "config-183")
 ---@param level vim.log.levels log level to get the label for
 ---@return string? label the label for the log level
 _G.LOG.opts.label = function(level)
@@ -61,6 +59,42 @@ if LOG.opts.notify_after_vim_enter then
 			is_vim_entered = true
 		end,
 	})
+end
+
+--[[ variables for log file ]]
+local file = nil
+local file_path = nil
+local file_write_tries = 0
+
+---@return nil
+--- ---
+--- initialize stuff for logging
+_G.LOG.init = function()
+	file_path = FUNCS.join_paths(
+		LOG.opts.file_dir,
+		os.date("%Y-%m-%d-%H-%M-%S") .. ".log"
+	)
+	--[[ close file if opened before exiting vim ]]
+	vim.api.nvim_create_autocmd("VimLeave", {
+		group = VARS.augrp.id,
+		callback = function()
+			if file then
+				file:close()
+			end
+		end,
+	})
+
+	--[[ create logging file ]]
+	if vim.fn.isdirectory(LOG.opts.file_dir) == 0 then
+		vim.fn.mkdir(LOG.opts.file_dir, "p")
+	end
+	local err = nil
+	file, err = io.open(file_path, "a+")
+
+	if err or not file then
+		LOG.warn("could not create log file")
+		LOG.debug(err)
+	end
 end
 
 ---@param level vim.log.levels log level of the provided data or message
@@ -103,11 +137,32 @@ _G.LOG.print = function(level, ...)
 			return
 		end
 
+		if file_write_tries > 5 then
+			return
+		end
+
 		for _, chunk in ipairs(FUNCS.split_str(out, "\n")) do
-			FUNCS.write_to_file(
-				LOG.opts.file_path,
-				timestamp .. label .. chunk .. "\n"
-			)
+			local file_err = nil
+
+			if not file then
+				file, file_err = io.open(file_path, "a+")
+			end
+
+			if file_err or not file then
+				LOG.warn("could not open log file to write into")
+				LOG.debug(file_err)
+				file_write_tries = file_write_tries + 1
+				break
+			end
+
+			local _, write_err = file:write(timestamp .. label .. chunk .. "\n")
+
+			if write_err then
+				LOG.warn("could not write into log file")
+				LOG.debug(write_err)
+				file_write_tries = file_write_tries + 1
+				break
+			end
 		end
 	end
 end
@@ -157,41 +212,9 @@ _G.LOG.error = function(message)
 	LOG.print(vim.log.levels.ERROR, message)
 end
 
----@return nil
---- ---
---- perform file action on config execution
-_G.LOG.perform_file_action = function()
-	--[[ perform log file action ]]
-	if LOG.opts.file_action ~= "keep" then
-		if LOG.opts.out_stream == "notify" then
-			goto skip
-		end
+_G.LOG.init()
 
-		local success, err
-		if LOG.opts.file_action == "delete" then
-			success, err = os.remove(LOG.opts.file_path)
-		elseif LOG.opts.file_action == "rename" then
-			success, err = os.rename(
-				LOG.opts.file_path,
-				FUNCS.join_paths(
-					VARS.path.state,
-					"config-183-" .. os.date("%Y-%m-%d-%H-%M-%S") .. ".log"
-				)
-			)
-		end
-
-		if success then
-			LOG.info("empty log file initiated")
-		else
-			LOG.warn("could not initiate empty log file")
-			LOG.debug(err)
-		end
-
-		::skip::
-	end
-end
-
-_G.LOG.perform_file_action()
+LOG.info("this is a test")
 
 _G.LOG.info("logging library loaded")
 
