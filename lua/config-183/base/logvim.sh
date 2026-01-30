@@ -7,18 +7,18 @@ fi
 
 if [[ ! -d $__state_dir ]]; then
 	echo "no neovim state directory"
-	return
+	exit
 fi
 
 if [[ ! -d $__state_dir/config-183 ]]; then
 	echo "no config-183 log directory"
-	return
+	exit
 fi
 
 __latest_file=$(ls -Art "$__state_dir/config-183" | tail -n 1)
 if [[ -z $__latest_file ]] || [[ "${__latest_file// }" == "" ]]; then
 	echo "no latest used log file"
-	return
+	exit
 fi
 
 __nvim_logfile="$__state_dir/config-183/$__latest_file"
