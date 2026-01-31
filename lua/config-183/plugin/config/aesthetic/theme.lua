@@ -18,7 +18,7 @@ plugin.name = "catppuccin"
 plugin.priority = LAZY.priorities.highest
 ---@type CatppuccinOptions
 plugin.opts = {
-	flavour = "frappe",
+	flavour = "mocha",
 	transparent_background = true,
 	float = {
 		transparent = true,
