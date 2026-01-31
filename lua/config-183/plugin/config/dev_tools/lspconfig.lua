@@ -85,7 +85,23 @@ plugin.config = function()
 		if VARS.lsp_indexing_hack then
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = VARS.augrp.id,
-				callback = function()
+				callback = function(args)
+					local perform_hack = false
+					for _, client in
+						ipairs(vim.lsp.get_clients({ bufnr = args.buf }))
+					do
+						for _, hack_client in ipairs(VARS.lsp_indexing_hack) do
+							if client.config.name == hack_client then
+								perform_hack = true
+								break
+							end
+						end
+					end
+
+					if not perform_hack then
+						return
+					end
+
 					if lsp_attached_fts[vim.bo.filetype] then
 						return
 					end

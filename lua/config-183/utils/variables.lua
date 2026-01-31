@@ -55,5 +55,5 @@ _G.VARS.strings.num_match = "^%-?%d+$"
 ---@type "unix" | "windows" os style in which the config is running
 _G.VARS.os = VARS.path.separator == "/" and "unix" or "windows"
 
----@type boolean hack to ensure workspace indexing starts on lsp attach
-_G.VARS.lsp_indexing_hack = false
+---@type string[] names of lsps to enable the lsp hack for
+_G.VARS.lsp_indexing_hack = nil

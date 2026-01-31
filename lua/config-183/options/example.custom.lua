@@ -157,6 +157,7 @@ options.cmp_sources = {
 }
 
 options.util_vars = {}
-options.util_vars.lsp_indexing_hack = true
+options.util_vars.lsp_indexing_hack = { "lua_ls" }
+options.log_opts = {}
 
 return options
