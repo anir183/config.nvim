@@ -24,6 +24,9 @@ fi
 __nvim_logfile="$__state_dir/config-183/$__latest_file"
 __opt=$1
 
+echo "using logfile: $__nvim_logfile"
+echo
+
 function __grep {
 	if type "bat" > /dev/null; then
 		if type "rg" > /dev/null; then
