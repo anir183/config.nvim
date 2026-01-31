@@ -54,6 +54,19 @@ nmap(
 	"[custom]: change [I][N]dentatin style"
 )
 
+--[[ change filetype ]]
+nmap("<leader>ft", function()
+	vim.ui.input({
+		prompt = "new file type: ",
+	}, function(filetype)
+		if not filetype or filetype == "" then
+			return
+		end
+
+		vim.bo.filetype = filetype
+	end)
+end, "[custom]: change [F]ile[T]ype")
+
 --[[ toggle cursor movement ]]
 nmap("<leader>lc", function()
 	vim.o.scrolloff = 999 - vim.o.scrolloff
