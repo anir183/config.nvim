@@ -200,7 +200,7 @@ plugin.keys = {
 		function()
 			require("dap").continue()
 		end,
-		desc = "[plugin/dap]: run a d[A][P] debugger or resume execution",
+		desc = "[plugin/dap]: run a d[A][P] debugger or continue execution",
 	},
 	{
 		mode = "n",
