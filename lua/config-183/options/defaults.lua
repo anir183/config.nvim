@@ -79,7 +79,7 @@ defaults.lint = {
 --- dap adapters setup
 defaults.dap = {
 	---@type table<string, function> setup dap adapters in mason dap
-	handlers = {},
+	mason_dap = {},
 	---@type table<string, dap.Adapter|fun(callback: fun(adapter: dap.Adapter), config: dap.Configuration, parent?: dap.Session)> adapter definitions
 	adapters = {},
 	---@type table<string, dap.Configuration[]> configurations per adapter

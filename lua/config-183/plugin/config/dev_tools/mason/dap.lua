@@ -34,7 +34,7 @@ plugin.config = function()
 	}
 
 	-- populate the variables from settings data
-	for name, handler in pairs(OPTS.dap.handlers) do
+	for name, handler in pairs(OPTS.dap.mason_dap) do
 		table.insert(ensure_installed, name)
 
 		if handler and type(handler) == "function" then
