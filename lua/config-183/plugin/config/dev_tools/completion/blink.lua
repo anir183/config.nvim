@@ -40,10 +40,12 @@ plugin.opts = {
 					{ "source_name" }
 				},
 			},
+			max_height = 25,
 		},
 	},
 	sources = OPTS.cmp_sources,
 }
+
 plugin.config = function(_, opts)
 	local blink = require("blink.cmp")
 	blink.setup(opts)
