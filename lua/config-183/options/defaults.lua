@@ -46,7 +46,7 @@ defaults.plugin_overrides = {}
 ---@type LazySpec[]? plugins to test for by pausing all other plugins
 defaults.test_plugins = nil
 
----@type table<string, vim.lsp.Config>? setup for lsps and their configuration options
+---@type table<string, vim.lsp.Config|nil>? setup for lsps and their configuration options
 defaults.lsps = {
 	lua_ls = {
 		settings = {
@@ -60,9 +60,9 @@ defaults.lsps = {
 ---@class FormatterOpts
 --- map built-in formatters to filetypes or setup custom formatters and override defaults
 defaults.conform = {
-	---@type table<string, conform.FiletypeFormatterInternal|fun(bufnr: integer):conform.FiletypeFormatterInternal>? map of filetype to formatters
+	---@type table<string, conform.FiletypeFormatterInternal|nil|fun(bufnr: integer):conform.FiletypeFormatterInternal>? map of filetype to formatters
 	ft_formatters = {},
-	---@type table<string, conform.FormatterConfigOverride|fun(bufnr: integer):conform.FormatterConfigOverride|nil>? custom formatters and overrides for built-in formatters
+	---@type table<string, conform.FormatterConfigOverride|nil|fun(bufnr: integer):conform.FormatterConfigOverride|nil>? custom formatters and overrides for built-in formatters
 	custom_formatters = {},
 }
 
@@ -78,11 +78,11 @@ defaults.lint = {
 ---@class DapOpts
 --- dap adapters setup
 defaults.dap = {
-	---@type table<string, function> setup dap adapters in mason dap
+	---@type table<string, function?> setup dap adapters in mason dap
 	mason_dap = {},
-	---@type table<string, dap.Adapter|fun(callback: fun(adapter: dap.Adapter), config: dap.Configuration, parent?: dap.Session)> adapter definitions
+	---@type table<string, dap.Adapter|nil|fun(callback: fun(adapter: dap.Adapter), config: dap.Configuration, parent?: dap.Session)> adapter definitions
 	adapters = {},
-	---@type table<string, dap.Configuration[]> configurations per adapter
+	---@type table<string, dap.Configuration[]|nil> configurations per adapter
 	configuration = {},
 }
 
