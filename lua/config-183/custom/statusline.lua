@@ -54,9 +54,10 @@ end
 --- get the name of the file open in the current buffer
 _G.STLINE.components.filename = STLINE.components.filename
 	or function()
-		local filename = vim.fn.expand("%:p:t")
+		local filename = vim.fn.expand("%:t:r")
 		filename = filename == "" and vim.fn.expand("%") or filename
-		filename = filename == "" and "unnamed" or filename
+		filename = filename == "" and "unnamed"
+			or filename .. " : " .. vim.bo.filetype
 		return FUNCS.hl_fmt_str("DiffFile", " " .. filename .. " ")
 	end
 ---@return nil
