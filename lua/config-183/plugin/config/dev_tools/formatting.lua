@@ -21,7 +21,9 @@ plugin.dependencies = "mason"
 plugin.lazy = false
 ---@type conform.setupOpts
 plugin.opts = {
+	---@diagnostic disable-next-line: assign-type-mismatch
 	formatters_by_ft = OPTS.conform.ft_formatters,
+	---@diagnostic disable-next-line: assign-type-mismatch
 	formatters = OPTS.conform.custom_formatters,
 }
 
