@@ -19,8 +19,11 @@ plugin.lazy = false
 plugin.config = function()
 	local lint = require("lint")
 
+	---@diagnostic disable-next-line: assign-type-mismatch
 	lint.linters_by_ft = OPTS.lint.ft_linters
-	lint.linters = OPTS.lint.available_linters
+	for name, linter in pairs(OPTS.lint.available_linters) do
+		lint.linters[name] = linter
+	end
 
 	vim.api.nvim_create_autocmd({
 		"BufEnter",
