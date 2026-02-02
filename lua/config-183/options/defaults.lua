@@ -69,9 +69,9 @@ defaults.conform = {
 ---@class LinterOpts
 --- map built-in formatters to filetypes or setup available linters
 defaults.lint = {
-	---@type table<string, string[]> map of filetype to linters to try using try_lint
+	---@type table<string, string[]?> map of filetype to linters to try using try_lint
 	ft_linters = {},
-	---@type table<string, fun():lint.Linter|lint.Linter> table with available linters
+	---@type table<string, nil|fun():lint.Linter|lint.Linter> table with available linters
 	available_linters = {},
 }
 
