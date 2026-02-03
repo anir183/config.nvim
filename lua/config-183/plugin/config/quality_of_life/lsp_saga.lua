@@ -18,7 +18,14 @@ local plugin = {}
 plugin[1] = "nvimdev/lspsaga.nvim"
 plugin.name = "lspsaga"
 plugin.dependencies = { "treesitter", "devicons" }
-plugin.opts = {}
+plugin.opts = {
+	lightbulb = {
+		virtual_text = false,
+	},
+	ui = {
+		border = "rounded",
+	},
+}
 plugin.config = function(_, opts)
 	require("lspsaga").setup(opts)
 

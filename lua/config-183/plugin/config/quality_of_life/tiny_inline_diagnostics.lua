@@ -14,11 +14,15 @@ local plugin = {}
 
 plugin[1] = "rachartier/tiny-inline-diagnostic.nvim"
 plugin.name = "tiny-inline-diagnostic"
+plugin.lazy = false
 plugin.opts = {
 	preset = "classic",
 	transparent_bg = true,
 	options = {
 		show_code = false,
+		show_source = {
+			enabled = true,
+		},
 		add_messages = {
 			display_count = true,
 		},
@@ -42,5 +46,13 @@ plugin.config = function(_, opts)
 	require("tiny-inline-diagnostic").setup(opts)
 	vim.diagnostic.config({ virtual_text = false }) -- disable neovim's default virtual text diagnostics
 end
+plugin.keys = {
+	{
+		mode = "n",
+		"<leader>ti",
+		"<CMD>TinyInlineDiag toggle<CR>",
+		desc = "[plugin/tiny-inline-diagnostic]: [T]oggle [I]nline dagnostics",
+	},
+}
 
 return plugin
