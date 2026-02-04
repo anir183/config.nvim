@@ -40,7 +40,7 @@ plugin.keys = {
 		desc = "[plugin/comment]: blockwise commenting leader",
 	},
 
-	-- single line or count comment
+	-- single line or count comment in normal mode
 	{
 		mode = "n",
 		"<C-c><C-c>",
@@ -52,7 +52,7 @@ plugin.keys = {
 			end
 		end,
 		expr = true,
-		desc = "[plugin/comment]: comment current line",
+		desc = "[plugin/comment]: comment current line normal mode",
 	},
 	{
 		mode = "n",
@@ -65,7 +65,27 @@ plugin.keys = {
 			end
 		end,
 		expr = true,
-		desc = "[plugin/comment]: block-comment current line",
+		desc = "[plugin/comment]: block-comment current line normal mode",
+	},
+
+	-- single line or count comment in insert mode
+	{
+		mode = "i",
+		"<C-c><C-c>",
+		function()
+			return "<ESC><PLUG>(comment_toggle_linewise_current)<ESC>a"
+		end,
+		expr = true,
+		desc = "[plugin/comment]: comment current line insert mode",
+	},
+	{
+		mode = "i",
+		"<C-x><C-x>",
+		function()
+			return "<ESC><PLUG>(comment_toggle_blockwise_current)<ESC>a"
+		end,
+		expr = true,
+		desc = "[plugin/comment]: block-comment current line insert mode",
 	},
 
 	-- visual mode comment
