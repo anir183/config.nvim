@@ -14,7 +14,7 @@
 ---@module "config-183.custom"
 ---@module "config-183.custom.statusline"
 ---@module "config-183.plugin"
----@module "config-183.plugin.init"
+---@module "config-183.plugin.spec"
 ---@module "lazy"
 ---@module "conform"
 ---@module "lint"
@@ -40,7 +40,7 @@ defaults.after = function() end
 ---@type LazySpec[]? extra plugins to install alongside configured ones
 defaults.extra_plugins = {}
 
----@type ConfigSpec? override plugins and config defined in the confiuration
+---@type table<string, LazySpec>? override plugins and config defined in the confiuration
 defaults.plugin_overrides = {}
 
 ---@type LazySpec[]? plugins to test for by pausing all other plugins
