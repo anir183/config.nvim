@@ -120,6 +120,7 @@ cmd("ChangeIndent", function()
 
 		if indent_type == "auto" then
 			FUNCS.auto_set_indents()
+			return
 		end
 
 		--[[ setup buffer indentation setup and reindent ]]
