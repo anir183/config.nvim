@@ -73,9 +73,6 @@ LAZY.spec = {
 	lint = require("config-183.plugin.config.dev_tools.linting"),
 	dap = require("config-183.plugin.config.dev_tools.dap.dap"),
 	dap_ui = require("config-183.plugin.config.dev_tools.dap.ui"),
-	repl_highlights = require(
-		"config-183.plugin.config.dev_tools.dap.repl_highlights"
-	),
 	virtual_text = require(
 		"config-183.plugin.config.dev_tools.dap.virtual_text"
 	),

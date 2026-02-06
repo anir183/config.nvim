@@ -20,7 +20,6 @@ plugin.dependencies = {
 	"dap",
 	"nio",
 	"dap-virtual-text",
-	"dap-repl-highlights",
 }
 plugin.lazy = false
 ---@type dapui.Config
