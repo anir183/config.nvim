@@ -37,11 +37,14 @@ plugin.opts = {
 				columns = {
 					{ "label", "label_description", gap = 1 },
 					{ "kind_icon", "kind", gap = 1 },
-					{ "source_name" }
+					{ "source_name" },
 				},
 			},
 			max_height = 25,
 		},
+	},
+	snippets = {
+		preset = "luasnip",
 	},
 	sources = OPTS.cmp_sources,
 }

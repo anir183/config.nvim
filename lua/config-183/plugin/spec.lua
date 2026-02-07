@@ -66,6 +66,12 @@ LAZY.spec = {
 	--[[ development tools ]]
 	lspconfig = require("config-183.plugin.config.dev_tools.lspconfig"),
 	blink = require("config-183.plugin.config.dev_tools.completion.blink"),
+	frienly_snippets = require(
+		"config-183.plugin.config.dev_tools.completion.friendly_snippets"
+	),
+	lua_snip = require(
+		"config-183.plugin.config.dev_tools.completion.lua_snip"
+	),
 	signature = require(
 		"config-183.plugin.config.dev_tools.completion.signature"
 	),

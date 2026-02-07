@@ -92,7 +92,7 @@ defaults.cmp_sources = {
 		"lsp",
 		"path",
 		"snippets",
-		"buffer",
+		-- "buffer",
 	},
 }
 
