@@ -48,7 +48,7 @@ defaults.ai = {}
 ---@type "cmp" | "vtext" | "panel" | "off" whether to enable copilot related plugins or not
 defaults.ai.copilot = "panel"
 ---@type boolean whether to enable opencode related plugins or not
-defaults.ai.opencode = false
+defaults.ai.opencode = true
 
 ---@type LazySpec[]? plugins to test for by pausing all other plugins
 defaults.test_plugins = nil

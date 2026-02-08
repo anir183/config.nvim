@@ -97,6 +97,7 @@ LAZY.spec = {
 	--[[ ai ]]
 	copilot = require("config-183.plugin.config.ai.copilot"),
 	copilot_lsp = require("config-183.plugin.config.ai.copilot_lsp"),
+	opencode = require("config-183.plugin.config.ai.opencode"),
 }
 LOG.info("lazy.nvim plugin specs generated and loaded")
 
