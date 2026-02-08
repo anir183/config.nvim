@@ -19,6 +19,12 @@ plugin[1] = "saghen/blink.cmp"
 plugin.name = "blink"
 plugin.main = "blink.cmp"
 plugin.version = "1.*"
+plugin.dependencies = OPTS.ai.copilot == "cmp"
+		and {
+			"lazydev",
+			"blink-copilot",
+		}
+	or "lazydev"
 ---@type blink.cmp.Config
 plugin.opts = {
 	keymap = {
@@ -32,6 +38,7 @@ plugin.opts = {
 			},
 		},
 		menu = {
+			direction_priority = { "n", "s" },
 			border = "rounded",
 			draw = {
 				columns = {
@@ -40,13 +47,41 @@ plugin.opts = {
 					{ "source_name" },
 				},
 			},
-			max_height = 25,
 		},
 	},
 	snippets = {
 		preset = "luasnip",
 	},
-	sources = OPTS.cmp_sources,
+	sources = {
+		default = OPTS.ai.copilot == "cmp" and {
+			"lazydev",
+			"lsp",
+			"path",
+			"snippets",
+			"copilot",
+		} or {
+			"lazydev",
+			"lsp",
+			"path",
+			"snippets",
+		},
+		providers = {
+			lazydev = {
+				name = "LazyDev",
+				module = "lazydev.integrations.blink",
+				score_offset = 100, -- top priority
+			},
+			---@diagnostic disable-next-line: assign-type-mismatch
+			copilot = OPTS.ai.copilot == "cmp"
+					and {
+						name = "copilot",
+						module = "blink-copilot",
+						score_offset = 90, -- close to top priority
+						async = true,
+					}
+				or nil,
+		},
+	},
 }
 
 plugin.config = function(_, opts)

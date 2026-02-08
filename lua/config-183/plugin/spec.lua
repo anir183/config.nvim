@@ -66,9 +66,13 @@ LAZY.spec = {
 	--[[ development tools ]]
 	lspconfig = require("config-183.plugin.config.dev_tools.lspconfig"),
 	blink = require("config-183.plugin.config.dev_tools.completion.blink"),
+	blink_copilot = require(
+		"config-183.plugin.config.dev_tools.completion.copilot"
+	),
 	frienly_snippets = require(
 		"config-183.plugin.config.dev_tools.completion.friendly_snippets"
 	),
+	lazydev = require("config-183.plugin.config.dev_tools.completion.lazydev"),
 	lua_snip = require(
 		"config-183.plugin.config.dev_tools.completion.lua_snip"
 	),
@@ -89,6 +93,10 @@ LAZY.spec = {
 	mason_lspconfig = require(
 		"config-183.plugin.config.dev_tools.mason.lspconfig"
 	),
+
+	--[[ ai ]]
+	copilot = require("config-183.plugin.config.ai.copilot"),
+	copilot_lsp = require("config-183.plugin.config.ai.copilot_lsp"),
 }
 LOG.info("lazy.nvim plugin specs generated and loaded")
 

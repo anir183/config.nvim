@@ -43,6 +43,13 @@ defaults.extra_plugins = {}
 ---@type table<string, LazySpec>? override plugins and config defined in the confiuration
 defaults.plugin_overrides = {}
 
+---@class AiOpts options for ai related plugins
+defaults.ai = {}
+---@type "cmp" | "vtext" | "panel" | "off" whether to enable copilot related plugins or not
+defaults.ai.copilot = "panel"
+---@type boolean whether to enable opencode related plugins or not
+defaults.ai.opencode = false
+
 ---@type LazySpec[]? plugins to test for by pausing all other plugins
 defaults.test_plugins = nil
 
@@ -84,16 +91,6 @@ defaults.dap = {
 	adapters = {},
 	---@type table<string, dap.Configuration[]|nil> configurations per adapter
 	configuration = {},
-}
-
----@type blink.cmp.SourceConfigPartial
-defaults.cmp_sources = {
-	default = {
-		"lsp",
-		"path",
-		"snippets",
-		-- "buffer",
-	},
 }
 
 ---@type { file_pattern: string | string[], cloak_pattern: string | string[], replace?: string | string[] }[] cloak.nvim filetype and hiding patterns
