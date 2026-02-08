@@ -192,35 +192,33 @@ cmd("SubstituteStr", function()
 		end
 
 		--[[ get substitute ]]
-		local substitute = nil
 		vim.ui.input({
 			prompt = "substitute: ",
-		}, function(sbst)
-			substitute = sbst
-		end)
-		if not substitute then
-			return
-		end
-
-		--[[ perform standalone or substring substitution base on use choice ]]
-		vim.ui.select({
-			"standalone",
-			"substring",
-		}, {
-			prompt = "replacement type: ",
-		}, function(type)
-			if not type then
+		}, function(substitute)
+			if not substitute then
 				return
 			end
 
-			FUNCS.feedkeys(
-				":%s/"
-					.. (type == "substring" and "" or "\\<")
-					.. target
-					.. (type == "substring" and "/" or "\\>/")
-					.. substitute
-					.. "/gI"
-			)
+			--[[ perform standalone or substring substitution base on use choice ]]
+			vim.ui.select({
+				"standalone",
+				"substring",
+			}, {
+				prompt = "replacement type: ",
+			}, function(type)
+				if not type then
+					return
+				end
+
+				FUNCS.feedkeys(
+					":%s/"
+						.. (type == "substring" and "" or "\\<")
+						.. target
+						.. (type == "substring" and "/" or "\\>/")
+						.. substitute
+						.. "/gI"
+				)
+			end)
 		end)
 	end)
 end, {
