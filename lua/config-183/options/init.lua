@@ -11,7 +11,6 @@
 --]]
 
 ---@module "vim"
----@module "vim"
 ---@module "config-183.utils"
 ---@module "config-183.utils.logging"
 ---@module "config-183.options"
