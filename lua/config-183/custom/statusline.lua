@@ -48,9 +48,10 @@ _G.STLINE.mode_labels = STLINE.mode_labels
 _G.STLINE.components = STLINE.components or {}
 ---@return nil
 --- vim logo
-_G.STLINE.components.logo = function()
-	return FUNCS.hl_fmt_str("@parameter", "   ")
-end
+_G.STLINE.components.logo = STLINE.components.logo
+	or function()
+		return FUNCS.hl_fmt_str("@parameter", "   ")
+	end
 --- get the name of the file open in the current buffer
 _G.STLINE.components.filename = STLINE.components.filename
 	or function()
@@ -102,6 +103,13 @@ _G.STLINE.components.diagnostics = STLINE.components.diagnostics
 
 		return warns .. errors
 	end
+---@return nil
+--- get git-information for the current file (currently only branch name, other info from plugin)
+_G.STLINE.components.gitinfo = STLINE.components.gitinfo
+	or function()
+		local branch = vim.fn.system("git branch --show-current")
+		return FUNCS.hl_fmt_str("Exception", branch)
+	end
 
 ---@type string[] arragement of statusline components ($<name> for custom components)
 _G.STLINE.arrangement = STLINE.arrangement
@@ -119,6 +127,8 @@ _G.STLINE.arrangement = STLINE.arrangement
 		"%=", -- break
 
 		-- right
+		"$gitinfo",
+		" ",
 		"$filename",
 		" ",
 		"$indent",

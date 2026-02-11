@@ -59,29 +59,6 @@ plugin.config = function(_, opts)
 			" ",
 		})
 	end
-	STLINE.arrangement = {
-		-- left
-		"$logo",
-		"$mode",
-		"$diagnostics",
-		" ",
-		"%r",
-		"%w",
-		"%h",
-		"%m",
-
-		"%=", -- break
-
-		-- right
-		"$gitinfo",
-		" ",
-		"$filename",
-		" ",
-		"$indent",
-		" ",
-		"$position",
-	}
-	STLINE.set_arrangment()
 
 	FUNCS.mmap("n", "<leader>ga", {
 		["toggle-signs"] = gitsigns.toggle_signs,
