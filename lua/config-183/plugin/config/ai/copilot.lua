@@ -22,8 +22,8 @@ plugin.opts = {
 		auto_trigger = OPTS.ai.copilot == "vtext",
 		keymap = {
 			accept = "<M-l>",
-			accept_word = "<M-k>",
-			accept_line = "<M-j>",
+			accept_line = "<M-k>",
+			accept_word = "<M-j>",
 			next = "<M-]>",
 			prev = "<M-[>",
 			dismiss = "<C-]>",
