@@ -164,7 +164,7 @@ FUNCS.str_isnum = function(str)
 end
 
 ---@param name? string check if inside a distrobox with given name
----@return nil
+---@return boolean
 --- ---
 --- checks if neovim is opened inside a distrobox container and optionally with a given name
 FUNCS.in_distrobox = function(name)
