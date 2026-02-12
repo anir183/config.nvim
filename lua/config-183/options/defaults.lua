@@ -53,6 +53,9 @@ defaults.ai.opencode = true
 ---@type LazySpec[]? plugins to test for by pausing all other plugins
 defaults.test_plugins = nil
 
+---@type table<string, boolean>? toolchains for diffrent langages and frameworks
+defaults.toolchain = {}
+defaults.toolchain.flutter = false
 ---@type table<string, vim.lsp.Config|nil>? setup for lsps and their configuration options
 defaults.lsps = {
 	lua_ls = {

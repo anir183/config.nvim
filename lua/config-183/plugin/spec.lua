@@ -98,6 +98,11 @@ LAZY.spec = {
 	copilot = require("config-183.plugin.config.ai.copilot"),
 	copilot_lsp = require("config-183.plugin.config.ai.copilot_lsp"),
 	opencode = require("config-183.plugin.config.ai.opencode"),
+
+	--[[ toolchains ]]
+	flutter_tools = require(
+		"config-183.plugin.config.toolchains.flutter_tools"
+	),
 }
 LOG.info("lazy.nvim plugin specs generated and loaded")
 
