@@ -20,7 +20,8 @@ plugin.name = "lspsaga"
 plugin.dependencies = { "treesitter", "devicons" }
 plugin.opts = {
 	lightbulb = {
-		virtual_text = false,
+		virtual_text = true,
+		sign = false,
 	},
 	ui = {
 		border = "rounded",
