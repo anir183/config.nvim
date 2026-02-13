@@ -20,9 +20,9 @@ plugin.opts = {
 	floating_window_off_y = 1,
 	doc_lines = 0,
 	hint_prefix = {
-		above = "🡯 ",
+		above = "↙ ",
 		current = "🡨 ",
-		below = "🡬 ",
+		below = "↖ ",
 	},
 	handler_opts = {
 		border = "none",
