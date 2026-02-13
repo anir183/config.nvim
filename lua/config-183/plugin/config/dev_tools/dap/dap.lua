@@ -20,6 +20,21 @@ plugin.name = "dap"
 plugin.dependencies = "mason"
 plugin.lazy = false
 plugin.config = function()
+	vim.cmd("hi DapStoppedCustom guifg=#a6e3a1")
+	vim.cmd("hi DapBreakpointCustom guifg=#f38ba8")
+	vim.fn.sign_define("DapStopped", {
+		text = "⌦ ",
+		texthl = "DapStoppedCustom",
+		linehl = "",
+		numhl = "",
+	})
+	vim.fn.sign_define("DapBreakpoint", {
+		text = "ඞ ",
+		texthl = "DapBreakpointCustom",
+		linehl = "",
+		numhl = "",
+	})
+
 	FUNCS.mmap("n", "<leader>AP", {
 		["set-breakpoints"] = function()
 			require("dap").set_breakpoint()
@@ -212,6 +227,14 @@ plugin.keys = {
 	},
 	{
 		mode = "n",
+		"<leader>am",
+		function()
+			require("dap").toggle_breakpoint()
+		end,
+		desc = "[plugin/dap]: toggle [A][M]ogus",
+	},
+	{
+		mode = "n",
 		"<leader>bp",
 		function()
 			require("dap").toggle_breakpoint()
@@ -258,7 +281,7 @@ plugin.keys = {
 	},
 	{
 		mode = "n",
-		"<leader>so",
+		"]s",
 		function()
 			require("dap").step_over()
 		end,
@@ -266,7 +289,15 @@ plugin.keys = {
 	},
 	{
 		mode = "n",
-		"<leader>si",
+		"[s",
+		function()
+			require("dap").step_back()
+		end,
+		desc = "[plugin/dap]: [S]tep ba[C]k",
+	},
+	{
+		mode = "n",
+		"]S",
 		function()
 			require("dap").step_into()
 		end,
@@ -274,19 +305,11 @@ plugin.keys = {
 	},
 	{
 		mode = "n",
-		"<leader>su",
+		"[S",
 		function()
 			require("dap").step_out()
 		end,
 		desc = "[plugin/dap]: [S]tep o[U]t",
-	},
-	{
-		mode = "n",
-		"<leader>sc",
-		function()
-			require("dap").step_back()
-		end,
-		desc = "[plugin/dap]: [S]tep ba[C]k",
 	},
 	{
 		mode = "n",

@@ -89,6 +89,15 @@ plugin.keys = {
 		"<CMD>lua require(\"dapui\").eval()<CR>",
 		desc = "[plugin/dapui]: [D]apui e[V]al selected expression",
 	},
+	{
+		mode = "n",
+		"<leader>fe",
+		function()
+			---@diagnostic disable-next-line: missing-parameter
+			require("dapui").float_element()
+		end,
+		desc = "[plugin/dapui]: [D]apui e[V]al selected expression",
+	},
 }
 
 return plugin
