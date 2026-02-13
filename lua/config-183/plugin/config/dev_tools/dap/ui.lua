@@ -62,7 +62,7 @@ plugin.keys = {
 		desc = "[plugin/dapui]: [R]oggle dap ui",
 	},
 	{
-		mode = "n",
+		mode = { "n", "v" },
 		"<leader>va",
 		"<CMD>lua require(\"dapui\").eval()<CR>",
 		desc = "[plugin/dapui]: dapui e[V][A]l expression under cursor",
@@ -81,20 +81,30 @@ plugin.keys = {
 				require("dapui").eval(expression)
 			end)
 		end,
-		desc = "[plugin/dapui]: dapui e[V][A]l expression under cursor",
-	},
-	{
-		mode = "v",
-		"<leader>va",
-		"<CMD>lua require(\"dapui\").eval()<CR>",
-		desc = "[plugin/dapui]: [D]apui e[V]al selected expression",
+		desc = "[plugin/dapui]: dapui e[V][A]l expression entered",
 	},
 	{
 		mode = "n",
 		"<leader>fe",
 		function()
 			---@diagnostic disable-next-line: missing-parameter
-			require("dapui").float_element()
+			vim.ui.select({
+				"repl",
+				"console",
+				"watches",
+				"scopes",
+				"stacks",
+				"breakpoints",
+			}, {
+				prompt = "select element: ",
+			}, function(choice)
+				if not choice then
+					return
+				end
+
+				---@diagnostic disable-next-line: missing-fields
+				require("dapui").float_element(choice, { enter = true })
+			end)
 		end,
 		desc = "[plugin/dapui]: [D]apui e[V]al selected expression",
 	},
