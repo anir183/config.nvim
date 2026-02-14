@@ -46,8 +46,8 @@ opt.smartindent = true -- auto indent based on context
 --[[ editor interface and utility visuals ]]
 opt.updatetime = 250
 opt.termguicolors = true
-opt.splitright = true
-opt.splitbelow = true
+-- opt.splitright = true -- breaks dap https://github.com/rcarriga/nvim-dap-ui/issues/424
+-- opt.splitbelow = true -- breaks dap https://github.com/rcarriga/nvim-dap-ui/issues/424
 opt.scrolloff = 8
 opt.colorcolumn = "81"
 opt.cursorline = true
