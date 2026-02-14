@@ -103,6 +103,7 @@ LAZY.spec = {
 	flutter_tools = require(
 		"config-183.plugin.config.toolchains.flutter_tools"
 	),
+	rustacean = require("config-183.plugin.config.toolchains.rustacean"),
 	typescript_tools = require(
 		"config-183.plugin.config.toolchains.typescript_tools"
 	),

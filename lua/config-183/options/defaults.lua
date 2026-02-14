@@ -56,6 +56,7 @@ defaults.test_plugins = nil
 ---@type table<string, boolean>? toolchains for diffrent langages and frameworks
 defaults.toolchain = {}
 defaults.toolchain.flutter = false
+defaults.toolchain.rustacean = false
 defaults.toolchain.typescript = false
 
 ---@type table<string, vim.lsp.Config|nil>? setup for lsps and their configuration options
@@ -184,6 +185,8 @@ defaults.parsers = {
 			dapui5 = "dapui_watches",
 			dapui6 = "dapui_hover",
 			log = "log",
+			crates = "crates",
+			quickfix = "qf",
 		},
 		-- NOTE : dictionary format to avoid override by options injection
 		--        unless explicitly wanted
@@ -233,6 +236,8 @@ defaults.parsers = {
 			dapui5 = "dapui_watches",
 			dapui6 = "dapui_hover",
 			log = "log",
+			crates = "crates",
+			quickfix = "qf",
 		},
 	},
 	---@type table<string, ParserInfo> parser name and configuration dictionary for custom parsers
