@@ -103,6 +103,9 @@ LAZY.spec = {
 	flutter_tools = require(
 		"config-183.plugin.config.toolchains.flutter_tools"
 	),
+	typescript_tools = require(
+		"config-183.plugin.config.toolchains.typescript_tools"
+	),
 }
 LOG.info("lazy.nvim plugin specs generated and loaded")
 

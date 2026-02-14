@@ -56,6 +56,8 @@ defaults.test_plugins = nil
 ---@type table<string, boolean>? toolchains for diffrent langages and frameworks
 defaults.toolchain = {}
 defaults.toolchain.flutter = false
+defaults.toolchain.typescript = false
+
 ---@type table<string, vim.lsp.Config|nil>? setup for lsps and their configuration options
 defaults.lsps = {
 	lua_ls = {
