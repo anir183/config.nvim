@@ -30,7 +30,7 @@ plugin.config = function(_, opts)
 	require("catppuccin").setup(opts)
 
 	vim.cmd.colorscheme("catppuccin")
-	vim.api.nvim_set_hl(0, "IncSearch", { bg = "#ea999c", fg = "#232634" })
+	vim.api.nvim_set_hl(0, "IncSearch", { bg = "#EBA0AC", fg = "#11111b", bold = true })
 end
 
 return plugin
