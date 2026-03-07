@@ -159,6 +159,7 @@ defaults.parsers = {
 			snacks4 = "snacks_picker_preview",
 			snacks5 = "snacks_input",
 			snacks6 = "snacks_terminal",
+			snacks7 = "snacks_win",
 			conf = "conf",
 			rc = "rc",
 			text = "text",
@@ -187,6 +188,8 @@ defaults.parsers = {
 			log = "log",
 			crates = "crates",
 			quickfix = "qf",
+			opencode1 = "opencode_ask",
+			opencode2 = "opencode_terminal",
 		},
 		-- NOTE : dictionary format to avoid override by options injection
 		--        unless explicitly wanted
@@ -210,6 +213,7 @@ defaults.parsers = {
 			snacks4 = "snacks_picker_preview",
 			snacks5 = "snacks_input",
 			snacks6 = "snacks_terminal",
+			snacks7 = "snacks_win",
 			conf = "conf",
 			rc = "rc",
 			text = "text",
@@ -238,6 +242,8 @@ defaults.parsers = {
 			log = "log",
 			crates = "crates",
 			quickfix = "qf",
+			opencode1 = "opencode_ask",
+			opencode2 = "opencode_terminal",
 		},
 	},
 	---@type table<string, ParserInfo> parser name and configuration dictionary for custom parsers
