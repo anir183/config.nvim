@@ -23,7 +23,7 @@ end
 plugin.keys = {
 	{
 		mode = { "n", "x" },
-		"<M-f>",
+		"<M-h>",
 		function()
 			require("opencode").ask("@this: ", { submit = true })
 		end,
@@ -31,7 +31,7 @@ plugin.keys = {
 	},
 	{
 		mode = { "n", "x" },
-		"<S-M-f>",
+		"<S-M-h>",
 		function()
 			require("opencode").select()
 		end,
