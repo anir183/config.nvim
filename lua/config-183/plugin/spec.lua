@@ -104,6 +104,7 @@ LAZY.spec = {
 		"config-183.plugin.config.toolchains.flutter_tools"
 	),
 	gopher = require("config-183.plugin.config.toolchains.gopher"),
+	java = require("config-183.plugin.config.toolchains.java"),
 	rustacean = require("config-183.plugin.config.toolchains.rustacean"),
 	typescript_tools = require(
 		"config-183.plugin.config.toolchains.typescript_tools"

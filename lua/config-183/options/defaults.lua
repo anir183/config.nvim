@@ -57,6 +57,7 @@ defaults.test_plugins = nil
 defaults.toolchain = {}
 defaults.toolchain.flutter = false
 defaults.toolchain.gopher = false
+defaults.toolchain.java = false
 defaults.toolchain.rustacean = false
 defaults.toolchain.typescript = false
 
