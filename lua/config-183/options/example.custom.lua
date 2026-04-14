@@ -1,18 +1,18 @@
 --[[
 --
--- the custom.lua file i use as of 04-feb-2026
+-- the custom.lua file i use as of 14-apr-2026
 --
 --]]
 
+---@module "config-183.custom.statusline"
 ---@module "config-183.options.defaults"
 ---@module "config-183.utils.functions"
 ---@module "blink"
 ---@module "blink-cmp"
 
-local copilot_enabled = true
-
 ---@type DefaultOpts
 local options = {}
+options.ai = {}
 options.lsps = {}
 options.conform = {}
 options.conform.ft_formatters = {}
@@ -22,17 +22,33 @@ options.dap = {}
 options.dap.mason_dap = {}
 options.extra_plugins = {}
 options.plugin_overrides = {}
-options.cmp_sources = {}
 options.util_vars = {}
+options.toolchain = {}
+options.stline_otps = {}
+options.stline_otps.components = {}
 
---[[ lsps ]]
+--[[ === ai tools === ]]
+options.ai.copilot = "vtext"
+options.ai.opencode = true
+
+--[[ === toolchains === ]]
+options.toolchain.flutter = FUNCS.in_distrobox("dev-flutter")
+options.toolchain.gopher = FUNCS.in_distrobox("dev-golang")
+options.toolchain.java = FUNCS.in_distrobox("dev-java")
+options.toolchain.kotlin = FUNCS.in_distrobox("dev-java")
+options.toolchain.rustacean = FUNCS.in_distrobox("dev-rust")
+options.toolchain.typescript = FUNCS.in_distrobox("dev-nodejs")
+
+--[[ === lsps === ]]
 options.lsps.bashls = {
 	filetypes = { "sh", "zsh" },
 	settings = {
 		filetypes = { "sh", "zsh" },
 	},
 }
+options.lsps.marksman = {}
 options.lsps.clangd = FUNCS.in_distrobox("dev-c") and {} or nil
+options.lsps.kotlin_lsp = FUNCS.in_distrobox("dev-java") and {} or nil
 if FUNCS.in_distrobox("dev-nodejs") then
 	options.lsps.html = {}
 	options.lsps.cssls = {}
@@ -40,11 +56,15 @@ if FUNCS.in_distrobox("dev-nodejs") then
 	options.lsps.emmet_language_server = {}
 end
 
---[[ formatters ]]
+--[[ === formatters === ]]
 options.conform.ft_formatters.lua = { "stylua" }
 options.conform.ft_formatters.c = FUNCS.in_distrobox("dev-c")
-		and { "clangd-format" }
+		and { "clang-format" }
 	or nil
+options.conform.ft_formatters.rust = FUNCS.in_distrobox("dev-rust")
+		and { "rustfmt", lsp_format = "fallback" }
+	or nil
+options.conform.ft_formatters.dart = { "dart_format" }
 if FUNCS.in_distrobox("dev-nodejs") then
 	options.conform.ft_formatters.html = { "prettier" }
 	options.conform.ft_formatters.css = { "prettier" }
@@ -59,7 +79,7 @@ else
 	options.conform.ft_formatters.jsonc = { "fixjson" }
 end
 
---[[ linters ]]
+--[[ === linters === ]]
 options.lint.ft_linters.json = { "jsonlint" }
 options.lint.ft_linters.jsonc = { "jsonlint" }
 if FUNCS.in_distrobox("dev-nodejs") then
@@ -69,218 +89,195 @@ if FUNCS.in_distrobox("dev-nodejs") then
 	options.lint.ft_linters.javascriptreact = { "eslint_d" }
 end
 
---[[ debuggers ]]
-options.dap.mason_dap.codelldb = FUNCS.in_distrobox("dev-c")
+--[[ === debuggers === ]]
+options.dap.mason_dap.codelldb = (
+	FUNCS.in_distrobox("dev-c") or FUNCS.in_distrobox("dev-rust")
+)
+		and {}
+	or nil
 
---[[ additional plugins ]]
+--[[ === additional plugins === ]]
 options.extra_plugins[1] = {
-	"copilotlsp-nvim/copilot-lsp",
-	name = "copilot-lsp",
-	cond = copilot_enabled,
-}
-options.extra_plugins[2] = {
-	"zbirenbaum/copilot.lua",
-	name = "copilot",
-	dependencies = "copilot-lsp",
-	cond = copilot_enabled,
+	"kawre/leetcode.nvim",
+	name = "leetcode",
+	build = ":TSUpdate html",
+	dependencies = { "plenary", "nui", "treesitter" },
+	cmd = "Leet",
+	---@module "leetcode"
+	---@type lc.UserConfig
 	opts = {
-		suggestion = { enabled = false },
-		panel = { enabled = false },
-		filetypes = {
-			bash = false,
-			[""] = false,
-			oil = false,
+		lang = "c",
+		storage = {
+			home = "/home/anir183/development/repos/leetcode/tries",
 		},
-	},
-}
-options.extra_plugins[3] = {
-	"fang2hou/blink-copilot",
-	name = "blink-copilot",
-	dependencies = "copilot",
-	cond = copilot_enabled,
-}
-options.extra_plugins[4] = {
-	"folke/lazydev.nvim",
-	name = "lazydev",
-	---@module "lazydev"
-	---@type lazydev.Config
-	opts = {
-		library = {
-			{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
-			{ "nvim-dap-ui" },
-		},
-		integrations = {
-			blink = true,
-		},
-	},
-}
-options.extra_plugins[5] = {
-	"nvim-flutter/flutter-tools.nvim",
-	name = "flutter-tools",
-	dependencies = "plenary",
-	cond = FUNCS.in_distrobox("dev-flutter"),
-	---@module "flutter-tools"
-	---@type flutter.Config
-	opts = {
-		debugger = {
-			enabled = true,
-		},
-		flutter_path = vim.env.HOME and FUNCS.join_paths(
-			vim.env.HOME,
-			"fvm",
-			"default",
-			"bin",
-			"flutter"
-		) or nil,
-		fvm = true,
 	},
 	config = function(_, opts)
-		require("flutter-tools").setup(opts)
-		vim.print(FUNCS.join_paths(vim.env.HOME, "fvm", "default", "bin"))
-
-		FUNCS.mmap("n", "<leader>fa", {
-			["run"] = vim.cmd.FlutterRun,
-			["debug"] = vim.cmd.FlutterDebug,
-			["devices"] = vim.cmd.FlutterDevices,
-			["emulators"] = vim.cmd.FlutterEmulators,
-			["reload"] = vim.cmd.FlutterReload,
-			["restart"] = vim.cmd.FlutterRestart,
-			["quit"] = vim.cmd.FlutterQuit,
-			["attach"] = vim.cmd.FlutterAttach,
-			["detach"] = vim.cmd.FlutterDetach,
-			["outline-toggle"] = vim.cmd.FlutterOutlineToggle,
-			["outline-open"] = vim.cmd.FlutterOutlineOpen,
-			["dev-tools"] = vim.cmd.FlutterDevTools,
-			["dev-tools-activate"] = vim.cmd.FlutterDevToolsActivate,
-			["copy-profiler-url"] = vim.cmd.FlutterCopyProfilerUrl,
-			["lsp-restart"] = vim.cmd.FlutterLspRestart,
-			["super"] = vim.cmd.FlutterSuper,
-			["re-analyze"] = vim.cmd.FlutterReanalyze,
-			["rename"] = vim.cmd.FlutterRename,
-			["log-clear"] = vim.cmd.FlutterLogClear,
-			["log-toggle"] = vim.cmd.FlutterLogToggle,
-		}, "[plugin/flutter-tools]: flutter tools actions")
-	end,
-}
-options.extra_plugins[6] = {
-	"pmizio/typescript-tools.nvim",
-	name = "typescript-tools",
-	dependencies = "plenary",
-	cond = FUNCS.in_distrobox("dev-nodejs"),
-	opts = {},
-	config = function(_, opts)
-		require("typescript-tools").setup(opts)
+		require("leetcode").setup(opts)
 
 		FUNCS.mmap("n", "<leader>ta", {
-			["organize-imports"] = vim.cmd.TSToolsOrganizeImports,
-			["sort-imports"] = vim.cmd.TSToolsSortImports,
-			["remove-unused-imports"] = vim.cmd.TSToolsRemoveUnusedImports,
-			["remove-unused"] = vim.cmd.TSToolsRemoveUnused,
-			["add-missing-imports"] = vim.cmd.TSToolsAddMissingImports,
-			["fix-all"] = vim.cmd.TSToolsFixAll,
-			["go-to-source-definition"] = vim.cmd.TSToolsGoToSourceDefinition,
-			["rename-file"] = vim.cmd.TSToolsRenameFile,
-			["file-references"] = vim.cmd.TSToolsFileReferences,
-		}, "[plugin/flutter-tools]: flutter tools actions")
+			["exit"] = function()
+				vim.cmd("Leet exit")
+			end,
+			["console"] = function()
+				vim.cmd("Leet console")
+			end,
+			["info"] = function()
+				vim.cmd("Leet info")
+			end,
+			["tabs"] = function()
+				vim.cmd("Leet tabs")
+			end,
+			["yank"] = function()
+				vim.cmd("Leet yank")
+			end,
+			["lang"] = function()
+				vim.cmd("Leet lang")
+			end,
+			["run"] = function()
+				vim.cmd("Leet run")
+			end,
+			["test"] = function()
+				vim.cmd("Leet test")
+			end,
+			["submit"] = function()
+				vim.cmd("Leet submit")
+			end,
+			["random"] = function()
+				vim.cmd("Leet random")
+			end,
+			["random-opts"] = function()
+				vim.ui.input({
+					prompt = "status=<status> difficulty=<difficulty> tags=<tags>: ",
+				}, function(args)
+					if not args or args == "" then
+						return
+					end
+
+					vim.cmd("Leet random " .. args)
+				end)
+			end,
+			["daily"] = function()
+				vim.cmd("Leet daily")
+			end,
+			["list"] = function()
+				vim.cmd("Leet list")
+			end,
+			["open"] = function()
+				vim.cmd("Leet open")
+			end,
+			["restore"] = function()
+				vim.cmd("Leet restore")
+			end,
+			["last-submit"] = function()
+				vim.cmd("Leet last_submit")
+			end,
+			["reset"] = function()
+				vim.cmd("Leet reset")
+			end,
+			["inject"] = function()
+				vim.cmd("Leet inject")
+			end,
+			["fold"] = function()
+				vim.cmd("Leet fold")
+			end,
+			["description"] = function()
+				vim.cmd("Leet desc")
+			end,
+			["desc-stats"] = function()
+				vim.cmd("Leet desc stats")
+			end,
+			["cookie-update"] = function()
+				vim.cmd("Leet cookie update")
+			end,
+			["cookie-delete"] = function()
+				vim.cmd("Leet cookie delete")
+			end,
+			["update"] = function()
+				vim.cmd("Leet cache update")
+			end,
+		}, "[plugin/leetcode]: leet code actions")
 	end,
-}
-options.extra_plugins[7] = {
-	"ray-x/go.nvim",
-	name = "gopher",
-	main = "go",
-	dependencies = {
-		"treesitter",
-		"lspconfig",
+	keys = {
+		{
+			mode = "n",
+			"<leader>lc",
+			vim.cmd.Leet,
+			desc = "[plugin/leetcode]: open [L]eet[C]ode ui",
+		},
 	},
-	cond = FUNCS.in_distrobox("dev-golang"),
-	opts = {},
 }
 
---[[ config plugins override ]]
-options.plugin_overrides.blink = {
-	dependencies = copilot_enabled and {
-		"lazydev",
-		"blink-copilot",
-	} or { "lazydev" },
+--[[ === parser config === ]]
+options.parsers = {
+	ignore = {
+		fts = {
+			leetcode = "leetcode",
+			license = "license",
+		},
+		langs = {
+			leetcode = "leetcode",
+			license = "license",
+		},
+	},
 }
 
---[[ completion sources ]]
-if copilot_enabled then
-	options.cmp_sources.default = {
-		"lazydev",
-		"lsp",
-		"path",
-		"snippets",
-		"copilot",
-		"buffer",
-	}
-	options.cmp_sources.providers = {
-		lazydev = {
-			name = "LazyDev",
-			module = "lazydev.integrations.blink",
-			score_offset = 100, -- top priority
+--[[ === additional filetypes === ]]
+options.additional_fts = {
+	{
+		extension = {
+			env = "dotenv",
 		},
-		copilot = {
-			name = "copilot",
-			module = "blink-copilot",
-			score_offset = 90, -- close to top priority
-			async = true,
+		filename = {
+			[".env"] = "dotenv",
 		},
-	}
-else
-	options.cmp_sources.default = {
-		"lazydev",
-		"lsp",
-		"path",
-		"snippets",
-		"buffer",
-	}
-	options.cmp_sources.providers = {
-		lazydev = {
-			name = "LazyDev",
-			module = "lazydev.integrations.blink",
-			score_offset = 100, -- top priority
+		pattern = {
+			["%.env%.[%w_.-]+"] = "dotenv",
+			["%.env"] = "dotenv",
+			["%.env%..+"] = "dotenv",
 		},
-	}
-end
+	},
+	{
+		extension = {
+			license = "",
+		},
+		filename = {
+			["license"] = "license",
+			["LICENSE"] = "license",
+		},
+	},
+}
 
---[[ run after config ]]
-options.after = function()
-	STLINE.components.dbox = function()
-		if FUNCS.in_distrobox() then
-			return FUNCS.hl_fmt_str(
-				"Function",
-				"  " .. vim.env.CONTAINER_ID .. " "
-			)
-		else
-			return ""
-		end
+--[[ === run after config === ]]
+options.stline_otps.components.distrobox = function()
+	if FUNCS.in_distrobox() then
+		return FUNCS.hl_fmt_str("Function", "  " .. vim.env.CONTAINER_ID .. " ")
+	else
+		return ""
 	end
-	STLINE.arrangement = {
-		-- left
-		"$logo",
-		"$mode",
-		"$dbox",
-		"$diagnostics",
-		"  ",
-		"%r",
-		"%w",
-		"%h",
-		"%m",
-
-		"%=", -- break
-
-		-- right
-		"$gitinfo",
-		" ",
-		"$filename",
-		" ",
-		"$indent",
-		" ",
-		"$position",
-	}
-	STLINE.set_arrangment()
 end
+options.stline_otps.arrangement = {
+	-- left
+	"$logo",
+	"$mode",
+	"$distrobox",
+	"$diagnostics",
+	"  ",
+	"%r",
+	"%w",
+	"%h",
+	"%m",
+
+	"%=", -- break
+
+	-- right
+	"$gitinfo",
+	" ",
+	"$filename",
+	" ",
+	"$indent",
+	" ",
+	"$position",
+}
 
 --[[ utility variables ]]
 options.util_vars.lsp_indexing_hack = { "lua_ls" }
