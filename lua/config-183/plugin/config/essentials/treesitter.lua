@@ -6,6 +6,9 @@
 --
 --]]
 
+-- WARN : plugin is deprecated
+--        find alternative
+
 ---@module "lazy"
 ---@module "config-183.utils"
 ---@module "config-183.utils.logging"
