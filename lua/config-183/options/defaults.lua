@@ -56,6 +56,7 @@ defaults.test_plugins = nil
 ---@type table<string, boolean>? toolchains for diffrent langages and frameworks
 defaults.toolchain = {}
 defaults.toolchain.flutter = false
+defaults.toolchain.gopher = false
 defaults.toolchain.rustacean = false
 defaults.toolchain.typescript = false
 
