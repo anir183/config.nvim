@@ -105,6 +105,7 @@ LAZY.spec = {
 	),
 	gopher = require("config-183.plugin.config.toolchains.gopher"),
 	java = require("config-183.plugin.config.toolchains.java"),
+	kotlin = require("config-183.plugin.config.toolchains.kotlin"),
 	rustacean = require("config-183.plugin.config.toolchains.rustacean"),
 	typescript_tools = require(
 		"config-183.plugin.config.toolchains.typescript_tools"

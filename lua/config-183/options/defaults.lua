@@ -58,6 +58,7 @@ defaults.toolchain = {}
 defaults.toolchain.flutter = false
 defaults.toolchain.gopher = false
 defaults.toolchain.java = false
+defaults.toolchain.kotlin = false
 defaults.toolchain.rustacean = false
 defaults.toolchain.typescript = false
 
