@@ -1,6 +1,6 @@
 # ignore init.lua and all lua config file by default so that other config is
 # not interfered with
-./init.lua
+/init.lua
 lua/*
 
 # only track the configuration module
