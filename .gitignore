@@ -6,7 +6,7 @@ lua/*
 # only track the configuration module
 # this allows freedom to try or use other config modules and keeps them
 # separate from the git repository
-!lua/config-183/
+!lua/183/
 
 # ignore custom config files as they may vary from instance to instance
-lua/config-183/options/custom.lua
+lua/183/config/custom.lua
