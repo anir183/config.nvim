@@ -4,6 +4,7 @@
 _G.CONSTS = require("183.utils.constants")
 _G.CONF = require("183.config.merged")
 _G.LOG = require("183.utils.logging")
+_G.FUNCS = require("183.utils.functions")
 
 LOG.setup_log_file()
 
@@ -12,4 +13,5 @@ _G.LOG.debug(
 	{ consts = _G.CONSTS },
 	{ config = _G.CONF },
 	{ log = _G.LOG },
+	{ funcs = _G.FUNCS }
 )

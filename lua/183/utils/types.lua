@@ -13,6 +13,18 @@
 ---@field lazy? { install_path: string, lock_file_path: string, repo_url: string, priorities: 183.utils.types.Constants.LazyPriorities }
 ---@field log? { dir_name: string, max_failed_write_tries: integer, labels: string[] }
 
+---@class (exact) 183.utils.types.Functions
+---@field map? fun(mode: string | string[], lhs: string, rhs: string | function, opts: vim.keymap.set.Opts): nil
+---@field nmap? fun(lhs: string, rhs: string | function, opts: vim.keymap.set.Opts): nil
+---@field mmap? fun(lhs: string, actions: table<string, string | function>, opts: vim.keymap.set.Opts): nil
+---@field feedkeys? fun(keys: string, mode?: string): nil
+---@field is_unix? fun(): boolean
+---@field is_windows? fun(): boolean
+---@field join_path? fun(...: any): string
+---@field fmt_str? fun(hl_grp: string | number, ...: any): string format string in a highlight group
+---@field split_str? fun(str: string, sep?: string): string[]
+---@field is_num? fun(str: string): boolean
+
 ---@class (exact) 183.utils.types.LoggingOpts.Outputs
 ---@field notify? vim.log.levels
 ---@field print? vim.log.levels
