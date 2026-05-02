@@ -24,6 +24,7 @@
 ---@field nmap? fun(lhs: string, rhs: string | function, opts: vim.keymap.set.Opts): nil
 ---@field mmap? fun(lhs: string, actions: table<string, string | function>, opts: vim.keymap.set.Opts): nil
 ---@field feedkeys? fun(keys: string, mode?: string): nil
+---@field deep_loop_table? fun(obj: table, callback: fun(path: string[], key: string, value: any), path?: string[]) loop through a table and all sub-tabes and perform operation on all non-table values
 ---@field is_unix? fun(): boolean
 ---@field is_windows? fun(): boolean
 ---@field join_path? fun(...: any): string

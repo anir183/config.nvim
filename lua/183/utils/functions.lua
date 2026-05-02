@@ -66,6 +66,22 @@ function M.feedkeys(keys, mode)
 	_G.LOG.debug("emulated keystrokes", { keys = keys, mode = mode })
 end
 
+function M.deep_loop_table(obj, callback, path)
+	path = path or {}
+
+	for key, value in pairs(obj) do
+		if type(value) == "table" then
+			table.insert(path, key)
+			M.deep_loop_table(value, callback, path)
+			goto continue
+		end
+
+		callback(path, key, value)
+
+		::continue::
+	end
+end
+
 function M.is_unix()
 	return _G.CONSTS.path.separator == "/"
 end
