@@ -26,6 +26,7 @@
 ---@field custom_linters? table<string, fun(): lint.Linter | lint.Linter> custom linters and their setup, or overrides to linter setup
 
 ---@class (exact) 183.config.types.ConfigSpec
+---@field config_state? "default" | "default+custom" | "default+env" | "default+custom+env"
 ---@field mode? "normal" | "no-plugin" | "minimal" | "minimal-plugin" | "single-file"
 ---@field shell? string
 ---@field additional_fts? vim.filetype.add.filetypes[]

@@ -6,10 +6,16 @@
 ---@field default? integer
 ---@field low? integer
 
+---@class (exact) 183.utils.types.Constants.EnvKeys
+---@field mode? string
+---@field shell? string
+---@field logging_opts? { logs_dir_parent: string, output: { notify: string, print: string, vim_print: string, file: string } }
+
 ---@class (exact) 183.utils.types.Constants
 ---@field augrp? { name: string, id: integer }
 ---@field path? { separator: string, config: string, data: string, state: string }
 ---@field strings? { cmd_prefix: string, hl_fmt: string, pattern_num: string }
+---@field env_keys? 183.utils.types.Constants.EnvKeys keys to check from host environment for configuration values
 ---@field lazy? { install_path: string, lock_file_path: string, repo_url: string, priorities: 183.utils.types.Constants.LazyPriorities }
 ---@field log? { dir_name: string, max_failed_write_tries: integer, labels: string[] }
 

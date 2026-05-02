@@ -6,6 +6,7 @@
 local M = {}
 
 -- misc general options
+M.config_state = "default"
 M.mode = "normal"
 M.shell = nil
 M.additional_fts = {}

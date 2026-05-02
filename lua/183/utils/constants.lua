@@ -25,6 +25,18 @@ M.strings.cmd_prefix = "CMD"
 M.strings.hl_fmt = "%%#%s#%s%%*"
 M.strings.pattern_num = "^%-?%d+$"
 
+-- env keys
+M.env_keys = {}
+M.env_keys.mode = "183_NVIM_MODE"
+M.env_keys.shell = "183_NVIM_SHELL"
+M.env_keys.logging_opts = {}
+M.env_keys.logging_opts.logs_dir_parent = "183_NVIM_LOG_DIR"
+M.env_keys.logging_opts.output = {}
+M.env_keys.logging_opts.output.notify = "183_NVIM_LOG_NOTIFY"
+M.env_keys.logging_opts.output.print = "183_NVIM_LOG_PRINT"
+M.env_keys.logging_opts.output.vim_print = "183_NVIM_LOG_VIM_PRINT"
+M.env_keys.logging_opts.output.file = "183_NVIM_LOG_FILE"
+
 -- lazy plugin manager opts
 M.lazy = {}
 M.lazy.install_path = M.path.data
