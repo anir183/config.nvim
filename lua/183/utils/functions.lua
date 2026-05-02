@@ -13,14 +13,6 @@ function M.map(mode, lhs, rhs, opts)
 	)
 end
 
-function M.nmap(lhs, rhs, opts)
-	vim.keymap.set("n", lhs, rhs, opts)
-	_G.LOG.debug(
-		"normal mode keymap set",
-		{ lhs = lhs, rhs = rhs, opts = opts }
-	)
-end
-
 function M.mmap(lhs, actions, opts)
 	local choices = {}
 	for choice, _ in ipairs(actions) do
