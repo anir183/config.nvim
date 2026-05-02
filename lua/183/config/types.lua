@@ -26,9 +26,9 @@
 ---@field custom_linters? table<string, fun(): lint.Linter | lint.Linter> custom linters and their setup, or overrides to linter setup
 
 ---@class (exact) 183.config.types.ConfigSpec
----@field config_state? "default" | "default+custom" | "default+env" | "default+custom+env"
 ---@field mode? "normal" | "no-plugin" | "minimal" | "minimal-plugin" | "single-file"
 ---@field shell? string
+---@field update_time? integer
 ---@field additional_fts? vim.filetype.add.filetypes[]
 ---@field run_before_config? fun(): nil
 ---@field run_after_config? fun(): nil
@@ -36,3 +36,4 @@
 ---@field dev_tools? 183.config.types.ConfigSpec.DevtoolsSpec
 ---@field statusline? 183.custom.types.StatuslineOpts
 ---@field logging_opts? 183.utils.types.LoggingOpts
+---@field config_state? "default" | "default+custom" | "default+env" | "default+custom+env"

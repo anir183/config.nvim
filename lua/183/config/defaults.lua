@@ -6,9 +6,9 @@
 local M = {}
 
 -- misc general options
-M.config_state = "default"
 M.mode = "normal"
 M.shell = nil
+M.update_time = 500
 M.additional_fts = {}
 
 -- some special functions

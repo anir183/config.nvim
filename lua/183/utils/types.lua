@@ -12,6 +12,7 @@
 ---@field logging_opts? { logs_dir_parent: string, output: { notify: string, print: string, vim_print: string, file: string } }
 
 ---@class (exact) 183.utils.types.Constants
+---@field default_colorscheme? string
 ---@field augrp? { name: string, id: integer }
 ---@field path? { separator: string, config: string, data: string, state: string }
 ---@field strings? { cmd_prefix: string, hl_fmt: string, pattern_num: string }

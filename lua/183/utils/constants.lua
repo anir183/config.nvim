@@ -5,6 +5,8 @@
 ---@type 183.utils.types.Constants
 local M = {}
 
+M.default_colorscheme = "lunaperche"
+
 -- augrp related constants
 M.augrp = {}
 M.augrp.name = "augrp-183"
