@@ -21,4 +21,21 @@ function M.init_statusline()
 	vim.o.ruler = false -- dont show line and col number (handled by statusline)
 end
 
+function M.init_commands()
+	local commands = require("183.custom.commands")
+
+	for desc, command in pairs(commands) do
+		command.opts = command.opts or {}
+		command.opts.desc = "[custom] " .. desc
+
+		vim.api.nvim_create_user_command(
+			_G.CONSTS.strings.cmd_prefix .. command.name,
+			command.cmd,
+			command.opts
+		)
+	end
+
+	_G.LOG.debug("setup custom commands")
+end
+
 return M
