@@ -53,4 +53,20 @@ function M.init_lsp_keymaps()
 	_G.LOG.debug("setup lsp keymaps for current buffer")
 end
 
+function M.init_auto_commands()
+	local autocmds = require("183.core.autocmds")
+
+	for desc, autocmd in pairs(autocmds) do
+		vim.api.nvim_create_autocmd(autocmd.events, {
+			group = _G.CONSTS.augrp.id,
+			pattern = autocmd.patterns,
+			command = autocmd.command,
+			callback = autocmd.callback,
+			desc = "[core] " .. desc,
+		})
+	end
+
+	_G.LOG.debug("setup core auto commands", autocmds)
+end
+
 return M

@@ -1,12 +1,18 @@
 --[[ core config related types ]]
 
+---@class (exact) 183.core.types.AutoCommand
+---@field events vim.api.keyset.events|vim.api.keyset.events[]
+---@field command? string
+---@field callback? string | fun(args: vim.api.keyset.create_autocmd.callback_args): boolean?
+---@field patterns? string | string[]
+
 ---@class (exact) 183.core.types.Keymap
 ---@field category? string
 ---@field mode? string | string[]
 ---@field lhs string
 ---@field rhs string | function
 ---@field opts? vim.keymap.set.Opts
----
+
 ---@class (exact) 183.core.types.LspKeymap
 ---@field mode? string | string[]
 ---@field lhs string
@@ -25,3 +31,4 @@
 ---@field init_options? fun(): nil
 ---@field init_keymaps? fun(): nil
 ---@field init_lsp_keymaps? fun(): nil
+---@field init_auto_commands? fun(): nil
