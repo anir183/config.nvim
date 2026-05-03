@@ -8,8 +8,11 @@ M = require("183.config.defaults")
 M.config_state = "default"
 
 -- try to merge customs
-if pcall(require, "183.config.custom") then
-	M = vim.tbl_deep_extend("force", M, require("183.config.custom") or {})
+if
+	pcall(require, "183.config.custom")
+	and type(require("183.config.custom")) == "table"
+then
+	M = vim.tbl_deep_extend("force", M, require("183.config.custom"))
 	M.config_state = "default+custom"
 end
 
