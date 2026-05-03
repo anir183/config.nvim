@@ -11,6 +11,8 @@ function M.set_colorscheme()
 
 	local hl = vim.api.nvim_set_hl
 
+	hl(0, "IncSearch", { bg = "#EDA792", fg = "#11111b", bold = true })
+
 	-- make bg transparent
 	hl(0, "Normal", { bg = "none" })
 
@@ -80,8 +82,6 @@ function M.set_editor_rendering()
 	-- different columns and indicator lines
 	o.colorcolumn = "81"
 	o.cursorline = true
-	o.showmode = false -- dont show current mode name in command line (handled by statusline)
-	o.ruler = false -- dont show line and col number (handled by statusline)
 
 	-- invisible characters
 	o.list = true -- render invisible characters

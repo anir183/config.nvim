@@ -8,9 +8,14 @@
 ---@field create_keymaps? fun(): nil
 
 ---@class (exact) 183.custom.types.StatuslineOpts
----@field bg_hl? vim.api.keyset.highlight
 ---@field mode_labels? table<string, string>
 ---@field arrangement? string[]
 
+---@class (exact) 183.custom.types.Statusline
+---@field components? table<string, fun(): string>
+---@field get_component? fun(name: string): string
+---@field set_arrangement? fun(): nil
+
 ---@class (exact) 183.custom.types.Module
 ---@field init_netrw? fun(): nil
+---@field init_statusline? fun(): nil

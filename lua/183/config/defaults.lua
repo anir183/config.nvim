@@ -32,7 +32,6 @@ M.dev_tools.custom_linters = {}
 
 -- statusline related options
 M.statusline = {}
-M.statusline.bg_hl = { bg = "none" }
 M.statusline.mode_labels = {
 	n = "  normal  ",
 	niI = "  insert [normal]  ",
@@ -62,11 +61,11 @@ M.statusline.arrangement = {
 
 	-- right
 	"$gitinfo",
-	" ",
+	"   ",
 	"$filename",
-	" ",
+	"   ",
 	"$indent",
-	" ",
+	"   ",
 	"$position",
 }
 
