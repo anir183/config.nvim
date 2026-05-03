@@ -1,5 +1,12 @@
 --[[ custom config related types ]]
 
+---@class (exact) 183.custom.types.Keymap
+---@field category? string
+---@field mode? string | string[]
+---@field lhs string
+---@field rhs string | function
+---@field opts? vim.keymap.set.Opts
+
 ---@class (exact) 183.custom.types.Command
 ---@field name string
 ---@field cmd string | fun(args: vim.api.keyset.create_user_command.command_args): nil
@@ -25,3 +32,4 @@
 ---@field init_netrw? fun(): nil
 ---@field init_statusline? fun(): nil
 ---@field init_commands? fun(): nil
+---@field init_keymaps? fun(): nil

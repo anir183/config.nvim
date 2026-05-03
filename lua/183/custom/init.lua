@@ -38,4 +38,17 @@ function M.init_commands()
 	_G.LOG.debug("setup custom commands")
 end
 
+function M.init_keymaps()
+	local keymaps = require("183.custom.keymaps")
+
+	for desc, map in pairs(keymaps) do
+		map.opts = map.opts or {}
+		map.opts.desc = "[custom." .. (map.category or "misc") .. "] " .. desc
+
+		_G.FUNCS.map(map.mode or "n", map.lhs, map.rhs, map.opts)
+	end
+
+	_G.LOG.debug("setup custom keymaps")
+end
+
 return M
