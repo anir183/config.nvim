@@ -73,9 +73,9 @@ M["change [F]ile[T]ype of current buffer"] = {
 	end,
 }
 
-M["check [P]ath to current [F]ile"] = {
+M["check [F]ile [P]ath"] = {
 	category = "info",
-	lhs = "<leader>pf",
+	lhs = "<leader>fp",
 	rhs = function()
 		vim.print(vim.fn.expand("%:p"))
 	end,
