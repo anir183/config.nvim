@@ -46,6 +46,7 @@ function M.get_base_spec()
 	if not opts or opts.dev_tools then
 		base.blink =
 			require("183.plugins.categories.dev_tools.completion.blink")
+		base.conform = require("183.plugins.categories.dev_tools.conform")
 		base.friendly_snippets = require(
 			"183.plugins.categories.dev_tools.completion.friendly_snippets"
 		)

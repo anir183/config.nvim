@@ -52,9 +52,12 @@ M["code [A][C]tions"] = {
 }
 
 -- formatting
+-- TODO : idk why but the format keymap set in plugin/conform is not able to
+--        remap this one...
+--        hence using capital FM
 M["[F]or[M]at file"] = {
 	mode = { "n", "v" },
-	lhs = "<leader>fm",
+	lhs = "<leader>FM",
 	rhs = function()
 		vim.lsp.buf.format({ async = true })
 	end,
