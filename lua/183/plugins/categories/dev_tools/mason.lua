@@ -21,4 +21,3 @@ plugin.keys = {
 }
 
 return plugin
-

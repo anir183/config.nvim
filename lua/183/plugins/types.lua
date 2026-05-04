@@ -8,6 +8,7 @@
 ---@field plenary? LazySpec
 
 ---@class (exact) 183.plugin.types.Category.DevTools
+---@field blink? LazySpec
 ---@field lspconfig? LazySpec
 ---@field mason? LazySpec
 

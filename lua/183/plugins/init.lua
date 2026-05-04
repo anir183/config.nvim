@@ -44,6 +44,8 @@ function M.get_base_spec()
 	end
 
 	if not opts or opts.dev_tools then
+		base.blink =
+			require("183.plugins.categories.dev_tools.completion.blink")
 		base.lspconfig = require("183.plugins.categories.dev_tools.lspconfig")
 		base.mason = require("183.plugins.categories.dev_tools.mason")
 	end
