@@ -65,6 +65,7 @@ function M.get_base_spec()
 		base.snacks = require("183.plugins.categories.essentials.snacks")
 		base.treesitter_manager =
 			require("183.plugins.categories.essentials.treesitter_manager")
+		base.undotree = require("183.plugins.categories.essentials.undotree")
 	end
 
 	if not opts or opts.quality_of_life then

@@ -22,6 +22,7 @@
 ---@field oil? LazySpec
 ---@field snacks? LazySpec
 ---@field treesitter_manager? LazySpec
+---@field undotree? LazySpec
 
 ---@class (exact) 183.plugin.types.Category.QualityOfLife
 ---@field harpoon? LazySpec
