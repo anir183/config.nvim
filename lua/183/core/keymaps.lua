@@ -79,7 +79,7 @@ M["[Y]ank to system clipboard"] = {
 M["[Y]ank till end of line to system clipboard"] = {
 	category = "clipboard",
 	lhs = "<leader>Y",
-	rhs = "\"+Y",
+	rhs = "vg_\"+y", -- WARN : "+Y (capital) copies whole line instead
 }
 
 -- no-copy versions of delete, paste and change keymaps
