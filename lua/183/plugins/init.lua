@@ -70,6 +70,8 @@ function M.get_base_spec()
 
 	if not opts or opts.quality_of_life then
 		base.harpoon = require("183.plugins.categories.quality_of_life.harpoon")
+		base.todo_comments =
+			require("183.plugins.categories.quality_of_life.todo_comments")
 	end
 
 	if not opts or opts.toolchains then
