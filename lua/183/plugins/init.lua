@@ -45,6 +45,7 @@ function M.get_base_spec()
 
 	if not opts or opts.dev_tools then
 		base.lspconfig = require("183.plugins.categories.dev_tools.lspconfig")
+		base.mason = require("183.plugins.categories.dev_tools.mason")
 	end
 
 	if not opts or opts.essentials then

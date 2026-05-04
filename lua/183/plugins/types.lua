@@ -9,6 +9,7 @@
 
 ---@class (exact) 183.plugin.types.Category.DevTools
 ---@field lspconfig? LazySpec
+---@field mason? LazySpec
 
 ---@class (exact) 183.plugin.types.Category.Essentials
 ---@field snacks? LazySpec
