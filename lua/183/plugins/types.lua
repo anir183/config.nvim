@@ -9,7 +9,9 @@
 
 ---@class (exact) 183.plugin.types.Category.DevTools
 ---@field blink? LazySpec
+---@field friendly_snippets? LazySpec
 ---@field lspconfig? LazySpec
+---@field lua_snip? LazySpec
 ---@field mason? LazySpec
 
 ---@class (exact) 183.plugin.types.Category.Essentials
