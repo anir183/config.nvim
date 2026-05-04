@@ -4,6 +4,7 @@
 ---@field onedark? LazySpec
 
 ---@class (exact) 183.plugin.types.Category.Dependencies
+---@field devicons? LazySpec
 ---@field plenary? LazySpec
 
 ---@class (exact) 183.plugin.types.Category.DevTools
