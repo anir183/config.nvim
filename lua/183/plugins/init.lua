@@ -70,6 +70,9 @@ function M.get_base_spec()
 
 	if not opts or opts.quality_of_life then
 		base.harpoon = require("183.plugins.categories.quality_of_life.harpoon")
+		base.tiny_inline_diagnostics = require(
+			"183.plugins.categories.quality_of_life.tiny_inline_diagnostics"
+		)
 		base.todo_comments =
 			require("183.plugins.categories.quality_of_life.todo_comments")
 	end

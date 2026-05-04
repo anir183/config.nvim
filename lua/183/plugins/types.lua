@@ -26,6 +26,7 @@
 
 ---@class (exact) 183.plugin.types.Category.QualityOfLife
 ---@field harpoon? LazySpec
+---@field tiny_inline_diagnostics? LazySpec
 ---@field todo_comments? LazySpec
 
 ---@class (exact) 183.plugin.types.Category.ToolChains
