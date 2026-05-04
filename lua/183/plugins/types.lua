@@ -10,6 +10,7 @@
 ---@class (exact) 183.plugin.types.Category.DevTools
 
 ---@class (exact) 183.plugin.types.Category.Essentials
+---@field snacks? LazySpec
 
 ---@class (exact) 183.plugin.types.Category.QualityOfLife
 

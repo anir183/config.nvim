@@ -47,6 +47,7 @@ function M.get_base_spec()
 	end
 
 	if not opts or opts.essentials then
+		base.snacks = require("183.plugins.categories.essentials.snacks")
 	end
 
 	if not opts or opts.quality_of_life then
