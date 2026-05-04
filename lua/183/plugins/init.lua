@@ -44,6 +44,7 @@ function M.get_base_spec()
 	end
 
 	if not opts or opts.dev_tools then
+		base.lspconfig = require("183.plugins.categories.dev_tools.lspconfig")
 	end
 
 	if not opts or opts.essentials then

@@ -8,6 +8,7 @@
 ---@field plenary? LazySpec
 
 ---@class (exact) 183.plugin.types.Category.DevTools
+---@field lspconfig? LazySpec
 
 ---@class (exact) 183.plugin.types.Category.Essentials
 ---@field snacks? LazySpec
