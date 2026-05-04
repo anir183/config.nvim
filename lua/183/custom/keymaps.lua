@@ -77,7 +77,7 @@ M["check [F]ile [P]ath"] = {
 	category = "info",
 	lhs = "<leader>fp",
 	rhs = function()
-		vim.print(vim.fn.expand("%:p"))
+		vim.print("curr path: " .. vim.fn.expand("%:p"))
 	end,
 }
 
