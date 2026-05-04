@@ -16,7 +16,7 @@ plugin.keys = {
 		mode = "n",
 		"<leader>mn",
 		vim.cmd.Mason,
-		desc = "[plugin/mason]: open [M]aso[N] window",
+		desc = "[plugin.mason] open [M]aso[N] window",
 	},
 }
 

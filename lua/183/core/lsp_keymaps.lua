@@ -17,7 +17,8 @@ M["hover documentation"] = {
 	rhs = vim.lsp.buf.hover,
 }
 M["signature help"] = {
-	lhs = "<C-k>",
+	mode = { "n", "i", "s" },
+	lhs = "<C-S-s>",
 	rhs = vim.lsp.buf.signature_help,
 }
 
