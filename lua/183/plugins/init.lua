@@ -61,6 +61,7 @@ function M.get_base_spec()
 	end
 
 	if not opts or opts.essentials then
+		base.oil = require("183.plugins.categories.essentials.oil")
 		base.snacks = require("183.plugins.categories.essentials.snacks")
 		base.treesitter_manager =
 			require("183.plugins.categories.essentials.treesitter_manager")

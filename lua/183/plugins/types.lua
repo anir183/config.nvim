@@ -19,6 +19,7 @@
 ---@field mason? LazySpec
 
 ---@class (exact) 183.plugin.types.Category.Essentials
+---@field oil? LazySpec
 ---@field snacks? LazySpec
 ---@field treesitter_manager? LazySpec
 
