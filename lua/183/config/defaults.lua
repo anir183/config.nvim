@@ -24,8 +24,8 @@ M.plugins.minimal_testing = {}
 -- devtools related options
 M.dev_tools = {}
 M.dev_tools.lsps = {}
-M.dev_tools.ft_formatters = {}
-M.dev_tools.ft_linters = {}
+M.dev_tools.ft_formatters = {} --- :h conform-formatters or https://github.com/mfussenegger/nvim-lint#available-linters
+M.dev_tools.ft_linters = {} --- https://github.com/mfussenegger/nvim-lint#available-linters
 M.dev_tools.dap_handlers = {}
 M.dev_tools.custom_formatters = {}
 M.dev_tools.custom_linters = {}

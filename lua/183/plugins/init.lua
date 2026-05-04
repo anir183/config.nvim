@@ -50,6 +50,7 @@ function M.get_base_spec()
 		base.friendly_snippets = require(
 			"183.plugins.categories.dev_tools.completion.friendly_snippets"
 		)
+		base.lint = require("183.plugins.categories.dev_tools.lint")
 		base.lsp_signature =
 			require("183.plugins.categories.dev_tools.lsp_signature")
 		base.lspconfig = require("183.plugins.categories.dev_tools.lspconfig")
