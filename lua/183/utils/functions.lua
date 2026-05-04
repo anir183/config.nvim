@@ -15,7 +15,7 @@ end
 
 function M.mmap(lhs, actions, opts)
 	local choices = {}
-	for choice, _ in ipairs(actions) do
+	for choice, _ in pairs(actions) do
 		table.insert(choices, choice)
 	end
 
