@@ -19,6 +19,7 @@
 ---@field harpoon? LazySpec
 
 ---@class (exact) 183.plugin.types.Category.ToolChains
+---@field lazydev? LazySpec
 
 ---@class (exact) 183.plugins.types.Category.Opts
 ---@field aesthetics boolean
