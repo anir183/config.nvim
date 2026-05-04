@@ -28,6 +28,7 @@
 ---@field custom_formatters? table<string, conform.FormatterConfigOverride | fun(bufnr: integer): nil | conform.FormatterConfigOverride> custom formatters and their setup, or overrides to formatter setup
 ---@field custom_linters? table<string, fun(): lint.Linter | lint.Linter> custom linters and their setup, or overrides to linter setup
 
+---@module "tree-sitter-manager"
 ---@class (exact) 183.config.types.ConfigSpec
 ---@field mode? "normal" | "no-plugin" | "minimal" | "minimal-plugin" | "single-file"
 ---@field shell? string
@@ -37,6 +38,7 @@
 ---@field run_after_config? fun(): nil
 ---@field plugins? 183.config.types.ConfigSpec.PluginSpec
 ---@field dev_tools? 183.config.types.ConfigSpec.DevtoolsSpec
+---@field additional_parsers? table<string, string | tree-sitter-manager.LanguageSpec>
 ---@field statusline? 183.custom.types.StatuslineOpts
 ---@field logging_opts? 183.utils.types.LoggingOpts
 ---@field config_state? "default" | "default+custom" | "default+env" | "default+custom+env"

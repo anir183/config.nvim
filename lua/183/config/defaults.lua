@@ -30,6 +30,9 @@ M.dev_tools.dap_handlers = {}
 M.dev_tools.custom_formatters = {}
 M.dev_tools.custom_linters = {}
 
+-- treesitter parsers
+M.additional_parsers = {}
+
 -- statusline related options
 M.statusline = {}
 M.statusline.mode_labels = {
