@@ -36,6 +36,7 @@ function M.get_base_spec()
 
 	if not opts or opts.aesthetics then
 		base.onedark = require("183.plugins.categories.aesthetics.onedark")
+		base.fidget = require("183.plugins.categories.aesthetics.fidget")
 	end
 
 	if not opts or opts.dependencies then
