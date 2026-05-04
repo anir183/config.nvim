@@ -1,11 +1,14 @@
 --[[ configuration related types ]]
 
 ---@module "183.utils.types"
+---@module "183.custom.types"
+---@module "183.config.types"
+---@module "183.plugins.types"
 
 ---@module "lazy"
 ---@class (exact) 183.config.types.ConfigSpec.PluginSpec
 ---@field additional? LazySpec
----@field overrides? table<string, LazySpec>
+---@field overrides? 183.plugins.types.BaseSpec
 ---@field minimal_testing? LazySpec
 
 ---@module "dap"

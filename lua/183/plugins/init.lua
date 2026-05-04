@@ -14,6 +14,8 @@ M.install_cmd = {
 	_G.CONSTS.lazy.install_path,
 }
 
+M.category_opts = nil
+
 function M.check_and_install()
 	if not (vim.uv or vim.loop).fs_stat(_G.CONSTS.lazy.install_path) then
 		local cmd_out = vim.fn.system(M.install_cmd)
@@ -28,11 +30,83 @@ function M.check_and_install()
 	end
 end
 
+function M.get_base_spec()
+	local opts = M.category_opts
+	local base = {} ---@type 183.plugins.types.BaseSpec
+
+	if not opts or opts.aesthetics then
+		base.onedark = require("183.plugins.categories.aesthetics.onedark")
+	end
+
+	if not opts or opts.dependencies then
+	end
+
+	if not opts or opts.dev_tools then
+	end
+
+	if not opts or opts.essentials then
+	end
+
+	if not opts or opts.quality_of_life then
+	end
+
+	if not opts or opts.toolchains then
+	end
+
+	return base
+end
+
+function M.get_lazy_spec()
+	-- testing environment for plugins by disabling other plugins
+	if
+		type(_G.CONF.plugins.minimal_testing) == "table"
+		and #_G.CONF.plugins.minimal_testing > 0
+	then
+		return _G.CONF.plugins.minimal_testing
+	end
+
+	---@module "lazy"
+	---@type LazySpec[]
+	local spec = {}
+	local base = M.get_base_spec()
+
+	-- merge overrides
+	base = vim.tbl_deep_extend(
+		"force",
+		base,
+		type(_G.CONF.plugins.overrides) == "table" and _G.CONF.plugins.overrides
+			or {}
+	)
+
+	-- convert to lazy spec
+	---@param name string
+	---@param plugin LazySpec
+	for name, plugin in pairs(base) do
+		name = plugin.name or name
+		plugin.name = name
+
+		table.insert(spec, plugin)
+	end
+
+	-- add additional specs
+	if
+		type(_G.CONF.plugins.additional) == "table"
+		and #_G.CONF.plugins.additional > 0
+	then
+		---@diagnostic disable-next-line: param-type-mismatch
+		for _, plugin in pairs(_G.CONF.plugins.additional) do
+			table.insert(spec, plugin)
+		end
+	end
+
+	return spec
+end
+
 function M.init()
 	vim.opt.rtp:prepend(_G.CONSTS.lazy.install_path)
 
 	require("lazy").setup({
-		spec = { "nvim-lua/plenary.nvim" },
+		spec = M.get_lazy_spec(),
 		lockfile = _G.CONSTS.lazy.lock_file_path,
 		defaults = {
 			lazy = false,
