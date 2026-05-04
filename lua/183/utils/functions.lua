@@ -35,12 +35,16 @@ function M.mmap(lhs, actions, opts)
 			end
 
 			if exec_type == "function" then
-				exec()
+				vim.defer_fn(function()
+					exec()
+				end, 10)
 				return
 			end
 
 			if exec_type == "string" then
-				vim.cmd(exec)
+				vim.defer_fn(function()
+					vim.cmd(exec)
+				end, 10)
 				return
 			end
 		end)
