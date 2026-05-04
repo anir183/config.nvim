@@ -1,6 +1,7 @@
 --[[ plugins related types ]]
 
 ---@class (exact) 183.plugin.types.Category.Aesthetics
+---@field onedark? LazySpec
 
 ---@class (exact) 183.plugin.types.Category.Dependencies
 
