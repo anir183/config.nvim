@@ -280,13 +280,13 @@ M["jump to older [L]ocation list"] = {
 }
 
 -- save and quit
-M["[Q]uit"] = {
+M["[Q]uit buffer"] = {
 	lhs = "<leader>qq",
-	rhs = "<CMD>q<CR>",
+	rhs = "<CMD>bd<CR>",
 }
-M["force [Q]uit"] = {
+M["[Q]uit window"] = {
 	lhs = "<leader>QQ",
-	rhs = "<CMD>q!<CR>",
+	rhs = "<CMD>q<CR>",
 }
 M["[W]rite file"] = {
 	lhs = "<leader>ww",
