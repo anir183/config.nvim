@@ -13,6 +13,7 @@
 ---@field snacks? LazySpec
 
 ---@class (exact) 183.plugin.types.Category.QualityOfLife
+---@field harpoon? LazySpec
 
 ---@class (exact) 183.plugin.types.Category.ToolChains
 
