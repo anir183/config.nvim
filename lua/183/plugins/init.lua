@@ -39,6 +39,7 @@ function M.get_base_spec()
 	end
 
 	if not opts or opts.dependencies then
+		base.plenary = require("183.plugins.categories.dependencies.plenary")
 	end
 
 	if not opts or opts.dev_tools then
