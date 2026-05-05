@@ -21,6 +21,12 @@ M["signature help"] = {
 	lhs = "<C-S-s>",
 	rhs = vim.lsp.buf.signature_help,
 }
+M["toggle code [LE]ns"] = {
+	lhs = "<leader>le",
+	rhs = function()
+		vim.lsp.codelens.enable(not vim.lsp.codelens.is_enabled)
+	end,
+}
 
 -- navigation
 M["[G]oto [D]efinition"] = {
