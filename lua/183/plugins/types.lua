@@ -63,5 +63,6 @@
 
 ---@class (exact) 183.plugins.types.Module
 ---@field install_cmd? string[]
+---@field spec? 183.plugins.types.Spec
 ---@field check_and_install? fun(): nil
 ---@field init? fun(): nil

@@ -14,6 +14,8 @@ M.install_cmd = {
 	_G.CONSTS.lazy.install_path,
 }
 
+M.spec = require("183.plugins.spec")
+
 function M.check_and_install()
 	if not (vim.uv or vim.loop).fs_stat(_G.CONSTS.lazy.install_path) then
 		local cmd_out = vim.fn.system(M.install_cmd)
@@ -32,7 +34,7 @@ function M.init()
 	vim.opt.rtp:prepend(_G.CONSTS.lazy.install_path)
 
 	require("lazy").setup({
-		spec = require("183.plugins.spec").get_lazy_spec(),
+		spec = M.spec.get_lazy_spec(),
 		lockfile = _G.CONSTS.lazy.lock_file_path,
 		defaults = {
 			lazy = false,

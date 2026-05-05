@@ -30,7 +30,7 @@
 
 ---@module "tree-sitter-manager"
 ---@class (exact) 183.config.types.ConfigSpec
----@field mode? "normal" | "no-plugin" | "minimal" | "minimal-plugin" | "single-file"
+---@field mode? "normal" | "no-plugin" | "minimal" | "minimal-plugin" | "minimal-dev"
 ---@field shell? string
 ---@field update_time? integer
 ---@field additional_fts? vim.filetype.add.filetypes[]
