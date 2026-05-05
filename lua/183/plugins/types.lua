@@ -11,6 +11,8 @@
 ---@field blink? LazySpec
 ---@field conform? LazySpec
 ---@field friendly_snippets? LazySpec
+---@field lint? LazySpec
+---@field lsp_signature? LazySpec
 ---@field lspconfig? LazySpec
 ---@field lua_snip? LazySpec
 ---@field mason? LazySpec
