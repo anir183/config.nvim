@@ -7,11 +7,16 @@
 ---@class (exact) 183.plugin.types.Category.Dependencies
 ---@field devicons? LazySpec
 ---@field fzf? LazySpec
+---@field nio? LazySpec
 ---@field plenary? LazySpec
 
 ---@class (exact) 183.plugin.types.Category.DevTools
 ---@field blink? LazySpec
 ---@field conform? LazySpec
+---@field dap? LazySpec
+---@field dapui? LazySpec
+---@field dap_mason? LazySpec
+---@field dap_virtual_text? LazySpec
 ---@field friendly_snippets? LazySpec
 ---@field lint? LazySpec
 ---@field lsp_signature? LazySpec
