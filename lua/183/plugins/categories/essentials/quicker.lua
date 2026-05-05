@@ -8,6 +8,7 @@ local plugin = {}
 plugin[1] = "stevearc/quicker.nvim"
 plugin.name = "quicker"
 plugin.lazy = false
+plugin.dependencies = "bqf"
 plugin.opts = {
 	keys = {
 		{
@@ -34,13 +35,17 @@ plugin.keys = {
 	{
 		mode = "n",
 		"<leader>ql",
-		function() require("quicker").toggle() end,
+		function()
+			require("quicker").toggle()
+		end,
 		desc = "[plugin.quicker] toggle [Q]uick fix [L]ist",
 	},
 	{
 		mode = "n",
 		"<leader>QL",
-		function() require("quicker").toggle() end,
+		function()
+			require("quicker").toggle()
+		end,
 		desc = "[plugin.quicker] toggle [Q]uick fix [L]ist",
 	},
 	{
