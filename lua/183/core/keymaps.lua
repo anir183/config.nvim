@@ -12,7 +12,7 @@ M["open [M]e[S]sages history"] = {
 }
 
 -- move text
--- WARN : using "<CMD>" instead of ":" breaks these keymaps
+-- WARN: using "<CMD>" instead of ":" breaks these keymaps
 M["move current line up"] = {
 	category = "move-text",
 	lhs = "<C-j>",
@@ -79,7 +79,7 @@ M["[Y]ank to system clipboard"] = {
 M["[Y]ank till end of line to system clipboard"] = {
 	category = "clipboard",
 	lhs = "<leader>Y",
-	rhs = "vg_\"+y", -- WARN : "+Y (capital) copies whole line instead
+	rhs = "vg_\"+y", -- WARN: "+Y (capital) copies whole line instead
 }
 
 -- no-copy versions of delete, paste and change keymaps

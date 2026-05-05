@@ -23,7 +23,7 @@ function M.toggle_sidebar()
 				buf = 0, -- specific to the sidebar buffer
 				callback = function()
 					vim.g.netrw_banner = 1
-					vim.g.netrw_chgwin = -1 -- NOTE : using lexplore changes this... needs to be reset
+					vim.g.netrw_chgwin = -1 -- NOTE: using lexplore changes this... needs to be reset
 					M.is_sidebar_open = false
 				end,
 			})
@@ -31,9 +31,9 @@ function M.toggle_sidebar()
 	else
 		vim.cmd("Lexplore")
 
-		-- WARN : breaks if cleanup is left to autocommand even though
+		-- WARN: breaks if cleanup is left to autocommand even though
 		--        autocommand gets triggered here
-		-- TODO : figure it out
+		-- TODO: figure it out
 		vim.g.netrw_banner = 1
 		M.is_sidebar_open = false
 		vim.g.netrw_chgwin = -1
@@ -41,8 +41,8 @@ function M.toggle_sidebar()
 end
 
 function M.toggle_fullscreen()
-	-- WARN : using M.toggle_sidebar() instead does not work
-	-- TODO : figure it out
+	-- WARN: using M.toggle_sidebar() instead does not work
+	-- TODO: figure it out
 	if M.is_sidebar_open then
 		vim.cmd("Lexplore")
 		vim.g.netrw_banner = 1

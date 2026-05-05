@@ -132,7 +132,7 @@ M["change current buffer indentation"] = {
 					if reindent == "yes" then
 						vim.opt_local.expandtab = false
 
-						-- NOTE : retab command also replaces inline spaces, so we
+						-- NOTE: retab command also replaces inline spaces, so we
 						--        use a substitution command instead
 						vim.cmd(
 							"silent! %s/\\(^\\s*\\)\\@<="

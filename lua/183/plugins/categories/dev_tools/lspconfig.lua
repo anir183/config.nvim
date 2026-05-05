@@ -8,7 +8,7 @@ local plugin = {}
 plugin[1] = "neovim/nvim-lspconfig"
 plugin.name = "lspconfig"
 plugin.config = function()
-	-- NOTE : vim autoloads the lsp setup provided in the lua/ directory of the
+	-- NOTE: vim autoloads the lsp setup provided in the lua/ directory of the
 	--        plugin (added to rtp by lazy)
 
 	-- inject custom config and enable

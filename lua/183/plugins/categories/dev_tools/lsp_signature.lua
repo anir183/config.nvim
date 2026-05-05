@@ -21,7 +21,7 @@ plugin.opts = {
 	handler_opts = {
 		border = "none",
 	},
-	-- WARN : broken
+	-- WARN: broken
 	--        https://github.com/ray-x/lsp_signature.nvim/issues/367
 	-- select_signature_key = "<M-n>",
 }

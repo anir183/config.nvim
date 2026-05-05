@@ -52,7 +52,7 @@ M["code [A][C]tions"] = {
 }
 
 -- formatting
--- TODO : idk why but the format keymap set in plugin/conform is not able to
+-- TODO: idk why but the format keymap set in plugin/conform is not able to
 --        remap this one...
 --        hence using capital FM
 M["[F]or[M]at file"] = {

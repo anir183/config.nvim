@@ -15,7 +15,7 @@ plugin.opts = {
 	formatters = _G.CONF.dev_tools.custom_formatters,
 }
 plugin.keys = {
-	-- TODO : idk why but the format keymap set in core/lsp_keymaps does not
+	-- TODO: idk why but the format keymap set in core/lsp_keymaps does not
 	--        get remapped by this one...
 	--        figure it out
 	{

@@ -280,7 +280,7 @@ plugin.keys = {
 		"<leader>GG",
 		function()
 			if vim.bo.filetype == "oil" then
-				-- WARN : idk why but directly using require("snacks").picker.grep or
+				-- WARN: idk why but directly using require("snacks").picker.grep or
 				--        vim.cmd to open grep picker fails to run
 				local cwd = vim.fn.expand("%:p:h"):sub(7, -1)
 				_G.FUNCS.feedkeys(

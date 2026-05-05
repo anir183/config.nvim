@@ -68,7 +68,7 @@ function M.set_editor_rendering()
 	-- used by many plugins to perform operations
 	-- https://www.reddit.com/r/vim/comments/jqogan/how_does_a_lower_updatetime_lead_to_better/
 	--
-	-- NOTE : even though lower update times may improve user experience due to
+	-- NOTE: even though lower update times may improve user experience due to
 	--        snappier reactivity... if swap file generation is enabled or
 	--        heavy tasks are being performed in CursorHold, then may lead to
 	--        performance issues
@@ -99,8 +99,8 @@ end
 
 function M.set_editor_behaviour()
 	-- splits / panes creation direction
-	o.splitright = false -- WARN : keep false.. true breaks dap https://github.com/rcarriga/nvim-dap-ui/issues/424
-	o.splitbelow = false -- WARN : keep false.. true breaks dap https://github.com/rcarriga/nvim-dap-ui/issues/424
+	o.splitright = false -- WARN: keep false.. true breaks dap https://github.com/rcarriga/nvim-dap-ui/issues/424
+	o.splitbelow = false -- WARN: keep false.. true breaks dap https://github.com/rcarriga/nvim-dap-ui/issues/424
 
 	-- search and replace
 	o.ignorecase = true -- ignore case while searching
