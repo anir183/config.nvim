@@ -31,7 +31,7 @@ plugin.opts = {
 		NormalFloat = { bg = "none" },
 		FloatBorder = { bg = "none" },
 
-		-- but keep background for Lazy and Mason
+		-- but keep background for some
 		LazyNormal = { fg = "$fg", bg = "$bg1" },
 		MasonNormal = { fg = "$fg", bg = "$bg1" },
 		TreesitterContext = { fg = "$fg", bg = "$bg1" },
