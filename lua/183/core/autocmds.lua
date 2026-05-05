@@ -82,7 +82,7 @@ M["delete item from quick fix list"] = {
 			-- set the cursor position directly in the quickfix window
 			local winid = vim.fn.win_getid() -- get the window id of the quickfix window
 			vim.api.nvim_win_set_cursor(winid, { new_idx, 0 })
-		end, { desc = "[core.qflist] [D]elete item" })
+		end, { desc = "[core.qflist] [D]elete item", buf = 0 })
 	end,
 }
 
