@@ -38,6 +38,7 @@
 ---@field run_after_config? fun(): nil
 ---@field plugins? 183.config.types.ConfigSpec.PluginSpec
 ---@field dev_tools? 183.config.types.ConfigSpec.DevtoolsSpec
+---@field cloak_patterns? { file_pattern: string | string[], cloak_pattern: string | string[], replace?: string | string[] }[]
 ---@field additional_parsers? table<string, string | tree-sitter-manager.LanguageSpec>
 ---@field statusline? 183.custom.types.StatuslineOpts
 ---@field logging_opts? 183.utils.types.LoggingOpts
