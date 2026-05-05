@@ -6,6 +6,7 @@
 
 ---@class (exact) 183.plugin.types.Category.Dependencies
 ---@field devicons? LazySpec
+---@field fzf? LazySpec
 ---@field plenary? LazySpec
 
 ---@class (exact) 183.plugin.types.Category.DevTools
@@ -26,6 +27,7 @@
 ---@field undotree? LazySpec
 
 ---@class (exact) 183.plugin.types.Category.QualityOfLife
+---@field bqf? LazySpec
 ---@field ccc? LazySpec
 ---@field cloak? LazySpec
 ---@field comment? LazySpec

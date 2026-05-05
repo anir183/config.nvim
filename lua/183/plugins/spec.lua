@@ -18,6 +18,7 @@ function M.get_base_spec()
 
 	if not opts or opts.dependencies then
 		base.devicons = require("183.plugins.categories.dependencies.devicons")
+		base.fzf = require("183.plugins.categories.dependencies.fzf")
 		base.plenary = require("183.plugins.categories.dependencies.plenary")
 	end
 
@@ -48,6 +49,7 @@ function M.get_base_spec()
 	end
 
 	if not opts or opts.quality_of_life then
+		base.bqf = require("183.plugins.categories.quality_of_life.bqf")
 		base.ccc = require("183.plugins.categories.quality_of_life.ccc")
 		base.cloak = require("183.plugins.categories.quality_of_life.cloak")
 		base.comment = require("183.plugins.categories.quality_of_life.comment")
