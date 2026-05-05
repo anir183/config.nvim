@@ -34,6 +34,7 @@ plugin.opts = {
 		-- but keep background for Lazy and Mason
 		LazyNormal = { fg = "$fg", bg = "$bg1" },
 		MasonNormal = { fg = "$fg", bg = "$bg1" },
+		TreesitterContext = { fg = "$fg", bg = "$bg1" },
 	},
 }
 plugin.config = function(_, opts)

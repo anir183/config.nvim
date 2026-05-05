@@ -33,6 +33,7 @@
 ---@field sleuth? LazySpec
 ---@field tiny_inline_diagnostics? LazySpec
 ---@field todo_comments? LazySpec
+---@field treesitter_context? LazySpec
 
 ---@class (exact) 183.plugin.types.Category.ToolChains
 ---@field lazydev? LazySpec
