@@ -194,7 +194,7 @@ M["[Q]uick fix list [H]istory"] = {
 M["[Q]uick fix list [C]lear"] = {
 	category = "qflist",
 	lhs = "<leader>qc",
-	rhs = vim.cmd("cexpr []"),
+	rhs = "<CMD>cexpr []<CR>",
 }
 M["jump to next [Q]uick fix list item"] = {
 	category = "qflist",
@@ -246,7 +246,7 @@ M["[L]ocation list [H]istory"] = {
 M["[L]ocation list [C]lear"] = {
 	category = "qflist",
 	lhs = "<leader>lc",
-	rhs = vim.cmd("lexpr []"),
+	rhs = "<CMD>lexpr []<CR>",
 }
 M["jump to next [L]ocation list item"] = {
 	category = "loclist",
