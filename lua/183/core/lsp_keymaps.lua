@@ -129,7 +129,7 @@ M["[L]ist buffer [D]iagnostics in loclist"] = {
 	rhs = vim.diagnostic.setloclist,
 }
 M["[L]ist all [D]iagnostics in qflist"] = {
-	lhs = "<leader>ld",
+	lhs = "<leader>LD",
 	rhs = vim.diagnostic.setqflist,
 }
 
