@@ -30,7 +30,8 @@ function M.get_base_spec()
 		base.dap = require("183.plugins.categories.dev_tools.dap.dap")
 		base.dapui = require("183.plugins.categories.dev_tools.dap.ui")
 		base.dap_mason = require("183.plugins.categories.dev_tools.dap.mason")
-		base.dap_virtual_text = require("183.plugins.categories.dev_tools.dap.virtual_text")
+		base.dap_virtual_text =
+			require("183.plugins.categories.dev_tools.dap.virtual_text")
 		base.friendly_snippets = require(
 			"183.plugins.categories.dev_tools.completion.friendly_snippets"
 		)
