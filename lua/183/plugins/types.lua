@@ -28,6 +28,7 @@
 ---@field ccc? LazySpec
 ---@field cloak? LazySpec
 ---@field comment? LazySpec
+---@field git_signs? LazySpec
 ---@field harpoon? LazySpec
 ---@field sleuth? LazySpec
 ---@field tiny_inline_diagnostics? LazySpec

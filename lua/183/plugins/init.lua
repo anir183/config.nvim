@@ -57,6 +57,7 @@ function M.get_base_spec()
 		base.lspconfig = require("183.plugins.categories.dev_tools.lspconfig")
 		base.lua_snip =
 			require("183.plugins.categories.dev_tools.completion.luasnip")
+
 		base.mason = require("183.plugins.categories.dev_tools.mason")
 	end
 
@@ -72,6 +73,8 @@ function M.get_base_spec()
 		base.ccc = require("183.plugins.categories.quality_of_life.ccc")
 		base.cloak = require("183.plugins.categories.quality_of_life.cloak")
 		base.comment = require("183.plugins.categories.quality_of_life.comment")
+		base.git_signs =
+			require("183.plugins.categories.quality_of_life.git_signs")
 		base.harpoon = require("183.plugins.categories.quality_of_life.harpoon")
 		base.sleuth = require("183.plugins.categories.quality_of_life.sleuth")
 		base.tiny_inline_diagnostics = require(
