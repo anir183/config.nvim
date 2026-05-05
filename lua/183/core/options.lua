@@ -64,6 +64,8 @@ function M.set_indentation()
 end
 
 function M.set_editor_rendering()
+	require('vim._core.ui2').enable()
+
 	-- reduces time between typing-stop and CursorHold auto command which is
 	-- used by many plugins to perform operations
 	-- https://www.reddit.com/r/vim/comments/jqogan/how_does_a_lower_updatetime_lead_to_better/
