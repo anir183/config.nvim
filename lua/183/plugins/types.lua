@@ -47,10 +47,12 @@
 
 ---@alias 183.plugins.types.BaseSpec 183.plugin.types.Category.Aesthetics | 183.plugin.types.Category.Dependencies | 183.plugin.types.Category.DevTools | 183.plugin.types.Category.Essentials | 183.plugin.types.Category.QualityOfLife | 183.plugin.types.Category.ToolChains
 
----@class (exact) 183.plugins.types.Module
----@field install_cmd? string[]
+---@class (exact) 183.plugins.types.Spec
 ---@field category_opts? 183.plugins.types.Category.Opts
----@field check_and_install? fun(): nil
 ---@field get_base_spec? fun(): 183.plugins.types.BaseSpec
 ---@field get_lazy_spec? fun(): LazySpec
+
+---@class (exact) 183.plugins.types.Module
+---@field install_cmd? string[]
+---@field check_and_install? fun(): nil
 ---@field init? fun(): nil
