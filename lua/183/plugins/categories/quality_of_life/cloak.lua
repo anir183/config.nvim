@@ -15,15 +15,15 @@ plugin.opts = {
 plugin.keys = {
 	{
 		mode = "n",
-		"<leader>ct",
+		"<leader>tp",
 		vim.cmd.CloakPreviewLine,
-		desc = "[plugin.cloak] [C]loak curren[T] line preview",
+		desc = "[plugin.cloak] cloak curren[T] line [P]review",
 	},
 	{
 		mode = "n",
-		"<leader>CT",
+		"<leader>ht",
 		vim.cmd.CloakToggle,
-		desc = "[plugin.cloak] [C]loak hiding [T]oggle",
+		desc = "[plugin.cloak] cloak [H]iding [T]oggle",
 	},
 }
 
