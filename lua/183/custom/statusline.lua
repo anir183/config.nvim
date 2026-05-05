@@ -57,13 +57,31 @@ function M.components.filename()
 	return _G.FUNCS.fmt_str("DiffFile", filename)
 end
 
+---@source https://github.com/tpope/vim-sleuth/blob/be69bff86754b1aa5adcbb527d7fcd1635a84080/plugin/sleuth.vim#L647
 function M.components.indent()
-	---@diagnostic disable-next-line: undefined-field
-	local type = vim.opt_local.expandtab._value and "spaces" or "tabs"
-	---@diagnostic disable-next-line: undefined-field
-	local len = vim.opt_local.tabstop._value
+	local sw = vim.bo.shiftwidth ~= 0 and vim.bo.shiftwidth or vim.bo.tabstop
+	local ts = vim.bo.tabstop
 
-	return _G.FUNCS.fmt_str("Label", type .. " : " .. len)
+	local ind
+	if vim.bo.expandtab then
+		ind = "sw = " .. sw
+	elseif ts == sw then
+		ind = "ts = " .. ts
+	else
+		ind = "sw = " .. sw .. ",ts = " .. ts
+	end
+
+	ind = vim.bo.expandtab and "spaces" or "tabs" .. "(" .. ind
+
+	if vim.bo.textwidth ~= 0 then
+		ind = ind .. ", tw = " .. vim.bo.textwidth
+	end
+
+	if vim.bo.fixendofline == false and vim.bo.endofline == false then
+		ind = ind .. ", noeol"
+	end
+
+	return _G.FUNCS.fmt_str("Label", ind .. ")")
 end
 
 function M.components.position()

@@ -73,6 +73,7 @@ function M.get_base_spec()
 		base.cloak = require("183.plugins.categories.quality_of_life.cloak")
 		base.comment = require("183.plugins.categories.quality_of_life.comment")
 		base.harpoon = require("183.plugins.categories.quality_of_life.harpoon")
+		base.sleuth = require("183.plugins.categories.quality_of_life.sleuth")
 		base.tiny_inline_diagnostics = require(
 			"183.plugins.categories.quality_of_life.tiny_inline_diagnostics"
 		)

@@ -29,6 +29,7 @@
 ---@field cloak? LazySpec
 ---@field comment? LazySpec
 ---@field harpoon? LazySpec
+---@field sleuth? LazySpec
 ---@field tiny_inline_diagnostics? LazySpec
 ---@field todo_comments? LazySpec
 
