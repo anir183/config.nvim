@@ -20,6 +20,20 @@ no-plugins for different scenarios
 * relatievely low amount of plugins (35 as of may 6 '26)
 
 
+# installation
+* clone to nvim config directory
+    ```
+    git clone https://github.com/anir183/config.nvim ~/.config/nvim
+    ```
+* install dependencies
+    ```bash
+    pacman -S tree-sitter-cli
+    pacman -S fzf
+    pacman -S ripgrep          # used for searching by several plugins
+    pacman -S npm              # use in mason package installs
+    ```
+
+
 ### config
 clear separation of concerns -
 * 183/init.lua: bootstraps everything and manages mode
