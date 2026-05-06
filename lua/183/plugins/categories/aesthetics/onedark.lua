@@ -35,6 +35,7 @@ plugin.opts = {
 		LazyNormal = { fg = "$fg", bg = "$bg1" },
 		MasonNormal = { fg = "$fg", bg = "$bg1" },
 		TreesitterContext = { fg = "$fg", bg = "$bg1" },
+		BlinkCmpScrollBarThumb = { bg = "$grey" },
 	},
 }
 plugin.config = function(_, opts)
