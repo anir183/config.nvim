@@ -20,7 +20,7 @@ no-plugins for different scenarios
 * relatievely low amount of plugins (35 as of may 6 '26)
 
 
-# installation
+### installation
 * clone to nvim config directory
     ```
     git clone https://github.com/anir183/config.nvim ~/.config/nvim
