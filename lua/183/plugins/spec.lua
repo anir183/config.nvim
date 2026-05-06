@@ -59,6 +59,7 @@ function M.get_base_spec()
 		base.ccc = require("183.plugins.categories.quality_of_life.ccc")
 		base.cloak = require("183.plugins.categories.quality_of_life.cloak")
 		base.comment = require("183.plugins.categories.quality_of_life.comment")
+		base.dropbar = require("183.plugins.categories.quality_of_life.dropbar")
 		base.git_signs =
 			require("183.plugins.categories.quality_of_life.git_signs")
 		base.harpoon = require("183.plugins.categories.quality_of_life.harpoon")
@@ -68,8 +69,6 @@ function M.get_base_spec()
 		)
 		base.todo_comments =
 			require("183.plugins.categories.quality_of_life.todo_comments")
-		base.treesitter_context =
-			require("183.plugins.categories.quality_of_life.treesitter_context")
 	end
 
 	if not opts or opts.toolchains then
