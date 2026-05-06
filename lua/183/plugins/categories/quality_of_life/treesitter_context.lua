@@ -12,6 +12,8 @@ plugin.lazy = false
 ---@type TSContext.UserConfig
 plugin.opts = {
 	multiwindow = true,
+	max_lines = "10%",
+	multiline_threshold = 2,
 }
 plugin.keys = {
 	{
