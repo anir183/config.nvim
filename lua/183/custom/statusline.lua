@@ -92,7 +92,7 @@ function M.components.indent()
 		ind = "sw = " .. sw .. ",ts = " .. ts
 	end
 
-	ind = vim.bo.expandtab and "spaces" or "tabs" .. "(" .. ind
+	ind = (vim.bo.expandtab and "spaces" or "tabs") .. "(" .. ind
 
 	if vim.bo.textwidth ~= 0 then
 		ind = ind .. ", tw = " .. vim.bo.textwidth
