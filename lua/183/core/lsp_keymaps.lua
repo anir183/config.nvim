@@ -24,7 +24,7 @@ M["signature help"] = {
 M["toggle code [LE]ns"] = {
 	lhs = "<leader>le",
 	rhs = function()
-		vim.lsp.codelens.enable(not vim.lsp.codelens.is_enabled)
+		vim.lsp.codelens.enable(not vim.lsp.codelens.is_enabled())
 	end,
 }
 
