@@ -1,11 +1,11 @@
 # config.nvim
 
-this is my custom neovim configuratin tailored to my workflow... many
+this is my custom neovim configuration tailored to my workflow... contains many
 improvements over whatever i was doing in the last iteration... still quite a
 bit of unnecessary complexity but eh.. why not?
 
-i'm just a fool who admired some complexity xD... feels good enough for now... 
-hopefully wont be rewriting this too soon.
+after all, i'm just a fool who admired some complexity xD... hopefully wont be
+rewriting this too soon.
 
 
 ![screenshot](./screenshot.png)
@@ -19,6 +19,7 @@ hopefully wont be rewriting this too soon.
 no-plugins for different scenarios
 * relatievely low amount of plugins (35 as of may 6 '26)
 
+
 ### config
 clear separation of concerns -
 * 183/init.lua: bootstraps everything and manages mode
@@ -30,6 +31,7 @@ clear separation of concerns -
 
 every module has a init.lua which bootstraps respectieve submodule... way more
 complicated than it needed to be..
+
 
 
 ```
