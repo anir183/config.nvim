@@ -14,6 +14,8 @@ function M.init_netrw()
 end
 
 function M.init_statusline()
+	require("183.custom.git_info").setup()
+
 	_G.STLINE = require("183.custom.statusline")
 	_G.STLINE.set_arrangement()
 

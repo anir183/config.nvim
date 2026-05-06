@@ -36,183 +36,34 @@ function M.components.diagnostics()
 	return error_out .. warn_out .. info_out .. hint_out
 end
 
-local git_cache = ""
-local git_autocmd_set = false
+local git_info = require("183.custom.git_info")
 function M.components.gitinfo()
-	-- persistent cache
-	if not git_cache then
-		git_cache = ""
+	local parts = {}
+
+	local function insert(hl, info)
+		table.insert(parts, _G.FUNCS.fmt_str(hl, info))
 	end
 
-	-- setup autocmd only once
-	if not git_autocmd_set then
-		git_autocmd_set = true
-
-		local uv = vim.loop
-
-		local function run_git(cmd, args, cwd, cb)
-			local stdout = uv.new_pipe(false)
-			local stderr = uv.new_pipe(false)
-
-			local output = {}
-			local handle
-
-			handle = uv.spawn(cmd, {
-				args = args,
-				cwd = cwd,
-				stdio = { nil, stdout, stderr },
-			}, function()
-				stdout:close()
-				stderr:close()
-				if handle then
-					handle:close()
-				end
-				cb(table.concat(output))
-			end)
-
-			stdout:read_start(function(_, data)
-				if data then
-					table.insert(output, data)
-				end
-			end)
-		end
-
-		local function update()
-			local git_dir = vim.fn.finddir(".git", ".;")
-			if git_dir == "" then
-				git_cache = ""
-				return
-			end
-
-			local cwd = vim.fn.getcwd()
-
-			-- branch
-			run_git(
-				"git",
-				{ "branch", "--show-current" },
-				cwd,
-				function(branch_out)
-					local branch = branch_out:gsub("%s+", "")
-					if branch == "" then
-						branch = "(detached)"
-					end
-
-					-- upstream + ahead/behind
-					run_git(
-						"git",
-						{
-							"rev-parse",
-							"--abbrev-ref",
-							"--symbolic-full-name",
-							"@{u}",
-						},
-						cwd,
-						function(upstream_out)
-							local upstream = upstream_out:gsub("%s+", "")
-							local ahead, behind = 0, 0
-
-							local function finalize(
-								ahead,
-								behind,
-								staged,
-								modified,
-								untracked
-							)
-								local parts = { branch }
-
-								if ahead > 0 then
-									table.insert(parts, "↑" .. ahead)
-								end
-								if behind > 0 then
-									table.insert(parts, "↓" .. behind)
-								end
-								if staged > 0 then
-									table.insert(parts, "+" .. staged)
-								end
-								if modified > 0 then
-									table.insert(parts, "~" .. modified)
-								end
-								if untracked > 0 then
-									table.insert(parts, "?" .. untracked)
-								end
-
-								git_cache = table.concat(parts, " ")
-							end
-
-							local function get_status(ahead, behind)
-								run_git(
-									"git",
-									{ "status", "--porcelain" },
-									cwd,
-									function(status_out)
-										local staged, modified, untracked =
-											0, 0, 0
-
-										for line in
-											status_out:gmatch("[^\r\n]+")
-										do
-											if line:match("^%?%?") then
-												untracked = untracked + 1
-											elseif line:match("^[MADRC]") then
-												staged = staged + 1
-											elseif line:match("^.M") then
-												modified = modified + 1
-											end
-										end
-
-										finalize(
-											ahead,
-											behind,
-											staged,
-											modified,
-											untracked
-										)
-									end
-								)
-							end
-
-							-- if upstream exists then compute ahead/behind
-							if upstream ~= "" then
-								run_git(
-									"git",
-									{
-										"rev-list",
-										"--left-right",
-										"--count",
-										"HEAD...@{u}",
-									},
-									cwd,
-									function(counts_out)
-										local a, b =
-											counts_out:match("(%d+)%s+(%d+)")
-										ahead = tonumber(a) or 0
-										behind = tonumber(b) or 0
-										get_status(ahead, behind)
-									end
-								)
-							else
-								-- no upstream, skip ahead/behind
-								get_status(0, 0)
-							end
-						end
-					)
-				end
-			)
-		end
-
-		vim.api.nvim_create_autocmd({
-			"BufEnter",
-			"BufWritePost",
-			"FocusGained",
-			"DirChanged",
-		}, {
-			callback = update,
-		})
-
-		update()
+	if git_info.cached_info.branch ~= "" then
+		insert("Keyword", git_info.cached_info.branch)
+	end
+	if git_info.cached_info.ahead > 0 then
+		insert("DiagnosticOk", "↑" .. git_info.cached_info.ahead)
+	end
+	if git_info.cached_info.behind > 0 then
+		insert("DiagnosticError", "↓" .. git_info.cached_info.behind)
+	end
+	if git_info.cached_info.staged > 0 then
+		insert("DiagnosticHint", "+" .. git_info.cached_info.staged)
+	end
+	if git_info.cached_info.modified > 0 then
+		insert("DiagnosticWarn", "~" .. git_info.cached_info.modified)
+	end
+	if git_info.cached_info.untracked > 0 then
+		insert("DiagnosticInfo", "?" .. git_info.cached_info.untracked)
 	end
 
-	return git_cache
+	return table.concat(parts, " ")
 end
 
 function M.components.filename()
