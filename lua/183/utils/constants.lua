@@ -31,13 +31,6 @@ M.strings.pattern_num = "^%-?%d+$"
 M.env_keys = {}
 M.env_keys.mode = "183_NVIM_MODE"
 M.env_keys.shell = "183_NVIM_SHELL"
-M.env_keys.logging_opts = {}
-M.env_keys.logging_opts.logs_dir_parent = "183_NVIM_LOG_DIR"
-M.env_keys.logging_opts.output = {}
-M.env_keys.logging_opts.output.notify = "183_NVIM_LOG_NOTIFY"
-M.env_keys.logging_opts.output.print = "183_NVIM_LOG_PRINT"
-M.env_keys.logging_opts.output.vim_print = "183_NVIM_LOG_VIM_PRINT"
-M.env_keys.logging_opts.output.file = "183_NVIM_LOG_FILE"
 
 -- lazy plugin manager opts
 M.lazy = {}
@@ -53,18 +46,5 @@ M.lazy.priorities.highest = 200
 M.lazy.priorities.high = 100
 M.lazy.priorities.default = 50
 M.lazy.priorities.low = 25
-
--- log labels
-M.log = {}
-M.log.dir_name = "183-Logs"
-M.log.max_failed_write_tries = 3
-M.log.labels = {
-	"trace",
-	"debug",
-	"info",
-	"warn",
-	"error",
-	"off", -- should not be needed ever
-}
 
 return M

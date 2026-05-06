@@ -36,8 +36,6 @@ function M.init_commands()
 			command.opts
 		)
 	end
-
-	_G.LOG.debug("setup custom commands")
 end
 
 function M.init_keymaps()
@@ -49,8 +47,6 @@ function M.init_keymaps()
 
 		_G.FUNCS.map(map.mode or "n", map.lhs, map.rhs, map.opts)
 	end
-
-	_G.LOG.debug("setup custom keymaps")
 end
 
 return M

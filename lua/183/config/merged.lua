@@ -32,36 +32,6 @@ if _G.CONSTS.env_keys then
 		M.shell = env[_G.CONSTS.env_keys.shell]
 		M.config_state = state
 	end
-
-	if env[_G.CONSTS.env_keys.logging_opts.logs_dir_parent] then
-		M.logging_opts.logs_dir_parent =
-			env[_G.CONSTS.env_keys.logging_opts.logs_dir_parent]
-		M.config_state = state
-	end
-
-	if env[_G.CONSTS.env_keys.logging_opts.output.notify] then
-		M.logging_opts.output.notify =
-			env[_G.CONSTS.env_keys.logging_opts.output.notify]
-		M.config_state = state
-	end
-
-	if env[_G.CONSTS.env_keys.logging_opts.output.print] then
-		M.logging_opts.output.print =
-			env[_G.CONSTS.env_keys.logging_opts.output.print]
-		M.config_state = state
-	end
-
-	if env[_G.CONSTS.env_keys.logging_opts.output.vim_print] then
-		M.logging_opts.output.vim_print =
-			env[_G.CONSTS.env_keys.logging_opts.output.vim_print]
-		M.config_state = state
-	end
-
-	if env[_G.CONSTS.env_keys.logging_opts.output.file] then
-		M.logging_opts.output.file =
-			env[_G.CONSTS.env_keys.logging_opts.output.file]
-		M.config_state = state
-	end
 end
 
 return M

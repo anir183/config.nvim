@@ -75,16 +75,4 @@ M.statusline.arrangement = {
 	"$position",
 }
 
--- logging related options
-M.logging_opts = {}
-
-M.logging_opts.logs_dir_parent = _G.CONSTS.path.state
-M.logging_opts.display_after_ready = true
-
-M.logging_opts.output = {}
-M.logging_opts.output.notify = vim.log.levels.WARN
-M.logging_opts.output.print = vim.log.levels.OFF
-M.logging_opts.output.vim_print = vim.log.levels.OFF
-M.logging_opts.output.file = vim.log.levels.INFO
-
 return M

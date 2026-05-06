@@ -3,26 +3,13 @@
 -- initialize utilities
 _G.CONSTS = require("183.utils.constants")
 _G.CONF = require("183.config.merged")
-_G.LOG = require("183.utils.logging")
 _G.FUNCS = require("183.utils.functions")
 
-LOG.setup_log_file()
-
-_G.LOG.info("loaded utilities and config options")
-_G.LOG.debug(
-	{ consts = _G.CONSTS },
-	{ config = _G.CONF },
-	{ log = _G.LOG },
-	{ funcs = _G.FUNCS }
-)
-
 -- config surrounding functions
-_G.LOG.debug("running before config function")
 _G.CONF.run_before_config()
 vim.api.nvim_create_autocmd("VimEnter", {
 	group = _G.CONSTS.augrp.id,
 	callback = function()
-		_G.LOG.debug("running after config function")
 		_G.CONF.run_after_config()
 	end,
 })

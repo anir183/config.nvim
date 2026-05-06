@@ -8,8 +8,6 @@ local M = {}
 M["open [EDIT]able [OPTIONS] in a floating window"] = {
 	name = "EditOptions",
 	cmd = function()
-		_G.LOG.info("opening or generating options file")
-
 		local opts_path = _G.FUNCS.join_path(
 			_G.CONSTS.path.config,
 			"lua",
@@ -20,11 +18,11 @@ M["open [EDIT]able [OPTIONS] in a floating window"] = {
 		local opts_file, opts_err = io.open(opts_path, "r")
 
 		if opts_err then
-			_G.LOG.debug(opts_err)
+			vim.print(opts_err)
 		end
 
 		if opts_file == nil then
-			_G.LOG.info("custom opts file is not yet generated")
+			vim.print("custom opts file is not yet generated")
 
 			local default_path = _G.FUNCS.join_path(
 				_G.CONSTS.path.config,
@@ -37,8 +35,10 @@ M["open [EDIT]able [OPTIONS] in a floating window"] = {
 
 			local default_data = "return {}"
 			if default_err or not default_file then
-				_G.LOG.warn("could not find or open template options file")
-				_G.LOG.debug(default_err)
+				vim.print(
+					"could not find or open template options file",
+					default_file
+				)
 			else
 				default_data = default_file:read("*a")
 				default_file:close()
@@ -46,25 +46,25 @@ M["open [EDIT]able [OPTIONS] in a floating window"] = {
 
 			opts_file, opts_err = io.open(opts_path, "w")
 			if opts_err or not opts_file then
-				_G.LOG.warn("could not open options file to write")
-				_G.LOG.debug(opts_err)
+				vim.print("could not open options file to write", opts_err)
 			else
 				local _, write_err = opts_file:write(default_data)
 				opts_file:flush()
 				opts_file:close()
 
 				if write_err then
-					_G.LOG.warn("could not write template data to options file")
-					_G.LOG.debug(write_err)
+					vim.print(
+						"could not write template data to options file",
+						write_err
+					)
 				else
-					_G.LOG.info(
+					vim.print(
 						"generated custom options file from template data"
 					)
 				end
 			end
 		end
 
-		_G.LOG.info("creating ui buffer to edit options file")
 		local ui = vim.api.nvim_list_uis()[1]
 		local width = math.floor((ui.width * 0.7) + 0.5)
 		local height = math.floor((ui.height * 0.75) + 0.5)

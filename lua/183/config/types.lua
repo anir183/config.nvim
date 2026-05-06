@@ -41,5 +41,4 @@
 ---@field cloak_patterns? { file_pattern: string | string[], cloak_pattern: string | string[], replace?: string | string[] }[]
 ---@field additional_parsers? table<string, string | tree-sitter-manager.LanguageSpec>
 ---@field statusline? 183.custom.types.StatuslineOpts
----@field logging_opts? 183.utils.types.LoggingOpts
 ---@field config_state? "default" | "default+custom" | "default+env" | "default+custom+env"

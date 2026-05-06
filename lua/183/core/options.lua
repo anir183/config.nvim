@@ -30,16 +30,12 @@ function M.set_colorscheme()
 	hl(0, "Pmenu", { bg = "none" })
 	hl(0, "PmenuSbar", { bg = "none" })
 	hl(0, "PmenuThumb", { bg = "none" })
-
-	_G.LOG.debug("setup colorscheme")
 end
 
 function M.set_signcolumn()
 	o.number = true
 	o.relativenumber = true
 	o.signcolumn = "number"
-
-	_G.LOG.debug("setup signcolumn")
 end
 
 function M.set_folding()
@@ -48,8 +44,6 @@ function M.set_folding()
 	o.foldlevelstart = 1
 	o.foldnestmax = 9
 	o.foldcolumn = "auto:9"
-
-	_G.LOG.debug("setup folding")
 end
 
 function M.set_indentation()
@@ -59,8 +53,6 @@ function M.set_indentation()
 	o.softtabstop = -1 -- size of tab character in insert mode (-1 -> shiftwidth)
 	o.autoindent = true -- copy current indentation for new line
 	o.smartindent = true -- auto indent based on context
-
-	_G.LOG.debug("setup indentation")
 end
 
 function M.set_editor_rendering()
@@ -95,8 +87,6 @@ function M.set_editor_rendering()
 		"extends:‥",
 		"precedes:‥",
 	}, ",")
-
-	_G.LOG.debug("setup editor rendering")
 end
 
 function M.set_editor_behaviour()
@@ -128,8 +118,6 @@ function M.set_editor_behaviour()
 
 	-- terminal shell
 	o.shell = _G.CONF.shell or o.shell
-
-	_G.LOG.debug("setup behaviour")
 end
 
 function M.set_save_files()
@@ -137,8 +125,6 @@ function M.set_save_files()
 	o.backup = false
 	o.writebackup = false
 	o.undofile = true
-
-	_G.LOG.debug("setup save files")
 end
 
 return M

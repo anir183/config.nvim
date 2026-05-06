@@ -111,12 +111,10 @@ end
 
 function M.get_component(name)
 	if not _G.STLINE then
-		_G.LOG.warn("statusline module not initialised")
+		vim.print("statusline module not initialised")
 	end
 
 	if not _G.STLINE.components[name] then
-		_G.LOG.warn("invalid component name: " .. name)
-		_G.LOG.debug(STLINE.components)
 		return ""
 	end
 
@@ -125,7 +123,7 @@ end
 
 function M.set_arrangement()
 	if not _G.STLINE then
-		_G.LOG.warn("statusline module not initialised")
+		vim.print("statusline module not initialised")
 	end
 
 	local statusline_format = ""

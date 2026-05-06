@@ -14,8 +14,6 @@ function M.init_options()
 	options.set_indentation()
 	options.set_editor_rendering()
 	options.set_save_files()
-
-	_G.LOG.debug("setup core options")
 end
 
 function M.init_keymaps()
@@ -30,8 +28,6 @@ function M.init_keymaps()
 
 		_G.FUNCS.map(map.mode or "n", map.lhs, map.rhs, map.opts)
 	end
-
-	_G.LOG.debug("setup core keymaps")
 end
 
 function M.init_lsp_keymaps()
@@ -49,8 +45,6 @@ function M.init_lsp_keymaps()
 			end
 		end,
 	})
-
-	_G.LOG.debug("setup lsp keymaps for current buffer")
 end
 
 function M.init_auto_commands()
@@ -65,8 +59,6 @@ function M.init_auto_commands()
 			desc = "[core] " .. desc,
 		})
 	end
-
-	_G.LOG.debug("setup core auto commands", autocmds)
 end
 
 return M

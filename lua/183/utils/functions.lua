@@ -7,10 +7,6 @@ local M = {}
 
 function M.map(mode, lhs, rhs, opts)
 	vim.keymap.set(mode, lhs, rhs, opts)
-	_G.LOG.debug(
-		"keymap set",
-		{ mode = mode, lhs = lhs, rhs = rhs, opts = opts }
-	)
 end
 
 function M.mmap(lhs, actions, opts)
@@ -49,17 +45,11 @@ function M.mmap(lhs, actions, opts)
 			end
 		end)
 	end, opts)
-
-	_G.LOG.debug(
-		"menu style keymap set",
-		{ lhs = lhs, actions = actions, opts = opts }
-	)
 end
 
 function M.feedkeys(keys, mode)
 	mode = mode or "n"
 	vim.api.nvim_feedkeys(vim.keycode(keys), mode, false)
-	_G.LOG.debug("emulated keystrokes", { keys = keys, mode = mode })
 end
 
 function M.deep_loop_table(obj, callback, path)

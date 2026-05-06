@@ -21,12 +21,11 @@ function M.check_and_install()
 		local cmd_out = vim.fn.system(M.install_cmd)
 
 		if vim.v.shell_error ~= 0 then
-			LOG.error("failed to install lazy.nvim")
-			LOG.debug(cmd_out)
+			vim.print("failed to install lazy.nvim", cmd_out)
 			os.exit(1)
 		end
 
-		LOG.info("installed lazy.nvim successfully")
+		vim.print("installed lazy.nvim successfully")
 	end
 end
 
