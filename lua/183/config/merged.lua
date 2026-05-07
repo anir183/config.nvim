@@ -5,7 +5,6 @@ local M = nil
 
 -- start with defaults
 M = require("183.config.defaults")
-M.config_state = "default"
 
 -- try to merge customs
 if
@@ -13,25 +12,27 @@ if
 	and type(require("183.config.custom")) == "table"
 then
 	M = vim.tbl_deep_extend("force", M, require("183.config.custom"))
-	M.config_state = "default+custom"
 end
 
 -- try to merge some env vars
-if _G.CONSTS.env_keys then
-	local env = vim.env
-	local state = M.config_state == "default" and "default+env"
-		or "default+custom+env"
+local env = vim.env
 
-	if env[_G.CONSTS.env_keys.mode] then
-		M.mode = env[_G.CONSTS.env_keys.mode]
-		M.config_state = state
-	end
+if _G.CONSTS.env_keys and env[_G.CONSTS.env_keys.mode] then
+	M.mode = env[_G.CONSTS.env_keys.mode]
+end
 
-	M.shell = M.shell or vim.env["SHELL"]
-	if env[_G.CONSTS.env_keys.shell] then
-		M.shell = env[_G.CONSTS.env_keys.shell]
-		M.config_state = state
-	end
+M.shell = M.shell or vim.env["SHELL"]
+if _G.CONSTS.env_keys and env[_G.CONSTS.env_keys.shell] then
+	M.shell = env[_G.CONSTS.env_keys.shell]
+end
+
+-- try to merge vim globals
+if vim.g and vim.g.MODE_183 then
+	M.mode = vim.g.MODE_183
+end
+
+if vim.g and vim.g.SHELL_183 then
+	M.mode = vim.g.SHELL_183
 end
 
 return M
