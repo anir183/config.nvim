@@ -5,6 +5,11 @@ _G.CONSTS = require("183.utils.constants")
 _G.CONF = require("183.config.merged")
 _G.FUNCS = require("183.utils.functions")
 
+-- add additional filetypes
+for _, ft in ipairs(_G.CONF.additional_fts) do
+	vim.filetype.add(ft)
+end
+
 -- config surrounding functions
 _G.CONF.run_before_config()
 vim.api.nvim_create_autocmd("VimEnter", {
