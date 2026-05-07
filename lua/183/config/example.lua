@@ -1,4 +1,4 @@
---[[ my own configuration as of 2026-May-07 ]]
+--[[ my own configuration as of 2026-May-08]]
 
 ---@module "183.config.types"
 
@@ -61,7 +61,7 @@ M.statusline.arrangement = {
 	"$mode",
 	"$diagnostics",
 	" ",
-	"$distrobox",
+	"$dbox",
 	" ",
 	"%r",
 	"%w",
@@ -102,13 +102,18 @@ local function in_distrobox(container_id)
 end
 
 function M.run_after_config()
-	_G.STLINE.components.distrobox = function()
-	if in_distrobox() then
-		return _G.FUNCS.fmt_str("Function", "  " .. vim.env.CONTAINER_ID .. " ")
-	else
-		return ""
+	if _G.STLINE then
+		_G.STLINE.components.dbox = function()
+			if in_distrobox() then
+				return _G.FUNCS.fmt_str(
+					"Function",
+					"  " .. vim.env.CONTAINER_ID .. " "
+				)
+			else
+				return ""
+			end
+		end
 	end
-end
 end
 
 return M
