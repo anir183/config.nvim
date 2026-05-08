@@ -44,6 +44,7 @@
 ---@field todo_comments? LazySpec
 
 ---@class (exact) 183.plugin.types.Category.ToolChains
+---@field copilot? LazySpec
 ---@field lazydev? LazySpec
 
 ---@class (exact) 183.plugins.types.Category.Opts

@@ -73,6 +73,7 @@ function M.get_base_spec()
 	end
 
 	if not opts or opts.toolchains then
+		base.copilot = require("183.plugins.categories.toolchains.copilot")
 		base.lazydev = require("183.plugins.categories.toolchains.lazydev")
 	end
 
