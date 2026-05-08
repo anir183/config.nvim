@@ -13,7 +13,8 @@ plugin.config = function()
 
 	-- inject custom config and enable
 	for name, conf in pairs(_G.CONF.dev_tools.lsps) do
-		vim.lsp.config[name] = conf
+		vim.lsp.config[name] =
+			vim.tbl_deep_extend("force", vim.lsp.config[name], conf)
 		vim.lsp.enable(name)
 	end
 end
