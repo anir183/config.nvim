@@ -13,6 +13,7 @@ function M.init_options()
 	options.set_folding()
 	options.set_indentation()
 	options.set_editor_rendering()
+	options.set_editor_behaviour()
 	options.set_save_files()
 end
 
