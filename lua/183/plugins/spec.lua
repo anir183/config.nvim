@@ -63,7 +63,8 @@ function M.get_base_spec()
 		base.git_signs =
 			require("183.plugins.categories.quality_of_life.git_signs")
 		base.harpoon = require("183.plugins.categories.quality_of_life.harpoon")
-		base.guess_indent = require("183.plugins.categories.quality_of_life.guess_indent")
+		base.guess_indent =
+			require("183.plugins.categories.quality_of_life.guess_indent")
 		base.tiny_inline_diagnostics = require(
 			"183.plugins.categories.quality_of_life.tiny_inline_diagnostics"
 		)
