@@ -38,8 +38,8 @@
 ---@field comment? LazySpec
 ---@field dropbar? LazySpec
 ---@field git_signs? LazySpec
+---@field guess_indent? LazySpec
 ---@field harpoon? LazySpec
----@field sleuth? LazySpec
 ---@field tiny_inline_diagnostics? LazySpec
 ---@field todo_comments? LazySpec
 
