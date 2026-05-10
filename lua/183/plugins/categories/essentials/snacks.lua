@@ -167,7 +167,7 @@ plugin.keys = {
 		mode = "n",
 		"<leader>e",
 		function()
-			require("snacks").explorer()
+			require("snacks").explorer({ cwd = vim.fn.expand("%:p:h") })
 		end,
 		desc = "[plugin.snacks] open [E]xplorer",
 	},
