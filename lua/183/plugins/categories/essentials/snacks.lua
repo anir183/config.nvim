@@ -169,7 +169,15 @@ plugin.keys = {
 		function()
 			require("snacks").explorer({ cwd = vim.fn.expand("%:p:h") })
 		end,
-		desc = "[plugin.snacks] open [E]xplorer",
+		desc = "[plugin.snacks] open [E]xplorer in curr file path",
+	},
+	{
+		mode = "n",
+		"<leader>x",
+		function()
+			require("snacks").explorer()
+		end,
+		desc = "[plugin.snacks] open e[X]plorer in cwd",
 	},
 
 	-- search, find and picker keymaps
