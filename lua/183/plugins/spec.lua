@@ -20,6 +20,7 @@ function M.get_base_spec()
 		base.devicons = require("183.plugins.categories.dependencies.devicons")
 		base.fzf = require("183.plugins.categories.dependencies.fzf")
 		base.nio = require("183.plugins.categories.dependencies.nio")
+		base.nui = require("183.plugins.categories.dependencies.nui")
 		base.plenary = require("183.plugins.categories.dependencies.plenary")
 	end
 
@@ -78,6 +79,7 @@ function M.get_base_spec()
 
 	if not opts or opts.extras then
 		base.copilot = require("183.plugins.categories.extras.copilot")
+		base.leetcode = require("183.plugins.categories.extras.leetcode")
 	end
 
 	return base

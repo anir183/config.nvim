@@ -8,6 +8,7 @@
 ---@field devicons? LazySpec
 ---@field fzf? LazySpec
 ---@field nio? LazySpec
+---@field nui? LazySpec
 ---@field plenary? LazySpec
 
 ---@class (exact) 183.plugin.types.Category.DevTools
@@ -44,8 +45,11 @@
 ---@field todo_comments? LazySpec
 
 ---@class (exact) 183.plugin.types.Category.ToolChains
----@field copilot? LazySpec
 ---@field lazydev? LazySpec
+---
+---@class (exact) 183.plugin.types.Category.Extras
+---@field copilot? LazySpec
+---@field leetcode? LazySpec
 
 ---@class (exact) 183.plugins.types.Category.Opts
 ---@field aesthetics boolean
@@ -56,7 +60,7 @@
 ---@field toolchains boolean
 ---@field extras boolean
 
----@alias 183.plugins.types.BaseSpec 183.plugin.types.Category.Aesthetics | 183.plugin.types.Category.Dependencies | 183.plugin.types.Category.DevTools | 183.plugin.types.Category.Essentials | 183.plugin.types.Category.QualityOfLife | 183.plugin.types.Category.ToolChains
+---@alias 183.plugins.types.BaseSpec 183.plugin.types.Category.Aesthetics | 183.plugin.types.Category.Dependencies | 183.plugin.types.Category.DevTools | 183.plugin.types.Category.Essentials | 183.plugin.types.Category.QualityOfLife | 183.plugin.types.Category.ToolChains | 183.plugin.types.Category.Extras
 
 ---@class (exact) 183.plugins.types.Spec
 ---@field category_opts? 183.plugins.types.Category.Opts

@@ -75,4 +75,8 @@ M.statusline.arrangement = {
 	"$position",
 }
 
+M.leetcode_path = _G.CONSTS.path.data
+	.. _G.CONSTS.path.separator
+	.. "leetcode_problems"
+
 return M
