@@ -54,6 +54,7 @@
 ---@field essentials boolean
 ---@field quality_of_life boolean
 ---@field toolchains boolean
+---@field extras boolean
 
 ---@alias 183.plugins.types.BaseSpec 183.plugin.types.Category.Aesthetics | 183.plugin.types.Category.Dependencies | 183.plugin.types.Category.DevTools | 183.plugin.types.Category.Essentials | 183.plugin.types.Category.QualityOfLife | 183.plugin.types.Category.ToolChains
 

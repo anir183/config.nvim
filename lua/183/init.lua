@@ -42,6 +42,7 @@ if mode == "minimal" or mode == "minimal-plugin" or mode == "minimal-dev" then
 			aesthetics = false,
 			quality_of_life = false,
 			toolchains = false,
+			extras = false,
 		}
 		_G.LAZY.init()
 	end
@@ -58,6 +59,7 @@ if mode == "minimal" or mode == "minimal-plugin" or mode == "minimal-dev" then
 
 			aesthetics = false,
 			quality_of_life = false,
+			extras = false,
 		}
 		_G.LAZY.init()
 	end
