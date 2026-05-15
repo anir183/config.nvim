@@ -75,6 +75,8 @@ function M.get_base_spec()
 
 	if not opts or opts.toolchains then
 		base.lazydev = require("183.plugins.categories.toolchains.lazydev")
+		base.python_dap =
+			require("183.plugins.categories.toolchains.python_dap")
 	end
 
 	if not opts or opts.extras then

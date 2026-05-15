@@ -46,7 +46,8 @@
 
 ---@class (exact) 183.plugin.types.Category.ToolChains
 ---@field lazydev? LazySpec
----
+---@field python_dap? LazySpec
+
 ---@class (exact) 183.plugin.types.Category.Extras
 ---@field copilot? LazySpec
 ---@field leetcode? LazySpec
