@@ -42,6 +42,11 @@ plugin.opts = {
 plugin.config = function(_, opts)
 	require("copilot").setup(opts)
 
+	-- disable copilot by default
+	vim.defer_fn(function()
+		vim.cmd("Copilot disable")
+	end, 200)
+
 	_G.FUNCS.mmap("<leader>oa", {
 		["panel-accept"] = "copilot panel accept",
 		["panel-jump-next"] = "copilot panel jump_next",
