@@ -44,7 +44,8 @@ plugin.config = function(_, opts)
 					guess.set_from_buffer(wargs.buf, true, true)
 					vim.opt_local.listchars:remove("leadmultispace")
 					vim.opt_local.listchars:append({
-						leadmultispace = "▎" .. ("∙"):rep(vim.bo.tabstop - 1),
+						leadmultispace = "▎"
+							.. ("∙"):rep(vim.bo.tabstop - 1),
 					})
 				end,
 			})
