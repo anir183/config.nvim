@@ -1,7 +1,6 @@
 --[[ debug adapter for python ]]
 
 ---@module "lazy"
----@module "lazydev"
 
 ---@type LazySpec[]
 local plugin = { {}, {} }
