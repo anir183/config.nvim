@@ -11,7 +11,7 @@ M["[R]e[N]ame symbol"] = {
 	rhs = vim.lsp.buf.rename,
 }
 
--- documentation
+-- documentation and information
 M["hover documentation"] = {
 	lhs = "K",
 	rhs = vim.lsp.buf.hover,
@@ -25,6 +25,12 @@ M["toggle code [LE]ns"] = {
 	lhs = "<leader>le",
 	rhs = function()
 		vim.lsp.codelens.enable(not vim.lsp.codelens.is_enabled())
+	end,
+}
+M["[L]sp [I]nformation"] = {
+	lhs = "<leader>li",
+	rhs = function()
+		vim.cmd("checkhealth vim.lsp")
 	end,
 }
 
