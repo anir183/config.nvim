@@ -11,44 +11,28 @@ plugin.name = "guess-indent"
 plugin.lazy = false
 ---@type GuessIndentConfig
 plugin.opts = {
-	auto_cmd = false,
+	auto_cmd = true,
 }
 plugin.config = function(_, opts)
 	local guess = require("guess-indent")
 	guess.setup(opts)
 
-	---@source https://github.com/NMAC427/guess-indent.nvim/blob/84a4987ff36798c2fc1169cbaff67960aed9776f/lua/guess-indent/init.lua#L30
-	local augroup = vim.api.nvim_create_augroup("GuessIndent", { clear = true })
-	vim.api.nvim_create_autocmd("BufReadPost", {
-		group = augroup,
-		desc = "guesss indentation when loading a file",
-		callback = function(args)
-			---@diagnostic disable-next-line: param-type-mismatch
-			guess.set_from_buffer(args.buf, true, true)
-			vim.opt_local.listchars:remove("leadmultispace")
-			vim.opt_local.listchars:append({
-				leadmultispace = "▎" .. ("∙"):rep(vim.bo.tabstop - 1),
-			})
-		end,
-	})
-	vim.api.nvim_create_autocmd("BufNewFile", {
-		group = augroup,
-		desc = "guess indentation when saving a new file",
-		callback = function(args)
-			vim.api.nvim_create_autocmd("BufWritePost", {
-				buffer = args.buf,
-				once = true,
-				group = augroup,
-				callback = function(wargs)
-					---@diagnostic disable-next-line: param-type-mismatch
-					guess.set_from_buffer(wargs.buf, true, true)
-					vim.opt_local.listchars:remove("leadmultispace")
-					vim.opt_local.listchars:append({
-						leadmultispace = "▎"
-							.. ("∙"):rep(vim.bo.tabstop - 1),
-					})
-				end,
-			})
+	-- made to work after the following aucmd
+	-- https://github.com/NMAC427/guess-indent.nvim/blob/84a4987ff36798c2fc1169cbaff67960aed9776f/lua/guess-indent/init.lua#L30
+	vim.api.nvim_create_autocmd({
+		"BufReadPost",
+		"BufWritePost",
+		"BufNewFile",
+	}, {
+		group = CONSTS.augrp.id,
+		desc = "set leadmultispace after guess does its job",
+		callback = function(_)
+			vim.defer_fn(function()
+				vim.opt_local.listchars:remove("leadmultispace")
+				vim.opt_local.listchars:append({
+					leadmultispace = "▎" .. ("∙"):rep(vim.bo.tabstop - 1),
+				})
+			end, 300)
 		end,
 	})
 end
