@@ -11,6 +11,32 @@ M["[R]e[N]ame symbol"] = {
 	rhs = vim.lsp.buf.rename,
 }
 
+-- lsp state
+M["[L]s[P] enable"] = {
+	lhs = "<leader>lp",
+	rhs = function()
+		vim.cmd("lsp enable")
+	end,
+}
+M["[L]s[P] disable"] = {
+	lhs = "<leader>LP",
+	rhs = function()
+		vim.cmd("lsp disable")
+	end,
+}
+M["[L]sp [R]estart"] = {
+	lhs = "<leader>lr",
+	rhs = function()
+		vim.cmd("lsp restart")
+	end,
+}
+M["[L]sp [S]top"] = {
+	lhs = "<leader>ls",
+	rhs = function()
+		vim.cmd("lsp stop")
+	end,
+}
+
 -- documentation and information
 M["hover documentation"] = {
 	lhs = "K",
