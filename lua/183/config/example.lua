@@ -1,4 +1,4 @@
---[[ my own configuration as of 2026-May-08]]
+--[[ my own configuration as of 2026-June-01]]
 
 ---@module "183.config.types"
 
@@ -13,15 +13,47 @@ M.plugins.overrides = {}
 M.plugins.minimal_testing = {}
 
 M.dev_tools = {}
-M.dev_tools.lsps = {}
+M.dev_tools.lsps = {
+	fish_lsp = {},
+	clangd = {},
+	basedpyright = {},
+	svelte = {},
+	tailwindcss = {},
+	emmet_language_server = {},
+	css_variables = {},
+	csskit = {},
+	-- cssls = {},
+	cssmodules_ls = {},
+	html = {},
+}
 -- :h conform-formatters or https://github.com/mfussenegger/nvim-lint#available-linters
 M.dev_tools.ft_formatters = {
 	lua = { "stylua" },
+	css = { "prettier" },
+	html = { "htmlbeautifier", "prettier" },
+	c = { "clang-format" },
+	svelte = { "prettier" },
+	fish = { "fish_indent" },
+	typescript = { "prettier" },
+	javascript = { "prettier" },
+	javascriptreact = { "prettier" },
+	typescriptreact = { "prettier" },
+	json = { "fixjson", "jq", "prettier" },
+	jsonc = { "fixjson", "jq", "prettier" },
+	python = { "isort", "ruff_fix", "ruff_format" },
 }
 -- https://github.com/mfussenegger/nvim-lint#available-linters
-M.dev_tools.ft_linters = {}
+M.dev_tools.ft_linters = {
+	python = { "ruff" },
+	json = { "jsonlint" },
+	html = { "htmlhint" },
+}
 -- https://github.com/jay-babu/mason-nvim-dap.nvim#advanced-customization
-M.dev_tools.dap_handlers = {}
+M.dev_tools.dap_handlers = {
+	python = function()
+		--[[ empty config as handled by nvim-dap-python ]]
+	end,
+}
 M.dev_tools.custom_formatters = {}
 M.dev_tools.custom_linters = {}
 
@@ -61,7 +93,7 @@ M.statusline.arrangement = {
 	"$mode",
 	"$diagnostics",
 	" ",
-	"$dbox",
+	"$distrobox",
 	" ",
 	"%r",
 	"%w",
@@ -103,7 +135,7 @@ end
 
 function M.run_after_config()
 	if _G.STLINE then
-		_G.STLINE.components.dbox = function()
+		_G.STLINE.components.distrobox = function()
 			if in_distrobox() then
 				return _G.FUNCS.fmt_str(
 					"Function",
@@ -115,5 +147,7 @@ function M.run_after_config()
 		end
 	end
 end
+
+M.leetcode_path = "/home/anir183/projects/comp_sci/leet"
 
 return M
