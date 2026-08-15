@@ -8,6 +8,7 @@ local plugin = {}
 plugin[1] = "navarasu/onedark.nvim"
 plugin.name = "onedark"
 plugin.priority = _G.CONSTS.lazy.priorities.highest
+plugin.cond = false
 plugin.opts = {
 	style = "dark",
 	transparent = true,

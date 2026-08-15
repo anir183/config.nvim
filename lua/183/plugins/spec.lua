@@ -13,6 +13,7 @@ function M.get_base_spec()
 
 	if not opts or opts.aesthetics then
 		base.onedark = require("183.plugins.categories.aesthetics.onedark")
+		base.base64 = require("183.plugins.categories.aesthetics.base64")
 		base.fidget = require("183.plugins.categories.aesthetics.fidget")
 	end
 
