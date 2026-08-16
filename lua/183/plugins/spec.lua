@@ -85,6 +85,7 @@ function M.get_base_spec()
 	if not opts or opts.extras then
 		base.copilot = require("183.plugins.categories.extras.copilot")
 		base.leetcode = require("183.plugins.categories.extras.leetcode")
+		base.otter = require("183.plugins.categories.extras.otter")
 	end
 
 	return base

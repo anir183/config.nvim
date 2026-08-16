@@ -3,6 +3,7 @@
 ---@class (exact) 183.plugin.types.Category.Aesthetics
 ---@field fidget? LazySpec
 ---@field onedark? LazySpec
+---@field base64? LazySpec
 
 ---@class (exact) 183.plugin.types.Category.Dependencies
 ---@field devicons? LazySpec
@@ -52,6 +53,7 @@
 ---@class (exact) 183.plugin.types.Category.Extras
 ---@field copilot? LazySpec
 ---@field leetcode? LazySpec
+---@field otter? LazySpec
 
 ---@class (exact) 183.plugins.types.Category.Opts
 ---@field aesthetics boolean
