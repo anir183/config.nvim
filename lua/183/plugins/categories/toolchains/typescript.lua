@@ -22,7 +22,7 @@ plugin.config = function(_, opts)
 		["go-to-source-definition"] = vim.cmd.TSToolsGoToSourceDefinition,
 		["rename-file"] = vim.cmd.TSToolsRenameFile,
 		["file-references"] = vim.cmd.TSToolsFileReferences,
-	}, { desc = "[plugin.typescript-tools] flutter tools actions" })
+	}, { desc = "[plugin.typescript-tools] [T]ypescript tools [A]ctions" })
 end
 
 return plugin

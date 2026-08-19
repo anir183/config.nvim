@@ -46,6 +46,7 @@
 ---@field todo_comments? LazySpec
 
 ---@class (exact) 183.plugin.types.Category.ToolChains
+---@field java? LazySpec
 ---@field lazydev? LazySpec
 ---@field python_dap? LazySpec
 ---@field typescript? LazySpec
