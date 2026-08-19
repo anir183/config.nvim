@@ -8,7 +8,7 @@ local plugin = {}
 
 plugin[1] = "kawre/leetcode.nvim"
 plugin.name = "leetcode"
-plugin.dependencies = { "plenary", "nui" }
+plugin.dependencies = { "plenary", "nui.nvim" }
 plugin.lazy = false
 ---@type lc.UserConfig
 plugin.opts = {
