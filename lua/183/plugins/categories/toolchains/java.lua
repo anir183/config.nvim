@@ -12,7 +12,7 @@ plugin.config = function(_, opts)
 	require("java").setup(opts)
 	vim.lsp.enable("jdtls")
 
-	FUNCS.mmap("<leader>ta", {
+	FUNCS.mmap("<leader>ja", {
 		["workspace-build"] = vim.cmd.JavaBuildBuildWorkspace,
 		["workspace-clean"] = vim.cmd.JavaBuildCleanWorkspace,
 		["runner-run-main"] = vim.cmd.JavaRunnerRunMain,
