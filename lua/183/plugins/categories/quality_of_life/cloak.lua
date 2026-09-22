@@ -10,7 +10,7 @@ plugin.name = "cloak"
 plugin.lazy = false
 plugin.opts = {
 	cloak_character = "*",
-	patterns = {},
+	patterns = _G.CONF.cloak_patterns,
 }
 plugin.keys = {
 	{

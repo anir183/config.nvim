@@ -31,7 +31,18 @@ M.dev_tools.custom_formatters = {}
 M.dev_tools.custom_linters = {}
 
 -- obsfurcation patterns
-M.cloak_patterns = {}
+M.cloak_patterns = {
+	{
+		file_pattern = { ".env", ".env.*" },
+		cloak_pattern = { "=.+" },
+		replace = nil,
+	},
+	{
+		file_pattern = { "*secret.json", "secret*.json" },
+		cloak_pattern = { ":.+" },
+		replace = nil,
+	},
+}
 
 -- treesitter parsers
 M.additional_parsers = {}
