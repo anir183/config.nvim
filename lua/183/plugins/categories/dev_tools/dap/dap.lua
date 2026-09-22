@@ -6,7 +6,7 @@
 local plugin = {}
 
 plugin[1] = "mfussenegger/nvim-dap"
-plugin.name = "dap"
+plugin.name = "nvim-dap"
 plugin.lazy = false
 plugin.config = function()
 	vim.cmd("hi DapStoppedCustom guifg=#a6e3a1")

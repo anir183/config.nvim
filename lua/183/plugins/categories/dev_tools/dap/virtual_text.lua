@@ -8,7 +8,7 @@ local plugin = {}
 
 plugin[1] = "theHamsta/nvim-dap-virtual-text"
 plugin.name = "dap-virtual-text"
-plugin.dependencies = "dap"
+plugin.dependencies = "nvim-dap"
 ---@type nvim_dap_virtual_text_options
 plugin.opts = {
 	-- hides sensitive tokens... just in case

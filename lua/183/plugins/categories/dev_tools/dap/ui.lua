@@ -9,7 +9,7 @@ local plugin = {}
 plugin[1] = "rcarriga/nvim-dap-ui"
 plugin.name = "dap-ui"
 plugin.dependencies = {
-	"dap",
+	"nvim-dap",
 	"nio",
 	"dap-virtual-text",
 }

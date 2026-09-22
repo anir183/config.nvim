@@ -10,7 +10,7 @@ plugin.name = "mason-dap"
 plugin.main = "mason-nvim-dap"
 plugin.dependencies = {
 	"mason",
-	"dap",
+	"nvim-dap",
 }
 plugin.opts = {
 	handlers = _G.CONF.dev_tools.dap_handlers,
