@@ -1,4 +1,4 @@
---[[ my own configuration as of 2026-June-01]]
+--[[ my own configuration as of 2026-Sept-22]]
 
 ---@module "183.config.types"
 
@@ -48,16 +48,6 @@ M.dev_tools.ft_linters = {
 	json = { "jsonlint" },
 	html = { "htmlhint" },
 }
--- https://github.com/jay-babu/mason-nvim-dap.nvim#advanced-customization
-M.dev_tools.dap_handlers = {
-	python = function()
-		--[[ empty config as handled by nvim-dap-python ]]
-	end,
-}
-M.dev_tools.custom_formatters = {}
-M.dev_tools.custom_linters = {}
-
-M.cloak_patterns = {}
 
 M.additional_fts = {
 	{
@@ -84,70 +74,6 @@ M.additional_fts = {
 	},
 }
 
-M.additional_parsers = {}
-
-M.statusline = {}
-M.statusline.arrangement = {
-	-- left
-	"$logo",
-	"$mode",
-	"$diagnostics",
-	" ",
-	"$distrobox",
-	" ",
-	"%r",
-	"%w",
-	"%h",
-	"%m",
-
-	"%=", -- break
-
-	-- right
-	"$gitinfo",
-	"   ",
-	"$filename",
-	"   ",
-	"$indent",
-	"   ",
-	"$position",
-}
-
----@type fun(container_id?: string): boolean
-local function in_distrobox(container_id)
-	if not vim.env.container then
-		return false
-	end
-
-	if not vim.env.CONTAINER_ID then
-		return false
-	end
-
-	if not vim.env.DISTROBOX_ENTER_PATH then
-		return false
-	end
-
-	if not container_id then
-		return true
-	end
-
-	return container_id == vim.env.CONTAINER_ID
-end
-
-function M.run_after_config()
-	if _G.STLINE then
-		_G.STLINE.components.distrobox = function()
-			if in_distrobox() then
-				return _G.FUNCS.fmt_str(
-					"Function",
-					"  " .. vim.env.CONTAINER_ID .. " "
-				)
-			else
-				return ""
-			end
-		end
-	end
-end
-
-M.leetcode_path = "/home/anir183/projects/comp_sci/leet"
+M.leetcode_path = "/home/anir183/workspace/sandbox/leetcode"
 
 return M
