@@ -20,6 +20,9 @@ nmap("n", "nzzzv", { desc = "[core] keep cursor centered when jumping to next re
 nmap("N", "Nzzzv", { desc = "[core] keep cursor centered when jumping to prev result" })
 
 -- system clipboard
+map("i", "<C-S-v>", function()
+    vim.api.nvim_paste(vim.fn.getreg("+"), true, -1)
+end, { desc = "[core] paste from system clipboard" })
 map("i", "<C-S-v>", "<esc>\"+pa", { desc = "[core] [p]aste from system clipboard" })
 nmap("<leader>p", "\"+p", { desc = "[core] [p]aste from system clipboard" })
 nmap("<leader>P", "\"+P", { desc = "[core] [P]aste from system clipboard before" })
