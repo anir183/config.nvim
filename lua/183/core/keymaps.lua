@@ -66,5 +66,13 @@ nmap("[Q", vim.cmd.colder, { desc = "[core] jump to older [Q]uick fix list" })
 -- location list
 nmap("]l", vim.cmd.lnext, { desc = "[core] jump to next [l]ocation list item" })
 nmap("[l", vim.cmd.lprev, { desc = "[core] jump to previous [l]ocation list item" })
-nmap("]L", vim.cmd.lnewer, { desc = "[core] jump to newer [L]ocation list" })
-nmap("[L", vim.cmd.lolder, { desc = "[core] jump to older [L]ocation list" })
+nmap(
+    "]L",
+    vim.cmd.lnewer,
+    { desc = "[core] jump to newer [L]ocation list", force = true }
+)
+nmap(
+    "[L",
+    vim.cmd.lolder,
+    { desc = "[core] jump to older [L]ocation list", force = true }
+)

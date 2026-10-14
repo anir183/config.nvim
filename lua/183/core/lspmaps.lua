@@ -28,7 +28,6 @@ nmap("gd", vim.lsp.buf.definition, { desc = "[lsp] [g]oto [d]efinition" })
 nmap("gD", vim.lsp.buf.declaration, { desc = "[lsp] [g]oto [D]eclaration" })
 nmap("gi", vim.lsp.buf.implementation, { desc = "[lsp] [g]oto [i]mplementation" })
 nmap("gr", vim.lsp.buf.references, { desc = "[lsp] [g]oto [r]eferences" })
--- nmap("gT", vim.lsp.buf.type_definition, { desc = "[lsp] [g]oto [T]ype definition" })
 
 -- code actions
 map({ "n", "v" }, "<leader>a", vim.lsp.buf.code_action, { desc = "[lsp] code [a]ctions" })
@@ -66,10 +65,10 @@ end, { desc = "[lsp] [W]orkspace [S]ymbols with query" })
 -- diagnostics
 nmap("[d", function()
     vim.diagnostic.jump({ count = -1 })
-end, { desc = "[lsp] previous [d]iagnostic" })
+end, { desc = "[lsp] previous [d]iagnostic", force = true })
 nmap("]d", function()
     vim.diagnostic.jump({ count = 1 })
-end, { desc = "[lsp] next [d]iagnostic" })
+end, { desc = "[lsp] next [d]iagnostic", force = true })
 nmap(
     "<leader>wd",
     vim.lsp.buf.workspace_diagnostics,

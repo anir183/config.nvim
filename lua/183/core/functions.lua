@@ -6,9 +6,14 @@ _G.FUNCS = {}
 ---@param modes string|string[]
 ---@param lhs string|string[]
 ---@param rhs string|function
----@param opts? vim.keymap.set.Opts
----@return boolean success
+---@param opts? vim.keymap.set.Opts|{force: boolean}
 function FUNCS.map(modes, lhs, rhs, opts)
+    opts = opts or {}
+    if opts.force then
+        opts.force = nil
+        goto skip_checks
+    end
+
     if type(modes) == "string" then
         modes = { modes }
     end
@@ -21,17 +26,21 @@ function FUNCS.map(modes, lhs, rhs, opts)
         for _, key in ipairs(lhs) do
             for _, mapping in ipairs(vim.api.nvim_get_keymap(mode)) do
                 if mapping.lhs == key then
-                    return false
+                    vim.notify("conflicting global keymap " .. key, vim.log.levels.ERROR)
+                    return
                 end
             end
 
             for _, mapping in ipairs(vim.api.nvim_buf_get_keymap(0, mode)) do
                 if mapping.lhs == key then
-                    return false
+                    vim.notify("conflicting buffer keymap " .. key, vim.log.levels.ERROR)
+                    return
                 end
             end
         end
     end
+
+    ::skip_checks::
 
     vim.keymap.set(modes, lhs, rhs, opts)
     return true
