@@ -6,14 +6,8 @@ _G.FUNCS = {}
 ---@param modes string|string[]
 ---@param lhs string|string[]
 ---@param rhs string|function
----@param opts? vim.keymap.set.Opts|{force: boolean}
+---@param opts? vim.keymap.set.Opts
 function FUNCS.map(modes, lhs, rhs, opts)
-    opts = opts or {}
-    if opts.force then
-        opts.force = nil
-        goto skip_checks
-    end
-
     if type(modes) == "string" then
         modes = { modes }
     end
@@ -39,8 +33,6 @@ function FUNCS.map(modes, lhs, rhs, opts)
             end
         end
     end
-
-    ::skip_checks::
 
     vim.keymap.set(modes, lhs, rhs, opts)
     return true

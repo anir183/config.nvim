@@ -5,6 +5,7 @@ local map = FUNCS.map
 local nmap = function(...)
     map("n", ...)
 end
+local del = vim.keymap.del
 
 -- move text
 -- WARN: using "<CMD>" instead of ":" breaks these keymaps
@@ -54,25 +55,35 @@ nmap("<C-S-.>", "<CMD>wincmd +<CR>", { desc = "[core] increase window height" })
 nmap("<C-S-,>", "<CMD>wincmd -<CR>", { desc = "[core] decrease window height" })
 
 -- buffer navigation
-nmap("[b", vim.cmd.bprev, { desc = "[core] previous [b]uffer" })
+del("n", "[b")
+del("n", "]b")
 nmap("]b", vim.cmd.bnext, { desc = "[core] next [b]uffer" })
+nmap("[b", vim.cmd.bprev, { desc = "[core] previous [b]uffer" })
 
 -- quick fix list
+del("n", "]q")
+del("n", "[q")
+del("n", "]Q")
+del("n", "[Q")
 nmap("]q", vim.cmd.cnext, { desc = "[core] jump to next [q]uick fix list item" })
 nmap("[q", vim.cmd.cprev, { desc = "[core] jump to previous [q]uick fix list item" })
 nmap("]Q", vim.cmd.cnewer, { desc = "[core] jump to newer [Q]uick fix list" })
 nmap("[Q", vim.cmd.colder, { desc = "[core] jump to older [Q]uick fix list" })
 
 -- location list
+del("n", "]l")
+del("n", "[l")
+del("n", "]L")
+del("n", "[L")
 nmap("]l", vim.cmd.lnext, { desc = "[core] jump to next [l]ocation list item" })
 nmap("[l", vim.cmd.lprev, { desc = "[core] jump to previous [l]ocation list item" })
 nmap(
     "]L",
     vim.cmd.lnewer,
-    { desc = "[core] jump to newer [L]ocation list", force = true }
+    { desc = "[core] jump to newer [L]ocation list" }
 )
 nmap(
     "[L",
     vim.cmd.lolder,
-    { desc = "[core] jump to older [L]ocation list", force = true }
+    { desc = "[core] jump to older [L]ocation list" }
 )

@@ -2,6 +2,7 @@ local map = FUNCS.map
 local nmap = function(...)
     map("n", ...)
 end
+local del = vim.keymap.del
 
 -- editing
 nmap("<leader>rn", vim.lsp.buf.rename, { desc = "[lsp] [r]e[n]ame symbol" })
@@ -63,12 +64,14 @@ nmap("<leader>WS", function()
 end, { desc = "[lsp] [W]orkspace [S]ymbols with query" })
 
 -- diagnostics
+del("n", "[d")
 nmap("[d", function()
     vim.diagnostic.jump({ count = -1 })
-end, { desc = "[lsp] previous [d]iagnostic", force = true })
+end, { desc = "[lsp] previous [d]iagnostic"})
+del("n", "]d")
 nmap("]d", function()
     vim.diagnostic.jump({ count = 1 })
-end, { desc = "[lsp] next [d]iagnostic", force = true })
+end, { desc = "[lsp] next [d]iagnostic" })
 nmap(
     "<leader>wd",
     vim.lsp.buf.workspace_diagnostics,
