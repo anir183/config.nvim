@@ -1,4 +1,4 @@
-local map = vim.keymap.set
+local map = FUNCS.map
 local nmap = function(...)
     map("n", ...)
 end

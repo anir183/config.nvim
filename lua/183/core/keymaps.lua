@@ -1,7 +1,7 @@
 vim.g.mapleader = vim.keycode("<space>")
 vim.g.maplocalleader = vim.keycode("<space>")
 
-local map = vim.keymap.set
+local map = FUNCS.map
 local nmap = function(...)
     map("n", ...)
 end
