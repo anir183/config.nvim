@@ -6,8 +6,6 @@ o.relativenumber = true
 o.signcolumn = "number"
 o.cursorline = true
 o.laststatus = 3
-o.winborder = "rounded"
-o.pumborder = "rounded"
 
 -- editing
 o.expandtab = true -- expand tab character to spaces
