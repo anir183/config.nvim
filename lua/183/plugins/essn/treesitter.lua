@@ -7,7 +7,7 @@ plugin.hook = "TSUpdate"
 plugin.config = function()
     local treesitter = require("nvim-treesitter")
     local parsers = require("nvim-treesitter.parsers")
-    local options = require("183.custom.options").load()
+    local options = QOPTS.get()
 
     treesitter.setup()
 
