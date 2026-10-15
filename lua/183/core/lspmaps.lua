@@ -38,31 +38,6 @@ map({ "n", "v" }, "<leader>fm", function()
     vim.lsp.buf.format({ async = true })
 end, { desc = "[lsp] [f]or[m]at file" })
 
--- lists and symbols
-nmap("<leader>ic", vim.lsp.buf.incoming_calls, { desc = "[lsp] [i]ncoming [c]alls" })
-nmap("<leader>oc", vim.lsp.buf.outgoing_calls, { desc = "[lsp] [o]outgoing [c]alls" })
-nmap("<leader>sy", vim.lsp.buf.document_symbol, { desc = "[lsp] document [s][y]mbols" })
-nmap("<leader>st", function()
-    vim.lsp.buf.typehierarchy("subtypes")
-end, { desc = "[lsp] [s]ub [t]ypes" })
-nmap("<leader>ST", function()
-    vim.lsp.buf.typehierarchy("supertypes")
-end, { desc = "[lsp] [S]uper [T]ypes" })
-nmap("<leader>ws", function()
-    vim.lsp.buf.workspace_symbol("")
-end, { desc = "[lsp] [w]orkspace [s]ymbols" })
-nmap("<leader>WS", function()
-    vim.ui.input({
-        prompt = "workspace symbols filter query: ",
-    }, function(query)
-        if not query then
-            return
-        end
-
-        vim.lsp.buf.workspace_symbol(query)
-    end)
-end, { desc = "[lsp] [W]orkspace [S]ymbols with query" })
-
 -- diagnostics
 del("n", "[d")
 nmap("[d", function()
@@ -73,11 +48,6 @@ nmap("]d", function()
     vim.diagnostic.jump({ count = 1 })
 end, { desc = "[lsp] next [d]iagnostic" })
 nmap(
-    "<leader>wd",
-    vim.lsp.buf.workspace_diagnostics,
-    { desc = "[lsp] load [w]orkspace [d]iagnostics" }
-)
-nmap(
     "<leader>ld",
     vim.diagnostic.setloclist,
     { desc = "[lsp] [l]ist buffer [d]iagnostics in loclist" }
@@ -87,21 +57,3 @@ nmap(
     vim.diagnostic.setqflist,
     { desc = "[lsp] [L]ist all [D]iagnostics in qflist" }
 )
-
--- workspace folders
-nmap(
-    "<leader>wa",
-    vim.lsp.buf.add_workspace_folder,
-    { desc = "[lsp] [w]orkspace [a]dd folder" }
-)
-nmap("<leader>wr", function()
-    vim.ui.select(vim.lsp.buf.list_workspace_folders(), {
-        prompt = "choose workspace folder to remove: ",
-    }, function(folder)
-        if not folder then
-            return
-        end
-
-        vim.lsp.buf.remove_workspace_folder(folder)
-    end)
-end, { desc = "[lsp] lsp [w]orkspace [r]emove folder" })

@@ -7,8 +7,6 @@ _G.SESS = {
     min_bufs = 1,
 }
 
-local SESS = _G.SESS
-
 local uv = vim.uv or vim.loop
 local sessdir = vim.fs.joinpath(vim.fn.stdpath("state"), "sessions")
 local sessgrp = vim.api.nvim_create_augroup("sess183", {

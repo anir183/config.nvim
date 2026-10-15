@@ -4,7 +4,6 @@ _G.PALETTE = { actions = {} }
 ---@field id string
 ---@field desc string
 ---@field category string
----@field keymap? string
 ---@field action string|fun()
 
 ---@param action PaletteAction
@@ -60,17 +59,15 @@ end
 ---@param action PaletteAction
 ---@return string
 local function format_action(action)
-    local keymap = action.keymap or ""
     local category = "[" .. action.category .. "]"
-    local suffix = keymap ~= "" and (keymap .. " " .. category) or category
     local padding = math.max(
         1,
         display_width()
             - vim.fn.strdisplaywidth(action.desc)
-            - vim.fn.strdisplaywidth(suffix)
+            - vim.fn.strdisplaywidth(category)
     )
 
-    return action.desc .. string.rep(" ", padding) .. suffix
+    return action.desc .. string.rep(" ", padding) .. category
 end
 
 ---@param action PaletteAction
@@ -86,7 +83,7 @@ local function execute(action)
 
         if not ok then
             vim.notify(
-                ("Palette action '%s' failed:\n%s"):format(action.desc, err),
+                ("palette action '%s' failed:\n%s"):format(action.desc, err),
                 vim.log.levels.ERROR
             )
         end
@@ -97,7 +94,7 @@ end
 ---@param prompt string
 local function select_actions(actions, prompt)
     if #actions == 0 then
-        vim.notify("No palette actions available", vim.log.levels.INFO)
+        vim.notify("no palette actions available", vim.log.levels.INFO)
         return
     end
 
@@ -110,7 +107,7 @@ local function select_actions(actions, prompt)
 end
 
 function PALETTE.open()
-    select_actions(get_actions(), "Palette: ")
+    select_actions(get_actions(), "palette: ")
 end
 
 function PALETTE.categories()
@@ -125,7 +122,7 @@ function PALETTE.categories()
     end)
 
     if #categories == 0 then
-        vim.notify("No palette actions available", vim.log.levels.INFO)
+        vim.notify("no palette actions available", vim.log.levels.INFO)
         return
     end
 
@@ -133,13 +130,13 @@ function PALETTE.categories()
         return ("%s (%d actions)"):format(category, counts[category])
     end, categories)
 
-    vim.ui.select(labels, { prompt = "Palette categories: " }, function(_, index)
+    vim.ui.select(labels, { prompt = "palette categories: " }, function(_, index)
         if index then
             local category = categories[index]
             local actions = vim.tbl_filter(function(action)
                 return action.category == category
             end, get_actions())
-            select_actions(actions, ("Palette: %s: "):format(category))
+            select_actions(actions, ("palette: %s: "):format(category))
         end
     end)
 end

@@ -2,6 +2,11 @@ local nmap = function(...)
     FUNCS.map("n", ...)
 end
 
+-- custom
+nmap("zt", function()
+    vim.o.foldcolumn = vim.o.foldcolumn == "0" and "auto:9" or "0"
+end, { desc = "[custom] [t]oggle fold column" })
+
 -- sessions
 nmap("<leader>qq", SESS.select, {
     desc = "[session] select and load session",
