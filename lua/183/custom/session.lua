@@ -442,3 +442,5 @@ function SESS.branch()
 
     return branch ~= "" and branch or nil
 end
+
+SESS.start()
