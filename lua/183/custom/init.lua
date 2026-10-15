@@ -1,3 +1,5 @@
 require("183.custom.session")
+require("183.custom.palette")
 require("183.custom.keymaps")
+require("183.custom.actions")
 require("183.custom.neovide")

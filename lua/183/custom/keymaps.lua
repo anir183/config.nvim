@@ -2,6 +2,7 @@ local nmap = function(...)
     FUNCS.map("n", ...)
 end
 
+-- sessions
 nmap("<leader>qq", SESS.select, {
     desc = "[session] select and load session",
 })
@@ -25,4 +26,12 @@ nmap("<leader>qd", SESS.delete, {
 })
 nmap("<leader>qs", SESS.stop, {
     desc = "[session] [s]top saving sessions",
+})
+
+-- palette
+nmap("<C-S-p>", PALETTE.open, {
+    desc = "[palette] open command palette",
+})
+nmap("<leader>pc", PALETTE.categories, {
+    desc = "[palette] open categorized command palette",
 })
