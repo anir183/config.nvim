@@ -16,6 +16,9 @@ local M = {
     -- ui
     base46 = require("183.plugins.ui.base46"),
     fidget = require("183.plugins.ui.fidget"),
+
+    -- essentials
+    treesitter = require("183.plugins.essn.treesitter"),
 }
 
 return M

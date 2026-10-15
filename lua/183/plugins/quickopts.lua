@@ -1,7 +1,13 @@
 _G.QOPTS = {}
 
+---@module "nvim-treesitter"
+---@class 183.TreesitterParser
+---@field install_info InstallInfo
+---@field filetypes string|string[]|nil
+
 ---@class 183.Options
 ---@field plugins table<string, 183.PluginSpec>
+---@field parsers table<string, 183.TreesitterParser>
 
 local opt_template = {
     "---@type 183.Options",
@@ -9,6 +15,9 @@ local opt_template = {
     "",
     "-- plugins",
     "M.plugins = {}",
+    "",
+    "-- treesitter parsers",
+    "M.parsers = {}",
     "",
     "return M",
 }
