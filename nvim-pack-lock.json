@@ -4,6 +4,10 @@
       "rev": "83522e02c6c3b4ea901c4bffd9e0a5e0371c1fe6",
       "src": "https://github.com/AvengeMedia/base46"
     },
+    "fidget.nvim": {
+      "rev": "9e0201673e08e997e7cf52afca5565c70bd117f3",
+      "src": "https://github.com/j-hui/fidget.nvim"
+    },
     "nui.nvim": {
       "rev": "10fc361835c856ba4233ef5ea135b919bf3dce97",
       "src": "https://github.com/MunifTanjim/nui.nvim"
