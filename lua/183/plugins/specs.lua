@@ -8,6 +8,8 @@
 
 ---@type table<string, 183.PluginSpec>
 local M = {
+    -- ui
+    base46 = require("183.plugins.ui.base46"),
 }
 
 return M
