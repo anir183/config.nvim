@@ -54,6 +54,9 @@ function QOPTS.open()
     })
 
     vim.cmd.edit(opts_path)
+    vim.defer_fn(function()
+        FUNCS.map("n", "q", "<cmd>wd<cr>")
+    end, 10)
 end
 
 function QOPTS.load()
@@ -72,3 +75,17 @@ function QOPTS.get()
 end
 
 QOPTS.load()
+
+PALETTE.add({
+    id = "plugins.quick_opts",
+    desc = "open quick options in buffer",
+    category = "misc",
+    action = QOPTS.open,
+})
+
+FUNCS.map(
+    "n",
+    "<leader>op",
+    QOPTS.open,
+    { desc = "[plugins.quickopts] open quick options in floating buffer" }
+)
