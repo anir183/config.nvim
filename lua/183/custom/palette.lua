@@ -1,12 +1,12 @@
 _G.PALETTE = { actions = {} }
 
----@class PaletteAction
+---@class 183.PaletteAction
 ---@field id string
 ---@field desc string
 ---@field category string
 ---@field action string|fun()
 
----@param action PaletteAction
+---@param action 183.PaletteAction
 function PALETTE.add(action)
     assert(type(action) == "table", "palette action must be a table")
     assert(type(action.id) == "string" and action.id ~= "", "palette action needs an id")
@@ -40,7 +40,7 @@ function PALETTE.update(id, changes)
     end
 end
 
----@return PaletteAction[]
+---@return 183.PaletteAction[]
 local function get_actions()
     local actions = vim.tbl_values(PALETTE.actions)
     table.sort(actions, function(a, b)
@@ -56,7 +56,7 @@ local function display_width()
     return math.max(1, math.min(80, vim.o.columns - 8))
 end
 
----@param action PaletteAction
+---@param action 183.PaletteAction
 ---@return string
 local function format_action(action)
     local category = "[" .. action.category .. "]"
@@ -70,7 +70,7 @@ local function format_action(action)
     return action.desc .. string.rep(" ", padding) .. category
 end
 
----@param action PaletteAction
+---@param action 183.PaletteAction
 local function execute(action)
     vim.defer_fn(function()
         local ok, err = pcall(function()
@@ -90,7 +90,7 @@ local function execute(action)
     end, 10)
 end
 
----@param actions PaletteAction[]
+---@param actions 183.PaletteAction[]
 ---@param prompt string
 local function select_actions(actions, prompt)
     if #actions == 0 then
