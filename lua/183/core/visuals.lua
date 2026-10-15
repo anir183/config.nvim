@@ -2,8 +2,8 @@ vim.opt.messagesopt:append("pager:<CR>")
 require("vim._core.ui2").enable()
 
 -- borders
-vim.o.winborder = "none"
-vim.o.pumborder = "none"
+vim.o.winborder = "rounded"
+vim.o.pumborder = "rounded"
 
 -- diagnostic icons
 vim.diagnostic.config({
