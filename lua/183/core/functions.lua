@@ -60,23 +60,6 @@ function FUNCS.str_fmt(hl_grp, ...)
 end
 
 ---@param str string
----@param sep string
----@return string[]
-function FUNCS.str_split(str, sep)
-    sep = sep or " "
-
-    local chunks = {}
-    for field, s in string.gmatch(str, "([^" .. sep .. "]*)(" .. sep .. "?)") do
-        table.insert(chunks, field)
-        if s == "" then
-            return chunks
-        end
-    end
-
-    return chunks
-end
-
----@param str string
 ---@return boolean
 function FUNCS.str_is_num(str)
     local num_regx = "^%-?%d+$"
