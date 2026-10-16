@@ -79,7 +79,7 @@ QOPTS.load()
 PALETTE.add({
     id = "plugins.quick_opts",
     desc = "open quick options in buffer",
-    category = "misc",
+    category = "plugins",
     action = QOPTS.open,
 })
 
