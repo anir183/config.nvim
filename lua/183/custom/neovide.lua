@@ -28,7 +28,7 @@ vim.g.neovide_padding_bottom = 8
 vim.g.neovide_padding_left = 6
 vim.g.neovide_padding_right = 5
 
-vim.g.neovide_floating_corner_radius = 0.3
+vim.g.neovide_floating_corner_radius = 0.4
 
 -- keymaps
 FUNCS.map("n", "<C-=>", function()
