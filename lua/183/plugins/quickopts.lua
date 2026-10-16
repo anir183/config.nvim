@@ -55,7 +55,7 @@ function QOPTS.open()
 
     vim.cmd.edit(opts_path)
     vim.defer_fn(function()
-        FUNCS.map("n", "q", "<cmd>wd<cr>")
+        FUNCS.map("n", "q", "<cmd>wq<cr>")
     end, 10)
 end
 
