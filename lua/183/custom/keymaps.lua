@@ -37,6 +37,3 @@ nmap("<leader>qs", SESS.stop, {
 nmap("<C-S-p>", PALETTE.open, {
     desc = "[palette] open command palette",
 })
-nmap("<leader>pc", PALETTE.categories, {
-    desc = "[palette] open categorized command palette",
-})
