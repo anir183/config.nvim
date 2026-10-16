@@ -20,12 +20,23 @@ local modes = {
     t = "terminal",
 }
 
+local incsearch = vim.api.nvim_get_hl(0, {
+    name = "IncSearch",
+    link = false,
+})
+
+vim.api.nvim_set_hl(0, "StlineMode", {
+    fg = incsearch.fg,
+    bg = incsearch.bg,
+    bold = true,
+})
+
 ---@return string
 function STLINE.mode()
     local mode = vim.api.nvim_get_mode().mode
     local name = modes[mode] or modes[mode:sub(1, 1)]
 
-    return hl("IncSearch", "  " .. name .. "  ")
+    return hl("StlineMode", "  " .. name .. "  ")
 end
 
 ---@return string
@@ -94,5 +105,4 @@ function STLINE.arrange()
         " "
     })
 end
-
 vim.opt.statusline = STLINE.arrange()

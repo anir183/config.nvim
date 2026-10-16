@@ -15,6 +15,17 @@ plugin.config = function()
             bg = "#151311",
         })
     end
+
+    local incsearch = vim.api.nvim_get_hl(0, {
+        name = "IncSearch",
+        link = false,
+    })
+
+    vim.api.nvim_set_hl(0, "StlineMode", {
+        fg = incsearch.fg,
+        bg = incsearch.bg,
+        bold = true,
+    })
 end
 
 return plugin
