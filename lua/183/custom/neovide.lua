@@ -7,8 +7,8 @@ vim.o.winborder = "solid"
 vim.o.pumborder = "none"
 
 -- opacity
-vim.g.neovide_normal_opacity = 0.7
-vim.g.neovide_opacity = 0.6
+vim.g.neovide_normal_opacity = 0.75
+vim.g.neovide_opacity = 0.65
 
 -- animations
 vim.g.neovide_cursor_animation_length = 0.06
