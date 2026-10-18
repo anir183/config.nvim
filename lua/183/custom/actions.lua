@@ -1,4 +1,37 @@
--- core
+-- lsp
+PALETTE.add({
+    id = "lsp.info",
+    desc = "lsp information",
+    category = "lsp",
+    action = function()
+        vim.cmd("checkhealth vim.lsp")
+    end
+})
+PALETTE.add({
+    id = "lsp.log",
+    desc = "lsp log",
+    category = "lsp",
+    action = function()
+        local ui = vim.api.nvim_list_uis()[1]
+        local width = math.floor((ui.width * 0.7) + 0.5)
+        local height = math.floor((ui.height * 0.75) + 0.5)
+
+        vim.api.nvim_open_win(vim.api.nvim_create_buf(false, true), true, {
+            relative = "editor",
+            width = width,
+            height = height,
+            col = (ui.width - width) / 2,
+            row = (ui.height - height) / 2,
+            focusable = true,
+            border = "none",
+        })
+
+        vim.cmd.edit(FUNCS.join_path(vim.fn.stdpath("state"), "logs", "lsp.log"))
+        vim.defer_fn(function()
+            FUNCS.map("n", "q", "<cmd>q!<cr>")
+        end, 10)
+    end
+})
 PALETTE.add({
     id = "lsp.incoming_calls",
     desc = "list all call sites of symbol",
