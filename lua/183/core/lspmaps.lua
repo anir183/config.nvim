@@ -27,8 +27,11 @@ end, { desc = "[lsp] [l]sp [i]nformation" })
 -- navigation
 nmap("gd", vim.lsp.buf.definition, { desc = "[lsp] [g]oto [d]efinition" })
 nmap("gD", vim.lsp.buf.declaration, { desc = "[lsp] [g]oto [D]eclaration" })
-nmap("gi", vim.lsp.buf.implementation, { desc = "[lsp] [g]oto [i]mplementation" })
 nmap("gr", vim.lsp.buf.references, { desc = "[lsp] [g]oto [r]eferences" })
+nmap("gi", vim.lsp.buf.implementation, { desc = "[lsp] [g]oto [i]mplementation" })
+nmap("gy", vim.lsp.buf.type_definition, { desc = "[lsp] t[y]pe definition" })
+nmap("gai", vim.lsp.buf.incoming_calls, { desc = "[lsp] [i]ncoming calls" })
+nmap("gao", vim.lsp.buf.outgoing_calls, { desc = "[lsp] [o]utgoing calls" })
 
 -- code actions
 map({ "n", "v" }, "<leader>a", vim.lsp.buf.code_action, { desc = "[lsp] code [a]ctions" })

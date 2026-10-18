@@ -19,6 +19,7 @@ local M = {
 
     -- essentials
     treesitter = require("183.plugins.essn.treesitter"),
+    snacks = require("183.plugins.essn.snacks"),
 }
 
 return M
