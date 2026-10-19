@@ -25,6 +25,7 @@ local M = {
     lspconfig = require("183.plugins.dev.lspconfig"),
     lazydev = require("183.plugins.dev.lazydev"),
     mason = require("183.plugins.dev.mason"),
+    conform = require("183.plugins.dev.conform"),
 
     -- quality of life
     comment = require("183.plugins.qol.comment"),

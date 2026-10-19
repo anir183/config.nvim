@@ -5,9 +5,12 @@ _G.QOPTS = {}
 ---@field install_info InstallInfo
 ---@field filetypes string|string[]|nil
 
+---@module "conform"
 ---@class 183.Options
 ---@field plugins table<string, 183.PluginSpec>
 ---@field lsps table<string, vim.lsp.config|nil>
+---@field formatters table<string, conform.FiletypeFormatter>
+---@field custom_formatters table<string, conform.FormatterConfigOverride|fun(bufnr: integer): nil|conform.FormatterConfigOverride>
 ---@field parsers table<string, 183.TreesitterParser>
 
 local opt_template = {
@@ -19,6 +22,13 @@ local opt_template = {
     "",
     "-- lsp server config",
     "M.lsps = {}",
+    "",
+    "-- :h conform-formatters",
+    "-- https://github.com/stevearc/conform.nvim/blob/master/doc/recipes.md",
+    "M.formatters = {}",
+    "M.custom_formatters = {}",
+    "",
+    "",
     "",
     "-- treesitter parsers",
     "M.parsers = {}",
