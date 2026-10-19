@@ -20,6 +20,9 @@ local M = {
     snacks = require("183.plugins.essn.snacks"),
     quicker = require("183.plugins.essn.quicker"),
     harpoon = require("183.plugins.essn.harpoon"),
+
+    -- dev tools
+    lspconfig = require("183.plugins.dev.lspconfig"),
 }
 
 return M

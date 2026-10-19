@@ -7,6 +7,7 @@ _G.QOPTS = {}
 
 ---@class 183.Options
 ---@field plugins table<string, 183.PluginSpec>
+---@field lsps table<string, vim.lsp.config|nil>
 ---@field parsers table<string, 183.TreesitterParser>
 
 local opt_template = {
@@ -15,6 +16,9 @@ local opt_template = {
     "",
     "-- plugins",
     "M.plugins = {}",
+    "",
+    "-- lsp server config",
+    "M.lsps = {}",
     "",
     "-- treesitter parsers",
     "M.parsers = {}",
