@@ -1,7 +1,9 @@
+---@type 183.PluginSpec
+---@diagnostic disable-next-line: missing-fields
 local plugin = {}
 
 plugin.repo = "https://github.com/folke/snacks.nvim"
-
+plugin.priority = 25
 plugin.config = function()
     vim.g.snacks_animate = false
 

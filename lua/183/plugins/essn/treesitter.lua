@@ -1,9 +1,11 @@
+---@type 183.PluginSpec
+---@diagnostic disable-next-line: missing-fields
 local plugin = {}
 
-plugin.repo = "https://github.com/nvim-treesitter/nvim-treesitter"
-
-plugin.hook = "TSUpdate"
-
+plugin.repo = {
+    src = "https://github.com/nvim-treesitter/nvim-treesitter",
+    data = { hook = "TSUpdate" },
+}
 plugin.config = function()
     local treesitter = require("nvim-treesitter")
     local parsers = require("nvim-treesitter.parsers")

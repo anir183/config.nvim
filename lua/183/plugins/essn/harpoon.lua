@@ -1,3 +1,5 @@
+---@type 183.PluginSpec
+---@diagnostic disable-next-line: missing-fields
 local plugin = {}
 
 plugin.repo = {
