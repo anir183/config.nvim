@@ -18,6 +18,7 @@ local M = {
     -- essentials
     treesitter = require("183.plugins.essn.treesitter"),
     snacks = require("183.plugins.essn.snacks"),
+    quicker = require("183.plugins.essn.quicker"),
     harpoon = require("183.plugins.essn.harpoon"),
 }
 
