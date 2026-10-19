@@ -5,6 +5,11 @@ _G.QOPTS = {}
 ---@field install_info InstallInfo
 ---@field filetypes string|string[]|nil
 
+---@class 183.CloakRule
+---@field file_pattern string|string[]
+---@field cloak_pattern string|string[]
+---@field replace string|string[]|nil
+
 ---@module "conform"
 ---@module "lint"
 ---@class 183.Options
@@ -15,6 +20,7 @@ _G.QOPTS = {}
 ---@field linters table<string, string[]>
 ---@field custom_linters table<string, fun(): lint.Linter|lint.Linter>
 ---@field parsers table<string, 183.TreesitterParser>
+---@field cloak 183.CloakRule[]
 
 local opt_template = {
     "---@type 183.Options",
@@ -38,6 +44,15 @@ local opt_template = {
     "",
     "-- treesitter parsers",
     "M.parsers = {}",
+    "",
+    "-- visual obfuscation",
+    "M.cloak = {",
+    "   {",
+    "       file_pattern = { \".env\", \".env.*\" },",
+    "       cloak_pattern = { \"=.+\" },",
+    "       replace = nil,",
+    "   },",
+    "}",
     "",
     "return M",
 }
