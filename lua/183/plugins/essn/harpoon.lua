@@ -55,6 +55,30 @@ plugin.config = function()
     nmap("[h", function()
         harpoon:list():prev()
     end, { desc = "[plugins.harpoon] navigate to previous file in list" })
+
+    -- actions
+    PALETTE.add({
+        id = "harpoon.menu",
+        desc = "open the harpoon list menu",
+        category = "harpoon",
+        action = function()
+            harpoon.ui:toggle_quick_menu(harpoon:list(), {
+                border = vim.g.neovide and "solid" or "rounded",
+            })
+        end,
+    })
+    PALETTE.add({
+        id = "harpoon.add",
+        desc = "add current file to harpoon menu",
+        category = "harpoon",
+        action = function()
+            harpoon:list():add()
+            vim.notify(
+                "added file to harpoon list: " .. vim.fn.expand("%:t"),
+                vim.log.levels.INFO
+            )
+        end,
+    })
 end
 
 return plugin
