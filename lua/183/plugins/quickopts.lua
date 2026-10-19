@@ -6,11 +6,14 @@ _G.QOPTS = {}
 ---@field filetypes string|string[]|nil
 
 ---@module "conform"
+---@module "lint"
 ---@class 183.Options
 ---@field plugins table<string, 183.PluginSpec>
 ---@field lsps table<string, vim.lsp.config|nil>
 ---@field formatters table<string, conform.FiletypeFormatter>
 ---@field custom_formatters table<string, conform.FormatterConfigOverride|fun(bufnr: integer): nil|conform.FormatterConfigOverride>
+---@field linters table<string, string[]>
+---@field custom_linters table<string, fun(): lint.Linter|lint.Linter>
 ---@field parsers table<string, 183.TreesitterParser>
 
 local opt_template = {
@@ -28,6 +31,9 @@ local opt_template = {
     "M.formatters = {}",
     "M.custom_formatters = {}",
     "",
+    "-- https://github.com/mfussenegger/nvim-lint#available-linters",
+    "M.linters = {}",
+    "M.custom_linters = {}",
     "",
     "",
     "-- treesitter parsers",

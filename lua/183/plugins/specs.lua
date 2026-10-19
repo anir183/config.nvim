@@ -26,6 +26,7 @@ local M = {
     lazydev = require("183.plugins.dev.lazydev"),
     mason = require("183.plugins.dev.mason"),
     conform = require("183.plugins.dev.conform"),
+    lint = require("183.plugins.dev.lint"),
 
     -- quality of life
     comment = require("183.plugins.qol.comment"),
