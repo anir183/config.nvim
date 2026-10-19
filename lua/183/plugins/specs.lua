@@ -24,6 +24,7 @@ local M = {
     -- dev tools
     lspconfig = require("183.plugins.dev.lspconfig"),
     lazydev = require("183.plugins.dev.lazydev"),
+    mason = require("183.plugins.dev.mason"),
 }
 
 return M
