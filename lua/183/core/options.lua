@@ -32,7 +32,7 @@ o.colorcolumn = "91"
 -- search
 o.ignorecase = true
 o.smartcase = true
-o.inccommand = "split"
+o.inccommand = vim.g.neovide and "nosplit" or "split"
 o.wrapscan = true
 
 -- completion
