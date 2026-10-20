@@ -1,0 +1,16 @@
+---@type 183.PluginSpec
+---@diagnostic disable-next-line: missing-fields
+local plugin = {}
+
+plugin.repo = {
+    src = "https://github.com/L3MON4D3/LuaSnip",
+    version = vim.version.range("2.*"),
+    data = {
+        hook = "make install_jsregexp",
+    },
+}
+plugin.config = function()
+    require("luasnip.loaders.from_vscode").lazy_load()
+end
+
+return plugin

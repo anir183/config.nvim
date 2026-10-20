@@ -24,6 +24,9 @@ local M = {
     -- dev tools
     lspconfig = require("183.plugins.dev.lspconfig"),
     lazydev = require("183.plugins.dev.lazydev"),
+    friendly_snips = { repo = "https://github.com/rafamadriz/friendly-snippets" },
+    luasnip = require("183.plugins.dev.luasnip"),
+    blink = require("183.plugins.dev.blink"),
     mason = require("183.plugins.dev.mason"),
     conform = require("183.plugins.dev.conform"),
     lint = require("183.plugins.dev.lint"),
