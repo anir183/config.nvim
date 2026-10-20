@@ -4,29 +4,37 @@
 ---@field priority? integer
 ---@field config? function
 
+---@param opts 183.PluginSpec
+---@param num? integer
+---@return 183.PluginSpec
+local function pr(opts, num)
+    opts = vim.tbl_deep_extend("keep", opts, { priority = num or 0 })
+    return opts
+end
+
 ---@type table<string, 183.PluginSpec>
 local M = {
     -- dependencies
-    devicons = { repo = "https://github.com/nvim-tree/nvim-web-devicons", priority = 50 },
-    plenary = { repo = "https://github.com/nvim-lua/plenary.nvim", priority = 50 },
-    nui = { repo = "https://github.com/MunifTanjim/nui.nvim", priority = 50 },
+    devicons = pr({ repo = "https://github.com/nvim-tree/nvim-web-devicons" }, 50),
+    plenary = pr({ repo = "https://github.com/nvim-lua/plenary.nvim" }, 50),
+    nui = pr({ repo = "https://github.com/MunifTanjim/nui.nvim" }, 50),
 
     -- ui
-    base46 = require("183.plugins.ui.base46"),
+    base46 = pr(require("183.plugins.ui.base46"), 100),
     fidget = require("183.plugins.ui.fidget"),
 
     -- essentials
-    treesitter = require("183.plugins.essn.treesitter"),
-    snacks = require("183.plugins.essn.snacks"),
+    treesitter = pr(require("183.plugins.essn.treesitter"), 25),
+    snacks = pr(require("183.plugins.essn.snacks"), 25),
     quicker = require("183.plugins.essn.quicker"),
     harpoon = require("183.plugins.essn.harpoon"),
 
     -- dev tools
-    lspconfig = require("183.plugins.dev.lspconfig"),
-    lazydev = require("183.plugins.dev.lazydev"),
-    friendly_snips = { repo = "https://github.com/rafamadriz/friendly-snippets" },
-    luasnip = require("183.plugins.dev.luasnip"),
-    blink = require("183.plugins.dev.blink"),
+    lspconfig = pr(require("183.plugins.dev.lspconfig"), 25),
+    lazydev = pr(require("183.plugins.dev.lazydev"), 4),
+    friendly_snips = pr({ repo = "https://github.com/rafamadriz/friendly-snippets" }, 3),
+    luasnip = pr(require("183.plugins.dev.luasnip"), 2),
+    blink = pr(require("183.plugins.dev.blink"), 1),
     mason = require("183.plugins.dev.mason"),
     conform = require("183.plugins.dev.conform"),
     lint = require("183.plugins.dev.lint"),

@@ -3,7 +3,6 @@
 local plugin = {}
 
 plugin.repo = "https://github.com/AvengeMedia/base46"
-plugin.priority = 100
 plugin.config = function()
     require("base46").setup({
         transparency = true,
