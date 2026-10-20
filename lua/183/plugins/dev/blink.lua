@@ -8,7 +8,7 @@ plugin.repo = {
 }
 plugin.config = function()
     local blink = require("blink.cmp")
-    local feedkeys = require("183.utils.funcs").feedkeys
+    local feedkeys = FUNCS.feedkeys
     local map = vim.keymap.set
 
     blink.setup({

@@ -39,7 +39,7 @@ function FUNCS.map(modes, lhs, rhs, opts)
 end
 
 ---@param keys string
----@param mode string
+---@param mode? string
 function FUNCS.feedkeys(keys, mode)
     mode = mode or "n"
     vim.api.nvim_feedkeys(vim.keycode(keys), mode, false)
