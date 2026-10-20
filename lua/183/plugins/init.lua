@@ -1,6 +1,10 @@
 require("183.plugins.quickopts")
 require("183.plugins.builtins")
 
+for _, ft in ipairs(QOPTS.get().filetypes) do
+    vim.filetype.add(ft)
+end
+
 -- merge plugin specs from config and options
 local specs =
     vim.tbl_deep_extend("force", require("183.plugins.specs"), QOPTS.get().plugins)

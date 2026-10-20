@@ -19,6 +19,7 @@ _G.QOPTS = {}
 ---@field custom_formatters table<string, conform.FormatterConfigOverride|fun(bufnr: integer): nil|conform.FormatterConfigOverride>
 ---@field linters table<string, string[]>
 ---@field custom_linters table<string, fun(): lint.Linter|lint.Linter>
+---@field filetypes vim.filetype.add.filetypes[]
 ---@field parsers table<string, 183.TreesitterParser>
 ---@field cloak 183.CloakRule[]
 
@@ -41,6 +42,8 @@ local opt_template = {
     "M.linters = {}",
     "M.custom_linters = {}",
     "",
+    "-- additional filetypes",
+    "M.filetypes = {}",
     "",
     "-- treesitter parsers",
     "M.parsers = {}",
