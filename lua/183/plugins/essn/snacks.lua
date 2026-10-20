@@ -92,7 +92,7 @@ plugin.config = function()
                             title = "{title} {live} {flags}",
                             title_pos = "center",
                         },
-                        { win = "list", border = "hpad" },
+                        { win = "list",    border = "hpad" },
                         { win = "preview", title = "{preview}", border = true },
                     },
                 },
@@ -437,6 +437,37 @@ plugin.config = function()
         desc = "browse colorschemes",
         category = "snacks.picker",
         action = snacks.picker.colorschemes,
+    })
+
+    -- picker: todo comments
+    PALETTE.add({
+        id = "snacks.picker.todocomments",
+        desc = "browse special todo comment",
+        category = "snacks.todo",
+        action = function()
+            ---@diagnostic disable-next-line: undefined-field
+            snacks.picker.todo_comments()
+        end
+    })
+    PALETTE.add({
+        id = "snacks.picker.todoselect",
+        desc = "select and browser particular todo comments",
+        category = "snacks.todo",
+        action = function()
+            local keywords = vim.tbl_keys(require("todo-comments.config").options.keywords)
+            table.sort(keywords)
+
+            vim.ui.select(keywords, {
+                prompt = "todo keyword: ",
+            }, function(choice)
+                if choice then
+                    ---@diagnostic disable-next-line: undefined-field
+                    snacks.picker.todo_comments({
+                        keywords = { choice },
+                    })
+                end
+            end)
+        end,
     })
 
     -- picker: git
