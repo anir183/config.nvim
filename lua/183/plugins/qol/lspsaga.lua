@@ -25,6 +25,10 @@ plugin.config = function()
     end
 
     require("lspsaga").setup({
+        hover = {
+            max_width = 0.5,
+            max_height = 0.3,
+        },
         symbol_in_winbar = {
             enable = false,
         },
