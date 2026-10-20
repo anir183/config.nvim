@@ -56,7 +56,7 @@ table.sort(enabled, function(a, b)
     local pa = a.priority or 0
     local pb = b.priority or 0
 
-    return pa < pb
+    return pa > pb
 end)
 
 -- install and load
