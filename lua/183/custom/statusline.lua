@@ -81,11 +81,9 @@ function STLINE.arrange()
         -- left
         " ",
         "%{%v:lua.STLINE.mode()%}",
-        " ",
+        "  ",
         "%{%v:lua.STLINE.lsp()%}",
-        " ",
-        "%{%v:lua.STLINE.filetype()%}",
-        " ",
+        "  ",
         "%r",
         "%w",
         "%h",
@@ -98,6 +96,8 @@ function STLINE.arrange()
         "%=",
         -- right
         "%{%v:lua.STLINE.diagnostics()%}",
+        "  ",
+        "%{%v:lua.STLINE.filetype()%}",
         "  ",
         "%02l:%02c",
         " ~ ",
