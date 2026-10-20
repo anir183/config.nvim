@@ -34,6 +34,7 @@ local M = {
     -- quality of life
     cloak = require("183.plugins.qol.cloak"),
     comment = require("183.plugins.qol.comment"),
+    dropbar = require("183.plugins.qol.dropbar"),
     lspsign = require("183.plugins.qol.lspsign"),
 }
 
