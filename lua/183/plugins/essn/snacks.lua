@@ -279,7 +279,7 @@ plugin.config = function()
     nmap("<leader>gb", function()
         -- NOTE: blame line opens in terminal mode and any key press dismisses it
         --       explicitly stopinsert() to return to normal mode
-        Snacks.git.blame_line({
+        snacks.git.blame_line({
             interactive = false,
             auto_close = false,
             win = {
