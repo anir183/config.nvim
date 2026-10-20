@@ -31,6 +31,21 @@ PALETTE.add({
             FUNCS.map("n", "q", "<cmd>q!<cr>")
         end, 10)
     end
+PALETTE.add({
+    id = "lsp.inlay_enable",
+    desc = "enable inlay hints for current buffer",
+    category = "lsp",
+    action = function()
+        vim.lsp.inlay_hint.enable(true, { bufnr = 0 })
+    end,
+})
+PALETTE.add({
+    id = "lsp.inlay_enable",
+    desc = "disable inlay hints for current buffer",
+    category = "lsp",
+    action = function()
+        vim.lsp.inlay_hint.enable(false, { bufnr = 0 })
+    end,
 })
 PALETTE.add({
     id = "lsp.doc_symbols",
