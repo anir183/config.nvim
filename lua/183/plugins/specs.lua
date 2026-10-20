@@ -18,6 +18,7 @@ local M = {
     devicons = pr({ repo = "https://github.com/nvim-tree/nvim-web-devicons" }, 50),
     plenary = pr({ repo = "https://github.com/nvim-lua/plenary.nvim" }, 50),
     nui = pr({ repo = "https://github.com/MunifTanjim/nui.nvim" }, 50),
+    nio = pr({ repo = "https://github.com/nvim-neotest/nvim-nio" }, 50),
 
     -- ui
     base46 = pr(require("183.plugins.ui.base46"), 100),
@@ -38,6 +39,11 @@ local M = {
     mason = require("183.plugins.dev.mason"),
     conform = require("183.plugins.dev.conform"),
     lint = require("183.plugins.dev.lint"),
+
+    -- debugging
+    dap = pr(require("183.plugins.debug.dap"), 1),
+    dapui = require("183.plugins.debug.dapui"),
+    dapvtext = require("183.plugins.debug.virtualtext"),
 
     -- quality of life
     cloak = require("183.plugins.qol.cloak"),

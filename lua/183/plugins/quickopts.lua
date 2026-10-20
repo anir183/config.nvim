@@ -10,6 +10,7 @@ _G.QOPTS = {}
 ---@field cloak_pattern string|string[]
 ---@field replace string|string[]|nil
 
+---@module "dap"
 ---@module "conform"
 ---@module "lint"
 ---@class 183.Options
@@ -19,6 +20,7 @@ _G.QOPTS = {}
 ---@field custom_formatters table<string, conform.FormatterConfigOverride|fun(bufnr: integer): nil|conform.FormatterConfigOverride>
 ---@field linters table<string, string[]>
 ---@field custom_linters table<string, fun(): lint.Linter|lint.Linter>
+---@field dap table<string, { adapter: dap.Adapter | fun( callback: fun(adapter: dap.Adapter), config: dap.Configuration, parent?: dap.Session), configs: dap.Configuration[] }>
 ---@field filetypes vim.filetype.add.filetypes[]
 ---@field parsers table<string, 183.TreesitterParser>
 ---@field cloak 183.CloakRule[]
@@ -41,6 +43,9 @@ local opt_template = {
     "-- https://github.com/mfussenegger/nvim-lint#available-linters",
     "M.linters = {}",
     "M.custom_linters = {}",
+    "",
+    "-- dap configuration",
+    "M.dap = {}",
     "",
     "-- additional filetypes",
     "M.filetypes = {}",
