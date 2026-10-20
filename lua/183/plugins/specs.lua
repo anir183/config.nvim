@@ -36,6 +36,7 @@ local M = {
     colorpicker = require("183.plugins.qol.colorpicker"),
     comment = require("183.plugins.qol.comment"),
     dropbar = require("183.plugins.qol.dropbar"),
+    guessindent = require("183.plugins.qol.guessindent"),
     lspsign = require("183.plugins.qol.lspsign"),
 }
 
