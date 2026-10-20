@@ -175,15 +175,15 @@ plugin.config = function()
     nmap("<C-p>", snacks.picker.files, { desc = "[plugins.snacks] [f]ind [f]iles" })
     nmap("<leader>ff", function()
         snacks.picker.files({
-            cwd = vim.fn.expand("%:p:h"),
-        })
-    end, { desc = "[plugins.snacks] [F]ind [F]iles in current directory" })
-    nmap("<leader>fa", function()
-        snacks.picker.files({
             ignored = true,
             hidden = true,
         })
     end, { desc = "[plugins.snacks] [f]ind files [a]ll inclusive" })
+    nmap("<leader>FF", function()
+        snacks.picker.files({
+            cwd = vim.fn.expand("%:p:h"),
+        })
+    end, { desc = "[plugins.snacks] [F]ind [F]iles in current directory" })
     nmap("<leader>fc", function()
         snacks.picker.files({
             cwd = vim.fn.stdpath("config"),
