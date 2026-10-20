@@ -234,7 +234,24 @@ plugin.config = function()
             desc = "[plugins.snacks] [G]lobal [G]rep current directory",
         }
     )
+    nmap(
+        "<leader>fr",
+        snacks.picker.recent,
+        {
+            desc = "[plugins.snacks] [f]ind [r]ecently visited files",
+        }
+    )
 
+    -- buffers
+    nmap(
+        "<leader>fb",
+        snacks.picker.buffers,
+        {
+            desc = "[plugins.snacks] [f]ind open [b]uffers",
+        }
+    )
+
+    -- words
     nmap("]w", function()
         snacks.words.jump(vim.v.count1, true)
     end, {
