@@ -3,7 +3,6 @@
 local plugin = {}
 
 plugin.repo = "https://github.com/ray-x/go.nvim"
-plugin.cond = false
 plugin.config = function()
     require("go").setup({
         lsp_cfg = false,
