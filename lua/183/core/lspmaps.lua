@@ -51,12 +51,12 @@ nmap("]d", function()
     vim.diagnostic.jump({ count = 1 })
 end, { desc = "[lsp] next [d]iagnostic" })
 nmap(
-    "<leader>ld",
+    "<leader>BD",
     vim.diagnostic.setloclist,
-    { desc = "[lsp] [l]ist buffer [d]iagnostics in loclist" }
+    { desc = "[lsp] list [B]uffer [D]iagnostics in loclist" }
 )
 nmap(
-    "<leader>LD",
+    "<leader>WD",
     vim.diagnostic.setqflist,
-    { desc = "[lsp] [L]ist all [D]iagnostics in qflist" }
+    { desc = "[lsp] list [W]orkspace [D]iagnostics in qflist" }
 )

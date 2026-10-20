@@ -33,18 +33,6 @@ PALETTE.add({
     end
 })
 PALETTE.add({
-    id = "lsp.incoming_calls",
-    desc = "list all call sites of symbol",
-    category = "lsp",
-    action = vim.lsp.buf.incoming_calls,
-})
-PALETTE.add({
-    id = "lsp.outgoing_calls",
-    desc = "list all items called by symbol",
-    category = "lsp",
-    action = vim.lsp.buf.outgoing_calls,
-})
-PALETTE.add({
     id = "lsp.doc_symbols",
     desc = "list all symbols in buffer",
     category = "lsp",

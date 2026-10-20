@@ -45,6 +45,7 @@ local M = {
     comment = require("183.plugins.qol.comment"),
     dropbar = require("183.plugins.qol.dropbar"),
     guessindent = require("183.plugins.qol.guessindent"),
+    lspsaga = require("183.plugins.qol.lspsaga"),
     lspsign = require("183.plugins.qol.lspsign"),
 }
 
