@@ -57,6 +57,7 @@ local M = {
 
     -- stacks
     flutter = require("183.plugins.stacks.flutter"),
+    typescript = require("183.plugins.stacks.typescript"),
 }
 
 return M
