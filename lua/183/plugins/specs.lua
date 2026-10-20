@@ -54,6 +54,9 @@ local M = {
     guessindent = require("183.plugins.qol.guessindent"),
     lspsaga = require("183.plugins.qol.lspsaga"),
     lspsign = require("183.plugins.qol.lspsign"),
+
+    -- stacks
+    flutter = require("183.plugins.stacks.flutter"),
 }
 
 return M
