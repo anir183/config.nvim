@@ -14,24 +14,26 @@ vim.api.nvim_create_autocmd("PackChanged", {
     callback = function(ev)
         local hook, kind = (ev.data.spec.data or {}).hook, ev.data.kind
 
-        if type(hook) == "function" then
-            local ok, result, _ = pcall(hook, kind)
-            if not ok then
-                vim.notify(
-                    "couldnt run "
-                        .. kind
-                        .. " hook for "
-                        .. ev.data.spec.src
-                        .. "\n"
-                        .. result,
-                    vim.log.levels.ERROR
-                )
+        vim.defer_fn(function()
+            if type(hook) == "function" then
+                local ok, result, _ = pcall(hook, kind)
+                if not ok then
+                    vim.notify(
+                        "couldnt run "
+                            .. kind
+                            .. " hook for "
+                            .. ev.data.spec.src
+                            .. "\n"
+                            .. result,
+                        vim.log.levels.ERROR
+                    )
+                end
             end
-        end
 
-        if type(hook) == "string" then
-            vim.cmd(hook)
-        end
+            if type(hook) == "string" then
+                vim.cmd(hook)
+            end
+        end, 5000)
     end,
 })
 
