@@ -23,12 +23,9 @@ plugin.config = function()
         end,
     })
 
-    FUNCS.map(
-        "n",
-        "<leader>ln",
-        lint.try_lint,
-        { desc = "[plugins.nvim-lint] perform [l]i[n]ting on current file" }
-    )
+    FUNCS.map("n", "<leader>ln", lint.try_lint, {
+        desc = "[plugins.nvim-lint] perform [l]i[n]ting on current file",
+    })
 end
 
 return plugin

@@ -1,6 +1,5 @@
 ---@type 183.PluginSpec
 ---@diagnostic disable-next-line: missing-fields
-
 local plugin = {}
 
 plugin.repo = "https://github.com/pmizio/typescript-tools.nvim"
@@ -51,7 +50,11 @@ plugin.config = function()
         "remove unused statements and declarations",
         vim.cmd.TSToolsRemoveUnused
     )
-    add("fix_all", "apply all available TypeScript fixes", vim.cmd.TSToolsFixAll)
+    add(
+        "fix_all",
+        "apply all available TypeScript fixes",
+        vim.cmd.TSToolsFixAll
+    )
 
     -- navigation
     add(

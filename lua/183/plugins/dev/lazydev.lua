@@ -8,10 +8,14 @@ plugin.config = function()
 
     require("lazydev").setup({
         enabled = function(root_dir)
-            return vim.fs.normalize(root_dir) == vim.fs.normalize(config_dir)
+            return vim.fs.normalize(root_dir)
+                == vim.fs.normalize(config_dir)
         end,
         library = {
-            { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+            {
+                path = "${3rd}/luv/library",
+                words = { "vim%.uv" },
+            },
             { "nvim-dap-ui" },
         },
     })

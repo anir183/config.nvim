@@ -5,7 +5,7 @@ PALETTE.add({
     category = "lsp",
     action = function()
         vim.cmd("checkhealth vim.lsp")
-    end
+    end,
 })
 PALETTE.add({
     id = "lsp.log",
@@ -16,21 +16,32 @@ PALETTE.add({
         local width = math.floor((ui.width * 0.7) + 0.5)
         local height = math.floor((ui.height * 0.75) + 0.5)
 
-        vim.api.nvim_open_win(vim.api.nvim_create_buf(false, true), true, {
-            relative = "editor",
-            width = width,
-            height = height,
-            col = (ui.width - width) / 2,
-            row = (ui.height - height) / 2,
-            focusable = true,
-            border = "none",
-        })
+        vim.api.nvim_open_win(
+            vim.api.nvim_create_buf(false, true),
+            true,
+            {
+                relative = "editor",
+                width = width,
+                height = height,
+                col = (ui.width - width) / 2,
+                row = (ui.height - height) / 2,
+                focusable = true,
+                border = "none",
+            }
+        )
 
-        vim.cmd.edit(FUNCS.join_path(vim.fn.stdpath("state"), "logs", "lsp.log"))
+        vim.cmd.edit(
+            FUNCS.join_path(
+                vim.fn.stdpath("state"),
+                "logs",
+                "lsp.log"
+            )
+        )
         vim.defer_fn(function()
             FUNCS.map("n", "q", "<cmd>q!<cr>")
         end, 10)
-    end
+    end,
+})
 PALETTE.add({
     id = "lsp.inlay_enable",
     desc = "enable inlay hints for current buffer",
@@ -152,10 +163,14 @@ PALETTE.add({
                 prompt = "tab length: ",
                 default = tostring(vim.bo.tabstop),
             }, function(new_tab_len)
-                if not new_tab_len or not FUNCS.str_is_num(new_tab_len) then
+                if
+                    not new_tab_len
+                    or not FUNCS.str_is_num(new_tab_len)
+                then
                     new_tab_len = vim.bo.tabstop
                 end
-                new_tab_len = tonumber(new_tab_len) or old_tab_len
+                new_tab_len = tonumber(new_tab_len)
+                    or old_tab_len
 
                 -- reindent
                 vim.ui.select({
@@ -196,10 +211,13 @@ PALETTE.add({
                     vim.bo.tabstop = new_tab_len
                     vim.bo.shiftwidth = 0 -- size of each level of indentation (0 -> tabstop)
                     vim.bo.softtabstop = -1 -- size of tab character in insert mode (-1 -> shiftwidth)
-                    vim.opt_local.listchars:remove("leadmultispace")
+                    vim.opt_local.listchars:remove(
+                        "leadmultispace"
+                    )
                     ---@diagnostic disable-next-line: param-type-mismatch
                     vim.opt_local.listchars:append({
-                        leadmultispace = "│" .. (" "):rep(new_tab_len - 1),
+                        leadmultispace = "│"
+                            .. (" "):rep(new_tab_len - 1),
                     })
                 end)
             end)
@@ -211,7 +229,9 @@ PALETTE.add({
     desc = "display absolute path of file",
     category = "custom",
     action = function()
-        vim.print("current path:\n" .. vim.fn.expand("%:p") .. "\n")
+        vim.print(
+            "current path:\n" .. vim.fn.expand("%:p") .. "\n"
+        )
     end,
 })
 

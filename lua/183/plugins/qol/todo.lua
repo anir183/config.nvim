@@ -7,8 +7,12 @@ plugin.config = function()
     local todo = require("todo-comments")
     todo.setup()
 
-    local normal = vim.api.nvim_get_hl(0, { name = "Normal", link = false })
-    local warn = vim.api.nvim_get_hl(0, { name = "TodoFgWarn", link = false })
+    local normal =
+        vim.api.nvim_get_hl(0, { name = "Normal", link = false })
+    local warn = vim.api.nvim_get_hl(
+        0,
+        { name = "TodoFgWarn", link = false }
+    )
 
     if normal.bg and warn.fg then
         vim.api.nvim_set_hl(0, "TodoBgWarn", {
@@ -18,18 +22,12 @@ plugin.config = function()
         })
     end
 
-    FUNCS.map(
-        "n",
-        "]c",
-        todo.jump_next,
-        { desc = "[plugins.todo-comments]: jump to next todo [c]omment" }
-    )
-    FUNCS.map(
-        "n",
-        "[c",
-        todo.jump_prev,
-        { desc = "[plugins.todo-comments]: jump to previous todo [c]omment" }
-    )
+    FUNCS.map("n", "]c", todo.jump_next, {
+        desc = "[plugins.todo-comments]: jump to next todo [c]omment",
+    })
+    FUNCS.map("n", "[c", todo.jump_prev, {
+        desc = "[plugins.todo-comments]: jump to previous todo [c]omment",
+    })
 
     PALETTE.add({
         id = "todo.loclist",

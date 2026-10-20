@@ -52,7 +52,8 @@ aucmd("FileType", {
             vim.cmd("copen")
 
             -- if not at the end of the list, stay at the same index, otherwise, go one up.
-            local new_idx = curr_qf_idx < #qf_items and curr_qf_idx
+            local new_idx = curr_qf_idx < #qf_items
+                    and curr_qf_idx
                 or math.max(curr_qf_idx - 1, 1)
 
             -- set the cursor position directly in the quickfix window

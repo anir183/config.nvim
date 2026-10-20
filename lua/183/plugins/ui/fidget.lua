@@ -22,7 +22,9 @@ plugin.config = function()
         "n",
         "<leader>nh",
         "<CMD>Fidget history<CR>",
-        { desc = "[plugin.fidget] open [N]otification [H]istory" }
+        {
+            desc = "[plugin.fidget] open [N]otification [H]istory",
+        }
     )
     vim.keymap.set(
         "n",

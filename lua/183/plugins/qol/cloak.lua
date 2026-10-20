@@ -13,7 +13,9 @@ plugin.config = function()
         "n",
         "<leader>lp",
         vim.cmd.CloakPreviewLine,
-        { desc = "[plugins.cloak] cloak current [l]ine [p]review" }
+        {
+            desc = "[plugins.cloak] cloak current [l]ine [p]review",
+        }
     )
     FUNCS.map(
         "n",

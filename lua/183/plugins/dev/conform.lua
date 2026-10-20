@@ -22,10 +22,15 @@ plugin.config = function()
             elseif not err and not modify then
                 vim.notify("format ok: " .. vim.fn.expand("%:t"))
             else
-                vim.notify(err or "error while formatting", vim.log.levels.ERROR)
+                vim.notify(
+                    err or "error while formatting",
+                    vim.log.levels.ERROR
+                )
             end
         end)
-    end, { desc = "[plugin.conform] [f]or[m]at file or selections" })
+    end, {
+        desc = "[plugin.conform] [f]or[m]at file or selections",
+    })
 end
 
 return plugin

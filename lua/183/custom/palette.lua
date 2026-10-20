@@ -8,18 +8,26 @@ _G.PALETTE = { actions = {} }
 
 ---@param action 183.PaletteAction
 function PALETTE.add(action)
-    assert(type(action) == "table", "palette action must be a table")
-    assert(type(action.id) == "string" and action.id ~= "", "palette action needs an id")
+    assert(
+        type(action) == "table",
+        "palette action must be a table"
+    )
+    assert(
+        type(action.id) == "string" and action.id ~= "",
+        "palette action needs an id"
+    )
     assert(
         type(action.desc) == "string" and action.desc ~= "",
         "palette action needs a description"
     )
     assert(
-        type(action.category) == "string" and action.category ~= "",
+        type(action.category) == "string"
+            and action.category ~= "",
         "palette action needs a category"
     )
     assert(
-        type(action.action) == "string" or type(action.action) == "function",
+        type(action.action) == "string"
+            or type(action.action) == "function",
         "palette action must be a command string or function"
     )
 
@@ -34,7 +42,10 @@ end
 ---@param id string
 ---@param changes table
 function PALETTE.update(id, changes)
-    local action = assert(PALETTE.actions[id], ("unknown palette action: %s"):format(id))
+    local action = assert(
+        PALETTE.actions[id],
+        ("unknown palette action: %s"):format(id)
+    )
     for key, value in pairs(changes) do
         action[key] = value
     end
@@ -62,7 +73,10 @@ local function execute(action)
 
         if not ok then
             vim.notify(
-                ("palette action '%s' failed:\n%s"):format(action.desc, err),
+                ("palette action '%s' failed:\n%s"):format(
+                    action.desc,
+                    err
+                ),
                 vim.log.levels.ERROR
             )
         end
@@ -73,7 +87,10 @@ end
 ---@param prompt string
 local function select_actions(actions, prompt)
     if #actions == 0 then
-        vim.notify("no palette actions available", vim.log.levels.INFO)
+        vim.notify(
+            "no palette actions available",
+            vim.log.levels.INFO
+        )
         return
     end
 

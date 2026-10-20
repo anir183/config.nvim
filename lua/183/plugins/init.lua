@@ -6,13 +6,17 @@ for _, ft in ipairs(QOPTS.get().filetypes) do
 end
 
 -- merge plugin specs from config and options
-local specs =
-    vim.tbl_deep_extend("force", require("183.plugins.specs"), QOPTS.get().plugins)
+local specs = vim.tbl_deep_extend(
+    "force",
+    require("183.plugins.specs"),
+    QOPTS.get().plugins
+)
 
 -- hooks
 vim.api.nvim_create_autocmd("PackChanged", {
     callback = function(ev)
-        local hook, kind = (ev.data.spec.data or {}).hook, ev.data.kind
+        local hook, kind =
+            (ev.data.spec.data or {}).hook, ev.data.kind
 
         vim.defer_fn(function()
             if type(hook) == "function" then

@@ -4,7 +4,8 @@ end
 
 -- custom
 nmap("zt", function()
-    vim.o.foldcolumn = vim.o.foldcolumn == "0" and "auto:9" or "0"
+    vim.o.foldcolumn = vim.o.foldcolumn == "0" and "auto:9"
+        or "0"
 end, { desc = "[custom] [t]oggle fold column" })
 
 -- sessions

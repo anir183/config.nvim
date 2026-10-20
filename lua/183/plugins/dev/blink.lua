@@ -25,7 +25,11 @@ plugin.config = function()
             menu = {
                 draw = {
                     columns = {
-                        { "label", "label_description", gap = 1 },
+                        {
+                            "label",
+                            "label_description",
+                            gap = 1,
+                        },
                         { "kind_icon", "kind", gap = 1 },
                         { "source_name" },
                     },
@@ -84,44 +88,64 @@ plugin.config = function()
     })
 
     -- navigate completion menu
-    map({ "i", "s" }, "<Tab>", function()
-        if blink.is_visible() then
-            blink.select_next()
-            return
-        end
+    map(
+        { "i", "s" },
+        "<Tab>",
+        function()
+            if blink.is_visible() then
+                blink.select_next()
+                return
+            end
 
-        if not blink.snippet_forward() then
-            feedkeys("<Tab>")
-        end
-    end, { desc = "[plugins.blink] next item in completion menu" })
-    map({ "i", "s" }, "<S-Tab>", function()
-        if blink.is_visible() then
-            blink.select_prev()
-            return
-        end
+            if not blink.snippet_forward() then
+                feedkeys("<Tab>")
+            end
+        end,
+        { desc = "[plugins.blink] next item in completion menu" }
+    )
+    map(
+        { "i", "s" },
+        "<S-Tab>",
+        function()
+            if blink.is_visible() then
+                blink.select_prev()
+                return
+            end
 
-        if not blink.snippet_backward() then
-            feedkeys("<S-Tab>")
-        end
-    end, { desc = "[plugins.blink] prev item in completion menu" })
+            if not blink.snippet_backward() then
+                feedkeys("<S-Tab>")
+            end
+        end,
+        { desc = "[plugins.blink] prev item in completion menu" }
+    )
 
     -- accept completion
-    map({ "i", "s" }, "<CR>", function()
-        if not blink.accept() then
-            feedkeys("<CR>")
-        end
-    end, { desc = "[plugins.blink] accept completion suggestion" })
+    map(
+        { "i", "s" },
+        "<CR>",
+        function()
+            if not blink.accept() then
+                feedkeys("<CR>")
+            end
+        end,
+        { desc = "[plugins.blink] accept completion suggestion" }
+    )
 
     -- documentation window
-    map({ "i", "s" }, "<C-k>", function()
-        if blink.is_documentation_visible() then
-            blink.hide_documentation()
-        elseif blink.is_visible() then
-            blink.show_documentation()
-        else
-            feedkeys("<C-k>")
-        end
-    end, { desc = "[plugins.blink] toggle documentation window" })
+    map(
+        { "i", "s" },
+        "<C-k>",
+        function()
+            if blink.is_documentation_visible() then
+                blink.hide_documentation()
+            elseif blink.is_visible() then
+                blink.show_documentation()
+            else
+                feedkeys("<C-k>")
+            end
+        end,
+        { desc = "[plugins.blink] toggle documentation window" }
+    )
     map({ "i", "s" }, "<C-d>", function()
         if not blink.scroll_documentation_down(1) then
             feedkeys("<C-d>")

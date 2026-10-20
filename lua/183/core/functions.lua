@@ -18,16 +18,26 @@ function FUNCS.map(modes, lhs, rhs, opts)
 
     for _, mode in ipairs(modes) do
         for _, key in ipairs(lhs) do
-            for _, mapping in ipairs(vim.api.nvim_get_keymap(mode)) do
+            for _, mapping in
+                ipairs(vim.api.nvim_get_keymap(mode))
+            do
                 if mapping.lhs == key then
-                    vim.notify("conflicting global keymap " .. key, vim.log.levels.ERROR)
+                    vim.notify(
+                        "conflicting global keymap " .. key,
+                        vim.log.levels.ERROR
+                    )
                     return
                 end
             end
 
-            for _, mapping in ipairs(vim.api.nvim_buf_get_keymap(0, mode)) do
+            for _, mapping in
+                ipairs(vim.api.nvim_buf_get_keymap(0, mode))
+            do
                 if mapping.lhs == key then
-                    vim.notify("conflicting buffer keymap " .. key, vim.log.levels.ERROR)
+                    vim.notify(
+                        "conflicting buffer keymap " .. key,
+                        vim.log.levels.ERROR
+                    )
                     return
                 end
             end

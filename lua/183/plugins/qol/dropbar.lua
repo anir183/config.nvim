@@ -69,13 +69,19 @@ plugin.config = function()
         Folder = "Directory",
     }
 
-    for _, name in ipairs(vim.fn.getcompletion("DropBarKind", "highlight")) do
+    for _, name in
+        ipairs(vim.fn.getcompletion("DropBarKind", "highlight"))
+    do
         if name:match("NC$") then
             vim.api.nvim_set_hl(0, name, { link = "Comment" })
         end
     end
 
-    for _, name in ipairs(vim.fn.getcompletion("DropBarIconKind", "highlight")) do
+    for _, name in
+        ipairs(
+            vim.fn.getcompletion("DropBarIconKind", "highlight")
+        )
+    do
         if name:match("NC$") then
             vim.api.nvim_set_hl(0, name, { link = "Comment" })
         end
@@ -100,7 +106,9 @@ plugin.config = function()
         "n",
         "[;",
         dropbar_api.goto_context_start,
-        { desc = "[plugins.dropbar] go to start of current context" }
+        {
+            desc = "[plugins.dropbar] go to start of current context",
+        }
     )
     FUNCS.map(
         "n",

@@ -2,7 +2,8 @@
 ---@diagnostic disable-next-line: missing-fields
 local plugin = {}
 
-plugin.repo = "https://github.com/theHamsta/nvim-dap-virtual-text"
+plugin.repo =
+    "https://github.com/theHamsta/nvim-dap-virtual-text"
 
 plugin.config = function()
     ---@type nvim_dap_virtual_text_options
@@ -11,7 +12,8 @@ plugin.config = function()
             local name = variable.name:lower()
 
             -- Redact variables whose names suggest sensitive data.
-            if name:match("secret")
+            if
+                name:match("secret")
                 or name:match("token")
                 or name:match("password")
                 or name:match("passwd")

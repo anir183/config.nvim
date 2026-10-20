@@ -25,13 +25,18 @@ plugin.config = function()
             border = vim.g.neovide and "solid" or "rounded",
         })
     end, { desc = "[plugins.harpoon] open [H]arpoon list" })
-    nmap("<C-S-l>", function()
-        harpoon:list():add()
-        vim.notify(
-            "added file to harpoon list: " .. vim.fn.expand("%:t"),
-            vim.log.levels.INFO
-        )
-    end, { desc = "[plugins.harpoon] add file to [h]arpoon list" })
+    nmap(
+        "<C-S-l>",
+        function()
+            harpoon:list():add()
+            vim.notify(
+                "added file to harpoon list: "
+                    .. vim.fn.expand("%:t"),
+                vim.log.levels.INFO
+            )
+        end,
+        { desc = "[plugins.harpoon] add file to [h]arpoon list" }
+    )
 
     -- navigation
     nmap("<C-1>", function()
@@ -51,10 +56,14 @@ plugin.config = function()
     end, { desc = "[plugins.harpoon] navigate to file [5]" })
     nmap("]h", function()
         harpoon:list():next()
-    end, { desc = "[plugins.harpoon] navigate to next file in list" })
+    end, {
+        desc = "[plugins.harpoon] navigate to next file in list",
+    })
     nmap("[h", function()
         harpoon:list():prev()
-    end, { desc = "[plugins.harpoon] navigate to previous file in list" })
+    end, {
+        desc = "[plugins.harpoon] navigate to previous file in list",
+    })
 
     -- actions
     PALETTE.add({
@@ -74,7 +83,8 @@ plugin.config = function()
         action = function()
             harpoon:list():add()
             vim.notify(
-                "added file to harpoon list: " .. vim.fn.expand("%:t"),
+                "added file to harpoon list: "
+                    .. vim.fn.expand("%:t"),
                 vim.log.levels.INFO
             )
         end,

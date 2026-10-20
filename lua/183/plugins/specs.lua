@@ -8,17 +8,35 @@
 ---@param num? integer
 ---@return 183.PluginSpec
 local function pr(opts, num)
-    opts = vim.tbl_deep_extend("keep", opts, { priority = num or 0 })
+    opts = vim.tbl_deep_extend(
+        "keep",
+        opts,
+        { priority = num or 0 }
+    )
     return opts
 end
 
 ---@type table<string, 183.PluginSpec>
 local M = {
     -- dependencies
-    devicons = pr({ repo = "https://github.com/nvim-tree/nvim-web-devicons" }, 50),
-    plenary = pr({ repo = "https://github.com/nvim-lua/plenary.nvim" }, 50),
-    nui = pr({ repo = "https://github.com/MunifTanjim/nui.nvim" }, 50),
-    nio = pr({ repo = "https://github.com/nvim-neotest/nvim-nio" }, 50),
+    devicons = pr(
+        {
+            repo = "https://github.com/nvim-tree/nvim-web-devicons",
+        },
+        50
+    ),
+    plenary = pr(
+        { repo = "https://github.com/nvim-lua/plenary.nvim" },
+        50
+    ),
+    nui = pr(
+        { repo = "https://github.com/MunifTanjim/nui.nvim" },
+        50
+    ),
+    nio = pr(
+        { repo = "https://github.com/nvim-neotest/nvim-nio" },
+        50
+    ),
 
     -- ui
     base46 = pr(require("183.plugins.ui.base46"), 100),
@@ -33,7 +51,12 @@ local M = {
     -- dev tools
     lspconfig = pr(require("183.plugins.dev.lspconfig"), 25),
     lazydev = pr(require("183.plugins.dev.lazydev"), 4),
-    friendly_snips = pr({ repo = "https://github.com/rafamadriz/friendly-snippets" }, 3),
+    friendly_snips = pr(
+        {
+            repo = "https://github.com/rafamadriz/friendly-snippets",
+        },
+        3
+    ),
     luasnip = pr(require("183.plugins.dev.luasnip"), 2),
     blink = pr(require("183.plugins.dev.blink"), 1),
     mason = require("183.plugins.dev.mason"),

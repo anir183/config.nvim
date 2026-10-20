@@ -49,11 +49,14 @@ plugin.config = function()
         desc = "[plugins.dapui] evaluate selection value",
     })
     nmap("<leader>=e", function()
-        vim.ui.input({ prompt = "expression: " }, function(expression)
-            if expression and expression ~= "" then
-                dapui.eval(expression)
+        vim.ui.input(
+            { prompt = "expression: " },
+            function(expression)
+                if expression and expression ~= "" then
+                    dapui.eval(expression)
+                end
             end
-        end)
+        )
     end, {
         desc = "[plugins.dapui] evaluate entered [e]xpression",
     })
@@ -75,14 +78,25 @@ plugin.config = function()
     end)
     add("close", "close dap ui", dapui.close)
 
-    add("eval_cursor", "evaluate expression under cursor", dapui.eval)
-    add("eval_expression", "evaluate entered expression", function()
-        vim.ui.input({ prompt = "expression: " }, function(expression)
-            if expression and expression ~= "" then
-                dapui.eval(expression)
-            end
-        end)
-    end)
+    add(
+        "eval_cursor",
+        "evaluate expression under cursor",
+        dapui.eval
+    )
+    add(
+        "eval_expression",
+        "evaluate entered expression",
+        function()
+            vim.ui.input(
+                { prompt = "expression: " },
+                function(expression)
+                    if expression and expression ~= "" then
+                        dapui.eval(expression)
+                    end
+                end
+            )
+        end
+    )
 
     add("float_element", "float dap ui element", function()
         vim.ui.select({

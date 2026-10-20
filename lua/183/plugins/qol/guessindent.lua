@@ -22,7 +22,8 @@ plugin.config = function()
                 vim.opt_local.listchars:remove("leadmultispace")
                 ---@diagnostic disable-next-line: param-type-mismatch
                 vim.opt_local.listchars:append({
-                    leadmultispace = "│" .. (" "):rep(vim.bo.tabstop - 1),
+                    leadmultispace = "│"
+                        .. (" "):rep(vim.bo.tabstop - 1),
                 })
             end, 300)
         end,
@@ -33,9 +34,12 @@ plugin.config = function()
         vim.opt_local.listchars:remove("leadmultispace")
         ---@diagnostic disable-next-line: param-type-mismatch
         vim.opt_local.listchars:append({
-            leadmultispace = "│" .. (" "):rep(vim.bo.tabstop - 1),
+            leadmultispace = "│"
+                .. (" "):rep(vim.bo.tabstop - 1),
         })
-    end, { desc = "[plugins.guess-indent] auto guess [IN]dentation" })
+    end, {
+        desc = "[plugins.guess-indent] auto guess [IN]dentation",
+    })
 
     PALETTE.add({
         id = "guessindent.guess",
@@ -46,7 +50,8 @@ plugin.config = function()
             vim.opt_local.listchars:remove("leadmultispace")
             ---@diagnostic disable-next-line: param-type-mismatch
             vim.opt_local.listchars:append({
-                leadmultispace = "│" .. (" "):rep(vim.bo.tabstop - 1),
+                leadmultispace = "│"
+                    .. (" "):rep(vim.bo.tabstop - 1),
             })
         end,
     })

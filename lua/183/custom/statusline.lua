@@ -67,12 +67,15 @@ function STLINE.lsp()
         names[#names + 1] = client.name
     end
 
-    return #names > 0 and hl("Directory", table.concat(names, ", ")) or ""
+    return #names > 0
+            and hl("Directory", table.concat(names, ", "))
+        or ""
 end
 
 ---@return string
 function STLINE.filetype()
-    return vim.bo.filetype ~= "" and hl("Type", vim.bo.filetype) or ""
+    return vim.bo.filetype ~= "" and hl("Type", vim.bo.filetype)
+        or ""
 end
 
 ---@return string
@@ -102,7 +105,7 @@ function STLINE.arrange()
         "%02l:%02c",
         " ~ ",
         "%2p%%",
-        " "
+        " ",
     })
 end
 vim.opt.statusline = STLINE.arrange()

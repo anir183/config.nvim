@@ -25,33 +25,97 @@ plugin.config = function()
 
     -- build and test
     add("build", "build the current Go package", vim.cmd.GoBuild)
-    add("test", "run Go tests for the current package", vim.cmd.GoTest)
-    add("test_func", "run the test function under the cursor", vim.cmd.GoTestFunc)
-    add("generate", "run go generate for the current package", vim.cmd.GoGenerate)
-    add("vet", "run go vet on the current package", vim.cmd.GoVet)
+    add(
+        "test",
+        "run Go tests for the current package",
+        vim.cmd.GoTest
+    )
+    add(
+        "test_func",
+        "run the test function under the cursor",
+        vim.cmd.GoTestFunc
+    )
+    add(
+        "generate",
+        "run go generate for the current package",
+        vim.cmd.GoGenerate
+    )
+    add(
+        "vet",
+        "run go vet on the current package",
+        vim.cmd.GoVet
+    )
 
     -- formatting and imports
     add("format", "format Go source code", vim.cmd.GoFmt)
-    add("imports", "organize and add Go imports", vim.cmd.GoImports)
+    add(
+        "imports",
+        "organize and add Go imports",
+        vim.cmd.GoImports
+    )
 
     -- coverage
-    add("coverage", "run Go tests with coverage", vim.cmd.GoCoverage)
-    add("coverage_toggle", "toggle Go coverage display", vim.cmd.GoCoverageToggle)
+    add(
+        "coverage",
+        "run Go tests with coverage",
+        vim.cmd.GoCoverage
+    )
+    add(
+        "coverage_toggle",
+        "toggle Go coverage display",
+        vim.cmd.GoCoverageToggle
+    )
 
     -- modules and dependencies
-    add("mod_tidy", "tidy go.mod and go.sum dependencies", vim.cmd.GoModTidy)
-    add("mod_vendor", "vendor Go module dependencies", vim.cmd.GoModVendor)
-    add("get", "add or update a Go module dependency", vim.cmd.GoGet)
+    add(
+        "mod_tidy",
+        "tidy go.mod and go.sum dependencies",
+        vim.cmd.GoModTidy
+    )
+    add(
+        "mod_vendor",
+        "vendor Go module dependencies",
+        vim.cmd.GoModVendor
+    )
+    add(
+        "get",
+        "add or update a Go module dependency",
+        vim.cmd.GoGet
+    )
 
     -- navigation and documentation
-    add("alternate", "switch between Go source and test files", vim.cmd.GoAlt)
-    add("doc", "show documentation for the symbol under the cursor", vim.cmd.GoDoc)
-    add("pkg_outline", "show symbols in the current Go package", vim.cmd.GoPkgOutline)
+    add(
+        "alternate",
+        "switch between Go source and test files",
+        vim.cmd.GoAlt
+    )
+    add(
+        "doc",
+        "show documentation for the symbol under the cursor",
+        vim.cmd.GoDoc
+    )
+    add(
+        "pkg_outline",
+        "show symbols in the current Go package",
+        vim.cmd.GoPkgOutline
+    )
 
     -- code generation and refactoring
-    add("if_err", "generate an error-handling block", vim.cmd.GoIfErr)
-    add("fill_struct", "fill a Go struct literal", vim.cmd.GoFillStruct)
-    add("impl", "generate methods for a Go interface implementation", vim.cmd.GoImpl)
+    add(
+        "if_err",
+        "generate an error-handling block",
+        vim.cmd.GoIfErr
+    )
+    add(
+        "fill_struct",
+        "fill a Go struct literal",
+        vim.cmd.GoFillStruct
+    )
+    add(
+        "impl",
+        "generate methods for a Go interface implementation",
+        vim.cmd.GoImpl
+    )
 
     -- debugging
     add("debug", "start Go debugging", vim.cmd.GoDebug)
@@ -62,8 +126,16 @@ plugin.config = function()
     )
 
     -- toolchain
-    add("install_binaries", "install Go.nvim helper tools", vim.cmd.GoInstallBinaries)
-    add("update_binaries", "update Go.nvim helper tools", vim.cmd.GoUpdateBinaries)
+    add(
+        "install_binaries",
+        "install Go.nvim helper tools",
+        vim.cmd.GoInstallBinaries
+    )
+    add(
+        "update_binaries",
+        "update Go.nvim helper tools",
+        vim.cmd.GoUpdateBinaries
+    )
 end
 
 return plugin

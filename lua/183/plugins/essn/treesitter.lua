@@ -23,7 +23,10 @@ plugin.config = function()
                 }
 
                 if parser.filetypes then
-                    vim.treesitter.language.register(lang, parser.filetypes)
+                    vim.treesitter.language.register(
+                        lang,
+                        parser.filetypes
+                    )
                 end
             end
         end,
@@ -45,7 +48,8 @@ plugin.config = function()
         callback = function(args)
             local buf = args.buf
             local filetype = vim.bo[buf].filetype
-            local lang = vim.treesitter.language.get_lang(filetype)
+            local lang =
+                vim.treesitter.language.get_lang(filetype)
 
             if not lang then
                 return
@@ -58,7 +62,12 @@ plugin.config = function()
             end
 
             -- unknown to nvim-treesitter.
-            if not vim.tbl_contains(treesitter.get_available(), lang) then
+            if
+                not vim.tbl_contains(
+                    treesitter.get_available(),
+                    lang
+                )
+            then
                 return
             end
 
@@ -74,7 +83,11 @@ plugin.config = function()
 
                 if err or not success then
                     vim.notify(
-                        err or ("could not install parser for " .. lang)
+                        err
+                            or (
+                                "could not install parser for "
+                                .. lang
+                            )
                     )
                     return
                 end

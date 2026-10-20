@@ -8,7 +8,8 @@ _G.SESS = {
 }
 
 local uv = vim.uv or vim.loop
-local sessdir = vim.fs.joinpath(vim.fn.stdpath("state"), "sessions")
+local sessdir =
+    vim.fs.joinpath(vim.fn.stdpath("state"), "sessions")
 local sessgrp = vim.api.nvim_create_augroup("sess183", {
     clear = true,
 })
@@ -42,7 +43,9 @@ local function ensure_dir()
     end
 
     notify(
-        ("could not create session directory:\n%s"):format(sessdir),
+        ("could not create session directory:\n%s"):format(
+            sessdir
+        ),
         vim.log.levels.ERROR
     )
     return false
@@ -128,7 +131,10 @@ local function snacks_explorer_open()
     local ok, is_open = pcall(function()
         local snacks = require("snacks")
 
-        if not snacks.picker or type(snacks.picker.get) ~= "function" then
+        if
+            not snacks.picker
+            or type(snacks.picker.get) ~= "function"
+        then
             return false
         end
 
@@ -155,7 +161,11 @@ local function schedule_save()
     save_timer = vim.defer_fn(function()
         save_timer = nil
 
-        if SESS._active and not SESS._loading and has_enough_buffers() then
+        if
+            SESS._active
+            and not SESS._loading
+            and has_enough_buffers()
+        then
             SESS.save()
         end
     end, 1000)
@@ -168,7 +178,10 @@ function SESS.current(opts)
 
     local branch = opts.branch ~= false and SESS.branch() or nil
 
-    return vim.fs.joinpath(sessdir, session_name(vim.fn.getcwd(), branch))
+    return vim.fs.joinpath(
+        sessdir,
+        session_name(vim.fn.getcwd(), branch)
+    )
 end
 
 ---@return boolean
@@ -209,7 +222,11 @@ function SESS.start()
         callback = function()
             cancel_save()
 
-            if SESS._active and not SESS._loading and has_enough_buffers() then
+            if
+                SESS._active
+                and not SESS._loading
+                and has_enough_buffers()
+            then
                 SESS.save()
             end
         end,
@@ -250,7 +267,10 @@ function SESS.save()
     vim.o.sessionoptions = sessionoptions
 
     if not ok then
-        notify(("failed to save session:\n%s"):format(err), vim.log.levels.ERROR)
+        notify(
+            ("failed to save session:\n%s"):format(err),
+            vim.log.levels.ERROR
+        )
         return false
     end
 
@@ -289,7 +309,10 @@ function SESS.load(opts)
     end
 
     if snacks_explorer_open() then
-        notify("close the Snacks explorer before loading a session", vim.log.levels.WARN)
+        notify(
+            "close the Snacks explorer before loading a session",
+            vim.log.levels.WARN
+        )
         return false
     end
 
@@ -307,7 +330,10 @@ function SESS.load(opts)
     SESS._loading = false
 
     if not ok then
-        notify(("failed to load session:\n%s"):format(err), vim.log.levels.ERROR)
+        notify(
+            ("failed to load session:\n%s"):format(err),
+            vim.log.levels.ERROR
+        )
         return false
     end
 
@@ -320,7 +346,11 @@ function SESS.list()
         return {}
     end
 
-    local sessions = vim.fn.glob(vim.fs.joinpath(sessdir, "*.vim"), false, true)
+    local sessions = vim.fn.glob(
+        vim.fs.joinpath(sessdir, "*.vim"),
+        false,
+        true
+    )
 
     table.sort(sessions, function(a, b)
         local stat_a = uv.fs_stat(a)
@@ -338,7 +368,8 @@ function SESS.list()
             return stat_a.mtime.sec > stat_b.mtime.sec
         end
 
-        return (stat_a.mtime.nsec or 0) > (stat_b.mtime.nsec or 0)
+        return (stat_a.mtime.nsec or 0)
+            > (stat_b.mtime.nsec or 0)
     end)
 
     return sessions
@@ -406,7 +437,9 @@ function SESS.delete()
         end
 
         vim.ui.select({ "no", "yes" }, {
-            prompt = ("delete session '%s'?"):format(format_session(item)),
+            prompt = ("delete session '%s'?"):format(
+                format_session(item)
+            ),
         }, function(choice)
             if choice ~= "yes" then
                 return
@@ -415,7 +448,10 @@ function SESS.delete()
             if vim.fn.delete(item.session) == 0 then
                 notify("session deleted")
             else
-                notify("failed to delete session", vim.log.levels.ERROR)
+                notify(
+                    "failed to delete session",
+                    vim.log.levels.ERROR
+                )
             end
         end)
     end)

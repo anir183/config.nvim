@@ -101,11 +101,14 @@ plugin.config = function()
         desc = "[plugins.dap] [r]epl [t]oggle",
     })
     nmap("<leader>re", function()
-        vim.ui.input({ prompt = "evaluate in repl: " }, function(expression)
-            if expression and expression ~= "" then
-                dap.repl.execute(expression)
+        vim.ui.input(
+            { prompt = "evaluate in repl: " },
+            function(expression)
+                if expression and expression ~= "" then
+                    dap.repl.execute(expression)
+                end
             end
-        end)
+        )
     end, {
         desc = "[plugins.dap] execute [r]epl [e]xpression",
     })
@@ -122,7 +125,11 @@ plugin.config = function()
 
     -- execution
     add("continue", "continue / start debugging", dap.continue)
-    add("run_last", "rerun last debug configuration", dap.run_last)
+    add(
+        "run_last",
+        "rerun last debug configuration",
+        dap.run_last
+    )
     add("restart", "restart debug session", dap.restart)
     add("terminate", "terminate debug session", dap.terminate)
     add("disconnect", "disconnect debug session", dap.disconnect)
@@ -131,13 +138,25 @@ plugin.config = function()
     add("step_into", "step into", dap.step_into)
     add("step_out", "step out", dap.step_out)
     add("step_back", "step back (if supported)", dap.step_back)
-    add("reverse_continue", "reverse continue (if supported)", dap.reverse_continue)
+    add(
+        "reverse_continue",
+        "reverse continue (if supported)",
+        dap.reverse_continue
+    )
     add("run_to_cursor", "run to cursor", dap.run_to_cursor)
 
     -- breakpoints
-    add("toggle_breakpoint", "toggle breakpoint", dap.toggle_breakpoint)
+    add(
+        "toggle_breakpoint",
+        "toggle breakpoint",
+        dap.toggle_breakpoint
+    )
     add("set_breakpoint", "set breakpoint", dap.set_breakpoint)
-    add("clear_breakpoints", "clear all breakpoints", dap.clear_breakpoints)
+    add(
+        "clear_breakpoints",
+        "clear all breakpoints",
+        dap.clear_breakpoints
+    )
     add("list_breakpoints", "list breakpoints", function()
         dap.list_breakpoints(true)
     end)
@@ -146,7 +165,11 @@ plugin.config = function()
     add("up", "move up stack frame", dap.up)
     add("down", "move down stack frame", dap.down)
     add("focus_frame", "focus current frame", dap.focus_frame)
-    add("restart_frame", "restart current frame", dap.restart_frame)
+    add(
+        "restart_frame",
+        "restart current frame",
+        dap.restart_frame
+    )
     add("goto", "jump to line", function()
         vim.ui.input({ prompt = "Line number: " }, function(line)
             if line and line:match("^%d+$") then
@@ -160,11 +183,14 @@ plugin.config = function()
     add("repl_open", "open REPL", dap.repl.open)
     add("repl_close", "close REPL", dap.repl.close)
     add("repl_execute", "execute REPL expression", function()
-        vim.ui.input({ prompt = "Evaluate in REPL: " }, function(expression)
-            if expression and expression ~= "" then
-                dap.repl.execute(expression)
+        vim.ui.input(
+            { prompt = "Evaluate in REPL: " },
+            function(expression)
+                if expression and expression ~= "" then
+                    dap.repl.execute(expression)
+                end
             end
-        end)
+        )
     end)
 
     -- session inspection

@@ -92,8 +92,12 @@ plugin.config = function()
                             title = "{title} {live} {flags}",
                             title_pos = "center",
                         },
-                        { win = "list",    border = "hpad" },
-                        { win = "preview", title = "{preview}", border = true },
+                        { win = "list", border = "hpad" },
+                        {
+                            win = "preview",
+                            title = "{preview}",
+                            border = true,
+                        },
                     },
                 },
             },
@@ -106,12 +110,14 @@ plugin.config = function()
                 },
 
                 keymaps = {
-                    layout = vim.g.neovide and "vscode_l" or "default",
+                    layout = vim.g.neovide and "vscode_l"
+                        or "default",
                 },
 
                 select = {
                     layout = {
-                        preset = vim.g.neovide and "vscode" or "select",
+                        preset = vim.g.neovide and "vscode"
+                            or "select",
                     },
                 },
 
@@ -172,45 +178,73 @@ plugin.config = function()
     )
 
     -- file pickers
-    nmap("<C-p>", snacks.picker.files, { desc = "[plugins.snacks] [f]ind [f]iles" })
-    nmap("<leader>ff", function()
-        snacks.picker.files({
-            ignored = true,
-            hidden = true,
-        })
-    end, { desc = "[plugins.snacks] [f]ind files [a]ll inclusive" })
+    nmap(
+        "<C-p>",
+        snacks.picker.files,
+        { desc = "[plugins.snacks] [f]ind [f]iles" }
+    )
+    nmap(
+        "<leader>ff",
+        function()
+            snacks.picker.files({
+                ignored = true,
+                hidden = true,
+            })
+        end,
+        { desc = "[plugins.snacks] [f]ind files [a]ll inclusive" }
+    )
     nmap("<leader>FF", function()
         snacks.picker.files({
             cwd = vim.fn.expand("%:p:h"),
         })
-    end, { desc = "[plugins.snacks] [F]ind [F]iles in current directory" })
+    end, {
+        desc = "[plugins.snacks] [F]ind [F]iles in current directory",
+    })
     nmap("<leader>fc", function()
         snacks.picker.files({
             cwd = vim.fn.stdpath("config"),
             ignored = true,
             hidden = true,
         })
-    end, { desc = "[plugins.snacks] [f]ind files in [c]onfig directory" })
+    end, {
+        desc = "[plugins.snacks] [f]ind files in [c]onfig directory",
+    })
     nmap(
         "<leader>fr",
         snacks.picker.recent,
-        { desc = "[plugins.snacks] [f]ind [r]ecently visited files" }
+        {
+            desc = "[plugins.snacks] [f]ind [r]ecently visited files",
+        }
     )
 
     -- grep pickers
-    nmap("<leader>gg", snacks.picker.grep, { desc = "[plugins.snacks] [g]lobal [g]rep" })
-    nmap("<leader>GG", function()
-        snacks.picker.grep({
-            cwd = vim.fn.expand("%:h"),
-        })
-    end, { desc = "[plugins.snacks] [G]lobal [G]rep current directory" })
+    nmap(
+        "<leader>gg",
+        snacks.picker.grep,
+        { desc = "[plugins.snacks] [g]lobal [g]rep" }
+    )
+    nmap(
+        "<leader>GG",
+        function()
+            snacks.picker.grep({
+                cwd = vim.fn.expand("%:h"),
+            })
+        end,
+        {
+            desc = "[plugins.snacks] [G]lobal [G]rep current directory",
+        }
+    )
 
     nmap("]w", function()
         snacks.words.jump(vim.v.count1, true)
-    end, { desc = "[plugins.snacks] jump to next [w]ord reference" })
+    end, {
+        desc = "[plugins.snacks] jump to next [w]ord reference",
+    })
     nmap("[w", function()
         snacks.words.jump(-vim.v.count1, true)
-    end, { desc = "[plugins.snacks] jump to previous [w]ord references" })
+    end, {
+        desc = "[plugins.snacks] jump to previous [w]ord references",
+    })
 
     del("n", "gd")
     del("n", "gD")
@@ -276,20 +310,24 @@ plugin.config = function()
     nmap("<leader>lg", function()
         snacks.lazygit()
     end, { desc = "[plugins.snacks] open [l]azy[g]it" })
-    nmap("<leader>gb", function()
-        -- NOTE: blame line opens in terminal mode and any key press dismisses it
-        --       explicitly stopinsert() to return to normal mode
-        snacks.git.blame_line({
-            interactive = false,
-            auto_close = false,
-            win = {
-                style = "blame_line",
-                on_win = function(_)
-                    vim.cmd.stopinsert()
-                end,
-            },
-        })
-    end, { desc = "[plugins.snacks] [g]it [b]lame current line" })
+    nmap(
+        "<leader>gb",
+        function()
+            -- NOTE: blame line opens in terminal mode and any key press dismisses it
+            --       explicitly stopinsert() to return to normal mode
+            snacks.git.blame_line({
+                interactive = false,
+                auto_close = false,
+                win = {
+                    style = "blame_line",
+                    on_win = function(_)
+                        vim.cmd.stopinsert()
+                    end,
+                },
+            })
+        end,
+        { desc = "[plugins.snacks] [g]it [b]lame current line" }
+    )
 
     -- picker: general
     PALETTE.add({
@@ -447,14 +485,16 @@ plugin.config = function()
         action = function()
             ---@diagnostic disable-next-line: undefined-field
             snacks.picker.todo_comments()
-        end
+        end,
     })
     PALETTE.add({
         id = "snacks.picker.todoselect",
         desc = "select and browser particular todo comments",
         category = "snacks.todo",
         action = function()
-            local keywords = vim.tbl_keys(require("todo-comments.config").options.keywords)
+            local keywords = vim.tbl_keys(
+                require("todo-comments.config").options.keywords
+            )
             table.sort(keywords)
 
             vim.ui.select(keywords, {

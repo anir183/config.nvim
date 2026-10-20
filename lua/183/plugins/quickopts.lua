@@ -67,7 +67,11 @@ local opt_template = {
 
 ---@return string
 local function ensure_file()
-    local opts_path = FUNCS.join_path(vim.fn.stdpath("state"), "183", "options.lua")
+    local opts_path = FUNCS.join_path(
+        vim.fn.stdpath("state"),
+        "183",
+        "options.lua"
+    )
 
     if vim.fn.filereadable(opts_path) == 1 then
         return opts_path
@@ -86,15 +90,19 @@ function QOPTS.open()
     local width = math.floor((ui.width * 0.7) + 0.5)
     local height = math.floor((ui.height * 0.75) + 0.5)
 
-    vim.api.nvim_open_win(vim.api.nvim_create_buf(false, true), true, {
-        relative = "editor",
-        width = width,
-        height = height,
-        col = (ui.width - width) / 2,
-        row = (ui.height - height) / 2,
-        focusable = true,
-        border = "none",
-    })
+    vim.api.nvim_open_win(
+        vim.api.nvim_create_buf(false, true),
+        true,
+        {
+            relative = "editor",
+            width = width,
+            height = height,
+            col = (ui.width - width) / 2,
+            row = (ui.height - height) / 2,
+            focusable = true,
+            border = "none",
+        }
+    )
 
     vim.cmd.edit(opts_path)
     vim.defer_fn(function()
@@ -126,9 +134,6 @@ PALETTE.add({
     action = QOPTS.open,
 })
 
-FUNCS.map(
-    "n",
-    "<leader>op",
-    QOPTS.open,
-    { desc = "[plugins.quickopts] open quick options in floating buffer" }
-)
+FUNCS.map("n", "<leader>op", QOPTS.open, {
+    desc = "[plugins.quickopts] open quick options in floating buffer",
+})

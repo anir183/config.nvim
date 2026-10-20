@@ -104,7 +104,9 @@ plugin.config = function()
     nmap(
         "gP",
         "<CMD>Lspsaga peek_type_definition<CR>",
-        { desc = "[plugins.lspsaga]: [g]o [P]eek type definition" }
+        {
+            desc = "[plugins.lspsaga]: [g]o [P]eek type definition",
+        }
     )
 
     -- finders
@@ -120,7 +122,11 @@ plugin.config = function()
         "<CMD>Lspsaga finder imp<CR>",
         { desc = "[plugins.lspsaga]: [g]et [i]mplementation" }
     )
-    nmap("gF", "<CMD>Lspsaga finder<CR>", { desc = "[plugins.lspsaga]: [F]inder" })
+    nmap(
+        "gF",
+        "<CMD>Lspsaga finder<CR>",
+        { desc = "[plugins.lspsaga]: [F]inder" }
+    )
 
     -- diagnostics
     del("n", "[d")
@@ -135,15 +141,15 @@ plugin.config = function()
         "<CMD>Lspsaga diagnostic_jump_prev<CR>",
         { desc = "[plugins.lspsaga]: prev [d]iagnostic" }
     )
-    nmap(
-        "<leader>bd",
-        "<CMD>Lspsaga show_buf_diagnostics<CR>",
-        { desc = "[plugins.lspsaga] show [b]uffer [d]iagnostics in loclist" }
-    )
+    nmap("<leader>bd", "<CMD>Lspsaga show_buf_diagnostics<CR>", {
+        desc = "[plugins.lspsaga] show [b]uffer [d]iagnostics in loclist",
+    })
     nmap(
         "<leader>wd",
         "<CMD>Lspsaga show_workspace_diagnostics<CR>",
-        { desc = "[plugins.lspsaga] show [workspace] [D]iagnostics in qflist" }
+        {
+            desc = "[plugins.lspsaga] show [workspace] [D]iagnostics in qflist",
+        }
     )
     nmap(
         { "<C-S-w><C-S-d>", "<C-S-w>D", "<C-w>D" },
@@ -153,7 +159,11 @@ plugin.config = function()
 
     -- information
     del("n", "K")
-    nmap("K", "<CMD>Lspsaga hover_doc<CR>", { desc = "[plugins.lspsaga]: hover doc" })
+    nmap(
+        "K",
+        "<CMD>Lspsaga hover_doc<CR>",
+        { desc = "[plugins.lspsaga]: hover doc" }
+    )
     nmap(
         "<leader>K",
         "<CMD>Lspsaga hover_doc ++keep<CR>",

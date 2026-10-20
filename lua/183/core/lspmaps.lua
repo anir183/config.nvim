@@ -5,7 +5,11 @@ end
 local del = vim.keymap.del
 
 -- editing
-nmap("<leader>rn", vim.lsp.buf.rename, { desc = "[lsp] [r]e[n]ame symbol" })
+nmap(
+    "<leader>rn",
+    vim.lsp.buf.rename,
+    { desc = "[lsp] [r]e[n]ame symbol" }
+)
 
 -- documentation and information
 nmap("K", function()
@@ -25,16 +29,49 @@ nmap("<leader>li", function()
 end, { desc = "[lsp] [l]sp [i]nformation" })
 
 -- navigation
-nmap("gd", vim.lsp.buf.definition, { desc = "[lsp] [g]oto [d]efinition" })
-nmap("gD", vim.lsp.buf.declaration, { desc = "[lsp] [g]oto [D]eclaration" })
-nmap("gr", vim.lsp.buf.references, { desc = "[lsp] [g]oto [r]eferences" })
-nmap("gi", vim.lsp.buf.implementation, { desc = "[lsp] [g]oto [i]mplementation" })
-nmap("gy", vim.lsp.buf.type_definition, { desc = "[lsp] t[y]pe definition" })
-nmap("gai", vim.lsp.buf.incoming_calls, { desc = "[lsp] [i]ncoming calls" })
-nmap("gao", vim.lsp.buf.outgoing_calls, { desc = "[lsp] [o]utgoing calls" })
+nmap(
+    "gd",
+    vim.lsp.buf.definition,
+    { desc = "[lsp] [g]oto [d]efinition" }
+)
+nmap(
+    "gD",
+    vim.lsp.buf.declaration,
+    { desc = "[lsp] [g]oto [D]eclaration" }
+)
+nmap(
+    "gr",
+    vim.lsp.buf.references,
+    { desc = "[lsp] [g]oto [r]eferences" }
+)
+nmap(
+    "gi",
+    vim.lsp.buf.implementation,
+    { desc = "[lsp] [g]oto [i]mplementation" }
+)
+nmap(
+    "gy",
+    vim.lsp.buf.type_definition,
+    { desc = "[lsp] t[y]pe definition" }
+)
+nmap(
+    "gai",
+    vim.lsp.buf.incoming_calls,
+    { desc = "[lsp] [i]ncoming calls" }
+)
+nmap(
+    "gao",
+    vim.lsp.buf.outgoing_calls,
+    { desc = "[lsp] [o]utgoing calls" }
+)
 
 -- code actions
-map({ "n", "v" }, "<leader>a", vim.lsp.buf.code_action, { desc = "[lsp] code [a]ctions" })
+map(
+    { "n", "v" },
+    "<leader>a",
+    vim.lsp.buf.code_action,
+    { desc = "[lsp] code [a]ctions" }
+)
 
 -- formatting
 map({ "n", "v" }, "<leader>fm", function()
@@ -45,7 +82,7 @@ end, { desc = "[lsp] [f]or[m]at file" })
 del("n", "[d")
 nmap("[d", function()
     vim.diagnostic.jump({ count = -1 })
-end, { desc = "[lsp] previous [d]iagnostic"})
+end, { desc = "[lsp] previous [d]iagnostic" })
 del("n", "]d")
 nmap("]d", function()
     vim.diagnostic.jump({ count = 1 })
