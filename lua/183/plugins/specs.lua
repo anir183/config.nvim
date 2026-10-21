@@ -1,5 +1,5 @@
 ---@class 183.PluginSpec
----@field repo string|vim.pack.Spec|{ data?: { hook: string|fun(kind: "install"|"update"|"delete"): nil } }
+---@field repo string|vim.pack.Spec|{ data?: { hook: string|fun(kind: "install"|"update"|"delete", ev: vim.api.keyset.create_autocmd.callback_args): nil } }
 ---@field cond? boolean|fun(): boolean
 ---@field priority? integer
 ---@field config? function

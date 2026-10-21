@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
 
         vim.defer_fn(function()
             if type(hook) == "function" then
-                local ok, result, _ = pcall(hook, kind)
+                local ok, result, _ = pcall(hook, kind, ev)
                 if not ok then
                     vim.notify(
                         "couldnt run "

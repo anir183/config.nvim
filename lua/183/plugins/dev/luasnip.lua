@@ -6,7 +6,13 @@ plugin.repo = {
     src = "https://github.com/L3MON4D3/LuaSnip",
     version = vim.version.range("2.*"),
     data = {
-        hook = "make install_jsregexp",
+        hook = function(_, ev)
+            local result = vim.system(
+                { "make", "install_jsregexp" },
+                { cwd = ev.data.path, text = true }
+            ):wait()
+            vim.notify(vim.inspect(result))
+        end,
     },
 }
 plugin.config = function()
