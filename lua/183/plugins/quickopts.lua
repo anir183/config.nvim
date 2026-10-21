@@ -23,6 +23,7 @@ _G.QOPTS = {}
 ---@field dap table<string, { adapter: dap.Adapter | fun( callback: fun(adapter: dap.Adapter), config: dap.Configuration, parent?: dap.Session), configs: dap.Configuration[] }>
 ---@field filetypes vim.filetype.add.filetypes[]
 ---@field parsers table<string, 183.TreesitterParser>
+---@field leetpath string
 ---@field cloak 183.CloakRule[]
 
 local opt_template = {
@@ -62,6 +63,8 @@ local opt_template = {
     "       replace = nil,",
     "   },",
     "}",
+    "",
+    "M.leetpath = FUNCS.join_path(vim.fn.stdpath(\"share\"), \"leet\")",
     "",
     "return M",
 }

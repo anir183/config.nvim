@@ -78,6 +78,7 @@ local M = {
     gopher = require("183.plugins.stacks.gopher"),
 
     -- misc
+    leetcode = require("183.plugins.misc.leetcode"),
     livepreview = require("183.plugins.misc.liveprev"),
 }
 
