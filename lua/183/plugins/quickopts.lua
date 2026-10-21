@@ -15,7 +15,7 @@ _G.QOPTS = {}
 ---@module "lint"
 ---@class 183.Options
 ---@field plugins table<string, 183.PluginSpec>
----@field lsps table<string, vim.lsp.config|nil>
+---@field lsps table<string, vim.lsp.Config|nil>
 ---@field formatters table<string, conform.FiletypeFormatter>
 ---@field custom_formatters table<string, conform.FormatterConfigOverride|fun(bufnr: integer): nil|conform.FormatterConfigOverride>
 ---@field linters table<string, string[]>
@@ -27,6 +27,7 @@ _G.QOPTS = {}
 
 local opt_template = {
     "---@type 183.Options",
+    "---@diagnostic disable-next-line: missing-fields",
     "local M = {}",
     "",
     "-- plugins",
@@ -68,9 +69,9 @@ local opt_template = {
 ---@return string
 local function ensure_file()
     local opts_path = FUNCS.join_path(
-        vim.fn.stdpath("state"),
-        "183",
-        "options.lua"
+        vim.fn.stdpath("config"),
+        "lua",
+        "opts183.lua"
     )
 
     if vim.fn.filereadable(opts_path) == 1 then
