@@ -33,13 +33,9 @@ map(
 )
 
 -- center cursor while jumping around to keep it stationary
-nmap(
-    "J",
-    "mzJ`z",
-    {
-        desc = "[core] dont move the cursor when joining next line",
-    }
-)
+nmap("J", "mzJ`z", {
+    desc = "[core] dont move the cursor when joining next line",
+})
 nmap(
     "<C-d>",
     "<C-d>zz",

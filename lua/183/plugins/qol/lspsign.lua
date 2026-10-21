@@ -25,7 +25,9 @@ plugin.config = function()
         function()
             require("lsp_signature").toggle_float_win()
         end,
-        { desc = "[plugin.lsp_signature] toggle signature widow" }
+        {
+            desc = "[plugin.lsp_signature] toggle signature widow",
+        }
     )
 end
 

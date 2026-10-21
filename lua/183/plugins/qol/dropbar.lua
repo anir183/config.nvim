@@ -102,14 +102,9 @@ plugin.config = function()
         dropbar_api.pick,
         { desc = "[plugins.dropbar] pick symbols in winbar" }
     )
-    FUNCS.map(
-        "n",
-        "[;",
-        dropbar_api.goto_context_start,
-        {
-            desc = "[plugins.dropbar] go to start of current context",
-        }
-    )
+    FUNCS.map("n", "[;", dropbar_api.goto_context_start, {
+        desc = "[plugins.dropbar] go to start of current context",
+    })
     FUNCS.map(
         "n",
         "];",

@@ -19,12 +19,9 @@ end
 ---@type table<string, 183.PluginSpec>
 local M = {
     -- dependencies
-    devicons = pr(
-        {
-            repo = "https://github.com/nvim-tree/nvim-web-devicons",
-        },
-        50
-    ),
+    devicons = pr({
+        repo = "https://github.com/nvim-tree/nvim-web-devicons",
+    }, 50),
     plenary = pr(
         { repo = "https://github.com/nvim-lua/plenary.nvim" },
         50
@@ -51,12 +48,9 @@ local M = {
     -- dev tools
     lspconfig = pr(require("183.plugins.dev.lspconfig"), 25),
     lazydev = pr(require("183.plugins.dev.lazydev"), 4),
-    friendly_snips = pr(
-        {
-            repo = "https://github.com/rafamadriz/friendly-snippets",
-        },
-        3
-    ),
+    friendly_snips = pr({
+        repo = "https://github.com/rafamadriz/friendly-snippets",
+    }, 3),
     luasnip = pr(require("183.plugins.dev.luasnip"), 2),
     blink = pr(require("183.plugins.dev.blink"), 1),
     mason = require("183.plugins.dev.mason"),

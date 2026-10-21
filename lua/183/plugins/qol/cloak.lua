@@ -9,14 +9,9 @@ plugin.config = function()
         patterns = QOPTS.get().cloak,
     })
 
-    FUNCS.map(
-        "n",
-        "<leader>lp",
-        vim.cmd.CloakPreviewLine,
-        {
-            desc = "[plugins.cloak] cloak current [l]ine [p]review",
-        }
-    )
+    FUNCS.map("n", "<leader>lp", vim.cmd.CloakPreviewLine, {
+        desc = "[plugins.cloak] cloak current [l]ine [p]review",
+    })
     FUNCS.map(
         "n",
         "<leader>ht",

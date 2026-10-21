@@ -23,13 +23,9 @@ plugin.config = function()
         "<PLUG>(comment_toggle_linewise)",
         { desc = "[plugins.comment] linewise commenting leader" }
     )
-    nmap(
-        "<C-?>",
-        "<PLUG>(comment_toggle_blockwise)",
-        {
-            desc = "[plugins.comment] blockwise commenting leader",
-        }
-    )
+    nmap("<C-?>", "<PLUG>(comment_toggle_blockwise)", {
+        desc = "[plugins.comment] blockwise commenting leader",
+    })
 
     -- single line or count comment in normal mode
     nmap("<C-/><C-/>", function()

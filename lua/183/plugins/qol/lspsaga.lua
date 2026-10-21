@@ -101,13 +101,9 @@ plugin.config = function()
         "<CMD>Lspsaga peek_definition<CR>",
         { desc = "[plugins.lspsaga]: [g]o [p]eek definition" }
     )
-    nmap(
-        "gP",
-        "<CMD>Lspsaga peek_type_definition<CR>",
-        {
-            desc = "[plugins.lspsaga]: [g]o [P]eek type definition",
-        }
-    )
+    nmap("gP", "<CMD>Lspsaga peek_type_definition<CR>", {
+        desc = "[plugins.lspsaga]: [g]o [P]eek type definition",
+    })
 
     -- finders
     del("n", "gr")
