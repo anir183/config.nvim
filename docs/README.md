@@ -11,8 +11,6 @@ uses the newly built-in `vim.pack` for plugin management.
 tried to be as simple and
 native-first as i realistically could without sacrificing on quality of life and features.
 
-<br>
-
 ![thumbnail](./assets/thumbnail.png)
 
 ### installation
