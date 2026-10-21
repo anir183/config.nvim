@@ -47,8 +47,8 @@ plugin.config = function()
     -- rename and replace
     del("n", "<leader>rn")
     nmap(
-        "<CMD>Lspsaga rename<CR>",
         "<leader>rn",
+        "<CMD>Lspsaga rename<CR>",
         { desc = "[plugins.lspsaga]: [r]e[n]ame symbol" }
     )
 
