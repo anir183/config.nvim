@@ -183,16 +183,14 @@ plugin.config = function()
         snacks.picker.files,
         { desc = "[plugins.snacks] [f]ind [f]iles" }
     )
-    nmap(
-        "<leader>ff",
-        function()
-            snacks.picker.files({
-                ignored = true,
-                hidden = true,
-            })
-        end,
-        { desc = "[plugins.snacks] [f]ind files [a]ll inclusive" }
-    )
+    nmap("<leader>ff", function()
+        snacks.picker.files({
+            ignored = true,
+            hidden = true,
+        })
+    end, {
+        desc = "[plugins.snacks] [f]ind files [a]ll inclusive",
+    })
     nmap("<leader>FF", function()
         snacks.picker.files({
             cwd = vim.fn.expand("%:p:h"),
@@ -209,13 +207,9 @@ plugin.config = function()
     end, {
         desc = "[plugins.snacks] [f]ind files in [c]onfig directory",
     })
-    nmap(
-        "<leader>fr",
-        snacks.picker.recent,
-        {
-            desc = "[plugins.snacks] [f]ind [r]ecently visited files",
-        }
-    )
+    nmap("<leader>fr", snacks.picker.recent, {
+        desc = "[plugins.snacks] [f]ind [r]ecently visited files",
+    })
 
     -- grep pickers
     nmap(
@@ -223,33 +217,21 @@ plugin.config = function()
         snacks.picker.grep,
         { desc = "[plugins.snacks] [g]lobal [g]rep" }
     )
-    nmap(
-        "<leader>GG",
-        function()
-            snacks.picker.grep({
-                cwd = vim.fn.expand("%:h"),
-            })
-        end,
-        {
-            desc = "[plugins.snacks] [G]lobal [G]rep current directory",
-        }
-    )
-    nmap(
-        "<leader>fr",
-        snacks.picker.recent,
-        {
-            desc = "[plugins.snacks] [f]ind [r]ecently visited files",
-        }
-    )
+    nmap("<leader>GG", function()
+        snacks.picker.grep({
+            cwd = vim.fn.expand("%:h"),
+        })
+    end, {
+        desc = "[plugins.snacks] [G]lobal [G]rep current directory",
+    })
+    nmap("<leader>fr", snacks.picker.recent, {
+        desc = "[plugins.snacks] [f]ind [r]ecently visited files",
+    })
 
     -- buffers
-    nmap(
-        "<leader>fb",
-        snacks.picker.buffers,
-        {
-            desc = "[plugins.snacks] [f]ind open [b]uffers",
-        }
-    )
+    nmap("<leader>fb", snacks.picker.buffers, {
+        desc = "[plugins.snacks] [f]ind open [b]uffers",
+    })
 
     -- words
     nmap("]w", function()
@@ -263,6 +245,7 @@ plugin.config = function()
         desc = "[plugins.snacks] jump to previous [w]ord references",
     })
 
+    -- lsp
     del("n", "gd")
     del("n", "gD")
     del("n", "gr")
@@ -305,6 +288,11 @@ plugin.config = function()
         snacks.picker.lsp_outgoing_calls,
         { desc = "[plugins.snacks] [o]utgoing calls" }
     )
+    nmap(
+        "<leader>RN",
+        snacks.rename.rename_file,
+        { desc = "[plugins.snacks] [R]e[N]ame file" }
+    )
 
     -- terminal keymaps
     nmap(
@@ -346,169 +334,180 @@ plugin.config = function()
         { desc = "[plugins.snacks] [g]it [b]lame current line" }
     )
 
+    -- action palette
+    local function add(id, category, desc, action)
+        PALETTE.add({
+            id = "snacks." .. id,
+            desc = desc,
+            category = "snacks." .. category,
+            action = action,
+        })
+    end
+
     -- picker: general
-    PALETTE.add({
-        id = "snacks.picker.smart",
-        desc = "find files and buffers",
-        category = "snacks.picker",
-        action = snacks.picker.smart,
-    })
-    PALETTE.add({
-        id = "snacks.picker.buffers",
-        desc = "find open buffers",
-        category = "snacks.picker",
-        action = snacks.picker.buffers,
-    })
-    PALETTE.add({
-        id = "snacks.picker.lines",
-        desc = "search current buffer lines",
-        category = "snacks.picker",
-        action = snacks.picker.lines,
-    })
-    PALETTE.add({
-        id = "snacks.picker.grep_buffers",
-        desc = "grep open buffers",
-        category = "snacks.picker",
-        action = snacks.picker.grep_buffers,
-    })
-    PALETTE.add({
-        id = "snacks.picker.keymaps",
-        desc = "find available keymaps",
-        category = "snacks.picker",
-        action = snacks.picker.keymaps,
-    })
-    PALETTE.add({
-        id = "snacks.picker.help",
-        desc = "search help pages",
-        category = "snacks.picker",
-        action = snacks.picker.help,
-    })
-    PALETTE.add({
-        id = "snacks.picker.qflist",
-        desc = "search quick fix list",
-        category = "snacks.picker",
-        action = snacks.picker.qflist,
-    })
-    PALETTE.add({
-        id = "snacks.picker.loclist",
-        desc = "search location list",
-        category = "snacks.picker",
-        action = snacks.picker.loclist,
-    })
-    PALETTE.add({
-        id = "snacks.picker.git_files",
-        desc = "find git-tracked files",
-        category = "snacks.picker",
-        action = snacks.picker.git_files,
-    })
-    PALETTE.add({
-        id = "snacks.picker.projects",
-        desc = "find projects",
-        category = "snacks.picker",
-        action = snacks.picker.projects,
-    })
-    PALETTE.add({
-        id = "snacks.picker.resume",
-        desc = "resume last picker",
-        category = "snacks.picker",
-        action = snacks.picker.resume,
-    })
-    PALETTE.add({
-        id = "snacks.picker.recent",
-        desc = "find recently visited files",
-        category = "snacks.picker",
-        action = snacks.picker.recent,
-    })
+    add(
+        "picker.smart",
+        "picker",
+        "find files and buffers",
+        snacks.picker.smart
+    )
+    add(
+        "picker.buffers",
+        "picker",
+        "find open buffers",
+        snacks.picker.buffers
+    )
+    add(
+        "picker.lines",
+        "picker",
+        "search current buffer lines",
+        snacks.picker.lines
+    )
+    add(
+        "picker.grep_buffers",
+        "picker",
+        "grep open buffers",
+        snacks.picker.grep_buffers
+    )
+    add(
+        "picker.keymaps",
+        "picker",
+        "find available keymaps",
+        snacks.picker.keymaps
+    )
+    add(
+        "picker.help",
+        "picker",
+        "search help pages",
+        snacks.picker.help
+    )
+    add(
+        "picker.qflist",
+        "picker",
+        "search quick fix list",
+        snacks.picker.qflist
+    )
+    add(
+        "picker.loclist",
+        "picker",
+        "search location list",
+        snacks.picker.loclist
+    )
+    add(
+        "picker.git_files",
+        "picker",
+        "find git-tracked files",
+        snacks.picker.git_files
+    )
+    add(
+        "picker.projects",
+        "picker",
+        "find projects",
+        snacks.picker.projects
+    )
+    add(
+        "picker.resume",
+        "picker",
+        "resume last picker",
+        snacks.picker.resume
+    )
+    add(
+        "picker.recent",
+        "picker",
+        "find recently visited files",
+        snacks.picker.recent
+    )
 
     -- picker: search and navigation
-    PALETTE.add({
-        id = "snacks.picker.registers",
-        desc = "search registers",
-        category = "snacks.picker",
-        action = snacks.picker.registers,
-    })
-    PALETTE.add({
-        id = "snacks.picker.autocmds",
-        desc = "search autocommands",
-        category = "snacks.picker",
-        action = snacks.picker.autocmds,
-    })
-    PALETTE.add({
-        id = "snacks.picker.commands",
-        desc = "search available commands",
-        category = "snacks.picker",
-        action = snacks.picker.commands,
-    })
-    PALETTE.add({
-        id = "snacks.picker.diagnostics",
-        desc = "search all diagnostics",
-        category = "snacks.picker",
-        action = snacks.picker.diagnostics,
-    })
-    PALETTE.add({
-        id = "snacks.picker.diagnostics_buffer",
-        desc = "search buffer diagnostics",
-        category = "snacks.picker",
-        action = snacks.picker.diagnostics_buffer,
-    })
-    PALETTE.add({
-        id = "snacks.picker.highlights",
-        desc = "inspect highlight groups",
-        category = "snacks.picker",
-        action = snacks.picker.highlights,
-    })
-    PALETTE.add({
-        id = "snacks.picker.undo",
-        desc = "browse undo history",
-        category = "snacks.picker",
-        action = snacks.picker.undo,
-    })
-    PALETTE.add({
-        id = "snacks.picker.man",
-        desc = "search man pages",
-        category = "snacks.picker",
-        action = snacks.picker.man,
-    })
-    PALETTE.add({
-        id = "snacks.picker.jumps",
-        desc = "browse jump history",
-        category = "snacks.picker",
-        action = snacks.picker.jumps,
-    })
-    PALETTE.add({
-        id = "snacks.picker.marks",
-        desc = "browse marks",
-        category = "snacks.picker",
-        action = snacks.picker.marks,
-    })
-    PALETTE.add({
-        id = "snacks.picker.icons",
-        desc = "browse icons",
-        category = "snacks.picker",
-        action = snacks.picker.icons,
-    })
-    PALETTE.add({
-        id = "snacks.picker.colorschemes",
-        desc = "browse colorschemes",
-        category = "snacks.picker",
-        action = snacks.picker.colorschemes,
-    })
+    add(
+        "picker.registers",
+        "picker",
+        "search registers",
+        snacks.picker.registers
+    )
+    add(
+        "picker.autocmds",
+        "picker",
+        "search autocommands",
+        snacks.picker.autocmds
+    )
+    add(
+        "picker.commands",
+        "picker",
+        "search available commands",
+        snacks.picker.commands
+    )
+    add(
+        "picker.diagnostics",
+        "picker",
+        "search all diagnostics",
+        snacks.picker.diagnostics
+    )
+    add(
+        "picker.diagnostics_buffer",
+        "picker",
+        "search buffer diagnostics",
+        snacks.picker.diagnostics_buffer
+    )
+    add(
+        "picker.highlights",
+        "picker",
+        "inspect highlight groups",
+        snacks.picker.highlights
+    )
+    add(
+        "picker.undo",
+        "picker",
+        "browse undo history",
+        snacks.picker.undo
+    )
+    add(
+        "picker.man",
+        "picker",
+        "search man pages",
+        snacks.picker.man
+    )
+    add(
+        "picker.jumps",
+        "picker",
+        "browse jump history",
+        snacks.picker.jumps
+    )
+    add(
+        "picker.marks",
+        "picker",
+        "browse marks",
+        snacks.picker.marks
+    )
+    add(
+        "picker.icons",
+        "picker",
+        "browse icons",
+        snacks.picker.icons
+    )
+    add(
+        "picker.colorschemes",
+        "picker",
+        "browse colorschemes",
+        snacks.picker.colorschemes
+    )
 
     -- picker: todo comments
-    PALETTE.add({
-        id = "snacks.picker.todocomments",
-        desc = "browse special todo comment",
-        category = "snacks.todo",
-        action = function()
+    add(
+        "picker.todocomments",
+        "todo",
+        "browse special todo comment",
+        function()
             ---@diagnostic disable-next-line: undefined-field
             snacks.picker.todo_comments()
-        end,
-    })
-    PALETTE.add({
-        id = "snacks.picker.todoselect",
-        desc = "select and browser particular todo comments",
-        category = "snacks.todo",
-        action = function()
+        end
+    )
+
+    add(
+        "picker.todoselect",
+        "todo",
+        "select and browse particular todo comments",
+        function()
             local keywords = vim.tbl_keys(
                 require("todo-comments.config").options.keywords
             )
@@ -524,57 +523,58 @@ plugin.config = function()
                     })
                 end
             end)
-        end,
-    })
+        end
+    )
 
-    -- picker: git
-    PALETTE.add({
-        id = "snacks.git.branches",
-        desc = "browse git branches",
-        category = "snacks.git",
-        action = snacks.picker.git_branches,
-    })
-    PALETTE.add({
-        id = "snacks.git.log",
-        desc = "browse git history",
-        category = "snacks.git",
-        action = snacks.picker.git_log,
-    })
-    PALETTE.add({
-        id = "snacks.git.log_line",
-        desc = "browse history for current line",
-        category = "snacks.git",
-        action = snacks.picker.git_log_line,
-    })
-    PALETTE.add({
-        id = "snacks.git.status",
-        desc = "browse git status",
-        category = "snacks.git",
-        action = snacks.picker.git_status,
-    })
-    PALETTE.add({
-        id = "snacks.git.stash",
-        desc = "browse git stashes",
-        category = "snacks.git",
-        action = snacks.picker.git_stash,
-    })
-    PALETTE.add({
-        id = "snacks.git.diff",
-        desc = "browse git diffs",
-        category = "snacks.git",
-        action = snacks.picker.git_diff,
-    })
-    PALETTE.add({
-        id = "snacks.git.log_file",
-        desc = "browse history for current file",
-        category = "snacks.git",
-        action = snacks.picker.git_log_file,
-    })
-    PALETTE.add({
-        id = "snacks.git.blame_line",
-        desc = "show git blame for current line",
-        category = "snacks.git",
-        action = function()
+    -- git
+    add(
+        "git.branches",
+        "git",
+        "browse git branches",
+        snacks.picker.git_branches
+    )
+    add(
+        "git.log",
+        "git",
+        "browse git history",
+        snacks.picker.git_log
+    )
+    add(
+        "git.log_line",
+        "git",
+        "browse history for current line",
+        snacks.picker.git_log_line
+    )
+    add(
+        "git.status",
+        "git",
+        "browse git status",
+        snacks.picker.git_status
+    )
+    add(
+        "git.stash",
+        "git",
+        "browse git stashes",
+        snacks.picker.git_stash
+    )
+    add(
+        "git.diff",
+        "git",
+        "browse git diffs",
+        snacks.picker.git_diff
+    )
+    add(
+        "git.log_file",
+        "git",
+        "browse history for current file",
+        snacks.picker.git_log_file
+    )
+
+    add(
+        "git.blame_line",
+        "git",
+        "show git blame for current line",
+        function()
             Snacks.git.blame_line({
                 interactive = false,
                 auto_close = false,
@@ -585,154 +585,140 @@ plugin.config = function()
                     end,
                 },
             })
-        end,
-    })
-    PALETTE.add({
-        id = "snacks.git.browse",
-        desc = "open current file in git remote",
-        category = "snacks.git",
-        action = snacks.gitbrowse.open,
-    })
-    PALETTE.add({
-        id = "snacks.git.lazygit",
-        desc = "open lazygit",
-        category = "snacks.git",
-        action = snacks.lazygit.open,
-    })
+        end
+    )
 
-    -- picker: github
-    PALETTE.add({
-        id = "snacks.github.open_issues",
-        desc = "browser open github issues",
-        category = "snacks.github",
-        action = snacks.picker.gh_issue,
-    })
-    PALETTE.add({
-        id = "snacks.github.all_issues",
-        desc = "browser all github issues",
-        category = "snacks.github",
-        action = function()
+    add(
+        "git.browse",
+        "git",
+        "open current file in git remote",
+        snacks.gitbrowse.open
+    )
+    add(
+        "git.lazygit",
+        "git",
+        "open lazygit",
+        snacks.lazygit.open
+    )
+
+    -- github
+    add(
+        "github.open_issues",
+        "github",
+        "browse open GitHub issues",
+        snacks.picker.gh_issue
+    )
+    add(
+        "github.all_issues",
+        "github",
+        "browse all GitHub issues",
+        function()
             snacks.picker.gh_issue({ state = "all" })
-        end,
-    })
-    PALETTE.add({
-        id = "snacks.github.open_prs",
-        desc = "browser open github pull requests",
-        category = "snacks.github",
-        action = snacks.picker.gh_pr,
-    })
-    PALETTE.add({
-        id = "snacks.github.all_prs",
-        desc = "browser all github pull requests",
-        category = "snacks.github",
-        action = function()
+        end
+    )
+    add(
+        "github.open_prs",
+        "github",
+        "browse open GitHub pull requests",
+        snacks.picker.gh_pr
+    )
+    add(
+        "github.all_prs",
+        "github",
+        "browse all GitHub pull requests",
+        function()
             snacks.picker.gh_pr({ state = "all" })
-        end,
-    })
+        end
+    )
 
     -- lsp
-    PALETTE.add({
-        id = "snacks.lsp.symbols",
-        desc = "list lsp symbols",
-        category = "snacks.lsp",
-        action = snacks.picker.lsp_symbols,
-    })
-    PALETTE.add({
-        id = "snacks.lsp.workspace_symbols",
-        desc = "list workspace-wide lsp symbols",
-        category = "snacks.lsp",
-        action = snacks.picker.lsp_workspace_symbols,
-    })
+    add(
+        "lsp.symbols",
+        "lsp",
+        "list LSP symbols",
+        snacks.picker.lsp_symbols
+    )
+    add(
+        "lsp.workspace_symbols",
+        "lsp",
+        "list workspace-wide LSP symbols",
+        snacks.picker.lsp_workspace_symbols
+    )
 
     -- terminal
-    PALETTE.add({
-        id = "snacks.terminal.toggle",
-        desc = "toggle terminal",
-        category = "snacks.terminal",
-        action = snacks.terminal.toggle,
-    })
-    PALETTE.add({
-        id = "snacks.terminal.open",
-        desc = "open new terminal",
-        category = "snacks.terminal",
-        action = snacks.terminal.open,
-    })
+    add(
+        "terminal.toggle",
+        "terminal",
+        "toggle terminal",
+        snacks.terminal.toggle
+    )
+    add(
+        "terminal.open",
+        "terminal",
+        "open new terminal",
+        snacks.terminal.open
+    )
 
     -- scratch buffers
-    PALETTE.add({
-        id = "snacks.scratch.toggle",
-        desc = "toggle scratch buffer",
-        category = "snacks.scratch",
-        action = function()
+    add(
+        "scratch.toggle",
+        "scratch",
+        "toggle scratch buffer",
+        function()
             snacks.scratch()
-        end,
-    })
-    PALETTE.add({
-        id = "snacks.scratch.select",
-        desc = "select scratch buffer",
-        category = "snacks.scratch",
-        action = snacks.scratch.select,
-    })
+        end
+    )
+    add(
+        "scratch.select",
+        "scratch",
+        "select scratch buffer",
+        snacks.scratch.select
+    )
 
-    -- UI and editing
-    PALETTE.add({
-        id = "snacks.rename.file",
-        desc = "rename current file",
-        category = "snacks.rename",
-        action = snacks.rename.rename_file,
-    })
-    PALETTE.add({
-        id = "snacks.zen.toggle",
-        desc = "toggle zen mode",
-        category = "snacks.zen",
-        action = function()
-            snacks.zen()
-        end,
-    })
-    PALETTE.add({
-        id = "snacks.zen.zoom",
-        desc = "toggle window zoom",
-        category = "snacks.zen",
-        action = snacks.zen.zoom,
-    })
-    PALETTE.add({
-        id = "snacks.dim.enable",
-        desc = "enable dimming",
-        category = "snacks.dim",
-        action = snacks.dim.enable,
-    })
-    PALETTE.add({
-        id = "snacks.dim.disable",
-        desc = "disable dimming",
-        category = "snacks.dim",
-        action = snacks.dim.disable,
-    })
-    PALETTE.add({
-        id = "snacks.words.enable",
-        desc = "enable word highlighting",
-        category = "snacks.words",
-        action = snacks.words.enable,
-    })
-    PALETTE.add({
-        id = "snacks.words.disable",
-        desc = "disable word highlighting",
-        category = "snacks.words",
-        action = snacks.words.disable,
-    })
-    PALETTE.add({
-        id = "snacks.words.clear",
-        desc = "clear word highlighting",
-        category = "snacks.words",
-        action = snacks.words.clear,
-    })
-    PALETTE.add({
-        id = "snacks.buffer.delete",
-        desc = "delete current buffer",
-        category = "snacks.buffer",
-        action = function()
+    -- ui and editing
+    add(
+        "rename.file",
+        "rename",
+        "rename current file",
+        snacks.rename.rename_file
+    )
+    add("zen.toggle", "zen", "toggle zen mode", function()
+        snacks.zen()
+    end)
+    add("zen.zoom", "zen", "toggle window zoom", snacks.zen.zoom)
+    add("dim.enable", "dim", "enable dimming", snacks.dim.enable)
+    add(
+        "dim.disable",
+        "dim",
+        "disable dimming",
+        snacks.dim.disable
+    )
+    add(
+        "words.enable",
+        "words",
+        "enable word highlighting",
+        snacks.words.enable
+    )
+    add(
+        "words.disable",
+        "words",
+        "disable word highlighting",
+        snacks.words.disable
+    )
+    add(
+        "words.clear",
+        "words",
+        "clear word highlighting",
+        snacks.words.clear
+    )
+    add(
+        "buffer.delete",
+        "buffer",
+        "delete current buffer",
+        function()
             snacks.bufdelete()
-        end,
-    })
+        end
+    )
 end
 
 return plugin
