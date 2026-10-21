@@ -71,6 +71,7 @@ local M = {
     guessindent = require("183.plugins.qol.guessindent"),
     lspsaga = require("183.plugins.qol.lspsaga"),
     lspsign = require("183.plugins.qol.lspsign"),
+    livepreview = require("183.plugins.qol.liveprev"),
 
     -- stacks
     flutter = require("183.plugins.stacks.flutter"),
