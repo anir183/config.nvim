@@ -51,7 +51,7 @@ PALETTE.add({
     end,
 })
 PALETTE.add({
-    id = "lsp.inlay_enable",
+    id = "lsp.inlay_disable",
     desc = "disable inlay hints for current buffer",
     category = "lsp",
     action = function()
