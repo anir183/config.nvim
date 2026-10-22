@@ -97,10 +97,6 @@ plugin.config = function()
             },
         })
     end)
-
-    add("selection", "search selected text", function()
-        grug_far.with_visual_selection()
-    end)
 end
 
 return plugin
