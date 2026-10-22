@@ -4,7 +4,16 @@ local plugin = {}
 
 plugin.repo = "https://github.com/williamboman/mason.nvim"
 plugin.config = function()
-    require("mason").setup()
+    require("mason").setup({
+        ui = {
+            icons = {
+                package_installed = "󰌵",
+                package_pending = "▶",
+                package_uninstalled = "󰅚",
+            },
+        },
+        log_level = vim.log.levels.DEBUG,
+    })
 
     FUNCS.map(
         "n",
