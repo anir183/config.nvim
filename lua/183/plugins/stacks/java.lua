@@ -67,17 +67,11 @@ plugin.config = function()
 
     local jdtls_path = package_path("jdtls")
     if not jdtls_path then
-        vim.notify(
-            "JDTLS is required by nvim-java; Java integration disabled",
-            vim.log.levels.ERROR
-        )
         return
     end
 
     local java_debug_path = package_path("java-debug-adapter")
     local java_test_path = package_path("java-test")
-    local spring_boot_path =
-        package_path("vscode-spring-boot-tools")
 
     local java = require("java")
     java.setup({
@@ -93,27 +87,29 @@ plugin.config = function()
 
         java_debug_adapter = {
             enable = java_debug_path ~= nil,
-            path = FUNCS.join_path(java_debug_path or "", "extension"),
+            path = FUNCS.join_path(
+                java_debug_path or "",
+                "extension"
+            ),
             auto_install = false,
         },
 
         java_test = {
             enable = java_test_path ~= nil,
-            path = FUNCS.join_path(java_test_path or "", "extension"),
+            path = FUNCS.join_path(
+                java_test_path or "",
+                "extension"
+            ),
             auto_install = false,
         },
 
         lombok = {
-            enable = true,
-            auto_install = true,
+            enable = false,
+            auto_install = false,
         },
 
         spring_boot_tools = {
-            enable = spring_boot_path ~= nil,
-            path = FUNCS.join_path(
-                spring_boot_path or "",
-                "extension"
-            ),
+            enable = false,
             auto_install = false,
         },
 

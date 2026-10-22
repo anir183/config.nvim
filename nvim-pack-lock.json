@@ -10,7 +10,7 @@
       "version": "2.0.0 - 3.0.0"
     },
     "base46": {
-      "rev": "83522e02c6c3b4ea901c4bffd9e0a5e0371c1fe6",
+      "rev": "4e7109cefb4fb58c7e2ae0d4a0b4678731a62871",
       "src": "https://github.com/AvengeMedia/base46"
     },
     "blink.cmp": {
@@ -68,7 +68,7 @@
       "src": "https://github.com/kawre/leetcode.nvim"
     },
     "live-preview.nvim": {
-      "rev": "a6307fa340ed7c0d96f5c567afc8c991aad94ce0",
+      "rev": "dad92ae9599f9b19a7dffe7d597d3376c110b818",
       "src": "https://github.com/brianhuster/live-preview.nvim"
     },
     "lsp_signature.nvim": {
@@ -134,11 +134,6 @@
     "snacks.nvim": {
       "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",
       "src": "https://github.com/folke/snacks.nvim"
-    },
-    "spring-boot.nvim": {
-      "rev": "218c0c26c14d99feca778e4d13f5ec3e8b1b60f0",
-      "src": "https://github.com/JavaHello/spring-boot.nvim",
-      "version": "'218c0c26c14d99feca778e4d13f5ec3e8b1b60f0'"
     },
     "todo-comments.nvim": {
       "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",
