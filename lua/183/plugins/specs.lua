@@ -53,7 +53,7 @@ local M = {
     }, 3),
     luasnip = pr(require("183.plugins.dev.luasnip"), 2),
     blink = pr(require("183.plugins.dev.blink"), 1),
-    mason = require("183.plugins.dev.mason"),
+    mason = pr(require("183.plugins.dev.mason"), 25),
     conform = require("183.plugins.dev.conform"),
     lint = require("183.plugins.dev.lint"),
 
