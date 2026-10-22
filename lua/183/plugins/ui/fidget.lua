@@ -18,7 +18,7 @@ plugin.config = function()
         },
     })
 
-    vim.keymap.set(
+    FUNCS.map(
         "n",
         "<leader>nh",
         "<CMD>Fidget history<CR>",
@@ -26,7 +26,7 @@ plugin.config = function()
             desc = "[plugin.fidget] open [N]otification [H]istory",
         }
     )
-    vim.keymap.set(
+    FUNCS.map(
         "n",
         "<leader>nc",
         "<CMD>Fidget clear<CR>",

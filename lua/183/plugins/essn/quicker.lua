@@ -27,7 +27,7 @@ plugin.config = function()
         },
     })
 
-    vim.keymap.set(
+    FUNCS.map(
         "n",
         "<leader>ql",
         function()
@@ -37,7 +37,7 @@ plugin.config = function()
         end,
         { desc = "[plugins.quicker] toggle [q]uick fix [l]ist" }
     )
-    vim.keymap.set("n", "<leader>ll", function()
+    FUNCS.map("n", "<leader>ll", function()
         quicker.toggle({
             loclist = true,
             height = 10,

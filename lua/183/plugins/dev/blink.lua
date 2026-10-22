@@ -9,7 +9,7 @@ plugin.repo = {
 plugin.config = function()
     local blink = require("blink.cmp")
     local feedkeys = FUNCS.feedkeys
-    local map = vim.keymap.set
+    local map = FUNCS.map
 
     blink.setup({
         keymap = {
@@ -88,6 +88,8 @@ plugin.config = function()
     })
 
     -- navigate completion menu
+    vim.keymap.del({ "i", "s" }, "<Tab>")
+    vim.keymap.del({ "i", "s" }, "<S-Tab>")
     map(
         { "i", "s" },
         "<Tab>",

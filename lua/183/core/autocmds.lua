@@ -35,7 +35,7 @@ aucmd("FileType", {
     callback = function()
         ---@source https://stackoverflow.com/a/77181885
 
-        vim.keymap.set("n", "dd", function()
+        FUNCS.map("n", "dd", function()
             local curr_qf_idx = vim.fn.line(".")
             local qf_items = vim.fn.getqflist()
 
