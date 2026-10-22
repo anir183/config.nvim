@@ -76,16 +76,6 @@ plugin.config = function()
         "<CMD>Lspsaga outgoing_calls<CR>",
         { desc = "[plugins.lspsaga]: [o]outgoing calls" }
     )
-    -- nmap(
-    --     "<leader>sy",
-    --     "<CMD>Lspsaga outline<CR>",
-    --     { desc = "[plugins.lspsaga]: document [S][Y]mbol" }
-    -- )
-    -- nmap(
-    --     "<leader>ol",
-    --     "<CMD>Lspsaga outline<CR>",
-    --     { desc = "[plugins.lspsaga]: [O]ut[L]ine" }
-    -- )
     nmap(
         "gd",
         "<CMD>Lspsaga goto_definition<CR>",
