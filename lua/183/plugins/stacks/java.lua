@@ -93,13 +93,13 @@ plugin.config = function()
 
         java_debug_adapter = {
             enable = java_debug_path ~= nil,
-            path = FUNCS.join_path(java_debug_path, "extension"),
+            path = FUNCS.join_path(java_debug_path or "", "extension"),
             auto_install = false,
         },
 
         java_test = {
             enable = java_test_path ~= nil,
-            path = FUNCS.join_path(java_test_path, "extension"),
+            path = FUNCS.join_path(java_test_path or "", "extension"),
             auto_install = false,
         },
 
@@ -111,7 +111,7 @@ plugin.config = function()
         spring_boot_tools = {
             enable = spring_boot_path ~= nil,
             path = FUNCS.join_path(
-                spring_boot_path,
+                spring_boot_path or "",
                 "extension"
             ),
             auto_install = false,
