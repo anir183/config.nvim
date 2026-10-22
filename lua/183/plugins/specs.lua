@@ -76,6 +76,13 @@ local M = {
     flutter = require("183.plugins.stacks.flutter"),
     typescript = require("183.plugins.stacks.typescript"),
     gopher = require("183.plugins.stacks.gopher"),
+    springboot = pr({
+        repo = {
+            src = "https://github.com/JavaHello/spring-boot.nvim",
+            version = "218c0c26c14d99feca778e4d13f5ec3e8b1b60f0",
+        },
+    }, 1),
+    java = require("183.plugins.stacks.java"),
 
     -- misc
     leetcode = require("183.plugins.misc.leetcode"),
