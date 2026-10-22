@@ -49,7 +49,7 @@ nmap("N", "Nzzzv", {
 })
 
 -- system clipboard
-map("i", "<C-S-v>", function()
+map({ "i", "c" }, "<C-S-v>", function()
     vim.api.nvim_paste(vim.fn.getreg("+"), true, -1)
 end, { desc = "[core] paste from system clipboard" })
 map(
