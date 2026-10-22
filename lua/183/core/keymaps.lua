@@ -115,6 +115,11 @@ map(
     { desc = "[core] [C]hange till end of line without copying" }
 )
 
+-- conceal level
+nmap("<leader>uc", function()
+    vim.o.conceallevel = vim.o.conceallevel == 0 and 2 or 0
+end, { desc = "[core] toggle [u]i [c]onceal level" })
+
 -- splits resizing
 nmap(
     "<C-.>",
