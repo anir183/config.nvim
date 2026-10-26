@@ -18,14 +18,9 @@ plugin.config = function()
         },
     })
 
-    FUNCS.map(
-        "n",
-        "<leader>nh",
-        "<CMD>Fidget history<CR>",
-        {
-            desc = "[plugin.fidget] open [N]otification [H]istory",
-        }
-    )
+    FUNCS.map("n", "<leader>nh", "<CMD>Fidget history<CR>", {
+        desc = "[plugin.fidget] open [N]otification [H]istory",
+    })
     FUNCS.map(
         "n",
         "<leader>nc",
