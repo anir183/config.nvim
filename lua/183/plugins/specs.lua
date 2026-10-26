@@ -56,6 +56,7 @@ local M = {
     mason = pr(require("183.plugins.dev.mason"), 25),
     conform = require("183.plugins.dev.conform"),
     lint = require("183.plugins.dev.lint"),
+    neotest = require("183.plugins.dev.neotest"),
 
     -- debugging
     dap = pr(require("183.plugins.debug.dap"), 1),

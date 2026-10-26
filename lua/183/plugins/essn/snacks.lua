@@ -301,7 +301,7 @@ plugin.config = function()
         { desc = "[plugins.snacks] [t]oggle [t]erminal window" }
     )
     nmap(
-        "<leader>to",
+        "<leader>TT",
         snacks.terminal.open,
         { desc = "[plugins.snacks] new [t]erminal [o]pen" }
     )
