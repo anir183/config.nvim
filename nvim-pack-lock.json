@@ -83,6 +83,10 @@
       "rev": "cf6fc9473bba1d332eda9887855ea29ed9b37701",
       "src": "https://github.com/nvimdev/lspsaga.nvim"
     },
+    "markview.nvim": {
+      "rev": "ecc5a8867daa1856f8bcc5fdbceca8f5a5ce5f5d",
+      "src": "https://github.com/OXY2DEV/markview.nvim"
+    },
     "mason.nvim": {
       "rev": "2a6940af80375532e5e9e7c1f2fc6319a1b7a69d",
       "src": "https://github.com/williamboman/mason.nvim"

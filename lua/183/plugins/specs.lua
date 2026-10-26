@@ -72,6 +72,7 @@ local M = {
     lspsaga = require("183.plugins.qol.lspsaga"),
     lspsign = require("183.plugins.qol.lspsign"),
     grugfar = require("183.plugins.qol.grugfar"),
+    markview = require("183.plugins.qol.markview"),
 
     -- stacks
     flutter = require("183.plugins.stacks.flutter"),
