@@ -51,6 +51,7 @@ local opt_template = {
     "M.dap = {}",
     "",
     "-- neotest adapter configuration",
+    "-- https://github.com/nvim-neotest/neotest#supported-runners",
     "M.test = {}",
     "",
     "-- additional filetypes",
@@ -114,7 +115,7 @@ function QOPTS.open()
 
     vim.cmd.edit(opts_path)
     vim.defer_fn(function()
-        FUNCS.map("n", "q", "<cmd>wq<cr>")
+        FUNCS.map("n", "q", "<cmd>w<cr><cmd>bd<cr>", { buf = 0 })
     end, 10)
 end
 
