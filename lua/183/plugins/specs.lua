@@ -80,6 +80,7 @@ local M = {
     typescript = require("183.plugins.stacks.typescript"),
     gopher = require("183.plugins.stacks.gopher"),
     java = require("183.plugins.stacks.java"),
+    cmake = require("183.plugins.stacks.cmake"),
 
     -- misc
     leetcode = require("183.plugins.misc.leetcode"),
