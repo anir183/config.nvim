@@ -81,6 +81,8 @@ local M = {
     gopher = require("183.plugins.stacks.gopher"),
     java = require("183.plugins.stacks.java"),
     cmake = require("183.plugins.stacks.cmake"),
+    crates = require("183.plugins.stacks.crates"),
+    rustacean = require("183.plugins.stacks.rustacean"),
 
     -- misc
     leetcode = require("183.plugins.misc.leetcode"),
