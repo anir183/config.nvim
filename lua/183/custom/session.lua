@@ -30,6 +30,16 @@ local function notify(message, level)
     })
 end
 
+---@return string
+local function cwd()
+    return vim.fs.normalize(vim.fn.getcwd())
+end
+
+---@return boolean
+local function is_home_directory()
+    return cwd() == vim.fs.normalize(vim.fn.expand("~"))
+end
+
 ---@return boolean
 local function ensure_dir()
     if vim.fn.isdirectory(sessdir) == 1 then
@@ -51,9 +61,8 @@ local function ensure_dir()
     return false
 end
 
--- percent-encode every character except ascii letters, digits, ".", "_", and "-".
--- in particular, encode literal "%" and "~" so the branch delimiter cannot collide
--- with any encoded path or branch name.
+-- Percent-encode every character except ASCII letters, digits,
+-- ".", "_", and "-". Encode "%" and "~" to protect the delimiter.
 ---@param value string
 ---@return string
 local function encode(value)
@@ -74,11 +83,11 @@ local function decode(value)
     )
 end
 
----@param cwd string
+---@param dir string
 ---@param branch? string
 ---@return string
-local function session_name(cwd, branch)
-    local name = encode(vim.fs.normalize(cwd))
+local function session_name(dir, branch)
+    local name = encode(vim.fs.normalize(dir))
 
     if branch and branch ~= "" then
         name = name .. "~b~" .. encode(branch)
@@ -152,7 +161,11 @@ local function cancel_save()
 end
 
 local function schedule_save()
-    if not SESS._active or SESS._loading then
+    if
+        not SESS._active
+        or SESS._loading
+        or is_home_directory()
+    then
         return
     end
 
@@ -164,9 +177,10 @@ local function schedule_save()
         if
             SESS._active
             and not SESS._loading
+            and not is_home_directory()
             and has_enough_buffers()
         then
-            SESS.save()
+            SESS.save({ automatic = true })
         end
     end, 1000)
 end
@@ -180,7 +194,7 @@ function SESS.current(opts)
 
     return vim.fs.joinpath(
         sessdir,
-        session_name(vim.fn.getcwd(), branch)
+        session_name(cwd(), branch)
     )
 end
 
@@ -211,7 +225,11 @@ function SESS.start()
     }, {
         group = sessgrp,
         callback = function()
-            if not SESS._loading and has_enough_buffers() then
+            if
+                not SESS._loading
+                and not is_home_directory()
+                and has_enough_buffers()
+            then
                 schedule_save()
             end
         end,
@@ -225,9 +243,10 @@ function SESS.start()
             if
                 SESS._active
                 and not SESS._loading
+                and not is_home_directory()
                 and has_enough_buffers()
             then
-                SESS.save()
+                SESS.save({ automatic = true })
             end
         end,
     })
@@ -243,9 +262,16 @@ function SESS.stop()
     })
 end
 
+---@param opts? { automatic?: boolean }
 ---@return boolean
-function SESS.save()
-    if SESS._loading or not has_enough_buffers() then
+function SESS.save(opts)
+    opts = opts or {}
+
+    if
+        SESS._loading
+        or (opts.automatic and is_home_directory())
+        or not has_enough_buffers()
+    then
         return false
     end
 
@@ -255,15 +281,15 @@ function SESS.save()
 
     local sessionoptions = vim.o.sessionoptions
 
-    vim.opt.sessionoptions:remove("blank")
+    local ok, err = pcall(function()
+        vim.opt.sessionoptions:remove("blank")
 
-    local ok, err = pcall(
-        ---@diagnostic disable-next-line: param-type-mismatch
-        vim.cmd,
-        "mksession! " .. vim.fn.fnameescape(SESS.current())
-    )
+        vim.cmd(
+            "mksession! " .. vim.fn.fnameescape(SESS.current())
+        )
+    end)
 
-    -- always restore the user's original sessionoptions.
+    -- Always restore the original options, even on failure.
     vim.o.sessionoptions = sessionoptions
 
     if not ok then
@@ -285,19 +311,25 @@ function SESS.load(opts)
     local file = opts.file
 
     if not file then
+        -- Never implicitly load a session for the home directory.
+        if is_home_directory() then
+            notify(
+                "session loading is disabled in the home directory",
+                vim.log.levels.WARN
+            )
+            return false
+        end
+
         if opts.last then
             file = SESS.last()
 
-            -- do not silently substitute the current session when there is
-            -- no previously saved session.
             if not file then
                 return false
             end
         else
             file = SESS.current()
 
-            -- fall back to the directory-only session when the branch-specific
-            -- session does not exist.
+            -- Fall back to the directory-only session.
             if vim.fn.filereadable(file) == 0 then
                 file = SESS.current({ branch = false })
             end
@@ -305,6 +337,7 @@ function SESS.load(opts)
     end
 
     if vim.fn.filereadable(file) == 0 then
+        notify("session file does not exist", vim.log.levels.WARN)
         return false
     end
 
@@ -316,16 +349,34 @@ function SESS.load(opts)
         return false
     end
 
-    -- session restoration triggers buffer, window, and tab events. suppress
-    -- autosaving until :source has completed, including on errors.
+    -- Cancel any pending autosave before saving the outgoing layout.
     cancel_save()
+
+    -- Save the current project session before destroying its layout.
+    -- A failed save aborts the switch, leaving the current layout intact.
+    if not is_home_directory() and has_enough_buffers() then
+        if not SESS.save() then
+            notify(
+                "session switch aborted because the current session could not be saved",
+                vim.log.levels.ERROR
+            )
+            return false
+        end
+    end
+
     SESS._loading = true
 
-    local ok, err = pcall(
-        ---@diagnostic disable-next-line: param-type-mismatch
-        vim.cmd,
-        "silent source " .. vim.fn.fnameescape(file)
-    )
+    local ok, err = pcall(function()
+        -- Remove the previous session's tabs and split windows.
+        vim.cmd("silent! tabonly!")
+        vim.cmd("silent! only!")
+
+        -- Clear old buffers before restoring the selected session.
+        vim.cmd("silent! %bdelete!")
+
+        -- Prevent events triggered by :source from autosaving.
+        vim.cmd("silent source " .. vim.fn.fnameescape(file))
+    end)
 
     SESS._loading = false
 
@@ -464,7 +515,7 @@ function SESS.branch()
         "branch",
         "--show-current",
     }, {
-        cwd = vim.fn.getcwd(),
+        cwd = cwd(),
         text = true,
     }):wait()
 
