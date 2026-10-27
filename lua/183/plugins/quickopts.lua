@@ -13,6 +13,7 @@ _G.QOPTS = {}
 ---@module "dap"
 ---@module "conform"
 ---@module "lint"
+---@module "neotest"
 ---@class 183.Options
 ---@field plugins table<string, 183.PluginSpec>
 ---@field lsps table<string, vim.lsp.Config|nil>
@@ -21,7 +22,7 @@ _G.QOPTS = {}
 ---@field linters table<string, string[]>
 ---@field custom_linters table<string, fun(): lint.Linter|lint.Linter>
 ---@field dap table<string, { adapter?: dap.Adapter | fun( callback: fun(adapter: dap.Adapter), config: dap.Configuration, parent?: dap.Session), configs?: table<string, dap.Configuration[]> }>
----@field test table<string, { link: string, opts: any|false }>
+---@field test table<string, { link: string, adapter?: fun(): neotest.Adapter }>
 ---@field filetypes vim.filetype.add.filetypes[]
 ---@field parsers table<string, 183.TreesitterParser>
 ---@field leetpath string

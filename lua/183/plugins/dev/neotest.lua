@@ -13,7 +13,7 @@ plugin.config = function()
     local pack_specs = {}
     local adapters = {}
 
-    -- Install/load configured adapters.
+    -- install/load configured adapters.
     for _, conf in pairs(test_opts) do
         assert(
             type(conf.link) == "string" and conf.link ~= "",
@@ -27,15 +27,9 @@ plugin.config = function()
         vim.pack.add(pack_specs)
     end
 
-    -- Load and initialize adapters.
+    -- load and initialize adapters.
     for name, conf in pairs(test_opts) do
-        local adapter = require(name)
-
-        if conf.opts == false then
-            adapters[#adapters + 1] = adapter
-        else
-            adapters[#adapters + 1] = adapter(conf.opts or {})
-        end
+        adapters[#adapters + 1] = conf.adapter() or require(name)
     end
 
     local neotest = require("neotest")
