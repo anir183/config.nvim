@@ -110,7 +110,7 @@ function QOPTS.open()
             col = (ui.width - width) / 2,
             row = (ui.height - height) / 2,
             focusable = true,
-            border = "none",
+            border = vim.g.neovide and "none" or "rounded",
         }
     )
 
