@@ -26,6 +26,15 @@ plugin.config = function()
         cmake_runner = {
             name = "terminal",
         },
+
+        cmake_dap_configuration = {
+            name = "CMake debug",
+            type = "codelldb",
+            request = "launch",
+            stopOnEntry = false,
+            runInTerminal = true,
+            console = "integratedTerminal",
+        },
     })
 
     -- action palette

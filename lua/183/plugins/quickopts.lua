@@ -20,7 +20,7 @@ _G.QOPTS = {}
 ---@field custom_formatters table<string, conform.FormatterConfigOverride|fun(bufnr: integer): nil|conform.FormatterConfigOverride>
 ---@field linters table<string, string[]>
 ---@field custom_linters table<string, fun(): lint.Linter|lint.Linter>
----@field dap table<string, { adapter: dap.Adapter | fun( callback: fun(adapter: dap.Adapter), config: dap.Configuration, parent?: dap.Session), configs: dap.Configuration[] }>
+---@field dap table<string, { adapter?: dap.Adapter | fun( callback: fun(adapter: dap.Adapter), config: dap.Configuration, parent?: dap.Session), configs?: table<string, dap.Configuration[]> }>
 ---@field test table<string, { link: string, opts: any|false }>
 ---@field filetypes vim.filetype.add.filetypes[]
 ---@field parsers table<string, 183.TreesitterParser>

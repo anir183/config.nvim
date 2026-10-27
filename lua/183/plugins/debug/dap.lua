@@ -13,8 +13,10 @@ plugin.config = function()
     -- register dap clients
     local dacs = QOPTS.get().dap
     for name, dac in pairs(dacs or {}) do
-        dap.adapters[name] = dac.adapter
-        dap.configurations[name] = dac.configs
+        dap.adapters[name] = dac.adapter or {}
+        for lang, configs in pairs(dac.configs or {}) do
+            dap.configurations[lang] = configs
+        end
     end
 
     -- signs and theme-aware highlights
