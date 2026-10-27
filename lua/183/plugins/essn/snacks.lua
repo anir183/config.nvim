@@ -156,7 +156,10 @@ plugin.config = function()
 
     -- explorer
     nmap("<leader>e", function()
-        snacks.explorer()
+        snacks.explorer({
+            ignored = true,
+            hidden = true,
+        })
     end, { desc = "[plugins.snacks] open [e]xplorer in cwd" })
 
     -- nvim pickers
